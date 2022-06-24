@@ -13,14 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')
+    ->namespace('User')
+    ->name('user.')
+    ->prefix('user')
+    ->group(function() {
+        Route::get('/', 'HomeController@index')->name('index');
+        // Route::resource('/posts', 'PostController');
+    });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('{any}', function(){
+        return view('guests.home');
+    })->where('any', '.*');
