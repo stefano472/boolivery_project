@@ -11,6 +11,7 @@
         <p>Partita IVA: {{$restaurant[$id - 1]->tax_id}}</p>
         <p>Numero telefonico: {{$restaurant[$id - 1]->phone_number}}</p>
         <p>Descrizione: {{$restaurant[$id - 1]->description}}</p>
+        <img src="{{asset('/storage/' . $restaurant[$id - 1]->logo)}}" alt="">
 
         <button>
             <a href="{{ route('user.restaurant.edit', $restaurant[$id - 1]->id) }}">modifica</a>

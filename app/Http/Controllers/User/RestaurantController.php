@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\User;
 use App\Restaurant;
@@ -71,6 +72,15 @@ class RestaurantController extends Controller
 
         $id = Auth::id();
         $restaurantData = $request->all();
+
+        if(array_key_exists('cover', $restaurantData)) {
+            $img_path = Storage::put('uploads', $restaurantData['cover']);
+            $restaurantData['cover'] = $img_path;
+        }
+        if(array_key_exists('logo', $restaurantData)) {
+            $img_path = Storage::put('uploads', $restaurantData['logo']);
+            $restaurantData['logo'] = $img_path;
+        }
 
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($restaurantData);
