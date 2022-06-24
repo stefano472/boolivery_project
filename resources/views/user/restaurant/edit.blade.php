@@ -2,7 +2,7 @@
 
 <!-- Form di creazione -->
 @section('content')
-    <h1>Inserisci i Dati</h1>
+    <h1>Modifica i Dati</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
         @foreach ($errors->all() as $error)
@@ -10,14 +10,15 @@
         @endforeach
     @endif
 
-    <form action="{{ route('user.restaurant.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.restaurant.update', $restaurant->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
 
+        @method('PUT')
         <div class="input-box">
 
             <label for="name">Nome del ristorante</label>
             <br>
-            <input type="text" name="name" placeholder="nome">
+            <input type="text" name="name" placeholder="nome" value="{{ old('name', $restaurant->name) }}">
 
             <!-- errore relativo all'input -->
             @error('name')
@@ -31,7 +32,7 @@
 
             <label for="address">Indirizzo</label>
             <br>
-            <input type="text" name="address" placeholder="indirizzo">
+            <input type="text" name="address" placeholder="indirizzo" value="{{ old('address', $restaurant->address) }}">
 
             <!-- errore relativo all'input -->
             @error('address')
@@ -45,7 +46,7 @@
 
             <label for="motto">Motto</label>
             <br>
-            <textarea name="motto" id="" cols="30" rows="5" placeholder="motto"></textarea>
+            <textarea name="motto" id="" cols="30" rows="5" placeholder="motto">{{old('motto',$restaurant->motto)}}</textarea>
 
             <!-- errore relativo all'input -->
             @error('motto')
@@ -59,7 +60,7 @@
 
             <label for="tax_id">Partita IVA</label>
             <br>
-            <input type="text" name="tax_id" placeholder="partita iva">
+            <input type="text" name="tax_id" placeholder="partita iva" value="{{ old('tax_id', $restaurant->tax_id) }}">
 
             <!-- errore relativo all'input -->
             @error('tax_id')
@@ -73,7 +74,7 @@
 
             <label for="phone_number">Numero di telefono</label>
             <br>
-            <input type="tel" name="phone_number" placeholder="...">
+            <input type="tel" name="phone_number" placeholder="..." value="{{ old('phone_number', $restaurant->phone_number) }}">
 
             <!-- errore relativo all'input -->
             @error('phone_number')
@@ -115,7 +116,7 @@
 
             <label for="description">Descrizione</label>
             <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="..."></textarea>
+            <textarea name="description" id="" cols="30" rows="10" placeholder="...">{{ old('description', $restaurant->description) }}"</textarea>
 
             <!-- errore relativo all'input -->
             @error('description')

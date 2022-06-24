@@ -19,9 +19,10 @@ class RestaurantController extends Controller
     public function index()
     {
         //
+        $id = Auth::id();
         $restaurant = Restaurant::all();
 
-        return view('user.restaurant.index', compact('restaurant'));
+        return view('user.restaurant.index', compact('restaurant','id'));
     }
 
     /**
@@ -32,9 +33,8 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        $users = User::all();
 
-        return view('user.restaurant.create', compact('users'));
+        return view('user.restaurant.create');
     }
 
     /**
@@ -102,6 +102,9 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         //
+        $restaurant = Restaurant::find($id);
+
+        return view('user.restaurant.edit', compact('restaurant'));
     }
 
     /**
@@ -114,6 +117,38 @@ class RestaurantController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name'=>'required|max:30',
+            'address'=>'required|max:255',
+            'motto'=>'max:255',
+            'tax_id'=>'required|numeric',
+            'phone_number'=>'required|numeric',
+            'cover'=>'nullable|mimes:png,jpg',
+            'logo'=>'nullable|mimes:png,jpg',
+            'description'=>'nullable',
+        ],[
+            'name.required'=>'inserisci il nome',
+            'name.max'=>'il nome può essere al massimo di 30 caratteri',
+            'address.required'=>'inserisci un indirizzo',
+            'address.max'=>'l\'indirizzo può essere al massimo di 255 caratteri',
+            'motto.max'=>'il motto può essere al massimo di 255 caratteri',
+            'tax_id.required'=>'inserisci la partita iva',
+            'tax_id.max'=>'la partita iva è di 11 numeri',
+            'phone_number'=>'inserisci un numero valido',
+            'cover'=>'il file deve essere un\'immagine',
+            'logo'=>'il file deve essere un\'immagine',
+        ]);
+
+
+        $restaurantData = $request->all();
+
+        $restaurant = Restaurant::find($id);
+
+        $restaurant->fill($restaurantData);
+
+        $restaurant->update();
+
+        return redirect()->route('user.restaurant.index');
     }
 
     /**
@@ -125,5 +160,10 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         //
+        $restaurant = Restaurant::find($id);
+
+        $restaurant->delete();
+        
+        return redirect()->route('user.restaurant.index');
     }
 }
