@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
 use App\Restaurant;
 
 class RestaurantController extends Controller
@@ -29,7 +32,9 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        return view('user.restaurant.create');
+        $users = User::all();
+
+        return view('user.restaurant.create', compact('users'));
     }
 
     /**
@@ -40,7 +45,41 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
+
+        $request->validate([
+            'name'=>'required|max:30',
+            'address'=>'required|max:255',
+            'motto'=>'max:255',
+            'tax_id'=>'required|numeric',
+            'phone_number'=>'required|numeric',
+            'cover'=>'nullable|mimes:png,jpg',
+            'logo'=>'nullable|mimes:png,jpg',
+            'description'=>'nullable',
+        ],[
+            'name.required'=>'inserisci il nome',
+            'name.max'=>'il nome può essere al massimo di 30 caratteri',
+            'address.required'=>'inserisci un indirizzo',
+            'address.max'=>'l\'indirizzo può essere al massimo di 255 caratteri',
+            'motto.max'=>'il motto può essere al massimo di 255 caratteri',
+            'tax_id.required'=>'inserisci la partita iva',
+            'tax_id.max'=>'la partita iva è di 11 numeri',
+            'phone_number'=>'inserisci un numero valido',
+            'cover'=>'il file deve essere un\'immagine',
+            'logo'=>'il file deve essere un\'immagine',
+        ]);
+
+        $id = Auth::id();
+        $restaurantData = $request->all();
+
+        $newRestaurant = new Restaurant();
+        $newRestaurant->fill($restaurantData);
+
+        $newRestaurant->user_id= $id;
+        $newRestaurant->save();
+
+
+        return redirect()->route('user.restaurant.index');
     }
 
     /**

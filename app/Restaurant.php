@@ -9,8 +9,13 @@ class Restaurant extends Model
     protected $table = 'restaurants';
 
     protected $fillable = [
-        'name', 'address', 'motto', 'tax_id', 'phone_number', 'cover', 'logo', 'description'
+        'name', 'address', 'motto', 'tax_id', 'phone_number', 'cover', 'logo', 'description', 'user_id'
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 
     public function orders(){
         return $this->hasMany('App\Order');

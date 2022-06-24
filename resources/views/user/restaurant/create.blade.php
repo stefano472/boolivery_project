@@ -13,6 +13,7 @@
     <form action="{{ route('user.restaurant.store')}}" method="POST">
         @csrf
 
+        <h1>{{$users[0]->id}}</h1>
         <div class="input-box">
 
             <label for="name">Nome del ristorante</label>

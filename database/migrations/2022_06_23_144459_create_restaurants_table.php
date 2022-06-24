@@ -19,8 +19,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('name', 30);
             $table->string('address', 255);
             $table->string('motto', 255);
-            $table->string('tax_id', 15);
-            $table->integer('phone_number');
+            $table->bigInteger('tax_id');
+            $table->bigInteger('phone_number');
             $table->string('cover')->nullable();
             $table->string('logo')->nullable();
             $table->mediumText('description');
