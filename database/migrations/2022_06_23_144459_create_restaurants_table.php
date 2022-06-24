@@ -20,9 +20,9 @@ class CreateRestaurantsTable extends Migration
             $table->string('address', 255);
             $table->string('motto', 255);
             $table->string('tax_id', 15);
-            $table->tinyInteger('phone_number');
-            $table->string('cover');
-            $table->string('logo');
+            $table->integer('phone_number');
+            $table->string('cover')->nullable();
+            $table->string('logo')->nullable();
             $table->mediumText('description');
 
             $table->timestamps();
