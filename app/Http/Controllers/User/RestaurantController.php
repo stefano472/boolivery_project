@@ -85,7 +85,7 @@ class RestaurantController extends Controller
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($restaurantData);
 
-        $newRestaurant->user_id= $id;
+        $newRestaurant->user_id = $id;
         $newRestaurant->save();
 
 
@@ -151,6 +151,15 @@ class RestaurantController extends Controller
 
 
         $restaurantData = $request->all();
+
+        if(array_key_exists('cover', $restaurantData)) {
+            $img_path = Storage::put('uploads', $restaurantData['cover']);
+            $restaurantData['cover'] = $img_path;
+        }
+        if(array_key_exists('logo', $restaurantData)) {
+            $img_path = Storage::put('uploads', $restaurantData['logo']);
+            $restaurantData['logo'] = $img_path;
+        }
 
         $restaurant = Restaurant::find($id);
 
