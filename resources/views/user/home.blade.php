@@ -1,1 +1,0 @@
-Ciao ciao boolivery utente registrato

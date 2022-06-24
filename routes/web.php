@@ -27,7 +27,7 @@ Route::middleware('auth')
     ->prefix('user')
     ->group(function() {
         Route::get('/', 'HomeController@index')->name('index');
-        // Route::resource('/posts', 'PostController');
+        Route::resource('/restaurant', 'RestaurantController');
     });
 
 Route::get('{any}', function(){
