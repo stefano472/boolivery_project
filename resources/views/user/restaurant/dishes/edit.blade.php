@@ -71,7 +71,7 @@
 
             <label for="cover">Immagine del piatto</label>
             <br>
-            <input type="file" name="cover" placeholder="...">
+            <input type="file" name="cover">
 
             <!-- errore relativo all'input -->
             @error('cover')

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Category;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -14,57 +15,64 @@ class CategoryTableSeeder extends Seeder
         //
         $categories=[
             [
-                'name'=>'italiano',
-                'img'=>''
+                'name'=>'Italiano',
+                'img'=>'/img/category_img/cat_ita.png'
             ],
             [
-                'name'=>'giapponese',
-                'img'=>''
+                'name'=>'Giapponese',
+                'img'=>'/img/category_img/cat_jap.png'
             ],
             [
-                'name'=>'cinese',
-                'img'=>''
+                'name'=>'Cinese',
+                'img'=>'/img/category_img/cat_chi.png'
             ],
             [
-                'name'=>'messicano',
-                'img'=>''
+                'name'=>'Messicano',
+                'img'=>'/img/category_img/cat_mex.png'
             ],
             [
-                'name'=>'fast-food',
-                'img'=>''
+                'name'=>'Fast-food',
+                'img'=>'/img/category_img/cat_fast.png'
             ],
             [
-                'name'=>'pizza',
-                'img'=>''
+                'name'=>'Pizza',
+                'img'=>'/img/category_img/cat_piz.png'
             ],
             [
-                'name'=>'vegano',
-                'img'=>''
+                'name'=>'Vegano',
+                'img'=>'/img/category_img/cat_veg.png'
             ],
             [
-                'name'=>'dolci',
-                'img'=>''
+                'name'=>'Dolci',
+                'img'=>'/img/category_img/cat_dol.png'
             ],
             [
-                'name'=>'tailandese',
-                'img'=>''
+                'name'=>'Tailandese',
+                'img'=>'/img/category_img/cat_chi.png'
             ],
             [
-                'name'=>'indiano',
-                'img'=>''
+                'name'=>'Indiano',
+                'img'=>'/img/category_img/cat_chi.png'
             ],
             [
-                'name'=>'kebab',
-                'img'=>''
+                'name'=>'Kebab',
+                'img'=>'/img/category_img/cat_chi.png'
             ],
             [
-                'name'=>'poke',
-                'img'=>''
+                'name'=>'Poke',
+                'img'=>'/img/category_img/cat_chi.png'
             ],
             [
-                'name'=>'street-food',
-                'img'=>''
+                'name'=>'Street-food',
+                'img'=>'/img/category_img/cat_chi.png'
             ]
         ];
+
+        foreach ($categories as $category) {
+            $new_category_object = new Category();
+            $new_category_object->name = $category['name'];
+            $new_category_object->img = $category['img'];
+            $new_category_object->save();
+        }
     }
 }

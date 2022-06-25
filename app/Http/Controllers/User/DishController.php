@@ -89,6 +89,9 @@ class DishController extends Controller
     public function show($id)
     {
         //
+        $dish = Dish::find($id);
+
+        return view('user.restaurant.dishes.show', compact('dish'));
     }
 
     /**

@@ -81,6 +81,24 @@
         </div>
         <div class="input-box">
 
+            <div>Categoria</div>
+            <br>
+            @foreach ($categories as $category)
+                <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
+                    {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}> <label
+                    for="category">{{ $category->name }}</label>
+                <br>
+            @endforeach
+
+
+            <!-- errore relativo all'input -->
+            @error('category')
+                <p class="error">{{ $message }}</p>
+            @enderror
+
+        </div>
+        <div class="input-box">
+
             <label for="cover">Copertina ristorante</label>
             <br>
             <input type="file" name="cover">

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\User;
 use App\Restaurant;
+use App\Category;
 
 class RestaurantController extends Controller
 {
@@ -22,8 +23,9 @@ class RestaurantController extends Controller
         //
         $id = Auth::id();
         $restaurant = Restaurant::all();
+        $categories = Category::all();
 
-        return view('user.restaurant.index', compact('restaurant','id'));
+        return view('user.restaurant.index', compact('restaurant','id','categories'));
     }
 
     /**
@@ -34,8 +36,9 @@ class RestaurantController extends Controller
     public function create()
     {
         //
+        $categories = Category::all();
 
-        return view('user.restaurant.create');
+        return view('user.restaurant.create', compact('categories'));
     }
 
     /**
@@ -90,6 +93,9 @@ class RestaurantController extends Controller
         $newRestaurant->user_id = $id;
         $newRestaurant->save();
 
+        if (array_key_exists('categories', $restaurantData)) {
+            $newRestaurant->categories()->sync($restaurantData['categories']);
+        }
 
         return redirect()->route('user.restaurant.index');
     }
@@ -115,8 +121,9 @@ class RestaurantController extends Controller
     {
         //
         $restaurant = Restaurant::find($id);
+        $categories = Category::all();
 
-        return view('user.restaurant.edit', compact('restaurant'));
+        return view('user.restaurant.edit', compact('restaurant','categories'));
     }
 
     /**
@@ -168,6 +175,12 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::find($id);
 
         $restaurant->fill($restaurantData);
+
+        if (array_key_exists('categories', $restaurantData)) {
+            $restaurant->categories()->sync($restaurantData['categories']);
+        } else {
+            $restaurant->categories()->sync([]);
+        }
 
         $restaurant->update();
 
