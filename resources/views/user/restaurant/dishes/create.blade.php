@@ -2,112 +2,28 @@
 
 <!-- Form di creazione -->
 @section('content')
-    <h1>Inserisci i Dati</h1>
+    <h1>Inserisci i dati del piatto</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <p class="error">Attenzione! {{$error}}</p>
-        @endforeach
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <p class="error">Attenzione! {{ $error }}</p>
+            @endforeach
+        </div>
     @endif
 
-    <form action="{{ route('user.restaurant.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.dishes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="input-box">
 
-            <label for="name">Nome del ristorante</label>
+            <label for="name">Nome del piatto</label>
             <br>
-            <input type="text" name="name" placeholder="nome">
+            <input type="text" name="name" placeholder="nome" class="form-control @error('name') is-invalid @enderror">
 
             <!-- errore relativo all'input -->
             @error('name')
-
-                    <p class="error">{{$message}}</p>
-
-            @enderror
-
-        </div>
-        <div class="input-box">
-
-            <label for="address">Indirizzo</label>
-            <br>
-            <input type="text" name="address" placeholder="indirizzo">
-
-            <!-- errore relativo all'input -->
-            @error('address')
-
-                    <p class="error">{{$message}}</p>
-
-            @enderror
-
-        </div>
-        <div class="input-box">
-
-            <label for="motto">Motto</label>
-            <br>
-            <textarea name="motto" id="" cols="30" rows="5" placeholder="motto"></textarea>
-
-            <!-- errore relativo all'input -->
-            @error('motto')
-
-                    <p class="error">{{$message}}</p>
-
-            @enderror
-
-        </div>
-        <div class="input-box">
-
-            <label for="tax_id">Partita IVA</label>
-            <br>
-            <input type="text" name="tax_id" placeholder="partita iva">
-
-            <!-- errore relativo all'input -->
-            @error('tax_id')
-
-                    <p class="error">{{$message}}</p>
-
-            @enderror
-
-        </div>
-        <div class="input-box">
-
-            <label for="phone_number">Numero di telefono</label>
-            <br>
-            <input type="tel" name="phone_number" placeholder="...">
-
-            <!-- errore relativo all'input -->
-            @error('phone_number')
-
-                    <p class="error">{{$message}}</p>
-
-            @enderror
-
-        </div>
-        <div class="input-box">
-
-            <label for="cover">Copertina ristorante</label>
-            <br>
-            <input type="file" name="cover">
-
-            <!-- errore relativo all'input -->
-            @error('cover')
-
-                    <p class="error">{{$message}}</p>
-
-            @enderror
-
-        </div>
-        <div class="input-box">
-
-            <label for="logo">Logo ristorante</label>
-            <br>
-            <input type="file" name="logo">
-
-            <!-- errore relativo all'input -->
-            @error('logo')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -115,13 +31,49 @@
 
             <label for="description">Descrizione</label>
             <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="..."></textarea>
+            <textarea name="description" id="" cols="30" rows="10" placeholder="descrizione"></textarea>
 
             <!-- errore relativo all'input -->
             @error('description')
+                <p class="error">{{ $message }}</p>
+            @enderror
 
-                    <p class="error">{{$message}}</p>
+        </div>
+        <div class="input-box">
 
+            <label for="price">Prezzo</label>
+            <br>
+            <input type="text" name="price" placeholder="prezzo"
+                class="form-control @error('price') is-invalid @enderror">
+
+            <!-- errore relativo all'input -->
+            @error('price')
+                <p class="invalid-feedback">{{ $message }}</p>
+            @enderror
+
+        </div>
+        <div class="input-box">
+
+            <label for="available">Disponibile</label>
+            <br>
+            <input type="radio" name="dish-availability" value="true" checked>Si
+            <input type="radio" name="dish-availability" value="false">No
+
+            <!-- errore relativo all'input -->
+            @error('available')
+                <p class="error">{{ $message }}</p>
+            @enderror
+
+        </div>
+        <div class="input-box">
+
+            <label for="cover">Immagine del piatto</label>
+            <br>
+            <input type="file" name="cover" placeholder="...">
+
+            <!-- errore relativo all'input -->
+            @error('cover')
+                <p class="error">{{ $message }}</p>
             @enderror
 
         </div>
@@ -133,7 +85,7 @@
 
     <div class="buttons">
 
-        <a href="{{ route('user.restaurant.index')}}">Annulla</a>
+        <a href="{{ route('user.dishes.index') }}">Annulla</a>
 
     </div>
 @endsection

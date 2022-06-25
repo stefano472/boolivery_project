@@ -76,7 +76,7 @@ class DishController extends Controller
         $newDish->restaurant_id = $id;
         $newDish->save();
 
-        return redirect()->route('user.restaurant.dishes.index');
+        return redirect()->route('user.dishes.index');
 
     }
 
@@ -140,7 +140,7 @@ class DishController extends Controller
 
         $dish->update();
 
-        return redirect()->route('user.restaurant.dishes.index');
+        return redirect()->route('user.dishes.index');
 
     }
 
@@ -156,7 +156,7 @@ class DishController extends Controller
         $dish = Dish::find($id);
         $dish->delete();
 
-        return redirect()->route('user.restaurant.dishes.index');
+        return redirect()->route('user.dishes.index');
 
     }
 }

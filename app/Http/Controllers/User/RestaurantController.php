@@ -46,28 +46,30 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
 
         $request->validate([
             'name'=>'required|max:30',
             'address'=>'required|max:255',
-            'motto'=>'max:255',
+            'motto'=>'required|max:255',
             'tax_id'=>'required|numeric',
             'phone_number'=>'required|numeric',
             'cover'=>'nullable|mimes:png,jpg',
             'logo'=>'nullable|mimes:png,jpg',
-            'description'=>'nullable',
+            'description'=>'required',
         ],[
             'name.required'=>'inserisci il nome',
             'name.max'=>'il nome può essere al massimo di 30 caratteri',
             'address.required'=>'inserisci un indirizzo',
             'address.max'=>'l\'indirizzo può essere al massimo di 255 caratteri',
+            'motto.required'=>'aggiungi un motto',
             'motto.max'=>'il motto può essere al massimo di 255 caratteri',
             'tax_id.required'=>'inserisci la partita iva',
             'tax_id.max'=>'la partita iva è di 11 numeri',
             'phone_number'=>'inserisci un numero valido',
             'cover'=>'il file deve essere un\'immagine',
             'logo'=>'il file deve essere un\'immagine',
+            'description.required'=>'inserisci descrizione'
         ]);
 
         $id = Auth::id();
@@ -130,23 +132,25 @@ class RestaurantController extends Controller
         $request->validate([
             'name'=>'required|max:30',
             'address'=>'required|max:255',
-            'motto'=>'max:255',
+            'motto'=>'required|max:255',
             'tax_id'=>'required|numeric',
             'phone_number'=>'required|numeric',
             'cover'=>'nullable|mimes:png,jpg',
             'logo'=>'nullable|mimes:png,jpg',
-            'description'=>'nullable',
+            'description'=>'required',
         ],[
             'name.required'=>'inserisci il nome',
             'name.max'=>'il nome può essere al massimo di 30 caratteri',
             'address.required'=>'inserisci un indirizzo',
             'address.max'=>'l\'indirizzo può essere al massimo di 255 caratteri',
+            'motto.required'=>'aggiungi un motto',
             'motto.max'=>'il motto può essere al massimo di 255 caratteri',
             'tax_id.required'=>'inserisci la partita iva',
             'tax_id.max'=>'la partita iva è di 11 numeri',
             'phone_number'=>'inserisci un numero valido',
             'cover'=>'il file deve essere un\'immagine',
             'logo'=>'il file deve essere un\'immagine',
+            'description.required'=>'inserisci descrizione'
         ]);
 
 
@@ -182,7 +186,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::find($id);
 
         $restaurant->delete();
-        
+
         return redirect()->route('user.restaurant.index');
     }
 }

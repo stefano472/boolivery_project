@@ -5,12 +5,14 @@
     <h1>Modifica i Dati</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <p class="error">Attenzione! {{$error}}</p>
-        @endforeach
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <p class="error">Attenzione! {{ $error }}</p>
+            @endforeach
+        </div>
     @endif
 
-    <form action="{{ route('user.restaurant.update', $restaurant->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.restaurant.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         @method('PUT')
@@ -18,13 +20,12 @@
 
             <label for="name">Nome del ristorante</label>
             <br>
-            <input type="text" name="name" placeholder="nome" value="{{ old('name', $restaurant->name) }}">
+            <input type="text" name="name" placeholder="nome" value="{{ old('name', $restaurant->name) }}"
+                class="form-control @error('name') is-invalid @enderror">
 
             <!-- errore relativo all'input -->
             @error('name')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -32,13 +33,13 @@
 
             <label for="address">Indirizzo</label>
             <br>
-            <input type="text" name="address" placeholder="indirizzo" value="{{ old('address', $restaurant->address) }}">
+            <input type="text" name="address" placeholder="indirizzo"
+                value="{{ old('address', $restaurant->address) }}"
+                class="form-control @error('address') is-invalid @enderror">
 
             <!-- errore relativo all'input -->
             @error('address')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -46,13 +47,12 @@
 
             <label for="motto">Motto</label>
             <br>
-            <textarea name="motto" id="" cols="30" rows="5" placeholder="motto">{{old('motto',$restaurant->motto)}}</textarea>
+            <textarea name="motto" id="" cols="30" rows="5" placeholder="motto"
+                class="form-control @error('motto') is-invalid @enderror">{{ old('motto', $restaurant->motto) }}</textarea>
 
             <!-- errore relativo all'input -->
             @error('motto')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -60,13 +60,13 @@
 
             <label for="tax_id">Partita IVA</label>
             <br>
-            <input type="text" name="tax_id" placeholder="partita iva" value="{{ old('tax_id', $restaurant->tax_id) }}">
+            <input type="text" name="tax_id" placeholder="partita iva"
+                value="{{ old('tax_id', $restaurant->tax_id) }}"
+                class="form-control @error('tax_id') is-invalid @enderror">
 
             <!-- errore relativo all'input -->
             @error('tax_id')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -74,13 +74,13 @@
 
             <label for="phone_number">Numero di telefono</label>
             <br>
-            <input type="tel" name="phone_number" placeholder="..." value="{{ old('phone_number', $restaurant->phone_number) }}">
+            <input type="tel" name="phone_number" placeholder="..."
+                value="{{ old('phone_number', $restaurant->phone_number) }}"
+                class="form-control @error('phone_number') is-invalid @enderror">
 
             <!-- errore relativo all'input -->
             @error('phone_number')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -92,9 +92,7 @@
 
             <!-- errore relativo all'input -->
             @error('cover')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="error">{{ $message }}</p>
             @enderror
 
         </div>
@@ -106,9 +104,7 @@
 
             <!-- errore relativo all'input -->
             @error('logo')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="error">{{ $message }}</p>
             @enderror
 
         </div>
@@ -116,13 +112,12 @@
 
             <label for="description">Descrizione</label>
             <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="...">{{ old('description', $restaurant->description) }}"</textarea>
+            <textarea name="description" id="" cols="30" rows="10" placeholder="..."
+                class="form-control @error('description') is-invalid @enderror">{{ old('description', $restaurant->description) }}</textarea>
 
             <!-- errore relativo all'input -->
             @error('description')
-
-                    <p class="error">{{$message}}</p>
-
+                <p class="invalid-feedback">{{ $message }}</p>
             @enderror
 
         </div>
@@ -134,7 +129,7 @@
 
     <div class="buttons">
 
-        <a href="{{ route('user.restaurant.index')}}">Annulla</a>
+        <a href="{{ route('user.restaurant.index') }}">Annulla</a>
 
     </div>
 @endsection
