@@ -5,11 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1>Vedi il dettaglio del piatto {{ $dish->name }}</h1>
+                    <h1>{{ $dish->name }}</h1>
                     <a href="{{ route('user.dishes.index') }}" class="btn btn-info">Vai al menù completo</a>
                 </div>
                 {{-- Contenuti --}}
-                <img src="{{ $dish->cover }}" alt="{{ $dish->name }}">
+                <img src="{{ asset('storage/' . $dish->cover)}}" alt="{{ $dish->name }}">
                 <p>Descrizione:{{ $dish->description }}</p>
                 <p>Prezzo: &euro;{{ $dish->price }}</p>
                 <p>

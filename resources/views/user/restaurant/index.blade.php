@@ -6,6 +6,7 @@
         <h1>Il mio ristorante</h1>
         @if (sizeof($restaurant) > $id - 1)
             <h2>{{ $restaurant[$id - 1]->name }}</h2>
+            <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="">
             <p>Indirizzo: {{ $restaurant[$id - 1]->address }}</p>
             <p>Motto: {{ $restaurant[$id - 1]->motto }}</p>
             <p>Partita IVA: {{ $restaurant[$id - 1]->tax_id }}</p>

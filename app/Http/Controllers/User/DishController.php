@@ -65,12 +65,15 @@ class DishController extends Controller
         $id = Auth::id();
         $dishData = $request->all();
 
-        if(array_key_exists('img', $dishData)) {
-            $img_path = Storage::put('uploads', $dishData['img']);
-            $dishData['img'] = $img_path;
+        if(array_key_exists('cover', $dishData)) {
+            $img_path = Storage::put('uploads', $dishData['cover']);
+            //$dishData['cover'] = $img_path;
         }
 
         $newDish = new Dish();
+
+        $newDish->cover = $img_path;
+
         $newDish->fill($dishData);
 
         $newDish->restaurant_id = $id;
@@ -133,12 +136,30 @@ class DishController extends Controller
 
         $dishData = $request->all();
 
-        if(array_key_exists('img', $dishData)) {
-            $img_path = Storage::put('uploads', $dishData['img']);
-            $dishData['img'] = $img_path;
-        }
+        /*if(array_key_exists('cover', $dishData)) {
+            $img_path = Storage::put('uploads', $dishData['cover']);
+            $dishData->cover = $img_path;
+        }*/
 
+        // carico il piatto
         $dish = Dish::find($id);
+
+        // creo una condizione se esiste cover nella request
+        if(array_key_exists('cover', $dishData)){
+
+            // e un'altra condizione se è esistente
+            if($dish->cover){
+
+                Storage::delete($dish->cover);
+
+            }
+
+            $img_path = Storage::put('uploads',  $dishData['cover']);
+
+        }   
+
+        $dish->cover = $img_path;
+
         $dish->fill($dishData);
 
         $dish->update();
