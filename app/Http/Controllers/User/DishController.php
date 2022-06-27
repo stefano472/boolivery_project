@@ -22,7 +22,7 @@ class DishController extends Controller
     {
         //
         $id = Auth::id();
-        $dishes= Dish::all();
+        $dishes= Dish::where('restaurant_id', $id)->get();
 
         return view('user.restaurant.dishes.index', compact('dishes', 'id'));
     }
@@ -150,13 +150,13 @@ class DishController extends Controller
             // e un'altra condizione se è esistente
             if($dish->cover){
 
-                Storage::delete($dish->cover);
+                 Storage::delete($dish->cover);
 
             }
 
             $img_path = Storage::put('uploads',  $dishData['cover']);
 
-        }   
+        }
 
         $dish->cover = $img_path;
 

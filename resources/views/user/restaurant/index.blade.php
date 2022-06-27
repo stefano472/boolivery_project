@@ -5,8 +5,26 @@
 
         <h1>Il mio ristorante</h1>
         @if (sizeof($restaurant) > $id - 1)
-            <h2>{{ $restaurant[$id - 1]->name }}</h2>
-            <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="">
+            <div class="d-flex justify-content-between">
+                <h2>{{ $restaurant[$id - 1]->name }}</h2>
+                <div class="d-flex align-items-center">
+
+                    <a href="{{ route('user.restaurant.edit', $restaurant[$id - 1]->id) }}"
+                        class="btn btn-outline-info text-decoration-none mr-2">modifica</a>
+
+                    <form action="{{ route('user.restaurant.destroy', $restaurant[$id - 1]->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure you wanna delete the Restaurant?');">elimina</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="bo-restaurant-cover mb-2">
+                <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="cover">
+            </div>
             <p>Indirizzo: {{ $restaurant[$id - 1]->address }}</p>
             <p>Motto: {{ $restaurant[$id - 1]->motto }}</p>
             <p>Partita IVA: {{ $restaurant[$id - 1]->tax_id }}</p>
@@ -17,23 +35,13 @@
                 @endforeach
             </p>
             <p>Descrizione: {{ $restaurant[$id - 1]->description }}</p>
-            <img src="{{ asset('/storage/' . $restaurant[$id - 1]->logo) }}" alt="">
-
-            <button>
-                <a href="{{ route('user.restaurant.edit', $restaurant[$id - 1]->id) }}">modifica</a>
-            </button>
-            <form action="{{ route('user.restaurant.destroy', $restaurant[$id - 1]->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-
-                <button type="submit">elimina</button>
-            </form>
+            <img src="{{ asset('/storage/' . $restaurant[$id - 1]->logo) }}" alt="logo" class="w-25">
         @else
-            <p>non hai ancora aggiunto un ristorante</p>
+            <h2>Non hai ancora aggiunto un ristorante rimedia subito!</h2>
 
-            <button>
-                <a href="{{ route('user.restaurant.create') }}">crea</a>
-            </button>
+
+            <a href="{{ route('user.restaurant.create') }}"
+                class="btn btn-outline-secondary text-decoration-none">crea</a>
         @endif
 
     </div>

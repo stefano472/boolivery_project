@@ -9,7 +9,7 @@
                     <a href="{{ route('user.dishes.index') }}" class="btn btn-info">Vai al menù completo</a>
                 </div>
                 {{-- Contenuti --}}
-                <img src="{{ asset('storage/' . $dish->cover)}}" alt="{{ $dish->name }}">
+                <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25">
                 <p>Descrizione:{{ $dish->description }}</p>
                 <p>Prezzo: &euro;{{ $dish->price }}</p>
                 <p>
@@ -26,7 +26,7 @@
                     @csrf
                     @method('DELETE')
 
-                    <button class="btn btn-danger" onclick="return confirm('Are you sure you wanna delete the Post?');">
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure you wanna delete the Dish?');">
                         Delete
                     </button>
                 </form>
