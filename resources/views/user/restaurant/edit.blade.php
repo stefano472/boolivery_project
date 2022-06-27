@@ -16,12 +16,12 @@
         @csrf
 
         @method('PUT')
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="name">Nome del ristorante</label>
+            <label for="name">Nome del ristorante *</label>
             <br>
             <input type="text" name="name" placeholder="nome" value="{{ old('name', $restaurant->name) }}"
-                class="form-control @error('name') is-invalid @enderror">
+                class="form-control @error('name') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('name')
@@ -29,13 +29,13 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="address">Indirizzo</label>
+            <label for="address">Indirizzo *</label>
             <br>
             <input type="text" name="address" placeholder="indirizzo"
                 value="{{ old('address', $restaurant->address) }}"
-                class="form-control @error('address') is-invalid @enderror">
+                class="form-control @error('address') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('address')
@@ -43,12 +43,13 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="motto">Motto</label>
+            <label for="motto">Motto *</label>
             <br>
             <textarea name="motto" id="" cols="30" rows="5" placeholder="motto"
-                class="form-control @error('motto') is-invalid @enderror">{{ old('motto', $restaurant->motto) }}</textarea>
+                class="form-control @error('motto') is-invalid @enderror" 
+                required>{{ old('motto', $restaurant->motto) }}</textarea>
 
             <!-- errore relativo all'input -->
             @error('motto')
@@ -56,13 +57,13 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="tax_id">Partita IVA</label>
+            <label for="tax_id">Partita IVA *</label>
             <br>
             <input type="text" name="tax_id" placeholder="partita iva"
                 value="{{ old('tax_id', $restaurant->tax_id) }}"
-                class="form-control @error('tax_id') is-invalid @enderror">
+                class="form-control @error('tax_id') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('tax_id')
@@ -70,13 +71,13 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="phone_number">Numero di telefono</label>
+            <label for="phone_number">Numero di telefono *</label>
             <br>
             <input type="tel" name="phone_number" placeholder="..."
                 value="{{ old('phone_number', $restaurant->phone_number) }}"
-                class="form-control @error('phone_number') is-invalid @enderror">
+                class="form-control @error('phone_number') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('phone_number')
@@ -84,16 +85,22 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <div>Categoria</div>
+            <div>Categoria *</div>
             <br>
-            @foreach ($categories as $category)
-                <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
-                    {{ $restaurant->categories->contains($category->id) ? 'checked' : '' }}> <label
-                    for="category">{{ $category->name }}</label>
-                <br>
-            @endforeach
+            <div class="container">
+                <div class="row">
+                    @foreach ($categories as $category)
+                    <div class="col-4">
+                        <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
+                        {{ $restaurant->categories->contains($category->id) ? 'checked' : '' }}
+                        class="form-check-input @error('categories')  @enderror"> 
+                        <label for="category">{{ $category->name }}</label>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
 
 
             <!-- errore relativo all'input -->
@@ -102,7 +109,7 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
             <label for="cover">Copertina ristorante</label>
             <br>
@@ -114,7 +121,7 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
             <label for="logo">Logo ristorante</label>
             <br>
@@ -126,12 +133,13 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="description">Descrizione</label>
+            <label for="description">Descrizione *</label>
             <br>
             <textarea name="description" id="" cols="30" rows="10" placeholder="..."
-                class="form-control @error('description') is-invalid @enderror">{{ old('description', $restaurant->description) }}</textarea>
+                class="form-control @error('description') is-invalid @enderror"
+                required>{{ old('description', $restaurant->description) }}</textarea>
 
             <!-- errore relativo all'input -->
             @error('description')
@@ -142,12 +150,9 @@
 
         <!-- ...content... -->
 
-        <input type="submit" value="Invia">
+        <div class="d-flex justify-content-end">
+            <input type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
+            <a href="{{ route('user.restaurant.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
+        </div>
     </form>
-
-    <div class="buttons">
-
-        <a href="{{ route('user.restaurant.index') }}">Annulla</a>
-
-    </div>
 @endsection

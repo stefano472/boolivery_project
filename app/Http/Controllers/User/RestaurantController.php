@@ -22,10 +22,11 @@ class RestaurantController extends Controller
     {
         //
         $id = Auth::id();
+        $user = User::find($id);
         $restaurant = Restaurant::all();
         $categories = Category::all();
 
-        return view('user.restaurant.index', compact('restaurant','id','categories'));
+        return view('user.restaurant.index', compact('restaurant','id','categories', 'user'));
     }
 
     /**
@@ -60,6 +61,7 @@ class RestaurantController extends Controller
             'cover'=>'nullable|mimes:png,jpg',
             'logo'=>'nullable|mimes:png,jpg',
             'description'=>'required',
+            'categories'=>'required'
         ],[
             'name.required'=>'inserisci il nome',
             'name.max'=>'il nome può essere al massimo di 30 caratteri',
@@ -72,7 +74,8 @@ class RestaurantController extends Controller
             'phone_number'=>'inserisci un numero valido',
             'cover'=>'il file deve essere un\'immagine',
             'logo'=>'il file deve essere un\'immagine',
-            'description.required'=>'inserisci descrizione'
+            'description.required'=>'inserisci descrizione',
+            'categories.required' => 'seleziona una o più categorie'
         ]);
 
         $id = Auth::id();
@@ -145,6 +148,7 @@ class RestaurantController extends Controller
             'cover'=>'nullable|mimes:png,jpg',
             'logo'=>'nullable|mimes:png,jpg',
             'description'=>'required',
+            'categories'=>'required'
         ],[
             'name.required'=>'inserisci il nome',
             'name.max'=>'il nome può essere al massimo di 30 caratteri',
@@ -157,7 +161,8 @@ class RestaurantController extends Controller
             'phone_number'=>'inserisci un numero valido',
             'cover'=>'il file deve essere un\'immagine',
             'logo'=>'il file deve essere un\'immagine',
-            'description.required'=>'inserisci descrizione'
+            'description.required'=>'inserisci descrizione',
+            'categories.required' => 'seleziona una o più categorie'
         ]);
 
 

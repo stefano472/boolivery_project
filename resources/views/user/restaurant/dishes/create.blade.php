@@ -15,11 +15,13 @@
     <form action="{{ route('user.dishes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="name">Nome del piatto</label>
+            <label for="name">Nome del piatto *</label>
             <br>
-            <input type="text" name="name" placeholder="nome" class="form-control @error('name') is-invalid @enderror">
+            <input type="text" name="name" placeholder="nome" 
+                value="{{ old('name')}}" 
+                class="form-control @error('name') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('name')
@@ -31,7 +33,8 @@
 
             <label for="description">Descrizione</label>
             <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="descrizione"></textarea>
+            <textarea name="description" id="" cols="30" rows="10" 
+                placeholder="descrizione">{{old('description')}}</textarea>
 
             <!-- errore relativo all'input -->
             @error('description')
@@ -39,12 +42,13 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="price">Prezzo</label>
+            <label for="price">Prezzo *</label>
             <br>
             <input type="text" name="price" placeholder="prezzo"
-                class="form-control @error('price') is-invalid @enderror">
+                value="{{ old('price')}}"
+                class="form-control @error('price') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('price')
@@ -56,8 +60,14 @@
 
             <label for="available">Disponibile</label>
             <br>
-            <input type="radio" name="dish-availability" value="true" checked>Si
-            <input type="radio" name="dish-availability" value="false">No
+            <input type="radio" name="dish-availability" value="true" checked>
+            <span class="mr-2">
+                Si
+            </span>
+            <input type="radio" name="dish-availability" value="false">
+            <span>
+                No
+            </span>
 
             <!-- errore relativo all'input -->
             @error('available')
@@ -65,11 +75,11 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
             <label for="cover">Immagine del piatto</label>
             <br>
-            <input type="file" name="cover" placeholder="...">
+            <input type="file" name="cover">
 
             <!-- errore relativo all'input -->
             @error('cover')
@@ -80,12 +90,9 @@
 
         <!-- ...content... -->
 
-        <input type="submit" value="Invia">
+        <div class="d-flex justify-content-end">
+            <input type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
+            <a href="{{ route('user.dishes.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
+        </div>
     </form>
-
-    <div class="buttons">
-
-        <a href="{{ route('user.dishes.index') }}">Annulla</a>
-
-    </div>
 @endsection

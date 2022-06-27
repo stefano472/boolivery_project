@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <h1>Il mio ristorante</h1>
+        <h1 class="mb-4">Benvenuto {{ $user->name }}</h1>
         @if (sizeof($restaurant) > $id - 1)
             <div class="d-flex justify-content-between">
                 <h2>{{ $restaurant[$id - 1]->name }}</h2>
@@ -12,13 +12,6 @@
                     <a href="{{ route('user.restaurant.edit', $restaurant[$id - 1]->id) }}"
                         class="btn btn-outline-info text-decoration-none mr-2">modifica</a>
 
-                    <form action="{{ route('user.restaurant.destroy', $restaurant[$id - 1]->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" class="btn btn-outline-danger"
-                            onclick="return confirm('Are you sure you wanna delete the Restaurant?');">elimina</button>
-                    </form>
                 </div>
             </div>
 

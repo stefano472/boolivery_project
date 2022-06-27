@@ -136,10 +136,10 @@ class DishController extends Controller
 
         $dishData = $request->all();
 
-        /*if(array_key_exists('cover', $dishData)) {
-            $img_path = Storage::put('uploads', $dishData['cover']);
-            $dishData->cover = $img_path;
-        }*/
+        // if(array_key_exists('cover', $dishData)) {
+        //     $img_path = Storage::put('uploads', $dishData['cover']);
+        //     $dishData['cover'] = $img_path;
+        // }
 
         // carico il piatto
         $dish = Dish::find($id);
@@ -156,9 +156,9 @@ class DishController extends Controller
 
             $img_path = Storage::put('uploads',  $dishData['cover']);
 
+            $dish['cover'] = $img_path;
         }
 
-        $dish->cover = $img_path;
 
         $dish->fill($dishData);
 

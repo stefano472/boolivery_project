@@ -16,12 +16,12 @@
         @csrf
 
         @method('PUT')
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="name">Nome del piatto</label>
+            <label for="name">Nome del piatto *</label>
             <br>
             <input type="text" name="name" placeholder="nome" value="{{ old('name', $dish->name) }}"
-                class="form-control @error('name') is-invalid @enderror">
+                class="form-control @error('name') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('name')
@@ -41,12 +41,12 @@
             @enderror
 
         </div>
-        <div class="input-box">
+        <div class="input-box mb-2">
 
-            <label for="price">Prezzo</label>
+            <label for="price">Prezzo *</label>
             <br>
             <input type="text" name="price" placeholder="prezzo" value="{{ old('price', $dish->price) }}"
-                class="form-control @error('name') is-invalid @enderror">
+                class="form-control @error('name') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
             @error('price')
@@ -58,8 +58,14 @@
 
             <label for="available">Disponibile</label>
             <br>
-            <input type="radio" name="available" value="1" {{ $dish->available == 1 ? 'checked' : '' }}>Si
-            <input type="radio" name="available" value="0" {{ $dish->available == 0 ? 'checked' : '' }}>No
+            <input type="radio" name="available" value="1" {{ $dish->available == 1 ? 'checked' : '' }}>
+            <span class="mr-2">
+                Si
+            </span>
+            <input type="radio" name="available" value="0" {{ $dish->available == 0 ? 'checked' : '' }}>
+            <span>
+                No 
+            </span>
 
             <!-- errore relativo all'input -->
             @error('available')
@@ -68,10 +74,32 @@
 
         </div>
         <div class="input-box">
-
             <label for="cover">Immagine del piatto</label>
             <br>
-            <input type="file" name="cover">
+            <input type="file" name="cover" class="mb-2">
+            @if ($dish->cover)
+
+                <div class="mb-3">
+
+                        <p>Immagine corrente</p>
+
+                    <div>
+
+                        <img src="{{ asset('storage/' . $dish->cover)}}" class="w-25">
+
+                    </div>
+
+                </div>
+
+            @else
+
+                    <div class="mb-3">
+
+                        <p>Nessuna immagine inserita</p>
+
+                    </div>
+
+            @endif
 
             <!-- errore relativo all'input -->
             @error('cover')
@@ -81,13 +109,12 @@
         </div>
 
         <!-- ...content... -->
-
-        <input type="submit" value="Invia">
+        <div class="d-flex justify-content-end">
+            <input type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
+            <a href="{{ route('user.dishes.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
+        </div>
     </form>
 
-    <div class="buttons">
 
-        <a href="{{ route('user.restaurant.index') }}">Annulla</a>
 
-    </div>
 @endsection
