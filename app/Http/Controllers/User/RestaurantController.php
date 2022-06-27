@@ -125,6 +125,9 @@ class RestaurantController extends Controller
         //
         $restaurant = Restaurant::find($id);
         $categories = Category::all();
+        if ($restaurant->user_id != Auth::user()->id) {
+            abort(403);
+        }
 
         return view('user.restaurant.edit', compact('restaurant','categories'));
     }
