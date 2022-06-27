@@ -29,6 +29,6 @@ class HomeController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        return view('user.home_dashboard', compact('user'));
+        return view('user.restaurant.index', compact('user'));
     }
 }
