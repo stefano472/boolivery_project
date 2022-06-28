@@ -6,7 +6,7 @@
             </div>
             <div class="description-container">
                 <h1>BOOLIVERY</h1>
-                <H2>CHI SIAMO</H2>
+                <h2>CHI SIAMO</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, quidem eos. Consequatur, itaque assumenda aspernatur, ducimus asperiores doloribus et at consectetur error nulla nemo hic beatae dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla culpa veritatis laboriosam quidem obcaecati nam quod porro commodi recusandae ut quam voluptatum ad dicta officia assumenda eaque!
                 </p>
             </div>
@@ -25,7 +25,7 @@ export default {
 
     .container-section{
         background-color: $primary-color;
-        width: 100vw;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

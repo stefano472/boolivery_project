@@ -1,10 +1,10 @@
 <template>
   <div id="header">
     <div class="container">
-        <div class="logo">
-            <img src="logo.svg" alt="">
+        <a class="logo" href="#">
+            <img src="logo.svg" alt="logo">
             <p>oolivery</p>
-        </div>
+        </a>
         <nav>
             <ul> 
                 <li>
@@ -23,10 +23,10 @@
         </nav>
         <div class="cart-login">
             <div>
-                <a href="">accedi</a>
+                <a href="/login">accedi</a>
             </div>
             <div>
-                <button>cart</button>
+                <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
     </div>
@@ -45,14 +45,17 @@ export default {
 #header{
     background: $dark-color;
     .container{
-        color: $primary-color;
+        color: $brand-color;
         height: 70px;
         max-width: 1400px;
         margin-inline: auto;
         display: flex;
         justify-content: space-between;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         .logo{
+            cursor: pointer;
+            text-decoration: underline;
+            color: $brand-color;
             display: flex;
             gap: 0.1rem;
             img{
@@ -69,17 +72,46 @@ export default {
             align-items: center;
             ul{
                 display: flex;
-                gap: 1rem;
+                gap: 1.5rem;
                 li{
                     a{
-                        color: $primary-color;
+                        color: $brand-color;
                         cursor: pointer;
+                        &:hover{
+                            color: $white_color;
+                        }
                     }
                 }
             }
         }
         .cart-login{
             display: flex;
+            align-items: center;
+            gap: 1rem;
+            a{
+                color: $brand-color;
+                cursor: pointer;  
+                &:hover{
+                    color: $white_color;
+                }
+            }
+            i{
+                font-size: 1.2rem;
+                cursor: pointer;
+                height: 1.5rem;
+                width: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+                border-radius: 50%;
+                transition: 0.2s;
+                &:hover{
+                    transform: scale(1.1);
+                    color: $white-color;
+                    background: $primary-color;
+                }
+            }
         }
     }
 }
