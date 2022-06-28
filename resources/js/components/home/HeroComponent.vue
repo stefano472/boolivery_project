@@ -1,19 +1,21 @@
 <template>
   <div id="hero">
     <div class="container2">
-      <div class="text">
-        <div class="logo">
-          <img src="logo.svg" alt="logo">
-          <p>oolivery</p>
+      <div class="sx-text">
+        <div class="text">
+          <div class="logo">
+            <img src="logo.svg" alt="logo">
+            <p>oolivery</p>
+          </div>
+          <p class="lowercase">i ristoranti</p>
+          <p class="uppercase">A UN CLICK</p>
         </div>
-        <p class="lowercase">i ristoranti</p>
-        <p class="uppercase">A UN CLICK</p>
-      </div>
-      <div class="search-bar">
-        <button @click="getInput" class="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-        <input v-model="inputSearch" type="text" class="input" placeholder="Search...">
+        <div class="search-bar">
+          <button @click="getInput" class="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <input v-model="inputSearch" type="text" class="input" placeholder="Search...">
+        </div>
       </div>
     </div>
     <svg class="wave">
@@ -44,15 +46,26 @@ export default {
   }
   background: $dark-color;
   .container2 {
-    padding-bottom: 4rem;
-    background-image: url("/img/hero-img.png");
-    background-size: 90%;
-    background-repeat: no-repeat;
-    background-position-x: 300px;
-    background-position-y: -100px;
+    // padding-bottom: 4rem;
+    max-width: 1400px;
+      margin-inline: auto;
+      padding: 1rem 0;
+      display: flex;
+      background-image: url("/img/hero-img.png");
+      background-size: 1000px;
+      // background-position: 300px;
+      background-position: right;
+      background-repeat: no-repeat;
+    .sx-text{
+      // width: 40%;
+      width: 80%;
+      margin-inline: auto;
+      padding-bottom: 4rem;
+      z-index: 1;
+    }
   }
   .text {
-    padding: 4rem 0 2rem 10rem;
+    padding: 4rem 0 2rem;
     color: $brand-color;
     font-size: 2.5rem;
     .logo{
@@ -74,7 +87,7 @@ export default {
   }
   .search-bar {
     width: fit-content;
-      margin-left: 10rem;
+      // margin-left: 10rem;
       display: flex;
       border-radius: 2.2rem;
       background: $white-color;

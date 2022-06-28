@@ -2087,8 +2087,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeaderComponent'
+  name: 'HeaderComponent',
+  data: function data() {
+    return {
+      activeModal: false
+    };
+  },
+  methods: {
+    openModal: function openModal() {
+      this.activeModal = true;
+    },
+    closeModal: function closeModal() {
+      this.activeModal = false;
+    }
+  }
 });
 
 /***/ }),
@@ -2231,6 +2254,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeroComponent'
 });
@@ -2250,7 +2275,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ParallaxComponent'
+});
 
 /***/ }),
 
@@ -2263,6 +2290,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -6903,7 +6933,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header .container[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login i[data-v-153bfd55] {\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container .cart-login i[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}", ""]);
+exports.push([module.i, "#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login i.cart[data-v-153bfd55] {\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  position: relative;\n}\n#header .container .cart-login #modal-container .sp-modal .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container .cart-login #modal-container .sp-modal .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container .cart-login #modal-container .sp-modal .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container .cart-login #modal-container .sp-modal .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}", ""]);
 
 // exports
 
@@ -6922,7 +6952,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  justify-content: center;\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 150px;\n  height: 150px;\n  padding-right: 5px;\n}\n#ms-container .pad-1[data-v-e8a4ff6a] {\n  margin: 0 0 40px;\n}\n#ms-container .pad-2[data-v-e8a4ff6a] {\n  margin: 10px 0 30px;\n}\n#ms-container .pad-3[data-v-e8a4ff6a] {\n  margin: 20px 0 20px;\n}\n#ms-container .pad-4[data-v-e8a4ff6a] {\n  margin: 30px 0 10px;\n}", ""]);
+exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 150px;\n  height: 150px;\n  padding-right: 5px;\n}\n#ms-container .pad-1[data-v-e8a4ff6a] {\n  margin: 0 0 40px;\n}\n#ms-container .pad-2[data-v-e8a4ff6a] {\n  margin: 10px 0 30px;\n}\n#ms-container .pad-3[data-v-e8a4ff6a] {\n  margin: 20px 0 20px;\n}\n#ms-container .pad-4[data-v-e8a4ff6a] {\n  margin: 30px 0 10px;\n}", ""]);
 
 // exports
 
@@ -6941,7 +6971,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 500px;\n  border-radius: 10px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 46px;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 22px;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 800px) {\n.container-section[data-v-ca955b62] {\n    width: 100vw;\n    flex-direction: column;\n}\n}", ""]);
+exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 500px;\n  border-radius: 10px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 46px;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 22px;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 800px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -6979,7 +7009,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  padding-bottom: 4rem;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 90%;\n  background-repeat: no-repeat;\n  background-position-x: 300px;\n  background-position-y: -100px;\n}\n#hero .text[data-v-e429ce44] {\n  padding: 4rem 0 2rem 10rem;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: 10rem;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  width: 20rem;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}", ""]);
+exports.push([module.i, "#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  max-width: 1400px;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  padding: 4rem 0 2rem;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  width: 20rem;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}", ""]);
 
 // exports
 
@@ -7017,7 +7047,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#sm-container[data-v-64dd5034] {\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  background-color: #98f1ad;\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 35%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-image: url(https://images.wallpaperscraft.com/image/single/restaurant_table_interior_modern_style_39288_1920x1080.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 35%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-image: url(https://images.wallpaperscraft.com/image/single/restaurant_table_interior_modern_style_39288_1920x1080.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -39257,9 +39287,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "footer-content" }, [
           _c("div", { staticClass: "logo-lang" }, [
             _c("div", { staticClass: "logo" }, [
-              _c("img", {
-                attrs: { src: __webpack_require__(/*! ../../../public/logo.svg */ "./public/logo.svg"), alt: "" },
-              }),
+              _c("img", { attrs: { src: "img/footer/logo.svg", alt: "" } }),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "language" }, [
@@ -39298,10 +39326,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "insta-photos" }, [
               _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ../../../public/images/insta-feed.jpg */ "./public/images/insta-feed.jpg"),
-                  alt: "",
-                },
+                attrs: { src: "img/footer/insta-feed.jpg", alt: "" },
               }),
             ]),
           ]),
@@ -39335,43 +39360,88 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "header" } }, [
+    _c("div", { staticClass: "container" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "cart-login" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", [
+          _c("i", {
+            staticClass: "cart fa-solid fa-cart-shopping",
+            on: { click: _vm.openModal },
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              class: _vm.activeModal ? "sp-show" : "",
+              attrs: { id: "modal-container" },
+            },
+            [
+              _c("div", { staticClass: "sp-modal" }, [
+                _c("i", {
+                  staticClass: "close-modal fa-solid fa-xmark",
+                  on: { click: _vm.closeModal },
+                }),
+                _vm._v(" "),
+                _vm._m(3),
+              ]),
+            ]
+          ),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "header" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("a", { staticClass: "logo", attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "logo.svg", alt: "logo" } }),
-          _vm._v(" "),
-          _c("p", [_vm._v("oolivery")]),
+    return _c("a", { staticClass: "logo", attrs: { href: "#" } }, [
+      _c("img", { attrs: { src: "logo.svg", alt: "logo" } }),
+      _vm._v(" "),
+      _c("p", [_vm._v("oolivery")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", [
+      _c("ul", [
+        _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("categorie")])]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "" } }, [_vm._v("collabora con noi")]),
         ]),
         _vm._v(" "),
-        _c("nav", [
-          _c("ul", [
-            _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("categorie")])]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "" } }, [_vm._v("collabora con noi")]),
-            ]),
-            _vm._v(" "),
-            _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("about us")])]),
-            _vm._v(" "),
-            _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("contatti")])]),
-          ]),
-        ]),
+        _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("about us")])]),
         _vm._v(" "),
-        _c("div", { staticClass: "cart-login" }, [
-          _c("div", [
-            _c("a", { attrs: { href: "/login" } }, [_vm._v("accedi")]),
-          ]),
-          _vm._v(" "),
-          _c("div", [_c("i", { staticClass: "fa-solid fa-cart-shopping" })]),
-        ]),
+        _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("contatti")])]),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("accedi")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "title" }, [
+      _c("h2", [_vm._v("Your Cart")]),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa-solid fa-cart-shopping" }),
     ])
   },
 ]
@@ -39579,34 +39649,36 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "hero" } }, [
     _c("div", { staticClass: "container2" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "search-bar" }, [
-        _c("button", { staticClass: "submit", on: { click: _vm.getInput } }, [
-          _c("i", { staticClass: "fa-solid fa-magnifying-glass" }),
-        ]),
+      _c("div", { staticClass: "sx-text" }, [
+        _vm._m(0),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.inputSearch,
-              expression: "inputSearch",
+        _c("div", { staticClass: "search-bar" }, [
+          _c("button", { staticClass: "submit", on: { click: _vm.getInput } }, [
+            _c("i", { staticClass: "fa-solid fa-magnifying-glass" }),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.inputSearch,
+                expression: "inputSearch",
+              },
+            ],
+            staticClass: "input",
+            attrs: { type: "text", placeholder: "Search..." },
+            domProps: { value: _vm.inputSearch },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.inputSearch = $event.target.value
+              },
             },
-          ],
-          staticClass: "input",
-          attrs: { type: "text", placeholder: "Search..." },
-          domProps: { value: _vm.inputSearch },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.inputSearch = $event.target.value
-            },
-          },
-        }),
+          }),
+        ]),
       ]),
     ]),
     _vm._v(" "),
@@ -39685,83 +39757,85 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "sm-container" } }, [
-      _c("section", { staticClass: "most-want" }, [
-        _c("div", { staticClass: "main-titles" }, [
-          _c("h2", [_vm._v("I ristoranti piu' cercati")]),
-          _vm._v(" "),
-          _c("h5", [_vm._v("Selezionati proprio da voi")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "restaurants" }, [
-          _c("div", { staticClass: "block" }, [
-            _c("div", { staticClass: "add-padd" }, [
-              _c("div", { staticClass: "bg-img" }),
-            ]),
+    return _c("div", { staticClass: "out-container" }, [
+      _c("div", { attrs: { id: "sm-container" } }, [
+        _c("section", { staticClass: "most-want" }, [
+          _c("div", { staticClass: "main-titles" }, [
+            _c("h2", [_vm._v("I ristoranti piu' cercati")]),
             _vm._v(" "),
-            _c("div", { staticClass: "box-info" }, [
-              _c("h6", { staticClass: "name-restaurant" }, [
-                _vm._v("Nome ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "description" }, [
-                _vm._v("Descrizione ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "tipology" }, [
-                _vm._v("Tipologia ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("button", { staticClass: "btn-go" }, [
-                _vm._v("Vai al ristorante"),
-              ]),
-            ]),
+            _c("h5", [_vm._v("Selezionati proprio da voi")]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "block" }, [
-            _c("div", { staticClass: "box-info" }, [
-              _c("h6", { staticClass: "name-restaurant" }, [
-                _vm._v("Nome ristorante"),
+          _c("div", { staticClass: "restaurants" }, [
+            _c("div", { staticClass: "block" }, [
+              _c("div", { staticClass: "add-padd" }, [
+                _c("div", { staticClass: "bg-img" }),
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "description" }, [
-                _vm._v("Descrizione ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "tipology" }, [
-                _vm._v("Tipologia ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("button", { staticClass: "btn-go" }, [
-                _vm._v("Vai al ristorante"),
+              _c("div", { staticClass: "box-info" }, [
+                _c("h6", { staticClass: "name-restaurant" }, [
+                  _vm._v("Nome ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "description" }, [
+                  _vm._v("Descrizione ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "tipology" }, [
+                  _vm._v("Tipologia ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn-go" }, [
+                  _vm._v("Vai al ristorante"),
+                ]),
               ]),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "add-padd" }, [
-              _c("div", { staticClass: "bg-img" }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "block" }, [
-            _c("div", { staticClass: "add-padd" }, [
-              _c("div", { staticClass: "bg-img" }),
+            _c("div", { staticClass: "block" }, [
+              _c("div", { staticClass: "box-info" }, [
+                _c("h6", { staticClass: "name-restaurant" }, [
+                  _vm._v("Nome ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "description" }, [
+                  _vm._v("Descrizione ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "tipology" }, [
+                  _vm._v("Tipologia ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn-go" }, [
+                  _vm._v("Vai al ristorante"),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "add-padd" }, [
+                _c("div", { staticClass: "bg-img" }),
+              ]),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "box-info" }, [
-              _c("h6", { staticClass: "name-restaurant" }, [
-                _vm._v("Nome ristorante"),
+            _c("div", { staticClass: "block" }, [
+              _c("div", { staticClass: "add-padd" }, [
+                _c("div", { staticClass: "bg-img" }),
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "description" }, [
-                _vm._v("Descrizione ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "tipology" }, [
-                _vm._v("Tipologia ristorante"),
-              ]),
-              _vm._v(" "),
-              _c("button", { staticClass: "btn-go" }, [
-                _vm._v("Vai al ristorante"),
+              _c("div", { staticClass: "box-info" }, [
+                _c("h6", { staticClass: "name-restaurant" }, [
+                  _vm._v("Nome ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "description" }, [
+                  _vm._v("Descrizione ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "tipology" }, [
+                  _vm._v("Tipologia ristorante"),
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn-go" }, [
+                  _vm._v("Vai al ristorante"),
+                ]),
               ]),
             ]),
           ]),
@@ -55344,28 +55418,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/images/insta-feed.jpg":
-/*!**************************************!*\
-  !*** ./public/images/insta-feed.jpg ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/insta-feed.jpg?4f837efa859d20a94c06007956ab21e3";
-
-/***/ }),
-
-/***/ "./public/logo.svg":
-/*!*************************!*\
-  !*** ./public/logo.svg ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo.svg?781a706129d2d371e28c72d5c12ca1aa";
-
-/***/ }),
-
 /***/ "./resources/js/app/App.vue":
 /*!**********************************!*\
   !*** ./resources/js/app/App.vue ***!
@@ -56407,7 +56459,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-var app = new Vue({
+new Vue({
   el: '#app',
   render: function render(createApp) {
     return createApp(_app_App__WEBPACK_IMPORTED_MODULE_0__["default"]);

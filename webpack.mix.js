@@ -1,5 +1,8 @@
 const mix = require('laravel-mix');
-
+mix.disableNotifications();
+mix.options({
+    processCssUrls: false
+});
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

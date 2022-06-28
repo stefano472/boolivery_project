@@ -73,7 +73,7 @@ export default {
 
 @media (max-width: 800px) {
   .container-section{
-    width: 100vw;
+    width: 100%;
     flex-direction: column;
   }
 }

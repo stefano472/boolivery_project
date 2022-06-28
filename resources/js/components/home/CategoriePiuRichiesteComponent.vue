@@ -34,6 +34,8 @@ export default {
 @import 'resources/sass/variables';
 
 #ms-container{
+    margin-inline: auto;
+    width: 80%;
     max-width: 1400px;
     .category{
         padding: 30px 0 30px;
@@ -47,6 +49,7 @@ export default {
     .row1{
         display: flex;
         justify-content: center;
+        gap: 2.5rem;
     }
     .single-cat{
         width: 150px;

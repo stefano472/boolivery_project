@@ -26,7 +26,17 @@
                 <a href="/login">accedi</a>
             </div>
             <div>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i @click="openModal" class="cart fa-solid fa-cart-shopping"></i>
+                <div id="modal-container" :class="activeModal ? 'sp-show' : ''">
+                    <div class="sp-modal">
+                        <i @click="closeModal" class="close-modal fa-solid fa-xmark"></i>
+                        <!-- <button id='closeModal' @click="closeModal" type="button">X</button> -->
+                        <div class="title">
+                            <h2>Your Cart</h2>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -36,6 +46,19 @@
 <script>
 export default {
     name: 'HeaderComponent',
+    data() {
+        return {
+            activeModal: false,
+        }
+    },
+    methods: {
+        openModal(){
+            this.activeModal = true
+        },
+        closeModal(){
+            this.activeModal = false
+        }
+    }
 }
 </script>
 
@@ -43,6 +66,16 @@ export default {
 @import 'resources/sass/variables';
 
 #header{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+        padding: 0;
+    }
     background: $dark-color;
     .container{
         color: $brand-color;
@@ -95,14 +128,13 @@ export default {
                     color: $white_color;
                 }
             }
-            i{
+            i.cart{
                 font-size: 1.2rem;
                 cursor: pointer;
                 height: 1.5rem;
                 width: 1.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                display: grid;
+                place-content: center;
                 padding: 1.5rem;
                 border-radius: 50%;
                 transition: 0.2s;
@@ -110,6 +142,69 @@ export default {
                     transform: scale(1.1);
                     color: $white-color;
                     background: $primary-color;
+                }
+            }
+            #modal-container {
+                color: $dark-color;
+                background: rgba($color: #000000, $alpha: 0.5);
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: 100vw;
+                z-index: 10;
+                // display: grid;
+                // place-content: center;
+                display: flex;
+                justify-content: flex-end;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+                &.sp-show {
+                    pointer-events: auto;
+                    opacity: 1;
+                }
+                .sp-modal {
+                    background: white;
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    width: min(400px, 100%);
+                    box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+                    // text-align: center;
+                    position: relative;
+                    .title{
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        i{
+                            font-size: 1.5rem;
+                        }
+                    }
+                    // p {
+                    // font-size: 0.9rem;
+                    // opacity: 0.7;
+                    // margin: 1rem 0;
+                    // }
+                    .close-modal {
+                        color: $white-color;
+                        position: absolute;
+                        top: 2rem;
+                        right: 2rem;
+                        height: 2rem;
+                        width: 2rem;
+                        padding: 0.5rem;
+                        border-radius: 5px;
+                        background: $brand-color;
+                        /* display: flex; */
+                        /* justify-content: center; */
+                        /* align-items: center; */
+                        display: grid;
+                        place-content: center;
+                        cursor: pointer;
+                        &:hover{
+                            background: $secondary-color;
+                        }
+                    }
                 }
             }
         }

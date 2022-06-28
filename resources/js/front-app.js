@@ -31,7 +31,7 @@ window.Vue = require('vue');
 
  import router from './route'
  
- const app = new Vue({
+new Vue({
      el: '#app',
      render: (createApp) =>  createApp(App),
      router

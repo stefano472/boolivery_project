@@ -1,50 +1,53 @@
 <template>
-<div id="sm-container">
-    <section class="most-want">
-        <div class="main-titles">
-            <h2>I ristoranti piu' cercati</h2>
-            <h5>Selezionati proprio da voi</h5>
-        </div>
-        <div class="restaurants">
-            <div class="block">
-                <div class="add-padd">
-                    <div class="bg-img"></div>
-                </div>
+<div class="out-container">
 
-                <div class="box-info">
-                    <h6 class="name-restaurant">Nome ristorante</h6>
-                    <p class="description">Descrizione ristorante</p>
-                    <p class="tipology">Tipologia ristorante</p>
-                    <button class="btn-go">Vai al ristorante</button>
+    <div id="sm-container">
+        <section class="most-want">
+            <div class="main-titles">
+                <h2>I ristoranti piu' cercati</h2>
+                <h5>Selezionati proprio da voi</h5>
+            </div>
+            <div class="restaurants">
+                <div class="block">
+                    <div class="add-padd">
+                        <div class="bg-img"></div>
+                    </div>
+
+                    <div class="box-info">
+                        <h6 class="name-restaurant">Nome ristorante</h6>
+                        <p class="description">Descrizione ristorante</p>
+                        <p class="tipology">Tipologia ristorante</p>
+                        <button class="btn-go">Vai al ristorante</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="box-info">
+                        <h6 class="name-restaurant">Nome ristorante</h6>
+                        <p class="description">Descrizione ristorante</p>
+                        <p class="tipology">Tipologia ristorante</p>
+                        <button class="btn-go">Vai al ristorante</button>
+                    </div>
+                    <div class="add-padd">
+                        <div class="bg-img"></div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="add-padd">
+                        <div class="bg-img"></div>
+                    </div>
+                    <div class="box-info">
+                        <h6 class="name-restaurant">Nome ristorante</h6>
+                        <p class="description">Descrizione ristorante</p>
+                        <p class="tipology">Tipologia ristorante</p>
+                        <button class="btn-go">Vai al ristorante</button>
+                    </div>
                 </div>
             </div>
-            <div class="block">
-                <div class="box-info">
-                    <h6 class="name-restaurant">Nome ristorante</h6>
-                    <p class="description">Descrizione ristorante</p>
-                    <p class="tipology">Tipologia ristorante</p>
-                    <button class="btn-go">Vai al ristorante</button>
-                </div>
-                <div class="add-padd">
-                    <div class="bg-img"></div>
-                </div>
-            </div>
-            <div class="block">
-                <div class="add-padd">
-                    <div class="bg-img"></div>
-                </div>
-                <div class="box-info">
-                    <h6 class="name-restaurant">Nome ristorante</h6>
-                    <p class="description">Descrizione ristorante</p>
-                    <p class="tipology">Tipologia ristorante</p>
-                    <button class="btn-go">Vai al ristorante</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
 </div>
-
 </template>
 
 <script>
@@ -56,11 +59,15 @@ export default {
 
 <style lang="scss" scoped>
 @import 'resources/sass/variables';
+.out-container{
+    background-color: $brand-color;
 
+}
 #sm-container{
+    margin-inline: auto;
+    width: 80%;
     max-width: 1400px;
         .most-want{
-        background-color: $brand-color;
         width: 100%;
         min-height: 500px;
         padding-bottom: 20px;
