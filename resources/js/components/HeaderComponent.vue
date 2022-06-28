@@ -54,12 +54,14 @@ export default {
         padding: 0.5rem;
         .logo{
             display: flex;
+            gap: 0.1rem;
             img{
                 width: 100%;
             }
             p{
-                font-size: 2rem;
-                margin-top: 0.5rem;
+                font-size: 2.2rem;
+                margin-top: 0.4rem;
+                font-family: 'Josefin Sans', sans-serif;
             }
         }
         nav{
