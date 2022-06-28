@@ -26,6 +26,8 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Epilogue', sans-serif;
+    // font-family: 'Josefin Sans', sans-serif;
 }
 ul{
     list-style-type: none;

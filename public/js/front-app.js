@@ -6403,7 +6403,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\nul {\n  list-style-type: none;\n  margin: 0;\n}", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  font-family: \"Epilogue\", sans-serif;\n}\nul {\n  list-style-type: none;\n  margin: 0;\n}", ""]);
 
 // exports
 
