@@ -72,7 +72,9 @@ class DishController extends Controller
 
         $newDish = new Dish();
 
-        $newDish->cover = $img_path;
+        if($newDish->cover){
+            $newDish->cover = $img_path;
+        }
 
         $newDish->fill($dishData);
 

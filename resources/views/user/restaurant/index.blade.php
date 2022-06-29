@@ -16,8 +16,8 @@
             </div>
 
             <div class="bo-restaurant-cover mb-2">
-                <img src="{{ $restaurant[$id - 1]->cover }}" alt="cover">
-                {{-- <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="cover"> --}}
+                <!--img src="{{-- $restaurant[$id - 1]->cover --}}" alt="cover"-->
+                 <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="cover">
             </div>
             <p>Indirizzo: {{ $restaurant[$id - 1]->address }}</p>
             <p>Motto: {{ $restaurant[$id - 1]->motto }}</p>
