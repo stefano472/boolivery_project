@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class UserTableSeeder extends Seeder
@@ -85,7 +86,7 @@ class UserTableSeeder extends Seeder
             $new_user_object = new User();
             $new_user_object->name = $user['name'];
             $new_user_object->email = $user['email'];
-            $new_user_object->password = $user['password'];
+            $new_user_object->password = Hash::make($user['password']);
         
             $new_user_object->save();
         }

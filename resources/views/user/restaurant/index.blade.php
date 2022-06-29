@@ -16,7 +16,8 @@
             </div>
 
             <div class="bo-restaurant-cover mb-2">
-                <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="cover">
+                <img src="{{ $restaurant[$id - 1]->cover }}" alt="cover">
+                {{-- <img src="{{ asset('/storage/' . $restaurant[$id - 1]->cover) }}" alt="cover"> --}}
             </div>
             <p>Indirizzo: {{ $restaurant[$id - 1]->address }}</p>
             <p>Motto: {{ $restaurant[$id - 1]->motto }}</p>
@@ -28,7 +29,7 @@
                 @endforeach
             </p>
             <p>Descrizione: {{ $restaurant[$id - 1]->description }}</p>
-            <img src="{{ asset('/storage/' . $restaurant[$id - 1]->logo) }}" alt="logo" class="w-25">
+            {{-- <img src="{{ asset('/storage/' . $restaurant[$id - 1]->logo) }}" alt="logo" class="w-25"> --}}
         @else
             <h2>Non hai ancora aggiunto un ristorante rimedia subito!</h2>
 

@@ -85,6 +85,7 @@
 
                     <div>
 
+                        {{-- <img src="{{$dish->cover}}" class="w-25"> --}}
                         <img src="{{ asset('storage/' . $dish->cover)}}" class="w-25">
 
                     </div>

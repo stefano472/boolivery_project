@@ -9,6 +9,7 @@
                     <a href="{{ route('user.dishes.index') }}" class="btn btn-info">Vai al menù completo</a>
                 </div>
                 {{-- Contenuti --}}
+                {{-- <img src="{{ $dish->cover }}" alt="{{ $dish->name }}" class="w-25"> --}}
                 <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25">
                 <p>Descrizione:{{ $dish->description }}</p>
                 <p>Prezzo: &euro;{{ $dish->price }}</p>

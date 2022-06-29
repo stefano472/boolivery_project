@@ -6990,7 +6990,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  display: flex;\n  background-color: white;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img rest/collab.jpg\");\n  background-size: 120%;\n  background-repeat: no-repeat;\n  background-position: 90% 25%;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 35%;\n  text-align: end;\n  padding-right: 85px;\n}\n#collab .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .collab-text button[data-v-2e69cfdb] {\n  border-color: #38a3a5;\n}\n#collab .collab-text button[data-v-2e69cfdb]:hover {\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    width: 100%;\n}\n}", ""]);
+exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  display: flex;\n  background-color: white;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img_rest/collab.jpg\");\n  background-size: 120%;\n  background-repeat: no-repeat;\n  background-position: 90% 25%;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 35%;\n  text-align: end;\n  padding-right: 85px;\n}\n#collab .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .collab-text button[data-v-2e69cfdb] {\n  border-color: #38a3a5;\n}\n#collab .collab-text button[data-v-2e69cfdb]:hover {\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -7028,7 +7028,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".parallax[data-v-41c9f8e1] {\n  /* The image used */\n  background-image: url(\"/img/img rest/parallax.jpg\");\n  /* Set a specific height */\n  min-height: 300px;\n  /* Create the parallax scrolling effect */\n  background-attachment: fixed;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}", ""]);
+exports.push([module.i, ".parallax[data-v-41c9f8e1] {\n  /* The image used */\n  background-image: url(\"/img/img_rest/parallax.jpg\");\n  /* Set a specific height */\n  min-height: 300px;\n  /* Create the parallax scrolling effect */\n  background-attachment: fixed;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}", ""]);
 
 // exports
 
@@ -39559,7 +39559,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-section" }, [
       _c("div", { staticClass: "container-chi-siamo" }, [
         _c("div", { staticClass: "img-container" }, [
-          _c("img", { attrs: { src: "img/img rest/chi-siamo.png", alt: "" } }),
+          _c("img", { attrs: { src: "img/img_rest/chi-siamo.png", alt: "" } }),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "description-container" }, [
