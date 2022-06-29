@@ -2,7 +2,7 @@
     <div class="container-section">
         <div class="container-chi-siamo">
             <div class="img-container">
-                <img src="img/img rest/chi-siamo.png" alt="">
+                <img src="img/img_rest/chi-siamo.png" alt="">
             </div>
             <div class="description-container">
                 <h1>BOOLIVERY</h1>

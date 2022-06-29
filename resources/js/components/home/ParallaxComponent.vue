@@ -11,7 +11,7 @@ export default {
 <style lang="scss" scoped>
     .parallax {
         /* The image used */
-        background-image: url("/img/img rest/parallax.jpg");
+        background-image: url("/img/img_rest/parallax.jpg");
 
         /* Set a specific height */
         min-height: 300px;

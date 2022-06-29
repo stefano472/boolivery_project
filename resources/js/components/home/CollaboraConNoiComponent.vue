@@ -30,7 +30,7 @@ export default {
   display: flex;
   background-color: white;
   .collab-cover {
-    background-image: url("/img/img rest/collab.jpg");
+    background-image: url("/img/img_rest/collab.jpg");
     background-size: 120%;
     background-repeat: no-repeat;
     background-position: 90% 25%;
