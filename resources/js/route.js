@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import Home from './pages/Home';
+import SingleRestaurant from './pages/SingleRestaurant';
 // import BlogComponent from './pages/BlogComponent';
 // import SingleBlogComponent from './pages/SingleBlogComponent';
 // import WhoWeAreComponent from './pages/WhoWeAreComponent';
@@ -19,6 +20,11 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/restaurant',
+            name: 'restaurant',
+            component: SingleRestaurant
         },
         // {
         //     path: '/blog',
