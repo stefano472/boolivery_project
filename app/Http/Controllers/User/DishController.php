@@ -72,7 +72,7 @@ class DishController extends Controller
 
         $newDish = new Dish();
 
-        if($newDish->cover){
+        if(array_key_exists('cover', $dishData)){
             $newDish->cover = $img_path;
         }
 
