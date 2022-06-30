@@ -118,7 +118,8 @@ class DishController extends Controller
     {
         //
         $dish = Dish::find($id);
-        $restaurant = Restaurant::find($id);
+        $user_id = Auth::id();
+        $restaurant = Restaurant::find($user_id);
         if (!$restaurant) {
             abort(403);
         }
