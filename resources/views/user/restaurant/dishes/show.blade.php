@@ -35,17 +35,34 @@
                 {{-- / Contenuti --}}
 
                 <a href="{{ route('user.dishes.edit', $dish->id) }}" class="btn btn-outline-info">Edit</a>
-                <form action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST" class="d-inline-block ">
+                <button id='open-modal' class="btn btn-danger" type="button">Delete</button>
+
+                <div id="modal-container">
+                  <div class="bo-modal">
+                    <h2>Sei sicuro???</h2>
+                    <p>Attenzione!!!! Una volta cancellato il piatto, sarà perso...</p>
+                    <form class="delete" action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST">
+                      @csrf
+          
+                      @method('DELETE')
+          
+                      <button class="btn btn-danger" type="submit">Si</button>
+                      <button id='close-modal' class="btn btn-outline-info" type="button">No</button>
+                    </form>
+                  </div>
+                </div>
+                {{-- <form action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST" class="d-inline-block ">
                     @csrf
                     @method('DELETE')
 
                     <button class="btn btn-danger" onclick="return confirm('Are you sure you wanna delete the Dish?');">
                         Delete
                     </button>
-                </form>
-                </dl>
+                </form> --}}
+                {{-- </dl> --}}
 
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/backoffice.js') }}"></script>
 @endsection

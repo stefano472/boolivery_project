@@ -46,7 +46,7 @@
 
             <label for="price">Prezzo *</label>
             <br>
-            <input type="text" name="price" placeholder="prezzo"
+            <input type="number" min="0" step=".01" name="price" placeholder="prezzo"
                 value="{{ old('price')}}"
                 class="form-control @error('price') is-invalid @enderror" required>
 
@@ -60,11 +60,11 @@
 
             <label for="available">Disponibile</label>
             <br>
-            <input type="radio" name="dish-availability" value="true" checked>
+            <input type="radio" name="available" value="1" checked>
             <span class="mr-2">
                 Si
             </span>
-            <input type="radio" name="dish-availability" value="false">
+            <input type="radio" name="available" value="0">
             <span>
                 No
             </span>

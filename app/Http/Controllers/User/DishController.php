@@ -23,6 +23,10 @@ class DishController extends Controller
         //
         $id = Auth::id();
         $dishes= Dish::where('restaurant_id', $id)->get();
+        $restaurant = Restaurant::find($id);
+        if (!$restaurant) {
+            abort(403);
+        }
 
         return view('user.restaurant.dishes.index', compact('dishes', 'id'));
     }
@@ -35,6 +39,11 @@ class DishController extends Controller
     public function create()
     {
         //
+        $id = Auth::id();
+        $restaurant = Restaurant::find($id);
+        if (!$restaurant) {
+            abort(403);
+        }
         return view('user.restaurant.dishes.create');
 
     }
@@ -109,6 +118,10 @@ class DishController extends Controller
     {
         //
         $dish = Dish::find($id);
+        $restaurant = Restaurant::find($id);
+        if (!$restaurant) {
+            abort(403);
+        }
         if ($dish->restaurant_id != Auth::user()->id) {
             abort(403);
         }

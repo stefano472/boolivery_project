@@ -8,10 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="shortcut icon" href="https://boolean.careers/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
+    {{-- <link rel="shortcut icon" href="https://boolean.careers/favicon/favicon.ico" type="image/x-icon"> --}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/backoffice.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,13 +26,13 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Boolivery</a>
-        <ul class="navbar-nav px-3 ml-auto">
+        {{-- <ul class="navbar-nav px-3 ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="http://127.0.0.1:8000">
                     Visita il sito
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
@@ -38,8 +41,8 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-            </li>
-        </ul>
+            </li> --}}
+        {{-- </ul> --}}
     </nav>
     <div class="container-fluid">
         <div class="row">
@@ -56,7 +59,9 @@
         </div>
     @endif
 
-    <form action="{{ route('user.restaurant.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.restaurant.store') }}" 
+        onsubmit="return valthisform()" method="POST" 
+        enctype="multipart/form-data">
         @csrf
 
         <div class="input-box mb-2">
@@ -140,12 +145,15 @@
                     <div class="col-4">
                         <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
                         {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
-                        class="form-check-input @error('categories')  @enderror"> 
+                        class="categoryInput form-check-input @error('categories')  @enderror"> 
                         <label for="category">{{ $category->name }}</label>
                         <br>
                     </div>
                     @endforeach
                 </div>
+            </div>
+            <div id="alert" class="alert alert-danger" style="display:none">
+                Aggiungi almeno una categoria
             </div>
 
 
@@ -197,7 +205,7 @@
         <!-- ...content... -->
 
         <div class="d-flex justify-content-end">
-            <input type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
+            <input id="createDish" type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
             <a href="{{ route('user.restaurant.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
         </div>
     </form>
@@ -205,6 +213,7 @@
         </div>
     </div>
 </body>
+
 </html>
 
 {{-- @section('content')
@@ -364,3 +373,5 @@
         </div>
     </form>
 @endsection --}}
+
+

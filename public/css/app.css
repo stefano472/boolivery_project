@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Epilogue);@charset "UTF-8";
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -9261,6 +9261,60 @@ h3 {
     border-color: #dee2e6;
   }
 }
+* {
+  font-family: "Epilogue", sans-serif;
+}
+
 .bo-restaurant-cover img {
   height: 300px;
+}
+
+.bo-btn-action {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.back-green {
+  background-color: rgba(144, 238, 144, 0.4);
+}
+
+.back-red {
+  background-color: rgba(240, 128, 128, 0.4);
+}
+
+#modal-container {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#modal-container.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+#modal-container .bo-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: min(400px, 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+#modal-container .bo-modal p {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin: 1rem auto;
+}
+#modal-container .bo-modal form {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }

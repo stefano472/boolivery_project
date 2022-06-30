@@ -27,7 +27,7 @@
                         <tbody>
                             {{-- Table content --}}
                             @foreach ($dishes as $dish)
-                                <tr>
+                                <tr class="{{$dish->available === 1 ? 'back-green' : 'back-red'}}">
                                     <td>{{ $dish->name }}</td>
                                     <td>{{ $dish->description }}</td>
                                     <td>
@@ -38,7 +38,7 @@
                                         @endif
                                     </td>
                                     <td>&euro; {{ $dish->price }}</td>
-                                    <td class="text-center">
+                                    <td class="text-center bo-btn-action">
                                         <a href="{{ route('user.dishes.show', $dish->id) }}"
                                             class="btn btn-outline-secondary text-decoration-none">
                                             Show
@@ -47,9 +47,25 @@
                                             class="btn btn-outline-info text-decoration-none">
                                             Edit
                                         </a>
-                                        <a href="{{ route('user.dishes.index', $dish->id) }}"
-                                            class="text-decoration-none">
-                                            <form action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST"
+                                        {{-- <button class='open-modal btn btn-danger' type="button">Delete</button>
+
+                                        <div class="modal-container">
+                                          <div class="bo-modal">
+                                            <h2>Sei sicuro???</h2>
+                                            <p>Attenzione!!!! Una volta cancellato il piatto, sarà perso...</p>
+                                            <form class="delete" action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST">
+                                              @csrf
+                                  
+                                              @method('DELETE')
+                                  
+                                              <button class="btn btn-danger" type="submit">Si</button>
+                                              <button class='close-modal' class="btn btn-outline-info" type="button">No</button>
+                                            </form>
+                                          </div>
+                                        </div> --}}
+                                        {{-- <a href="{{ route('user.dishes.index', $dish->id) }}"
+                                            class="text-decoration-none"> --}}
+                                            {{-- <form action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST"
                                                 class="d-inline-block ">
                                                 @csrf
                                                 @method('DELETE')
@@ -59,7 +75,7 @@
                                                     Delete
                                                 </button>
                                             </form>
-                                        </a>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -72,4 +88,5 @@
             </div>
         </div>
     </div>
+    {{-- <script src="{{ asset('js/modal_dishes.js') }}"></script> --}}
 @endsection

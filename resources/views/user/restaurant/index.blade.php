@@ -32,6 +32,7 @@
             {{-- <img src="{{ asset('/storage/' . $restaurant[$id - 1]->logo) }}" alt="logo" class="w-25"> --}}
         @else
             <h2>Non hai ancora aggiunto un ristorante rimedia subito!</h2>
+            <p>Non puoi avere accesso alla dashboard fino a quando non lo crei</p>
 
 
             <a href="{{ route('user.restaurant.create') }}"

@@ -12,7 +12,9 @@
         </div>
     @endif
 
-    <form action="{{ route('user.restaurant.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.restaurant.update', $restaurant->id) }}" 
+        onsubmit="return valthisform()" method="POST" 
+        enctype="multipart/form-data">
         @csrf
 
         @method('PUT')
@@ -95,10 +97,13 @@
                     <div class="col-4">
                         <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
                         {{ $restaurant->categories->contains($category->id) ? 'checked' : '' }}
-                        class="form-check-input @error('categories')  @enderror"> 
+                        class="categoryInput form-check-input @error('categories')  @enderror"> 
                         <label for="category">{{ $category->name }}</label>
                     </div>
                     @endforeach
+                </div>
+                <div id="alert" class="alert alert-danger" style="display:none">
+                    Aggiungi almeno una categoria
                 </div>
             </div>
 
@@ -151,8 +156,9 @@
         <!-- ...content... -->
 
         <div class="d-flex justify-content-end">
-            <input type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
+            <input id="updateDish" type="submit" name="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
             <a href="{{ route('user.restaurant.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
         </div>
     </form>
+    <script src="{{ asset('js/backoffice.js') }}"></script>
 @endsection
