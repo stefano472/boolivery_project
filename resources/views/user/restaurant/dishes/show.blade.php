@@ -10,7 +10,19 @@
                 </div>
                 {{-- Contenuti --}}
                 {{-- <img src="{{ $dish->cover }}" alt="{{ $dish->name }}" class="w-25"> --}}
-                <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25">
+
+                <div class="d-flex mb-2">
+                    @if ($dish->cover)
+
+                        <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25">
+
+                    @else
+
+                        <p class="alert-danger">Inserisci l'immagine del piatto, gli utenti vogliono sapere cosa comprano! ;)</p>
+
+                    @endif
+                </div>
+
                 <p>Descrizione:{{ $dish->description }}</p>
                 <p>Prezzo: &euro;{{ $dish->price }}</p>
                 <p>
