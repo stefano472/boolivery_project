@@ -4,16 +4,16 @@
 
       <!-- TITLE -->
       <div class="footer-title">
-        <h5>Hai bispgno di aiuto? Contattaci!</h5>
+        <h5>Hai bisogno di aiuto? Contattaci!</h5>
       </div>
 
 
       <!-- CONTENT -->
       <div class="footer-content">
-        
+
         <!-- logo and site language -->
         <div class="logo-lang">
-          
+
           <div class="logo">
             <img src="img/footer/logo.svg" alt="">
           </div>
@@ -56,7 +56,7 @@
 
             <!-- EMAIL ADDRESS -->
             <div class="ico-text">
-              
+
               <!-- icon contacts -->
               <i class="fa-solid fa-envelope"></i>
 
@@ -71,7 +71,7 @@
 
         <!-- instagram feed -->
         <div class="instagram-feed">
-          
+
           <!-- INSTA FEED TITLE -->
           <p>Instagram feed</p>
 
@@ -204,7 +204,7 @@ footer{
         }
       }
     }
-        
+
  }
 
 
@@ -230,10 +230,10 @@ footer{
             align-items: center;
           }
         }
-        
+
       }
     }
-        
+
  }
 
  @media screen and (max-width: 593px){
@@ -259,10 +259,10 @@ footer{
             align-items: center;
           }
         }
-        
+
       }
     }
-        
+
  }
 
   @media screen and (max-width: 326px){
@@ -277,10 +277,10 @@ footer{
             }
           }
         }
-        
+
       }
     }
-        
+
  }
 
 
