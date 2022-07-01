@@ -1,17 +1,22 @@
 <template>
    <div>
-     <div v-for="(restaurant, index) in restaurants" :key="index">
 
-        <p>{{restaurant.name}}</p>
-        
-
+    <div class="restaurants-list">
+        <RestaurantCard :restaurants="restaurants"/>
     </div>
+     
   </div>
 </template>
 
 <script>
+
+import RestaurantCard from './RestaurantCard.vue'
 export default {
 name: 'FilterComponent',
+
+components:{
+    RestaurantCard
+},
 
 props:{
     restaurants: Array, 
