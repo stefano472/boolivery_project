@@ -26,10 +26,12 @@
                 <a href="/login">accedi</a>
             </div>
             <div>
-                <i @click="openModal" class="cart fa-solid fa-cart-shopping"></i>
-                <div>
-                    <span>{{cart.length}}</span>
-                </div>
+                <i @click="openModal" class="cart fa-solid fa-cart-shopping">
+                    <div class="number-cart">
+                        <span>{{cart.length}}</span>
+                    </div>
+                </i>
+                
                 <div id="modal-container" :class="activeModal ? 'sp-show' : ''">
                     <div class="sp-modal">
                         <i @click="closeModal" class="close-modal fa-solid fa-xmark"></i>
@@ -156,6 +158,7 @@ export default {
                 }
             }
             i.cart{
+                position: relative;
                 font-size: 1.2rem;
                 cursor: pointer;
                 height: 1.5rem;
@@ -169,6 +172,11 @@ export default {
                     transform: scale(1.1);
                     color: $white-color;
                     background: $primary-color;
+                }
+                .number-cart{
+                    position: absolute;
+                    right: 0;
+                    font-size: 18px;
                 }
             }
             #modal-container {
