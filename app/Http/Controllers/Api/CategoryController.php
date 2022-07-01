@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Category;
+
 class CategoryController extends Controller
 {
     /**
@@ -15,6 +17,15 @@ class CategoryController extends Controller
     public function index()
     {
         //
+
+        $categories = Category::all();
+
+        $result = [
+            "results" => $categories,
+            "success" => true,
+        ];
+
+        return response()->json($result);
     }
 
     /**
