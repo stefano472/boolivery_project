@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 
 import Home from './pages/Home';
 import SingleRestaurant from './pages/SingleRestaurant';
+import RestaurantsList from './pages/RestaurantsList';
 // import BlogComponent from './pages/BlogComponent';
 // import SingleBlogComponent from './pages/SingleBlogComponent';
 // import WhoWeAreComponent from './pages/WhoWeAreComponent';
@@ -26,11 +27,11 @@ const router = new VueRouter({
             name: 'restaurant',
             component: SingleRestaurant
         },
-        // {
-        //     path: '/blog',
-        //     name: 'blog',
-        //     component: BlogComponent
-        // },
+        {
+             path: '/restaurants',
+             name: 'restaurants',
+             component: RestaurantsList
+        },
         // {
         //     path: '/blog/:slug',
         //     name: 'single-blog',

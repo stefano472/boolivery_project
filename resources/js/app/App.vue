@@ -4,19 +4,23 @@
     <router-view/>
     <!-- oppure 
     <router-view></router-view> -->
+    <SocialComponent/>
     <FooterComponent/>
+   
   </div>
 </template>
 
 <script>
 import HeaderComponent from '../components/HeaderComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
+import SocialComponent from '../components/home/SocialComponent.vue';
 
 export default {
     name: 'App',
     components: { 
         HeaderComponent,
         FooterComponent,
+        SocialComponent
     },
 }
 </script>

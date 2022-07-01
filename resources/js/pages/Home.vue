@@ -7,7 +7,6 @@
     <CategoriePiuRichiesteComponent/>
     <ServiziComponent/>
     <CollaboraConNoiComponent/>
-    <SocialComponent/>
   </div>
 </template>
 
@@ -19,7 +18,7 @@ import RistorantiPiuCercatiComponent from '../components/home/RistorantiPiuCerca
 import CategoriePiuRichiesteComponent from '../components/home/CategoriePiuRichiesteComponent.vue';
 import ServiziComponent from '../components/home/ServiziComponent.vue';
 import CollaboraConNoiComponent from '../components/home/CollaboraConNoiComponent.vue';
-import SocialComponent from '../components/home/SocialComponent.vue';
+
 
 export default {
     name: 'Home',
@@ -31,7 +30,6 @@ export default {
         CategoriePiuRichiesteComponent,
         ServiziComponent,
         CollaboraConNoiComponent,
-        SocialComponent,
     }
 }
 </script>
