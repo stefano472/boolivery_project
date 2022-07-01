@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Restaurant;
+use App\Category;
 
 class RestaurantController extends Controller
 {
@@ -25,9 +26,17 @@ class RestaurantController extends Controller
             "success" => true,
         ];
 
+
         return response()->json($result);
+        
+
+        
     }
 
+    public function filtered($id)
+    {
+        return response()->json(['response' => Category::with('restaurants')->where('id', $id)->get()]);
+    }
     /**
      * Show the form for creating a new resource.
      *

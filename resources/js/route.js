@@ -32,11 +32,11 @@ const router = new VueRouter({
              name: 'restaurants',
              component: RestaurantsList
         },
-        // {
-        //     path: '/blog/:slug',
-        //     name: 'single-blog',
-        //     component: SingleBlogComponent
-        // },
+        {
+            path: '/restaurants/:id',
+            name: 'filteredRestaurants',
+            component: RestaurantsList
+        },
         // {
         //     path: '/who-we-are',
         //     name: 'who-we-are',
