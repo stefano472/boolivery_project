@@ -6,8 +6,8 @@
     <div class="dish-card" v-for="(dish, index) in dishes" :key="index">
         
         <!-- foto del piatto -->
-        <div class="foto" :id="{dish}">
-            <img src="../../../../public/img/img_rest/salad-with-jalapeno-1024x683.jpeg" alt="Dish">
+        <div class="foto" >
+            <img :src="dish.cover" alt="Dish">
         </div>
 
         <!-- nome e descrizione del piatto -->
@@ -15,12 +15,12 @@
 
             <!-- name -->
             <div class="dish-name"> 
-                <h2>Ensalada de alapeno</h2>
+                <h2>{{dish.name}}</h2>
             </div>
             
             <!-- description -->
             <div class="dish-description"> 
-                <p>Insalata di alapeno condita con oli aromatici, uva e salsa piccante</p>
+                <p>{{dish.description}}</p>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
             <!-- prezzo -->
             <div class="price-dish">
                 <p>
-                    &euro;12
+                    &euro;{{dish.price}}
                 </p>
             </div>
 
@@ -50,12 +50,8 @@
 export default {
     name: 'DishCard',
 
-    data(){
-        
-        return {
-
-            dishes: [ 1, 2, 3, 4, 5, 6 ],
-        }
+    props: {
+        dishes: Array
     }
 
 }

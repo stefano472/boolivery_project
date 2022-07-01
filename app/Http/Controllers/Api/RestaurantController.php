@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Restaurant;
 use App\Category;
-
+use App\Dish;
 class RestaurantController extends Controller
 {
     /**
@@ -36,6 +36,11 @@ class RestaurantController extends Controller
     public function filtered($id)
     {
         return response()->json(['response' => Category::with('restaurants')->where('id', $id)->get()]);
+    }
+
+    public function dishes($id)
+    {
+        return response()->json(['response' => Dish::with('restaurant')->where('restaurant_id', $id)->get()]);
     }
     /**
      * Show the form for creating a new resource.
@@ -67,6 +72,8 @@ class RestaurantController extends Controller
     public function show($id)
     {
         //
+        // $dishes = Dish::where('restaurant_id', $id)->get();
+
         return response()->json(['response' => Restaurant::where('id', $id)->get()]);
     }
 

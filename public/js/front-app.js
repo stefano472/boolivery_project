@@ -2216,10 +2216,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DishCard',
-  data: function data() {
-    return {
-      dishes: [1, 2, 3, 4, 5, 6]
-    };
+  props: {
+    dishes: Array
   }
 });
 
@@ -2256,8 +2254,31 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DishesListComponent',
+  data: function data() {
+    return {
+      dishes: []
+    };
+  },
   components: {
     DishCard: _DishCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var id = this.$route.params.id;
+    console.log(id);
+    window.axios.get('http://127.0.0.1:8000/api/restaurant/dishes/' + this.$route.params.id).then(function (_ref) {
+      var status = _ref.status,
+          data = _ref.data;
+      console.log('data: ', data);
+
+      if (status === 200) {
+        _this.dishes = data.response;
+        console.log(_this.dishes);
+      }
+    })["catch"](function (e) {
+      return console.log(e);
+    }); // this.axiosCall();
   }
 });
 
@@ -3143,11 +3164,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var id = this.$route.params.id;
-      console.log(id);
       window.axios.get('http://127.0.0.1:8000/api/restaurant/' + this.$route.params.id).then(function (_ref) {
         var status = _ref.status,
             data = _ref.data;
-        console.log('data: ', data.response[0]);
 
         if (status === 200) {
           _this.restaurant = data.response[0];
@@ -40600,18 +40619,33 @@ var render = function () {
     "div",
     _vm._l(_vm.dishes, function (dish, index) {
       return _c("div", { key: index, staticClass: "dish-card" }, [
-        _c("div", { staticClass: "foto", attrs: { id: { dish: dish } } }, [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../../../public/img/img_rest/salad-with-jalapeno-1024x683.jpeg */ "./public/img/img_rest/salad-with-jalapeno-1024x683.jpeg"),
-              alt: "Dish",
-            },
-          }),
+        _c("div", { staticClass: "foto" }, [
+          _c("img", { attrs: { src: dish.cover, alt: "Dish" } }),
         ]),
         _vm._v(" "),
-        _vm._m(0, true),
+        _c("div", { staticClass: "name-description" }, [
+          _c("div", { staticClass: "dish-name" }, [
+            _c("h2", [_vm._v(_vm._s(dish.name))]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "dish-description" }, [
+            _c("p", [_vm._v(_vm._s(dish.description))]),
+          ]),
+        ]),
         _vm._v(" "),
-        _vm._m(1, true),
+        _c("div", { staticClass: "price add-to-cart" }, [
+          _c("div", { staticClass: "price-dish" }, [
+            _c("p", [
+              _vm._v(
+                "\n                  €" +
+                  _vm._s(dish.price) +
+                  "\n              "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _vm._m(0, true),
+        ]),
       ])
     }),
     0
@@ -40622,33 +40656,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name-description" }, [
-      _c("div", { staticClass: "dish-name" }, [
-        _c("h2", [_vm._v("Ensalada de alapeno")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "dish-description" }, [
-        _c("p", [
-          _vm._v(
-            "Insalata di alapeno condita con oli aromatici, uva e salsa piccante"
-          ),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "price add-to-cart" }, [
-      _c("div", { staticClass: "price-dish" }, [
-        _c("p", [_vm._v("\n                  €12\n              ")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "add-to-cart-btn" }, [
-        _c("button", { staticClass: "btn btn-outline-info" }, [
-          _vm._v("\n                  Add to cart\n              "),
-        ]),
+    return _c("div", { staticClass: "add-to-cart-btn" }, [
+      _c("button", { staticClass: "btn btn-outline-info" }, [
+        _vm._v("\n                  Add to cart\n              "),
       ]),
     ])
   },
@@ -40678,7 +40688,7 @@ var render = function () {
     _c("div", { staticClass: "container" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", [_c("DishCard")], 1),
+      _c("div", [_c("DishCard", { attrs: { dishes: _vm.dishes } })], 1),
     ]),
   ])
 }
@@ -56952,17 +56962,6 @@ module.exports = function(module) {
 	return module;
 };
 
-
-/***/ }),
-
-/***/ "./public/img/img_rest/salad-with-jalapeno-1024x683.jpeg":
-/*!***************************************************************!*\
-  !*** ./public/img/img_rest/salad-with-jalapeno-1024x683.jpeg ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/salad-with-jalapeno-1024x683.jpeg?41d75b9ce640627b630bcf7857524f0f";
 
 /***/ }),
 

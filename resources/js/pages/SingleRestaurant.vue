@@ -35,12 +35,9 @@ export default {
     axiosCall() {
       const id = this.$route.params.id;
 
-      console.log(id);
-
       window.axios
         .get('http://127.0.0.1:8000/api/restaurant/' + this.$route.params.id).then(({status, data}) => {
           
-          console.log('data: ', data.response[0]);
 
           if (status === 200) {
             

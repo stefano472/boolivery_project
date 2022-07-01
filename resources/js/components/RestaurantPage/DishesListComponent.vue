@@ -9,7 +9,7 @@
 
         <!-- lista dei piatti -->
         <div>
-            <DishCard />
+            <DishCard :dishes="dishes"/>
         </div>
     </div>
     
@@ -23,9 +23,39 @@ import DishCard from './DishCard.vue';
 export default {
     name: 'DishesListComponent',
 
+    data(){
+        return {
+            dishes: [],
+        }
+    },
+
     components: {
         DishCard
-    }
+    },
+
+    mounted(){
+        const id = this.$route.params.id;
+
+      console.log(id);
+
+      window.axios
+        .get('http://127.0.0.1:8000/api/restaurant/dishes/' + this.$route.params.id)
+        .then(({status, data}) => {
+
+          console.log( 'data: ', data)
+          if (status === 200) {
+            
+                this.dishes = data.response
+
+                console.log(this.dishes);
+            }
+
+        })
+        .catch((e) => console.log(e));
+
+        // this.axiosCall();
+
+    },
 
 }
 </script>

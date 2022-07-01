@@ -24,5 +24,7 @@ Route::get('/restaurants/{id}', 'Api\RestaurantController@filtered')->name('rest
 
 Route::get('/restaurant/{id}', 'Api\RestaurantController@show')->name('restaurants.show');
 
+Route::get('/restaurant/dishes/{id}', 'Api\RestaurantController@dishes')->name('restaurants.dishes');
+
 Route::get('/categories', 'Api\CategoryController@index')->name('category.index');
 
