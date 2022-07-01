@@ -1928,11 +1928,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
+  data: function data() {
+    return {
+      cart: [] // addToCart: this.addToCart(),
+
+    };
+  },
   components: {
     HeaderComponent: _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     SocialComponent: _components_home_SocialComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
+  },
+  methods: {
+    addToCart: function addToCart(dish) {
+      console.log('AppVue emitted', dish);
+      this.cart.push(dish);
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+  },
+  mounted: function mounted() {
+    if (localStorage.cart) {
+      this.cart = JSON.parse(localStorage.cart);
+    } else {
+      this.cart = [];
+    }
+  } // watch:{
+  //   cart(dish){
+  //     localStorage.cart += dish;
+  //   }
+  // }
+
 });
 
 /***/ }),
@@ -2102,12 +2127,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeaderComponent',
   data: function data() {
     return {
       activeModal: false
     };
+  },
+  props: {
+    cart: Array
   },
   methods: {
     openModal: function openModal() {
@@ -2116,7 +2155,13 @@ __webpack_require__.r(__webpack_exports__);
     closeModal: function closeModal() {
       this.activeModal = false;
     }
-  }
+  } // computed: {
+  //     cart(){
+  //         console.log(localStorage.cart);
+  //         return JSON.parse(localStorage.cart);
+  //     }
+  // }
+
 });
 
 /***/ }),
@@ -2216,8 +2261,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DishCard',
+  data: function data() {
+    return {
+      cart: []
+    };
+  },
   props: {
     dishes: Array
+  },
+  methods: {
+    addToLocalStorage: function addToLocalStorage(dish) {
+      console.log(dish);
+      /*this.cart.push(item);
+        console.log(this.cart);
+        localStorage.setItem('cart', JSON.stringify(this.cart))
+        */
+
+      this.$emit('addToCart', dish);
+    }
   }
 });
 
@@ -2279,6 +2340,12 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (e) {
       return console.log(e);
     }); // this.axiosCall();
+  },
+  methods: {
+    addToCart: function addToCart(dish) {
+      console.log('DishList emitted', dish);
+      this.$emit('addToCart', dish);
+    }
   }
 });
 
@@ -3175,6 +3242,10 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (e) {
         return console.log(e);
       });
+    },
+    addToCart: function addToCart(dish) {
+      console.log('SingleRestaurant emitted', dish);
+      this.$emit('addToCart', dish);
     }
   },
   mounted: function mounted() {
@@ -40349,9 +40420,9 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("HeaderComponent"),
+      _c("HeaderComponent", { attrs: { cart: _vm.cart } }),
       _vm._v(" "),
-      _c("router-view"),
+      _c("router-view", { on: { addToCart: _vm.addToCart } }),
       _vm._v(" "),
       _c("SocialComponent"),
       _vm._v(" "),
@@ -40486,6 +40557,8 @@ var render = function () {
             on: { click: _vm.openModal },
           }),
           _vm._v(" "),
+          _c("div", [_c("span", [_vm._v(_vm._s(_vm.cart.length))])]),
+          _vm._v(" "),
           _c(
             "div",
             {
@@ -40500,6 +40573,17 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "cart" },
+                  _vm._l(_vm.cart, function (item, index) {
+                    return _c("div", { key: index }, [
+                      _c("p", [_vm._v(_vm._s(item.name))]),
+                    ])
+                  }),
+                  0
+                ),
               ]),
             ]
           ),
@@ -40644,25 +40728,27 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _vm._m(0, true),
+          _c("div", { staticClass: "add-to-cart-btn" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-info",
+                on: {
+                  click: function ($event) {
+                    return _vm.addToLocalStorage(dish)
+                  },
+                },
+              },
+              [_vm._v("\n                  Add to cart\n              ")]
+            ),
+          ]),
         ]),
       ])
     }),
     0
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "add-to-cart-btn" }, [
-      _c("button", { staticClass: "btn btn-outline-info" }, [
-        _vm._v("\n                  Add to cart\n              "),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40688,7 +40774,16 @@ var render = function () {
     _c("div", { staticClass: "container" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", [_c("DishCard", { attrs: { dishes: _vm.dishes } })], 1),
+      _c(
+        "div",
+        [
+          _c("DishCard", {
+            attrs: { dishes: _vm.dishes },
+            on: { addToCart: _vm.addToCart },
+          }),
+        ],
+        1
+      ),
     ]),
   ])
 }
@@ -41575,7 +41670,10 @@ var render = function () {
       _vm._v(" "),
       _c("DescriptionComponent", { attrs: { restaurant: _vm.restaurant } }),
       _vm._v(" "),
-      _c("DishesListComponent", { attrs: { restaurant: _vm.restaurant } }),
+      _c("DishesListComponent", {
+        attrs: { restaurant: _vm.restaurant },
+        on: { addToCart: _vm.addToCart },
+      }),
       _vm._v(" "),
       _c("InfoRestaurantComponent", { attrs: { restaurant: _vm.restaurant } }),
     ],

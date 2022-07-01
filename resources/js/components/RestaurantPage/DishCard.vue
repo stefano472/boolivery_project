@@ -36,7 +36,7 @@
 
             <!-- pulsante di aggiunta al carrello -->
             <div class="add-to-cart-btn">
-                <button class="btn btn-outline-info">
+                <button class="btn btn-outline-info" @click="addToLocalStorage(dish)">
                     Add to cart
                 </button>
             </div>
@@ -49,9 +49,32 @@
 <script>
 export default {
     name: 'DishCard',
-
+    data(){
+        return {
+            cart: [],
+        }
+    },
     props: {
         dishes: Array
+    },
+
+    methods:{
+        addToLocalStorage(dish){
+
+            console.log(dish);
+
+            /*this.cart.push(item);
+
+            console.log(this.cart);
+
+            localStorage.setItem('cart', JSON.stringify(this.cart))
+
+            */
+           this.$emit('addToCart', dish )
+            
+            
+
+        }
     }
 
 }

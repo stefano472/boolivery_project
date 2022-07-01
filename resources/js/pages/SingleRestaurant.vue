@@ -2,7 +2,7 @@
   <div>
     <HeroComponent :restaurant="restaurant"/>
     <DescriptionComponent :restaurant="restaurant"/>
-    <DishesListComponent :restaurant="restaurant"/>
+    <DishesListComponent :restaurant="restaurant"  @addToCart="addToCart"/>
     <InfoRestaurantComponent :restaurant="restaurant"/>
   </div>
 </template>
@@ -49,6 +49,12 @@ export default {
         })
         .catch((e) => console.log(e));
     },
+
+    addToCart(dish){
+            console.log('SingleRestaurant emitted', dish );
+
+            this.$emit('addToCart', dish )
+      }
   },
 
   mounted(){

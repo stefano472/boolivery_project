@@ -9,7 +9,7 @@
 
         <!-- lista dei piatti -->
         <div>
-            <DishCard :dishes="dishes"/>
+            <DishCard :dishes="dishes" @addToCart="addToCart"/>
         </div>
     </div>
     
@@ -56,6 +56,14 @@ export default {
         // this.axiosCall();
 
     },
+
+    methods: {
+        addToCart(dish){
+            console.log('DishList emitted', dish );
+
+            this.$emit('addToCart', dish )
+        }
+    }
 
 }
 </script>

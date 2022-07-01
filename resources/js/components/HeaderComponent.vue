@@ -27,6 +27,9 @@
             </div>
             <div>
                 <i @click="openModal" class="cart fa-solid fa-cart-shopping"></i>
+                <div>
+                    <span>{{cart.length}}</span>
+                </div>
                 <div id="modal-container" :class="activeModal ? 'sp-show' : ''">
                     <div class="sp-modal">
                         <i @click="closeModal" class="close-modal fa-solid fa-xmark"></i>
@@ -34,6 +37,14 @@
                         <div class="title">
                             <h2>Your Cart</h2>
                             <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+
+                        <div class="cart">
+                            <div v-for="(item, index) in cart" :key="index">
+
+                                <p>{{item.name}}</p>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,17 +59,33 @@ export default {
     name: 'HeaderComponent',
     data() {
         return {
+
             activeModal: false,
+
         }
     },
+
+    props:{
+        cart: Array,
+    },
+
     methods: {
         openModal(){
             this.activeModal = true
         },
         closeModal(){
             this.activeModal = false
-        }
-    }
+        },
+
+    },
+
+    // computed: {
+    //     cart(){
+
+    //         console.log(localStorage.cart);
+    //         return JSON.parse(localStorage.cart);
+    //     }
+    // }
 }
 </script>
 
