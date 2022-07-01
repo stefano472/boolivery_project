@@ -27,7 +27,7 @@
                         <tbody>
                             {{-- Table content --}}
                             @foreach ($dishes as $dish)
-                                <tr class="{{$dish->available === 1 ? 'back-green' : 'back-red'}}">
+                                <tr class="{{$dish->available === 1 ? '' : 'back-red'}}">
                                     <td>{{ $dish->name }}</td>
                                     <td>{{ $dish->description }}</td>
                                     <td>

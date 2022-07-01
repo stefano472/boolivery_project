@@ -10,12 +10,15 @@
           <p class="lowercase">i ristoranti</p>
           <p class="uppercase">A UN CLICK</p>
         </div>
-        <!-- <div class="search-bar">
-          <button @click="getInput" class="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <input v-model="inputSearch" type="text" class="input" placeholder="Search...">
-        </div> -->
+        <div class="search-bar">
+          <router-link :to="{name:'restaurants'}">
+            <button class="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <div class="input">Vai alla ricerca ristoranti</div>
+          </router-link>
+          <!-- <input v-model="inputSearch" type="text" class="input" placeholder="Search..."> -->
+        </div>
       </div>
     </div>
     <svg class="wave">
@@ -85,38 +88,38 @@ export default {
       color: $primary-color;
     }
   }
-  // .search-bar {
-  //   width: fit-content;
-  //     // margin-left: 10rem;
-  //     display: flex;
-  //     border-radius: 2.2rem;
-  //     background: $white-color;
-  //     .submit {
-  //       cursor: pointer;
-  //       border: 0;
-  //       border-radius: 50%;
-  //       background: $brand-color;
-  //       width: 2.2rem;
-  //       height: 2.2rem;
-  //       &:hover {
-  //         color: white;
-  //       }
-  //     }
-  //     .input {
-  //       width: 20rem;
-  //       font-size: 0.8rem;
-  //       padding: 0 1rem;
-  //       border: 0;
-  //       background: transparent;
-  //       &::placeholder {
-  //         font-size: 0.8rem;
-  //         color: lightslategrey;
-  //       }
-  //       &:focus {
-  //         outline: 0;
-  //       }
-  //     }
-  //   }
+  .search-bar {
+    width: fit-content;
+      // margin-left: 10rem;
+      display: flex;
+      border-radius: 2.2rem;
+      background: $white-color;
+      .submit {
+        cursor: pointer;
+        border: 0;
+        border-radius: 50%;
+        background: $brand-color;
+        width: 2.2rem;
+        height: 2.2rem;
+        &:hover {
+          color: white;
+        }
+      }
+      .input {
+        width: 20rem;
+        font-size: 0.8rem;
+        padding: 0 1rem;
+        border: 0;
+        background: transparent;
+        &::placeholder {
+          font-size: 0.8rem;
+          color: lightslategrey;
+        }
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
   .wave{
     width: 100%;
     height: 60px;
