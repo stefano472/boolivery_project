@@ -7,7 +7,7 @@
             </h2>
         </div>
         <div class="row1 mt-5">
-            <img class="single-cat pad-1" src="/img/category_img/cat_veg.jpeg" alt="">
+            <img class="single-cat pad-1" src="/img/category_img/cat_veg.png" alt="">
             <img class="single-cat pad-2" src="/img/category_img/cat_mex.png" alt="">
             <img class="single-cat pad-3" src="/img/category_img/cat_fast.png" alt="">
             <img class="single-cat pad-4" src="/img/category_img/cat_piz.png" alt="">

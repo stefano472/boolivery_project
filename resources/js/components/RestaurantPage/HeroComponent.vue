@@ -2,10 +2,10 @@
     <div class="container-hero">
 
         <div class="info-resturant">
-            <h1>NOME RISTORANTE</h1>
-            <h2>MOTTO</h2>
-            <h3>Tipo di cucina</h3>
-            <button class="btn-go">Vai al ristorante</button>
+            <h1>{{restaurant.name}}</h1>
+            <h2>{{restaurant.motto}}</h2>
+            <!-- <h3>{{restaurant.name}}</h3> -->
+            <!-- <button class="btn-go">Vai al ristorante</button> -->
         </div>
     </div>
 
@@ -17,6 +17,10 @@
 
 export default {
     name: 'HeroComponent',
+
+    props:{
+    restaurant: Object,
+  }
 
 }
 

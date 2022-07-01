@@ -14,20 +14,25 @@
     </div> -->
 
     <!-- Lista dei filtri -->
-    <FilterComponents :restaurants="restaurants"/>
+
+    <div class="restaurants-list">
+        <RestaurantCard :restaurants="restaurants"/>
+    </div>
+
+    <!-- <FilterComponents :restaurants="restaurants"/> -->
   </div>
 </template>
 
 <script>
 
 import CategoriesComponent from '../components/RestaurantsListPage/CategoriesComponent.vue';
-import FilterComponents from '../components/RestaurantsListPage/FilterComponents.vue';
+import RestaurantCard from '../components/RestaurantsListPage/RestaurantCard.vue';
 
 export default {
     name: 'FilteredList',
     components: {
         CategoriesComponent,
-        FilterComponents,
+        RestaurantCard,
     },
 
     data(){
@@ -48,15 +53,14 @@ export default {
       console.log(id);
 
       window.axios
-        .get('http://127.0.0.1:8000/api/restaurants/' + this.id)
-        .then(({status, data}) => {
-
+        .get('http://127.0.0.1:8000/api/restaurants/' + this.$route.params.id).then(({status, data}) => {
           
-          if (status === 200 && data.success) {
+          console.log('response', data.response[0].restaurants);
+          if (status === 200) {
             
-                this.arrayRestaurants = data.results
+                this.restaurants = data.response[0].restaurants;
 
-                console.log(this.arrayRestaurants);
+                console.log('RESTAURANTS!', this.restaurants);
             }
 
         })

@@ -22,6 +22,7 @@ Route::get('/restaurants', 'Api\RestaurantController@index')->name('restaurants.
 
 Route::get('/restaurants/{id}', 'Api\RestaurantController@filtered')->name('restaurants.filtered');
 
+Route::get('/restaurant/{id}', 'Api\RestaurantController@show')->name('restaurants.show');
 
 Route::get('/categories', 'Api\CategoryController@index')->name('category.index');
 

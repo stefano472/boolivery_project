@@ -1,7 +1,14 @@
 <template>
-  <div>
-    <div v-for="(category, index) in categories" :key="index">
-      <p>{{category.name}}</p>
+  <div class="categories-list">
+    <div v-for="(category, index) in categories.slice(0,5)" :key="index">
+      <a :href="setUrlFilters(category.id)">
+        <img :src="setUrlCategoryCover(category.img)" alt="">
+        <p>{{category.name}}</p>
+      </a>
+    
+      
+    
+      
     </div>  
   </div>
 </template>
@@ -20,22 +27,27 @@ export default {
         
   },
 
-  // methods:{
+  methods:{
 
-  //   axiosCall() {
-  //     const id = this.$route.params.id;
 
-  //     console.log(id);
+      setUrlFilters(index){
 
-  //     window.axios
-  //       .get("/api/restaurants/" + id)
-  //       .then((result) => {
-  //         this.arrayRestaurants = result.data.response[0].user;
-  //         console.log(this.arrayRestaurants);
-  //       })
-  //       .catch((e) => console.log(e));
-  //   },
-  // },
+        const url = 'http://127.0.0.1:8000/restaurants/' + index;
+
+        return url;
+
+      },
+
+      setUrlCategoryCover(cover){
+
+        const url = cover;
+
+        return url;
+
+      }
+
+
+   },
 
  mounted(){
     window.axios.get('http://127.0.0.1:8000/api/categories').then(({status, data})=> {
@@ -51,6 +63,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+img{
+  width: 98px;
+}
+
+.categories-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 26px;
+  padding: 60px 86px;
+  background-color: #1e282f;
+}
 
 </style>

@@ -1,9 +1,6 @@
 <template>
    <div>
 
-
-    
-
     <div class="restaurants-list">
         <RestaurantCard :restaurants="restaurants"/>
     </div>

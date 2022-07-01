@@ -1,23 +1,23 @@
 <template>
   <div id="header">
     <div class="container">
-        <a class="logo" href="#">
-            <img src="logo.svg" alt="logo">
+        <a class="logo" href="/">
+            <img src="/logo.svg" alt="logo">
             <p>oolivery</p>
         </a>
         <nav>
             <ul> 
                 <li>
-                    <a href="">categorie</a>
+                    <a href="/restaurants">Ristoranti</a>
                 </li>
                 <li>
-                    <a href="">collabora con noi</a>
+                    <a href="">Collabora con noi</a>
                 </li>
                 <li>
-                    <a href="">about us</a>
+                    <a href="">About us</a>
                 </li>
                 <li>
-                    <a href="">contatti</a>
+                    <a href="">Contatti</a>
                 </li>
             </ul>
         </nav>

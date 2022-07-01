@@ -15,7 +15,7 @@
         <div class="logo-lang">
 
           <div class="logo">
-            <img src="img/footer/logo.svg" alt="">
+            <img src="/logo.svg" alt="">
           </div>
 
           <div class="language">
@@ -77,7 +77,7 @@
 
           <!-- PHOTOS -->
           <div class="insta-photos">
-            <img src="img/footer/insta-feed.jpg" alt="">
+            <img src="/img/footer/insta-feed.jpg" alt="">
           </div>
 
         </div>

@@ -3,7 +3,7 @@
     <HeroComponent/>
     <ChiSiamoComponent/>
     <ParallaxComponent/>
-    <RistorantiPiuCercatiComponent/>
+    <RistorantiPiuCercatiComponent :restaurants="restaurants"/>
     <CategoriePiuRichiesteComponent/>
     <ServiziComponent/>
     <CollaboraConNoiComponent/>
@@ -22,6 +22,11 @@ import CollaboraConNoiComponent from '../components/home/CollaboraConNoiComponen
 
 export default {
     name: 'Home',
+    data(){
+      return {
+        restaurants:[],
+      }
+    },
     components: {
         HeroComponent,
         ChiSiamoComponent,
@@ -30,7 +35,20 @@ export default {
         CategoriePiuRichiesteComponent,
         ServiziComponent,
         CollaboraConNoiComponent,
-    }
+    },
+
+    mounted(){
+        
+        window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
+
+            if (status === 200 && data.success) {
+                this.restaurants = data.results
+            }
+        }).catch(e => console.log(e))
+
+        // this.axiosCall();
+
+    },
 }
 </script>
 

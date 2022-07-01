@@ -3,21 +3,13 @@
     <div class="about-us">
       <h2>ABOUT US</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-        deserunt natus assumenda dicta! Nobis quod necessitatibus corporis
-        architecto qui officia explicabo ab debitis maxime ut reiciendis labore,
-        nesciunt perspiciatis accusantium. Voluptatem autem adipisci aliquam
-        ducimus eveniet error sapiente! Dolore sapiente quam aperiam repudiandae
-        minus nihil magnam deleniti iure suscipit magni illo earum delectus
-        animi, autem deserunt nobis ratione cupiditate iste similique
-        architecto! In accusantium dolores commodi ad blanditiis ipsa similique
-        tenetur sed repellat minima, labore, nulla veritatis quo.
+        {{restaurant.description}}
       </p>
     </div>
 
     <div class="description-cover">
       <img
-        src="/img/img_rest/jakub-kapusnak-4f4YZfDMLeU-unsplash-1024x683.jpeg"
+        :src="restaurant.cover"
         alt=""
       />
     </div>
@@ -27,6 +19,10 @@
 <script>
 export default {
   name: "DescriptionComponent",
+
+  props:{
+    restaurant: Object,
+  }
 };
 </script>
 

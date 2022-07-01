@@ -8,38 +8,16 @@
                 <h5>Selezionati proprio da voi</h5>
             </div>
             <div class="restaurants">
-                <div class="block">
+                <div class="block" v-for="(restaurant, index) in restaurants.slice(0,3)" :key="index">
                     <div class="add-padd">
                         <div class="bg-img"></div>
                     </div>
 
-                    <div class="box-info">
-                        <h6 class="name-restaurant">Nome ristorante</h6>
-                        <p class="description">Descrizione ristorante</p>
-                        <p class="tipology">Tipologia ristorante</p>
-                        <button class="btn-go">Vai al ristorante</button>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="box-info">
-                        <h6 class="name-restaurant">Nome ristorante</h6>
-                        <p class="description">Descrizione ristorante</p>
-                        <p class="tipology">Tipologia ristorante</p>
-                        <button class="btn-go">Vai al ristorante</button>
-                    </div>
-                    <div class="add-padd">
-                        <div class="bg-img"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="add-padd">
-                        <div class="bg-img"></div>
-                    </div>
-                    <div class="box-info">
-                        <h6 class="name-restaurant">Nome ristorante</h6>
-                        <p class="description">Descrizione ristorante</p>
-                        <p class="tipology">Tipologia ristorante</p>
-                        <button class="btn-go">Vai al ristorante</button>
+                    <div class="box-info" >
+                        <h6 class="name-restaurant">{{restaurant.name}}</h6>
+                        <p class="description">{{restaurant.motto}}</p>
+                        <!-- <p class="tipology">Tipologia ristorante</p> -->
+                        <router-link :to="{name: 'restaurant', params: {...restaurant}}">Vai al ristorante</router-link> 
                     </div>
                 </div>
             </div>
@@ -52,7 +30,11 @@
 
 <script>
 export default {
-    name: 'RistorantiPiuCercatiComponent'
+    name: 'RistorantiPiuCercatiComponent',
+
+    props:{
+        restaurants: Array,
+    }
 
 }
 </script>
