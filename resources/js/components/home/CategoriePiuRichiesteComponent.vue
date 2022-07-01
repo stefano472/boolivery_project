@@ -6,17 +6,22 @@
                 Le categorie piu' richieste
             </h2>
         </div>
-        <div class="row1 mt-5">
-            <img class="single-cat pad-1" src="/img/category_img/cat_veg.png" alt="">
-            <img class="single-cat pad-2" src="/img/category_img/cat_mex.png" alt="">
-            <img class="single-cat pad-3" src="/img/category_img/cat_fast.png" alt="">
-            <img class="single-cat pad-4" src="/img/category_img/cat_piz.png" alt="">
+        <div class="row1 mt-5 mb-3" >
+
+        
+            <a :href="setUrlFilters(category.id)" v-for="(category, index) in categories.slice(0, 4)" :key="index">
+                <img class="single-cat" :src="category.img" alt="">
+            </a>
+            
+            
         </div>
-        <div class="row1">
-            <img class="single-cat pad-1" src="/img/category_img/cat_dol.png" alt="">
-            <img class="single-cat pad-2" src="/img/category_img/cat_jap.png" alt="">
-            <img class="single-cat pad-3" src="/img/category_img/cat_chi.png" alt="">
-            <img class="single-cat pad-4" src="/img/category_img/cat_ita.png" alt="">
+
+        <div class="row1" >
+
+            <a :href="setUrlFilters(category.id)" v-for="(category, index) in categories.slice(4, 8)" :key="index">
+                <img class="single-cat" :src="category.img" alt="">
+            </a>
+
         </div>
 
     </section>
@@ -25,7 +30,49 @@
 
 <script>
 export default {
-    name: 'CategoriePiuRichiesteComponent'
+    name: 'CategoriePiuRichiesteComponent',
+
+    data(){
+        return {
+            categories: [],
+        }
+    },
+
+    mounted(){
+
+         window.axios.get('http://127.0.0.1:8000/api/categories').then(({status, data})=> {
+
+            if (status === 200 && data.success) {
+                this.categories = data.results
+            }
+        }).catch(e => console.log(e));
+
+    },
+
+    methods:{
+
+
+      setUrlFilters(index){
+
+        const url = 'http://127.0.0.1:8000/restaurants/' + index;
+
+        return url;
+
+      },
+
+      setUrlCategoryCover(cover){
+
+        const url = cover;
+
+        return url;
+
+      }
+
+
+   },
+
+    
+
 
 }
 </script>
@@ -57,18 +104,18 @@ export default {
         padding-right: 5px;
 
     }
-    .pad-1{
-        margin: 0 0 40px;
-    }
-    .pad-2{
-        margin: 10px 0 30px;
-    }
-    .pad-3{
-        margin: 20px 0 20px;
-    }
-    .pad-4{
-        margin: 30px 0 10px;
-    }
+    // .pad-1{
+    //     margin: 0 0 40px;
+    // }
+    // .pad-2{
+    //     margin: 10px 0 30px;
+    // }
+    // .pad-3{
+    //     margin: 20px 0 20px;
+    // }
+    // .pad-4{
+    //     margin: 30px 0 10px;
+    // }
 }
 
 </style>

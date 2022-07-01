@@ -2520,8 +2520,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CategoriePiuRichiesteComponent'
+  name: 'CategoriePiuRichiesteComponent',
+  data: function data() {
+    return {
+      categories: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    window.axios.get('http://127.0.0.1:8000/api/categories').then(function (_ref) {
+      var status = _ref.status,
+          data = _ref.data;
+
+      if (status === 200 && data.success) {
+        _this.categories = data.results;
+      }
+    })["catch"](function (e) {
+      return console.log(e);
+    });
+  },
+  methods: {
+    setUrlFilters: function setUrlFilters(index) {
+      var url = 'http://127.0.0.1:8000/restaurants/' + index;
+      return url;
+    },
+    setUrlCategoryCover: function setUrlCategoryCover(cover) {
+      var url = cover;
+      return url;
+    }
+  }
 });
 
 /***/ }),
@@ -7700,7 +7734,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 150px;\n  height: 150px;\n  padding-right: 5px;\n}\n#ms-container .pad-1[data-v-e8a4ff6a] {\n  margin: 0 0 40px;\n}\n#ms-container .pad-2[data-v-e8a4ff6a] {\n  margin: 10px 0 30px;\n}\n#ms-container .pad-3[data-v-e8a4ff6a] {\n  margin: 20px 0 20px;\n}\n#ms-container .pad-4[data-v-e8a4ff6a] {\n  margin: 30px 0 10px;\n}", ""]);
+exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 150px;\n  height: 150px;\n  padding-right: 5px;\n}", ""]);
 
 // exports
 
@@ -40910,64 +40944,56 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "ms-container" } }, [
+    _c("section", { staticClass: "category" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row1 mt-5 mb-3" },
+        _vm._l(_vm.categories.slice(0, 4), function (category, index) {
+          return _c(
+            "a",
+            { key: index, attrs: { href: _vm.setUrlFilters(category.id) } },
+            [
+              _c("img", {
+                staticClass: "single-cat",
+                attrs: { src: category.img, alt: "" },
+              }),
+            ]
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row1" },
+        _vm._l(_vm.categories.slice(4, 8), function (category, index) {
+          return _c(
+            "a",
+            { key: index, attrs: { href: _vm.setUrlFilters(category.id) } },
+            [
+              _c("img", {
+                staticClass: "single-cat",
+                attrs: { src: category.img, alt: "" },
+              }),
+            ]
+          )
+        }),
+        0
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "ms-container" } }, [
-      _c("section", { staticClass: "category" }, [
-        _c("div", [
-          _c("h2", { staticClass: "title-categ" }, [
-            _vm._v("\n              Le categorie piu' richieste\n          "),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row1 mt-5" }, [
-          _c("img", {
-            staticClass: "single-cat pad-1",
-            attrs: { src: "/img/category_img/cat_veg.png", alt: "" },
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "single-cat pad-2",
-            attrs: { src: "/img/category_img/cat_mex.png", alt: "" },
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "single-cat pad-3",
-            attrs: { src: "/img/category_img/cat_fast.png", alt: "" },
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "single-cat pad-4",
-            attrs: { src: "/img/category_img/cat_piz.png", alt: "" },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row1" }, [
-          _c("img", {
-            staticClass: "single-cat pad-1",
-            attrs: { src: "/img/category_img/cat_dol.png", alt: "" },
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "single-cat pad-2",
-            attrs: { src: "/img/category_img/cat_jap.png", alt: "" },
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "single-cat pad-3",
-            attrs: { src: "/img/category_img/cat_chi.png", alt: "" },
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "single-cat pad-4",
-            attrs: { src: "/img/category_img/cat_ita.png", alt: "" },
-          }),
-        ]),
+    return _c("div", [
+      _c("h2", { staticClass: "title-categ" }, [
+        _vm._v("\n              Le categorie piu' richieste\n          "),
       ]),
     ])
   },
