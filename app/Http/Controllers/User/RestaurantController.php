@@ -93,6 +93,7 @@ class RestaurantController extends Controller
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($restaurantData);
 
+        // $newRestaurant->id = $id;
         $newRestaurant->user_id = $id;
         $newRestaurant->save();
 
