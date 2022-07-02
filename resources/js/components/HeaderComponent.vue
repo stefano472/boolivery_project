@@ -28,7 +28,7 @@
             <div>
                 <i @click="openModal" class="cart fa-solid fa-cart-shopping">
                     <div class="number-cart">
-                        <span>{{cart.length}}</span>
+                        <span>{{totalQuantity()}}</span>
                     </div>
                 </i>
                 
@@ -48,12 +48,27 @@
                                         <img :src="item.cover" alt="">
                                     </div>
                                     <div class="definition">
-                                        <h4>{{item.name}}</h4>
-                                        <div>{{item.quantity}}</div>
+                                        <h5>{{item.name}}</h5>
+                                        <div class="dish-specs">
+                                            <p class="quantity">
+                                                <i @click="reduceQuantity(item, index)" class="fa-solid fa-minus"></i>
+                                                <span>
+                                                    {{item.quantity}}
+                                                </span>
+                                                <i @click="addQuantity(item)" class="fa-solid fa-plus"></i>
+                                            </p>
+                                            <p>&euro; {{totalPrice(item)}}</p>
+                                            <i @click="removeItem(index)" class="remove fa-solid fa-trash-can"></i>
+                                        </div>
                                     </div>
 
                                 </div>
-
+                            </div>
+                        </div>
+                        <div class="checkout">
+                            <div class="total-price">
+                                Totale: &euro; {{checkoutPrice()}}
+                                <button class="btn">checkout</button>
                             </div>
                         </div>
                     </div>
@@ -70,7 +85,7 @@ export default {
     data() {
         return {
             activeModal: false,
-
+            // checkoutPrice: 0,
         }
     },
 
@@ -79,6 +94,47 @@ export default {
     },
 
     methods: {
+        removeItem(index){
+
+            this.cart.splice(index, 1)
+            console.log(this.cart)
+            // const items = JSON.parse(localStorage.getItem('cart'));
+    
+            // items.splice(index)
+            // console.log(items);
+            // const cart = JSON.stringify(items)
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        },
+        reduceQuantity(dish, index){
+            dish.quantity -= 1;
+            if (dish.quantity < 1) {
+                this.removeItem(index)
+            }
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        },
+        addQuantity(dish){
+            dish.quantity += 1;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        },
+        totalQuantity(){
+            let quantity = 0;
+            this.cart.forEach(dish => {
+                quantity += dish.quantity;
+            });
+            return quantity;
+        },
+        totalPrice(dish){
+            const total = dish.price * dish.quantity;
+            // this.checkoutPrice += total;
+            return total.toFixed(2);
+        },
+        checkoutPrice(){
+            let total = 0;
+            this.cart.forEach(dish => {
+                total += (dish.price * dish.quantity)              
+            });
+            return total.toFixed(2);
+        },
         openModal(){
             // console.log('cart', this.cart)
             // for (let i = 0; i<this.cart.length; i++){
@@ -208,21 +264,86 @@ export default {
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s ease;
-                .dish-img{
-                    img{width: 25%;}
+                .dish-cart {
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid gray;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                    gap: 1rem;
+                    .dish-img{
+                        width: 20%;
+                        img{
+                            width: 100%;
+                            border-radius: 10px;
+                        }
+                    }
+                    .definition{
+                        width: 100%;
+                        .dish-specs{
+                            margin-top: 0.5rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            .quantity{
+                                display: flex;
+                                gap: 0.4rem;
+                                i{
+                                    cursor: pointer;
+                                    width: 1rem;
+                                    height: 1rem;
+                                    padding: 0.6rem;
+                                    border-radius: 5px;
+                                    background: lightgray;
+                                    display: grid;
+                                    place-content: center;
+                                }
+                            }
+                            .remove:hover{
+                                cursor: pointer;
+                                color: lightcoral;
+                            }
+                        }
+                    }
                 }
                 &.sp-show {
                     pointer-events: auto;
                     opacity: 1;
                 }
                 .sp-modal {
+                    display: flex;
+                    flex-direction: column;
                     background: white;
                     padding: 2rem;
                     border-radius: 0.5rem;
                     width: min(400px, 100%);
                     box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
                     // text-align: center;
+                    min-height: 60%;
+                    height: fit-content;
                     position: relative;
+                    .checkout{
+                        flex-grow: 1;
+                        display: flex;
+                        justify-content: end;
+                        align-items: end;
+                    }
+                    .total-price{
+                        font-size: 1.2rem;
+                        display: flex;
+                        flex-direction: column;
+                        button{
+                            color: #212529;
+                            background-color: $brand-color;
+                            border-color: $brand-color;
+                            &:hover{
+                                color: #212529;
+                                background-color: $secondary-color;
+                                border-color: $secondary-color;
+                            }
+                        }
+                        }
+                    }
                     .title{
                         display: flex;
                         align-items: center;
@@ -261,5 +382,5 @@ export default {
             }
         }
     }
-}
+
 </style>

@@ -2202,17 +2202,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeaderComponent',
   data: function data() {
     return {
-      activeModal: false
+      activeModal: false // checkoutPrice: 0,
+
     };
   },
   props: {
     cart: Array
   },
   methods: {
+    removeItem: function removeItem(index) {
+      this.cart.splice(index, 1);
+      console.log(this.cart); // const items = JSON.parse(localStorage.getItem('cart'));
+      // items.splice(index)
+      // console.log(items);
+      // const cart = JSON.stringify(items)
+
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    },
+    reduceQuantity: function reduceQuantity(dish, index) {
+      dish.quantity -= 1;
+
+      if (dish.quantity < 1) {
+        this.removeItem(index);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    },
+    addQuantity: function addQuantity(dish) {
+      dish.quantity += 1;
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    },
+    totalQuantity: function totalQuantity() {
+      var quantity = 0;
+      this.cart.forEach(function (dish) {
+        quantity += dish.quantity;
+      });
+      return quantity;
+    },
+    totalPrice: function totalPrice(dish) {
+      var total = dish.price * dish.quantity; // this.checkoutPrice += total;
+
+      return total.toFixed(2);
+    },
+    checkoutPrice: function checkoutPrice() {
+      var total = 0;
+      this.cart.forEach(function (dish) {
+        total += dish.price * dish.quantity;
+      });
+      return total.toFixed(2);
+    },
     openModal: function openModal() {
       // console.log('cart', this.cart)
       // for (let i = 0; i<this.cart.length; i++){
@@ -7742,7 +7799,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login i.cart[data-v-153bfd55] {\n  position: relative;\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container .cart-login i.cart .number-cart[data-v-153bfd55] {\n  position: absolute;\n  right: 0;\n  font-size: 18px;\n}\n#header .container .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container .cart-login #modal-container .dish-img img[data-v-153bfd55] {\n  width: 25%;\n}\n#header .container .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  position: relative;\n}\n#header .container .cart-login #modal-container .sp-modal .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1.5rem;\n}\n#header .container .cart-login #modal-container .sp-modal .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container .cart-login #modal-container .sp-modal .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container .cart-login #modal-container .sp-modal .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}", ""]);
+exports.push([module.i, "#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container .cart-login i.cart[data-v-153bfd55] {\n  position: relative;\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container .cart-login i.cart .number-cart[data-v-153bfd55] {\n  position: absolute;\n  right: 0;\n  font-size: 18px;\n}\n#header .container .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container .cart-login #modal-container .dish-cart[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid gray;\n  border-radius: 10px;\n  padding: 0.5rem;\n  gap: 1rem;\n}\n#header .container .cart-login #modal-container .dish-cart .dish-img[data-v-153bfd55] {\n  width: 20%;\n}\n#header .container .cart-login #modal-container .dish-cart .dish-img img[data-v-153bfd55] {\n  width: 100%;\n  border-radius: 10px;\n}\n#header .container .cart-login #modal-container .dish-cart .definition[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container .cart-login #modal-container .dish-cart .definition .dish-specs[data-v-153bfd55] {\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n#header .container .cart-login #modal-container .dish-cart .definition .dish-specs .quantity[data-v-153bfd55] {\n  display: flex;\n  gap: 0.4rem;\n}\n#header .container .cart-login #modal-container .dish-cart .definition .dish-specs .quantity i[data-v-153bfd55] {\n  cursor: pointer;\n  width: 1rem;\n  height: 1rem;\n  padding: 0.6rem;\n  border-radius: 5px;\n  background: lightgray;\n  display: grid;\n  place-content: center;\n}\n#header .container .cart-login #modal-container .dish-cart .definition .dish-specs .remove[data-v-153bfd55]:hover {\n  cursor: pointer;\n  color: lightcoral;\n}\n#header .container .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  min-height: 60%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  position: relative;\n}\n#header .container .cart-login #modal-container .sp-modal .checkout[data-v-153bfd55] {\n  flex-grow: 1;\n  display: flex;\n  justify-content: end;\n  align-items: end;\n}\n#header .container .cart-login #modal-container .sp-modal .total-price[data-v-153bfd55] {\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: column;\n}\n#header .container .cart-login #modal-container .sp-modal .total-price button[data-v-153bfd55] {\n  color: #212529;\n  background-color: #98f1ad;\n  border-color: #98f1ad;\n}\n#header .container .cart-login #modal-container .sp-modal .total-price button[data-v-153bfd55]:hover {\n  color: #212529;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#header .container .cart-login #modal-container .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1.5rem;\n}\n#header .container .cart-login #modal-container .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container .cart-login #modal-container .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container .cart-login #modal-container .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}", ""]);
 
 // exports
 
@@ -40656,7 +40713,7 @@ var render = function () {
             },
             [
               _c("div", { staticClass: "number-cart" }, [
-                _c("span", [_vm._v(_vm._s(_vm.cart.length))]),
+                _c("span", [_vm._v(_vm._s(_vm.totalQuantity()))]),
               ]),
             ]
           ),
@@ -40687,15 +40744,67 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "definition" }, [
-                          _c("h4", [_vm._v(_vm._s(item.name))]),
+                          _c("h5", [_vm._v(_vm._s(item.name))]),
                           _vm._v(" "),
-                          _c("div", [_vm._v(_vm._s(item.quantity))]),
+                          _c("div", { staticClass: "dish-specs" }, [
+                            _c("p", { staticClass: "quantity" }, [
+                              _c("i", {
+                                staticClass: "fa-solid fa-minus",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.reduceQuantity(item, index)
+                                  },
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "\n                                                  " +
+                                    _vm._s(item.quantity) +
+                                    "\n                                              "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("i", {
+                                staticClass: "fa-solid fa-plus",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.addQuantity(item)
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v("€ " + _vm._s(_vm.totalPrice(item))),
+                            ]),
+                            _vm._v(" "),
+                            _c("i", {
+                              staticClass: "remove fa-solid fa-trash-can",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.removeItem(index)
+                                },
+                              },
+                            }),
+                          ]),
                         ]),
                       ]),
                     ])
                   }),
                   0
                 ),
+                _vm._v(" "),
+                _c("div", { staticClass: "checkout" }, [
+                  _c("div", { staticClass: "total-price" }, [
+                    _vm._v(
+                      "\n                              Totale: € " +
+                        _vm._s(_vm.checkoutPrice()) +
+                        "\n                              "
+                    ),
+                    _c("button", { staticClass: "btn" }, [_vm._v("checkout")]),
+                  ]),
+                ]),
               ]),
             ]
           ),
