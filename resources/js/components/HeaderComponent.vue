@@ -43,8 +43,16 @@
 
                         <div class="cart">
                             <div v-for="(item, index) in cart" :key="index">
+                                <div class="dish-cart">
+                                    <div class="dish-img">
+                                        <img :src="item.cover" alt="">
+                                    </div>
+                                    <div class="definition">
+                                        <h4>{{item.name}}</h4>
+                                        <div>{{item.quantity}}</div>
+                                    </div>
 
-                                <p>{{item.name}}</p>
+                                </div>
 
                             </div>
                         </div>
@@ -61,7 +69,6 @@ export default {
     name: 'HeaderComponent',
     data() {
         return {
-
             activeModal: false,
 
         }
@@ -73,6 +80,12 @@ export default {
 
     methods: {
         openModal(){
+            // console.log('cart', this.cart)
+            // for (let i = 0; i<this.cart.length; i++){
+            //     if (this.cart.includes(this.cart[i])){
+            //         this.quantity += 1 
+            //     }
+            // }
             this.activeModal = true
         },
         closeModal(){
@@ -195,6 +208,9 @@ export default {
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s ease;
+                .dish-img{
+                    img{width: 25%;}
+                }
                 &.sp-show {
                     pointer-events: auto;
                     opacity: 1;
@@ -211,6 +227,7 @@ export default {
                         display: flex;
                         align-items: center;
                         gap: 1rem;
+                        margin-bottom: 1.5rem;
                         i{
                             font-size: 1.5rem;
                         }
