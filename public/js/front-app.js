@@ -8008,7 +8008,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  max-width: 1400px;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  padding: 4rem 0 2rem;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  width: 20rem;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}", ""]);
+exports.push([module.i, "#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  max-width: 1400px;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  padding: 4rem 0 2rem;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  align-items: center;\n  color: lightslategray;\n  width: 20rem;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}", ""]);
 
 // exports
 
@@ -40712,9 +40712,11 @@ var render = function () {
               on: { click: _vm.openModal },
             },
             [
-              _c("div", { staticClass: "number-cart" }, [
-                _c("span", [_vm._v(_vm._s(_vm.totalQuantity()))]),
-              ]),
+              _vm.totalQuantity() > 0
+                ? _c("div", { staticClass: "number-cart" }, [
+                    _c("span", [_vm._v(_vm._s(_vm.totalQuantity()))]),
+                  ])
+                : _vm._e(),
             ]
           ),
           _vm._v(" "),
@@ -41445,26 +41447,33 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "hero" } }, [
     _c("div", { staticClass: "container2" }, [
-      _c("div", { staticClass: "sx-text" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "search-bar" },
-          [
-            _c("router-link", { attrs: { to: { name: "restaurants" } } }, [
-              _c("button", { staticClass: "submit" }, [
-                _c("i", { staticClass: "fa-solid fa-magnifying-glass" }),
+      _c(
+        "div",
+        { staticClass: "sx-text" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "link-router",
+              attrs: { to: { name: "restaurants" } },
+            },
+            [
+              _c("div", { staticClass: "search-bar" }, [
+                _c("button", { staticClass: "submit" }, [
+                  _c("i", { staticClass: "fa-solid fa-magnifying-glass" }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input" }, [
+                  _vm._v("Vai alla ricerca ristoranti"),
+                ]),
               ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input" }, [
-                _vm._v("Vai alla ricerca ristoranti"),
-              ]),
-            ]),
-          ],
-          1
-        ),
-      ]),
+            ]
+          ),
+        ],
+        1
+      ),
     ]),
     _vm._v(" "),
     _c("svg", { staticClass: "wave" }, [

@@ -10,15 +10,15 @@
           <p class="lowercase">i ristoranti</p>
           <p class="uppercase">A UN CLICK</p>
         </div>
-        <div class="search-bar">
-          <router-link :to="{name:'restaurants'}">
-            <button class="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <div class="input">Vai alla ricerca ristoranti</div>
+          <router-link class="link-router" :to="{name:'restaurants'}">
+            <div class="search-bar">
+                <button class="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="input">Vai alla ricerca ristoranti</div>
+              <!-- <input v-model="inputSearch" type="text" class="input" placeholder="Search..."> -->
+            </div>
           </router-link>
-          <!-- <input v-model="inputSearch" type="text" class="input" placeholder="Search..."> -->
-        </div>
       </div>
     </div>
     <svg class="wave">
@@ -88,6 +88,9 @@ export default {
       color: $primary-color;
     }
   }
+  .link-router:hover{
+    text-decoration: none;
+  }
   .search-bar {
     width: fit-content;
       // margin-left: 10rem;
@@ -106,11 +109,17 @@ export default {
         }
       }
       .input {
+        display: flex;
+        align-items: center;
+        color: lightslategray;
         width: 20rem;
         font-size: 0.8rem;
         padding: 0 1rem;
         border: 0;
         background: transparent;
+        &:hover{
+          text-decoration: none;
+        }
         &::placeholder {
           font-size: 0.8rem;
           color: lightslategrey;

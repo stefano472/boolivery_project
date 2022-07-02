@@ -27,7 +27,7 @@
             </div>
             <div>
                 <i @click="openModal" class="cart fa-solid fa-cart-shopping">
-                    <div class="number-cart">
+                    <div v-if="totalQuantity()>0" class="number-cart">
                         <span>{{totalQuantity()}}</span>
                     </div>
                 </i>
