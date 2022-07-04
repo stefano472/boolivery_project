@@ -68,7 +68,10 @@
                         <div class="checkout">
                             <div class="total-price">
                                 Totale: &euro; {{checkoutPrice()}}
-                                <button class="btn">Checkout</button>
+                                <!-- <router-link class="btn" :to="{name: 'payment'}">Checkout</router-link> -->
+                                <a class="btn" href="payment">Checkout</a>
+                                <!-- <a class="btn" href="/order">Checkout</a> -->
+                                <!-- <button class="btn">Checkout</button> -->
                             </div>
                         </div>
                     </div>

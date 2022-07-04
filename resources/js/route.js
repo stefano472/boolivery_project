@@ -7,6 +7,8 @@ Vue.use(VueRouter);
 import Home from './pages/Home';
 import SingleRestaurant from './pages/SingleRestaurant';
 import RestaurantsList from './pages/RestaurantsList';
+import PaymentPage from './pages/PaymentPage';
+// import FilteredList from './pages/FilteredList';
 // import FilteredList from './pages/FilteredList';
 // import BlogComponent from './pages/BlogComponent';
 // import SingleBlogComponent from './pages/SingleBlogComponent';
@@ -33,11 +35,11 @@ const router = new VueRouter({
              name: 'restaurants',
              component: RestaurantsList
         },
-        // {
-        //     path: '/restaurants/:id',
-        //     name: 'restaurants',
-        //     component: FilteredList
-        // },
+        {
+            path: '/payment',
+            name: 'payment',
+            component: PaymentPage
+        },
         // {
         //     path: '/who-we-are',
         //     name: 'who-we-are',

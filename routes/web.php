@@ -31,6 +31,8 @@ Route::middleware('auth')
         Route::resource('/dishes', 'DishController');
     });
 
+Route::get('/order', 'OrderController@index')->name('order.index');
+
 Route::get('{any}', function(){
         return view('guests.home');
     })->where('any', '.*');
