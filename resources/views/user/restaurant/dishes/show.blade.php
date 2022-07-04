@@ -64,5 +64,5 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/backoffice.js') }}"></script>
+    <script src="{{ asset('js/show-dish.js') }}" defer></script>
 @endsection

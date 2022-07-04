@@ -8,7 +8,8 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}"
+                        onsubmit="return checkPassword()">
                         @csrf
 
                         <div class="form-group row">
@@ -59,6 +60,9 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                        </div>
+                        <div id="alert" class="alert alert-danger" style="display:none">
+                            Le due password devono essere uguali
                         </div>
 
                         <div class="form-group row mb-0">

@@ -2575,6 +2575,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CategoriesComponent',
   data: function data() {
@@ -7858,7 +7859,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "img[data-v-6abf503a] {\n  width: 98px;\n}\n.categories-list[data-v-6abf503a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 26px;\n       column-gap: 26px;\n  padding: 60px 86px;\n  background-color: #1e282f;\n}\n.categories-list .categories-cards[data-v-6abf503a] {\n  position: relative;\n}\n.categories-list .categories-cards p[data-v-6abf503a] {\n  display: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 600;\n  color: white;\n}\n.categories-list .categories-cards[data-v-6abf503a]:hover {\n  cursor: pointer;\n}\n.categories-list .categories-cards:hover p[data-v-6abf503a] {\n  display: block;\n}\n.categories-list .categories-cards:hover img[data-v-6abf503a] {\n  filter: opacity(0.5);\n}", ""]);
+exports.push([module.i, "img[data-v-6abf503a] {\n  width: 98px;\n}\n.categories-list[data-v-6abf503a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 26px;\n       column-gap: 26px;\n  padding: 60px 86px;\n  background-color: #1e282f;\n}\n.categories-list .categories-cards[data-v-6abf503a] {\n  position: relative;\n}\n.categories-list .categories-cards p[data-v-6abf503a] {\n  opacity: 0;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 600;\n  color: white;\n}\n.categories-list .categories-cards[data-v-6abf503a]:hover {\n  cursor: pointer;\n}\n.categories-list .categories-cards:hover p[data-v-6abf503a] {\n  opacity: 1;\n}\n.categories-list .categories-cards:hover img[data-v-6abf503a] {\n  filter: opacity(0.5);\n}", ""]);
 
 // exports
 
@@ -41089,16 +41090,23 @@ var render = function () {
     { staticClass: "categories-list" },
     _vm._l(_vm.categories.slice(0, 5), function (category, index) {
       return _c("div", { key: index, staticClass: "categories-cards" }, [
-        _c("img", {
-          attrs: { src: _vm.setUrlCategoryCover(category.img), alt: "" },
-          on: {
-            click: function ($event) {
-              return _vm.emitCategory(category.id)
+        _c(
+          "div",
+          {
+            on: {
+              click: function ($event) {
+                return _vm.emitCategory(category.id)
+              },
             },
           },
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(category.name))]),
+          [
+            _c("img", {
+              attrs: { src: _vm.setUrlCategoryCover(category.img), alt: "" },
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(category.name))]),
+          ]
+        ),
       ])
     }),
     0
@@ -59290,7 +59298,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\alegi\Desktop\Boolean Careers\mamp_path\boolivery\resources\js\front-app.js */"./resources/js/front-app.js");
+module.exports = __webpack_require__(/*! C:\Users\stefa\Desktop\Stefen\boolean\php\boolivery\resources\js\front-app.js */"./resources/js/front-app.js");
 
 
 /***/ })
