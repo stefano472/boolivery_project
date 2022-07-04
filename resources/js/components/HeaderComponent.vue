@@ -23,7 +23,7 @@
         </nav>
         <div class="cart-login">
             <div>
-                <a href="/login">accedi</a>
+                <a href="/login">Accedi</a>
             </div>
             <div>
                 <i @click="openModal" class="cart fa-solid fa-cart-shopping">
@@ -68,7 +68,7 @@
                         <div class="checkout">
                             <div class="total-price">
                                 Totale: &euro; {{checkoutPrice()}}
-                                <button class="btn">checkout</button>
+                                <button class="btn">Checkout</button>
                             </div>
                         </div>
                     </div>

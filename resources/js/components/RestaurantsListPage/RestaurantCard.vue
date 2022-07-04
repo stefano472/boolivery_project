@@ -1,8 +1,8 @@
 <template>
-   <div class="container">
+   <div class="restaurant-list">
      <div v-for="(restaurant, index) in restaurants" :key="index" class="restaurant-card">
 
-        <div class="foto">
+        <div class="foto" v-if="restaurant.cover">
             <img :src="'/storage/' + restaurant.cover" alt="Cover Ristorante" />
         </div>
         
@@ -39,9 +39,12 @@ mounted(){
 
 <style lang="scss" scoped>
 
-    .restaurant-card{
+    .restaurant-list{
+        max-height: 500px;
+        overflow-y: auto;
+        .restaurant-card{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         padding: 30px 20px;
         border-bottom: 1px solid gray;
         border-radius: 20px;
@@ -85,33 +88,38 @@ mounted(){
             }
         }
     }
+    }
+    
 
      @media screen and (max-width: 484px){
 
-     .restaurant-card{
-        flex-wrap: wrap;
-        //foto del piatto
-        .foto{
-            width: 100%;
-            margin-bottom: 17px;
-            img{
-                width: 100%;
-                border-radius: 20px;
+        .restaurant-list{
+            .restaurant-card{
+                flex-wrap: wrap;
+                //foto del piatto
+                .foto{
+                    width: 100%;
+                    margin-bottom: 17px;
+                    img{
+                        width: 100%;
+                        border-radius: 20px;
+                    }
+                }
+
+                // nome e descrizione del piatto
+                .name-description{
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .show-restaurant {
+                    align-items: center;
+                    
+                    
+                }
             }
         }
-
-        // nome e descrizione del piatto
-        .name-description{
-            width: 100%;
-            text-align: center;
-        }
-
-        .show-restaurant {
-            align-items: center;
-            
-            
-        }
-    }
+     
         
  }
 

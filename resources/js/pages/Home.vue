@@ -41,8 +41,8 @@ export default {
         
         window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
 
-            if (status === 200 && data.success) {
-                this.restaurants = data.results
+            if (status === 200) {
+                this.restaurants = data.response
             }
         }).catch(e => console.log(e))
 

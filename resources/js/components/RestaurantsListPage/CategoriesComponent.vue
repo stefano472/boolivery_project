@@ -1,6 +1,6 @@
 <template>
   <div class="categories-list">
-    <div v-for="(category, index) in categories.slice(0,5)" :key="index">
+    <div v-for="(category, index) in categories.slice(0,5)" :key="index" class="categories-cards">
       
         <img @click="emitCategory(category.id)" :src="setUrlCategoryCover(category.img)" alt="">
         <p>{{category.name}}</p>
@@ -79,6 +79,28 @@ img{
   column-gap: 26px;
   padding: 60px 86px;
   background-color: #1e282f;
+  .categories-cards{
+    position: relative;
+    
+    p{
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 600;
+      color: white;
+    }
+    &:hover{
+      cursor: pointer;
+      p{
+        display: block;
+      }
+      img{
+        filter: opacity(0.5);
+      }
+    }
+  }
 }
 
 </style>

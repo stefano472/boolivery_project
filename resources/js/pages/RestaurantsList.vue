@@ -14,7 +14,7 @@
     </div> -->
 
     <!-- Lista dei filtri -->
-    <FilterComponents :restaurants="filteredRestaurants"/>
+    <FilterComponents :restaurants="filteredRestaurants" @categorySelected='categorySelected'/>
   </div>
 </template>
 
@@ -49,26 +49,6 @@ export default {
 
       },
 
-    // axiosCall() {
-    //   const id = this.$route.params.id;
-
-    //   console.log(id);
-
-    //   window.axios
-    //     .get('http://127.0.0.1:8000/api/restaurants/' + id)
-    //     .then(({status, data}) => {
-
-          
-    //       if (status === 200 && data.success) {
-            
-    //             this.arrayRestaurants = data.results
-
-    //             console.log(this.arrayRestaurants);
-    //         }
-
-    //     })
-    //     .catch((e) => console.log(e));
-    // },
     chiamataAxios() {
       window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
     
@@ -99,16 +79,6 @@ export default {
             }).catch(e => console.log(e))        
     },
 
-    // computed: {
-    // filteredProducts(){
-        
-    //     return this.products.filter((product) => {
-
-    //         return product.categories.filter((category) => { 
-    //             return category.id === this.selectedCategory; 
-    //          }).length > 0;
-    //     }
-    // },
 }
 
 </script>
