@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Categorie -->
-    <CategoriesComponent />
+    <CategoriesComponent @categorySelected='categorySelected' />
 
     <!-- SearchBar per i filtri -->
     <!-- <div class="search-bar">
@@ -14,7 +14,7 @@
     </div> -->
 
     <!-- Lista dei filtri -->
-    <FilterComponents :restaurants="restaurants"/>
+    <FilterComponents :restaurants="filteredRestaurants"/>
   </div>
 </template>
 
@@ -35,46 +35,68 @@ export default {
         return {
             restaurants: [],
 
-            //inputSearch: '',
+            filteredRestaurants : [],
+
+            categoryFilter: '',
         }
         
     },
 
     methods:{
+      categorySelected(categoryId){
+        this.categoryFilter = categoryId,
+        this.chiamataAxios()
 
-    axiosCall() {
-      const id = this.$route.params.id;
+      },
 
-      console.log(id);
+    // axiosCall() {
+    //   const id = this.$route.params.id;
 
-      window.axios
-        .get('http://127.0.0.1:8000/api/restaurants/' + id)
-        .then(({status, data}) => {
+    //   console.log(id);
+
+    //   window.axios
+    //     .get('http://127.0.0.1:8000/api/restaurants/' + id)
+    //     .then(({status, data}) => {
 
           
-          if (status === 200 && data.success) {
+    //       if (status === 200 && data.success) {
             
-                this.arrayRestaurants = data.results
+    //             this.arrayRestaurants = data.results
 
-                console.log(this.arrayRestaurants);
-            }
+    //             console.log(this.arrayRestaurants);
+    //         }
 
-        })
-        .catch((e) => console.log(e));
-    },
+    //     })
+    //     .catch((e) => console.log(e));
+    // },
+    chiamataAxios() {
+      window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
+    
+                if (status === 200) {
+                  this.restaurants = data.response
+                  this.filteredRestaurants= [],
+                  console.log('dati', data)
+                  this.restaurants.forEach(restaurant => {
+                    restaurant.categories.forEach(category => {
+                      if(category.id === this.categoryFilter){
+                        this.filteredRestaurants.push(restaurant)
+                      }
+                    })
+                  });
+                      console.log ('filtered rest', this.filteredRestaurants)
+                }
+            }).catch(e => console.log(e))   
+    }
   },
 
     mounted(){
-        
-        window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
-
-            if (status === 200 && data.success) {
-                this.restaurants = data.results
-            }
-        }).catch(e => console.log(e))
-
-        // this.axiosCall();
-
+            window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
+    
+                if (status === 200) {
+                  console.log('dati', data)
+                    this.filteredRestaurants = data.response
+                }
+            }).catch(e => console.log(e))        
     },
 
     // computed: {

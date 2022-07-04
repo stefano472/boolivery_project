@@ -30,6 +30,9 @@ name: 'RestaurantCard',
 
 props:{
     restaurants: Array, 
+}, 
+mounted(){
+    console.log('restaurant card', this.restaurants)
 }
 }
 </script>

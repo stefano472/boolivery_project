@@ -19,15 +19,16 @@ class RestaurantController extends Controller
     {
         //
 
-        $restaurants = Restaurant::all();
+        // $restaurants = Restaurant::all();
 
-        $result = [
-            "results" => $restaurants,
-            "success" => true,
-        ];
+        // $result = [
+        //     "results" => $restaurants,
+        //     "success" => true,
+        // ];
 
 
-        return response()->json($result);
+        return response()->json(['response' => Restaurant::with('categories')->get()]);
+        // return response()->json(['response' => Restaurant::with('categories')->where('id', $id)->get()]);
         
 
         
@@ -35,7 +36,7 @@ class RestaurantController extends Controller
 
     public function filtered($id)
     {
-        return response()->json(['response' => Category::with('restaurants')->where('id', $id)->get()]);
+        return response()->json(['response' => Restaurant::with('categories')->where('id', $id)->get()]);
     }
 
     public function dishes($id)

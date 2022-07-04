@@ -42,7 +42,7 @@ export default {
         .get('http://127.0.0.1:8000/api/restaurant/dishes/' + this.$route.params.id)
         .then(({status, data}) => {
 
-          console.log( 'data: ', data)
+          console.log( 'data dishes: ', data)
           if (status === 200) {
             
                 this.dishes = data.response

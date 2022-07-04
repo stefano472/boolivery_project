@@ -1,10 +1,9 @@
 <template>
   <div class="categories-list">
     <div v-for="(category, index) in categories.slice(0,5)" :key="index">
-      <a :href="setUrlFilters(category.id)">
-        <img :src="setUrlCategoryCover(category.img)" alt="">
+      
+        <img @click="emitCategory(category.id)" :src="setUrlCategoryCover(category.img)" alt="">
         <p>{{category.name}}</p>
-      </a>
     
       
     
@@ -20,6 +19,7 @@ export default {
   data(){
 
         return {
+            category: '',
             categories: [],
 
             arrayRestaurants: [],
@@ -29,14 +29,16 @@ export default {
 
   methods:{
 
-
-      setUrlFilters(index){
-
-        const url = 'http://127.0.0.1:8000/restaurants/' + index;
-
-        return url;
-
+      emitCategory(idCategory){
+        this.$emit('categorySelected', idCategory)
       },
+      // setUrlFilters(index){
+
+      //   const url = 'http://127.0.0.1:8000/restaurants/' + index;
+
+      //   return url;
+
+      // },
 
       setUrlCategoryCover(cover){
 
@@ -59,7 +61,8 @@ export default {
 
         // this.axiosCall();
         
- }
+ },
+
 }
 </script>
 
