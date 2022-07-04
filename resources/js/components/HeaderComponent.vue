@@ -325,8 +325,8 @@ export default {
                     .checkout{
                         flex-grow: 1;
                         display: flex;
-                        justify-content: end;
-                        align-items: end;
+                        justify-content: flex-end;
+                        align-items: flex-end;
                     }
                     .total-price{
                         font-size: 1.2rem;

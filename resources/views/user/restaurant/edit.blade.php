@@ -63,7 +63,7 @@
 
             <label for="tax_id">Partita IVA *</label>
             <br>
-            <input type="text" name="tax_id" placeholder="partita iva"
+            <input type="number" name="tax_id" placeholder="partita iva"
                 value="{{ old('tax_id', $restaurant->tax_id) }}"
                 class="form-control @error('tax_id') is-invalid @enderror" required>
 
@@ -77,7 +77,7 @@
 
             <label for="phone_number">Numero di telefono *</label>
             <br>
-            <input type="tel" name="phone_number" placeholder="..."
+            <input type="number" name="phone_number" placeholder="..."
                 value="{{ old('phone_number', $restaurant->phone_number) }}"
                 class="form-control @error('phone_number') is-invalid @enderror" required>
 
@@ -116,6 +116,8 @@
         </div>
         <div class="input-box mb-2">
 
+            
+
             <label for="cover">Copertina ristorante</label>
             <br>
             <input type="file" name="cover">
@@ -124,6 +126,31 @@
             @error('cover')
                 <p class="error">{{ $message }}</p>
             @enderror
+
+            @if ($restaurant->cover)
+
+                <div class="mb-1">
+
+                        Immagine corrente
+
+                    <div>
+
+                        {{-- <img src="{{$dish->cover}}" class="w-25"> --}}
+                        <img src="{{ asset('storage/' . $restaurant->cover)}}" class="w-25">
+
+                    </div>
+
+                </div>
+
+            @else
+
+                    <div class="mb-3">
+
+                        <p>Nessuna immagine inserita</p>
+
+                    </div>
+
+            @endif
 
         </div>
         <div class="input-box mb-2">

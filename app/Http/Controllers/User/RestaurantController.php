@@ -23,7 +23,7 @@ class RestaurantController extends Controller
         //
         $id = Auth::id();
         $user = User::find($id);
-        $restaurant = Restaurant::all();
+        $restaurant = Restaurant::find($id);
         $categories = Category::all();
 
         return view('user.restaurant.index', compact('restaurant','id','categories', 'user'));
@@ -93,7 +93,7 @@ class RestaurantController extends Controller
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($restaurantData);
 
-        // $newRestaurant->id = $id;
+        $newRestaurant->id = $id;
         $newRestaurant->user_id = $id;
         $newRestaurant->save();
 

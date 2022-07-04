@@ -111,7 +111,7 @@
 
             <label for="tax_id">Partita IVA *</label>
             <br>
-            <input type="text" name="tax_id" placeholder="partita iva"
+            <input type="number" name="tax_id" placeholder="partita iva"
                 value="{{ old('tax_id')}}"
                 class="form-control @error('tax_id') is-invalid @enderror" required>
 
@@ -125,7 +125,7 @@
 
             <label for="phone_number">Numero di telefono *</label>
             <br>
-            <input type="tel" name="phone_number" placeholder="..."
+            <input type="number" name="phone_number" placeholder="..."
                 value="{{ old('phone_number')}}"
                 class="form-control @error('phone_number') is-invalid @enderror" required>
 

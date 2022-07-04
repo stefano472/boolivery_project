@@ -3,7 +3,7 @@
      <div v-for="(restaurant, index) in restaurants" :key="index" class="restaurant-card">
 
         <div class="foto">
-            <img :src="restaurant.cover" alt="Cover Ristorante" />
+            <img :src="'/storage/' + restaurant.cover" alt="Cover Ristorante" />
         </div>
         
         <div class="name-description">

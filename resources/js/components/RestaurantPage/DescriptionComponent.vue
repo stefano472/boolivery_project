@@ -9,7 +9,7 @@
 
     <div class="description-cover">
       <img
-        :src="restaurant.cover"
+        :src="'/storage/' + restaurant.cover"
         alt=""
       />
     </div>
