@@ -68,10 +68,11 @@
                         <div class="checkout">
                             <div class="total-price">
                                 Totale: &euro; {{checkoutPrice()}}
-                                <!-- <router-link class="btn" :to="{name: 'payment'}">Checkout</router-link> -->
-                                <a class="btn" href="payment">Checkout</a>
+                                <!-- <router-link v-if="checkoutPrice()>0" class="btn" :to="{name: 'payment', params: 1}">Checkout</router-link> -->
+                                <router-link v-if="checkoutPrice()>0" class="btn" :to="{name: 'payment'}">Checkout</router-link>
+                                <!-- <a v-if="checkoutPrice()>0" class="btn" href="payment">Checkout</a> -->
                                 <!-- <a class="btn" href="/order">Checkout</a> -->
-                                <!-- <button class="btn">Checkout</button> -->
+                                <button v-else class="btn">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -97,6 +98,10 @@ export default {
     },
 
     methods: {
+        // getPaymentUrl(cart){
+        //     const url = '/payment/' + cart[0].id
+        //     return url
+        // },
         removeItem(index){
 
             this.cart.splice(index, 1)

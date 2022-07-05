@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Dish;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class DishController extends Controller
@@ -16,6 +17,14 @@ class DishController extends Controller
     public function index()
     {
         //
+        $dishes = Dish::All();
+
+        $result = [
+            "results" => $dishes,
+            "success" => true,
+        ];
+
+        return response()->json($result);
     }
 
     /**

@@ -26,6 +26,8 @@ Route::get('/restaurant/{id}', 'Api\RestaurantController@show')->name('restauran
 
 Route::get('/restaurant/dishes/{id}', 'Api\RestaurantController@dishes')->name('restaurants.dishes');
 
+Route::get('/dishes', 'Api\DishController@index')->name('dishes.index');
+
 Route::get('/categories', 'Api\CategoryController@index')->name('category.index');
 
 // Api pagamenti

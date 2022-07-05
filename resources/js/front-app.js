@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require("./braintree");
 window.axios = require('axios');
 window.Vue = require('vue');
 

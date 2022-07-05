@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <HeaderComponent :cart="cart"/>
+  <div v-if="this.$root._route.name === 'payment'">
+    <router-view @addToCart="addToCart" :cart='cart'/>
+  </div>
+  <div v-else>
+    <HeaderComponent :cart="cart" />
     <div id="modal-container-app" :class="activeModalApp ? 'sp-show' : ''">
         <div class="sp-modal">
             <!-- <button id='closeModal' @click="closeModal" type="button">X</button> -->
@@ -11,11 +14,13 @@
             </div>
         </div>
     </div>
-    <router-view @addToCart="addToCart"/>
+    <router-view @addToCart="addToCart" :cart='cart'/>
     <!-- oppure 
+    
     <router-view></router-view> -->
-    <SocialComponent/>
-    <FooterComponent/>
+    <!-- {{this.$router}} -->
+    <SocialComponent />
+    <FooterComponent />
    
   </div>
 </template>
@@ -48,12 +53,15 @@ export default {
     },
 
     methods:{
-        openModal(){
-            this.activeModalApp = true
-        },
-        closeModal(){
-            this.activeModalApp = false
-        },
+      remove(){
+        this.activeComponent = false
+      },
+      openModal(){
+          this.activeModalApp = true
+      },
+      closeModal(){
+          this.activeModalApp = false
+      },
       addToCart(dish){
         // console.log('AppVue emitted', dish.restaurant_id );
             // console.log('cart', this.cart)
@@ -102,7 +110,7 @@ export default {
 
     mounted(){
 
-     
+     console.log('console', this.$root._route.name)
       if (localStorage.cart) {
         this.cart = JSON.parse(localStorage.cart);
       }else{

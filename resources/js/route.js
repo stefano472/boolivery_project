@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 import Home from './pages/Home';
 import SingleRestaurant from './pages/SingleRestaurant';
 import RestaurantsList from './pages/RestaurantsList';
-import PaymentPage from './pages/PaymentPage';
+import PaymentPage from './pages/checkout/PaymentPage';
 // import FilteredList from './pages/FilteredList';
 // import FilteredList from './pages/FilteredList';
 // import BlogComponent from './pages/BlogComponent';
