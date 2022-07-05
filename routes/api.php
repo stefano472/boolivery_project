@@ -28,3 +28,10 @@ Route::get('/restaurant/dishes/{id}', 'Api\RestaurantController@dishes')->name('
 
 Route::get('/categories', 'Api\CategoryController@index')->name('category.index');
 
+// Api pagamenti
+
+Route::get('orders/generate', 'Api\OrderController@generate')->name('order.generate');
+
+Route::post('orders/make/payment', 'OrderController@makePayment')->name('order.makepayment');
+
+
