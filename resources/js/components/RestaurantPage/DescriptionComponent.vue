@@ -3,15 +3,12 @@
     <div class="about-us">
       <h2>ABOUT US</h2>
       <p>
-        {{restaurant.description}}
+        {{ restaurant.description }}
       </p>
     </div>
 
     <div class="description-cover">
-      <img
-        :src="'/storage/' + restaurant.cover"
-        alt=""
-      />
+      <img :src="'/storage/' + restaurant.cover" alt="" />
     </div>
   </div>
 </template>
@@ -20,9 +17,9 @@
 export default {
   name: "DescriptionComponent",
 
-  props:{
+  props: {
     restaurant: Object,
-  }
+  },
 };
 </script>
 
@@ -47,6 +44,7 @@ export default {
     margin-left: 50px;
     img {
       width: 400px;
+      border-radius: 20px;
     }
   }
 }

@@ -1,89 +1,116 @@
 <template>
-   <div class="container">
-
+  <div class="container">
     <div class="other-categories-list">
-        <h2> Categorie </h2>
-        
-        <div v-for="(category, index) in categories" :key="index" @click="emitCategory(category.id)">
-
-            <p>{{category.name}}</p>
-
+      <h4>CATEGORIE</h4>
+      <div class="categories">
+        <div
+          class="category"
+          v-for="(category, index) in categories"
+          :key="index"
+          @click="emitCategory(category.id)"
+        >
+          <p>{{ category.name }}</p>
         </div>
+      </div>
     </div>
-
 
     <div class="restaurants-list">
-        <h1>Ristoranti</h1>
-        <RestaurantCard :restaurants="restaurants"/>
+      <h1>RISTORANTI</h1>
+      <RestaurantCard :restaurants="restaurants" />
     </div>
-     
   </div>
 </template>
 
 <script>
-
-import RestaurantCard from './RestaurantCard.vue'
+import RestaurantCard from "./RestaurantCard.vue";
 export default {
-name: 'FilterComponent',
+  name: "FilterComponent",
 
-data(){
+  data() {
     return {
-        categories: '',
-    }
-},
+      categories: "",
+    };
+  },
 
-methods:{
-    emitCategory(idCategory){
-        this.$emit('categorySelected', idCategory)
+  methods: {
+    emitCategory(idCategory) {
+      this.$emit("categorySelected", idCategory);
     },
-},
+  },
 
-mounted(){
-    window.axios.get('http://127.0.0.1:8000/api/categories').then(({status, data})=> {
+  mounted() {
+    window.axios
+      .get("http://127.0.0.1:8000/api/categories")
+      .then(({ status, data }) => {
+        if (status === 200 && data.success) {
+          this.categories = data.results;
+        }
+      })
+      .catch((e) => console.log(e));
 
-            if (status === 200 && data.success) {
-                this.categories = data.results
-            }
-        }).catch(e => console.log(e));
+    // this.axiosCall();
+  },
 
-        // this.axiosCall();
-        
- },
+  components: {
+    RestaurantCard,
+  },
 
-components:{
-    RestaurantCard
-},
-
-props:{
-    restaurants: Array, 
-}
-}
+  props: {
+    restaurants: Array,
+  },
+};
 </script>
 
 <style scoped lang="scss">
-
-.container{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 70px;
-    margin-bottom: 70px;
-    .other-categories-list{
-        h2{
-            margin-bottom: 36px;
-        }
-
-        div{
-            p{
-                width: 50%;
-                color: #38A3A5;
-                &:hover{
-                    cursor: pointer;
-                    border-bottom: 1px solid #38A3A5;
-                    border-radius: 5px;
-                }
-            }
-        }
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  .other-categories-list {
+    h2 {
+      margin-bottom: 36px;
     }
+    .category {
+      p {
+        width: 50%;
+        margin-bottom: 0.3rem;
+        color: #38a3a5;
+        &:hover {
+          cursor: pointer;
+          border-bottom: 1px solid #38a3a5;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  .restaurants-list {
+    margin-left: 80px;
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
 }
 
+@media screen and (max-width: 495px) {
+  .container {
+    flex-direction: column;
+    .other-categories-list {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 30px;
+      .categories {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .category {
+          margin: 15px;
+        }
+      }
+    }
+    .restaurants-list {
+      margin: 0;
+    }
+  }
+}
 </style>
