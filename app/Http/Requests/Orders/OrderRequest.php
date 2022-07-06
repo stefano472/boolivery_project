@@ -4,8 +4,8 @@ namespace App\Http\Requests\Orders;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-use App\Http\Requests\Orders\ValidDish;
-use App\Rules\ValidDish as RulesValidDish;
+// use App\Http\Requests\Orders\ValidDish;
+// use App\Rules\ValidDish as RulesValidDish;
 
 class OrderRequest extends FormRequest
 {
@@ -29,12 +29,12 @@ class OrderRequest extends FormRequest
         return [
 			
 			'token' => 'required',
-
-			'dish' => [
-                'required',
+            'amount' => 'required',
+			// 'dish' => [
+            //     'required',
                 
-                new RulesValidDish
-            ],
+            //     new RulesValidDish
+            // ],
 		];
     }
 }

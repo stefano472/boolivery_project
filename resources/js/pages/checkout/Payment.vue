@@ -5,12 +5,12 @@
         @success="onSuccess"
         @error="onError"
     >
-    <template #button="slotProps">
+    <!-- <template #button="slotProps">
       <div class="text-center" @click="slotProps.submit">
         <button type="button" id="btn_pay" class="w-75 btn option-btn">Paga</button>
-       <!-- <router-link class="btn back_to_home d-none" id="back_to_home" :to="{ name: 'main'}">Torna alla Home</router-link> -->
+       <router-link class="btn back_to_home d-none" id="back_to_home" :to="{ name: 'main'}">Torna alla Home</router-link>
       </div>
-    </template>
+    </template> -->
     </v-braintree>
   </div>
 </template>
@@ -43,7 +43,7 @@ export default {
         
        // dataShared.loaded = true;
       })
-      .catch(function (error) {});
+      .catch(e => console.log(e));
   },
   methods: {
     checkoutPrice(){
@@ -53,50 +53,71 @@ export default {
         });
         return total.toFixed(2);
     },
-    pay(dataPayment){
-      axios.post('../api/payment/' , this.formData)
-              .then((response) => {
-          // handle success
-              console.log(dataPayment,'si è qui');
-              console.log(dataPayment.data.transaction,'si è qui22');
-              if(response.data.status){
-                localStorage.setItem('storedData1', null);
-                localStorage.setItem('storedData2', null);
-                localStorage.setItem('storedData3', null);
-                console.log(this.user);
-                setTimeout(() => {
-                  this.$router.push({
-                    name: 'SuccessPayment', 
-                    params: { user: this.user , cart: this.cart , tot: this.tot , transaction:dataPayment.data.transaction}
-                  });
-                }, 1000);
-              }
-          });
-    },
+    // pay(dataPayment){
+    //   axios.post('../api/payment/' , this.formData)
+    //           .then((response) => {
+    //       // handle success
+    //           console.log(dataPayment,'si è qui');
+    //           console.log(dataPayment.data.transaction,'si è qui22');
+    //           if(response.data.status){
+    //             localStorage.setItem('storedData1', null);
+    //             localStorage.setItem('storedData2', null);
+    //             localStorage.setItem('storedData3', null);
+    //             console.log(this.user);
+    //             setTimeout(() => {
+    //               this.$router.push({
+    //                 name: 'SuccessPayment', 
+    //                 params: { user: this.user , cart: this.cart , tot: this.tot , transaction:dataPayment.data.transaction}
+    //               });
+    //             }, 1000);
+    //           }
+    //       });
+    // },
     onSuccess (payload) {
-      this.$emit('payload' , true);
       let nonce = payload.nonce;
-      this.formData.tokenClient = nonce;
-      axios
-        .post("../api/order/make/payment" , this.formData)
-        .then((response) => {
-          console.log(response.data, 'dopo pagamento');
-          if(response.data.success){
-            this.pay(response.data);
-           /* document.getElementById("btn_pay").classList.add("d-none");
-            document.getElementById("back_to_home").classList.remove("d-none");
-            document.getElementById("back_to_home").classList.add("d-flex");*/
-          }
-          else{
-            this.$emit('payload' , false);
-            console.log('NON PAGATO');
+      console.log(nonce)
+      window.axios
+        // .post("http://localhost:8000/api/orders/make/payment" , this.formData)
+        .post("http://127.0.0.1:8000/api/orders/make/payment", {}, {
+            params: {
+              'token': nonce,
+              'amount': this.checkoutPrice(),
+              
             }
-       //   self.clearCart();
-         // self.redirect();
+          }
+      )
+        .then((response) => {
+          // console.log('nonce', nonce)
+          console.log(response, 'response dopo pagamento');
         })
-        .catch(function (error) {});
-      // Do something great with the nonce...
+        .catch( e => console.log(e));
     },
+    // onSuccess (payload) {
+    //   this.$emit('payload' , true);
+    //   // let nonce = payload.nonce;
+    //   // this.formData.tokenClient = nonce;
+    //   window.axios
+    //     // .post("http://localhost:8000/api/orders/make/payment" , this.formData)
+    //     .post("http://127.0.0.1:8000/api/orders/make/payment")
+    //     .then((response) => {
+    //       // console.log('nonce', nonce)
+    //       console.log(response.data, 'dopo pagamento');
+    //       if(response.data.success){
+    //         this.pay(response.data);
+    //        /* document.getElementById("btn_pay").classList.add("d-none");
+    //         document.getElementById("back_to_home").classList.remove("d-none");
+    //         document.getElementById("back_to_home").classList.add("d-flex");*/
+    //       }
+    //       else{
+    //         this.$emit('payload' , false);
+    //         console.log('NON PAGATO');
+    //         }
+    //    //   self.clearCart();
+    //      // self.redirect();
+    //     })
+    //     .catch(function (error) {});
+    //   // Do something great with the nonce...
+    // },
     onError (error) {
       let message = error.message;
       // Whoops, an error has occured while trying to get the nonce

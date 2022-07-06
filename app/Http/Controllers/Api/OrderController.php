@@ -28,21 +28,15 @@ class OrderController extends Controller
 
 	public function makePayment(OrderRequest $request, Gateway $gateway){
 
-        $dish = Dish::find($request->dish);
-
-        $result = $gateway->transaction->sale([
-	
-            "amount" => $dish->price,
-    
-            "paymentMethodNonce" => $request->token,
-    
-            "options" => [
-            
-                "submitForSettlement "=> true
+        // $dish = Dish::find($request->dish);
+        // return 'make payment';
+        $result = $gateway->transaction()->sale([
+            'amount' => $request->amount,
+            'paymentMethodNonce' => $request->token,
+            'options' => [
+                'submitForSettlement' => true
             ]
-    
-        
-            ]);
+        ]);
 
             if($result->success){
 
@@ -62,7 +56,7 @@ class OrderController extends Controller
                 
                     'success' => false,
             
-                    'message' => 'Transazione errata'
+                    'message' => 'Transazione fallita'
                 
                 ];
                 

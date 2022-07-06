@@ -100,13 +100,13 @@ export default {
   //   // this.form.product = this.$route.params.id
   // },
   methods: {
-        checkoutPrice(){
-            let total = 0;
-            this.cart.forEach(dish => {
-                total += (dish.price * dish.quantity)              
-            });
-            return total.toFixed(2);
-        },
+    checkoutPrice(){
+        let total = 0;
+        this.cart.forEach(dish => {
+            total += (dish.price * dish.quantity)              
+        });
+        return total.toFixed(2);
+    },
     handleLoading () {
       this.disableBuyButton = false
     },

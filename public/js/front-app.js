@@ -3396,7 +3396,9 @@ __webpack_require__.r(__webpack_exports__);
       setTimeout(function () {
         _this.$emit('tokenReady');
       }, 1000); // dataShared.loaded = true;
-    })["catch"](function (error) {});
+    })["catch"](function (e) {
+      return console.log(e);
+    });
   },
   methods: {
     checkoutPrice: function checkoutPrice() {
@@ -3406,57 +3408,68 @@ __webpack_require__.r(__webpack_exports__);
       });
       return total.toFixed(2);
     },
-    pay: function pay(dataPayment) {
-      var _this2 = this;
-
-      axios.post('../api/payment/', this.formData).then(function (response) {
-        // handle success
-        console.log(dataPayment, 'si è qui');
-        console.log(dataPayment.data.transaction, 'si è qui22');
-
-        if (response.data.status) {
-          localStorage.setItem('storedData1', null);
-          localStorage.setItem('storedData2', null);
-          localStorage.setItem('storedData3', null);
-          console.log(_this2.user);
-          setTimeout(function () {
-            _this2.$router.push({
-              name: 'SuccessPayment',
-              params: {
-                user: _this2.user,
-                cart: _this2.cart,
-                tot: _this2.tot,
-                transaction: dataPayment.data.transaction
-              }
-            });
-          }, 1000);
+    // pay(dataPayment){
+    //   axios.post('../api/payment/' , this.formData)
+    //           .then((response) => {
+    //       // handle success
+    //           console.log(dataPayment,'si è qui');
+    //           console.log(dataPayment.data.transaction,'si è qui22');
+    //           if(response.data.status){
+    //             localStorage.setItem('storedData1', null);
+    //             localStorage.setItem('storedData2', null);
+    //             localStorage.setItem('storedData3', null);
+    //             console.log(this.user);
+    //             setTimeout(() => {
+    //               this.$router.push({
+    //                 name: 'SuccessPayment', 
+    //                 params: { user: this.user , cart: this.cart , tot: this.tot , transaction:dataPayment.data.transaction}
+    //               });
+    //             }, 1000);
+    //           }
+    //       });
+    // },
+    onSuccess: function onSuccess(payload) {
+      var nonce = payload.nonce;
+      console.log(nonce);
+      window.axios // .post("http://localhost:8000/api/orders/make/payment" , this.formData)
+      .post("http://127.0.0.1:8000/api/orders/make/payment", {}, {
+        params: {
+          'token': nonce,
+          'amount': this.checkoutPrice()
         }
+      }).then(function (response) {
+        // console.log('nonce', nonce)
+        console.log(response, 'response dopo pagamento');
+      })["catch"](function (e) {
+        return console.log(e);
       });
     },
-    onSuccess: function onSuccess(payload) {
-      var _this3 = this;
-
-      this.$emit('payload', true);
-      var nonce = payload.nonce;
-      this.formData.tokenClient = nonce;
-      axios.post("../api/order/make/payment", this.formData).then(function (response) {
-        console.log(response.data, 'dopo pagamento');
-
-        if (response.data.success) {
-          _this3.pay(response.data);
-          /* document.getElementById("btn_pay").classList.add("d-none");
-           document.getElementById("back_to_home").classList.remove("d-none");
-           document.getElementById("back_to_home").classList.add("d-flex");*/
-
-        } else {
-          _this3.$emit('payload', false);
-
-          console.log('NON PAGATO');
-        } //   self.clearCart();
-        // self.redirect();
-
-      })["catch"](function (error) {}); // Do something great with the nonce...
-    },
+    // onSuccess (payload) {
+    //   this.$emit('payload' , true);
+    //   // let nonce = payload.nonce;
+    //   // this.formData.tokenClient = nonce;
+    //   window.axios
+    //     // .post("http://localhost:8000/api/orders/make/payment" , this.formData)
+    //     .post("http://127.0.0.1:8000/api/orders/make/payment")
+    //     .then((response) => {
+    //       // console.log('nonce', nonce)
+    //       console.log(response.data, 'dopo pagamento');
+    //       if(response.data.success){
+    //         this.pay(response.data);
+    //        /* document.getElementById("btn_pay").classList.add("d-none");
+    //         document.getElementById("back_to_home").classList.remove("d-none");
+    //         document.getElementById("back_to_home").classList.add("d-flex");*/
+    //       }
+    //       else{
+    //         this.$emit('payload' , false);
+    //         console.log('NON PAGATO');
+    //         }
+    //    //   self.clearCart();
+    //      // self.redirect();
+    //     })
+    //     .catch(function (error) {});
+    //   // Do something great with the nonce...
+    // },
     onError: function onError(error) {
       var message = error.message; // Whoops, an error has occured while trying to get the nonce
 
@@ -67082,37 +67095,6 @@ var render = function () {
           _c("v-braintree", {
             attrs: { authorization: _vm.Token },
             on: { success: _vm.onSuccess, error: _vm.onError },
-            scopedSlots: _vm._u(
-              [
-                {
-                  key: "button",
-                  fn: function (slotProps) {
-                    return [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-center",
-                          on: { click: slotProps.submit },
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "w-75 btn option-btn",
-                              attrs: { type: "button", id: "btn_pay" },
-                            },
-                            [_vm._v("Paga")]
-                          ),
-                        ]
-                      ),
-                    ]
-                  },
-                },
-              ],
-              null,
-              false,
-              2197799999
-            ),
           }),
         ],
         1

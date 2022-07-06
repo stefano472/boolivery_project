@@ -32,8 +32,10 @@ Route::get('/categories', 'Api\CategoryController@index')->name('category.index'
 
 // Api pagamenti
 
-Route::get('orders/generate', 'Api\OrderController@generate')->name('order.generate');
+// Route::get('orders/generate', 'Api\OrderController@generate')->name('order.generate');
+Route::get('orders/generate', 'Api\OrderController@generate');
 
-Route::post('orders/make/payment', 'OrderController@makePayment')->name('order.makepayment');
+// Route::post('orders/make/payment', 'Api\OrderController@makePayment')->name('order.makepayment');
+Route::post('orders/make/payment', 'Api\OrderController@makePayment');
 
 

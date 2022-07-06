@@ -31,9 +31,9 @@ class AppServiceProvider extends ServiceProvider
                 [
 
                     "environment" => "sandbox",
-                    "merchantId" => "5g4rfj9gbccj9dpv",
-                    "publicKey" => "phwz8ryrqdttmpv5",
-                    "privateKey" => "b5cbc159fbee882aa248ceb7f6e2286b"
+                    "merchantId" => "zf5jh2r682tx82mq",
+                    "publicKey" => "t6zcryh5ttftftv8",
+                    "privateKey" => "87e5fe35df8b56db67f5fd7dfd9e32b4"
         
                 ]
                 
