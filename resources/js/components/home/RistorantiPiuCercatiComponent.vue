@@ -17,7 +17,7 @@
                         <h6 class="name-restaurant">{{restaurant.name}}</h6>
                         <p class="description">{{restaurant.motto}}</p>
                         <!-- <p class="tipology">Tipologia ristorante</p> -->
-                        <router-link :to="{name: 'restaurant', params: {...restaurant}}">Vai al ristorante</router-link> 
+                        <router-link :to="{name: 'restaurant', params: {...restaurant}}">Vai al ristorante</router-link>
                     </div>
                 </div>
             </div>
@@ -43,6 +43,7 @@ export default {
 @import 'resources/sass/variables';
 .out-container{
     background-color: $brand-color;
+    font-family: 'Epilogue', sans-serif;
 
 }
 #sm-container{
@@ -59,6 +60,12 @@ export default {
         flex-direction: column;
         align-items: center;
         padding: 30px 0;
+        h2{
+            font-size: 2.5rem;
+        }
+        h5{
+            font-size: 1.8rem;
+        }
         }
         .block{
             display: flex;
@@ -111,5 +118,90 @@ export default {
             cursor: pointer;
         }
 }
+
+ @media screen and (max-width: 992px){
+.out-container{
+        margin-inline: auto;
+        max-width: 992px;
+        #sm-container{
+            .most-want{
+            width: 100%;
+            min-height: 500px;
+            padding-bottom: 20px;
+            }
+            .main-titles{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            h2{
+                font-size: 2.2rem;
+            }
+            h5{
+                font-size: 1.6rem;
+            }
+            }
+ }
+}}
+
+@media screen and (max-width: 768px){
+.out-container{
+        margin-inline: auto;
+        max-width: 768px;
+        #sm-container{
+            .most-want{
+            width: 100%;
+            min-height: 500px;
+            padding-bottom: 20px;
+            }
+            .main-titles{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            h2{
+                font-size: 2rem;
+            }
+            h5{
+                font-size: 1.5rem;
+            }
+            }
+ }
+}}
+
+@media screen and (max-width: 576px){
+.out-container{
+        margin-inline: auto;
+        max-width: 576px;
+        #sm-container{
+            .most-want{
+            width: 100%;
+            min-height: 500px;
+            padding-bottom: 20px;
+            }
+            .main-titles{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            h2{
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            h5{
+                font-size: 1.4rem;
+            }
+            }
+            .add-padd{
+                padding: 30px;
+                width: 60%;
+                height: 250px;
+            }
+            .box-info{
+                width: 45%;
+            }
+ }
+}}
+
 
 </style>

@@ -42,8 +42,9 @@ export default {
                 padding: 0px 50;
 
                 img{
-                    width: 500px;
+                    width: 25rem;
                     border-radius: 10px;
+                    padding-bottom: 20px;
                 }
             }
 
@@ -53,11 +54,11 @@ export default {
 
                 h1{
                     color: $white-color;
-                    font-size: 46px;
+                    font-size: 2.5rem;
                 }
                 h2{
                     color: $secondary-color;
-                    font-size: 22px;
+                    font-size: 2rem;
                 }
                 p{
                     color: $dark-color;
@@ -71,10 +72,93 @@ export default {
         }
     }
 
-@media (max-width: 800px) {
+@media (max-width: 1900px) {
   .container-section{
     width: 100%;
     flex-direction: column;
+    .container-chi-siamo{
+        .description-container{
+            h1{
+                font-size: 2.5rem;
+            }
+            h2{
+                font-size: 2rem;
+            }
+        }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .container-section{
+    width: 100%;
+    flex-direction: column;
+        .container-chi-siamo{
+        .description-container{
+            h1{
+                font-size: 2.2rem;
+            }
+            h2{
+                font-size: 1.8rem;
+            }
+        }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .container-section{
+    width: 100%;
+    flex-direction: column;
+        .container-chi-siamo{
+        .description-container{
+            h1{
+                font-size: 2rem;
+            }
+            h2{
+                font-size: 1.6rem;
+            }
+        }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container-section{
+    width: 100%;
+    flex-direction: column;
+        .container-chi-siamo{
+        .description-container{
+            h1{
+                font-size: 1.8rem;
+            }
+            h2{
+                font-size: 1.4rem;
+            }
+        }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .container-section{
+    flex-direction: column;
+        .container-chi-siamo{
+            display: flex;
+            flex-direction: column;
+            .img-container{
+                width: 20rem;
+                padding: 0;
+                padding-left: 45px;
+                img{
+                    width: 80%;
+                }
+            }
+        .description-container{
+            width: 80%;
+            margin-inline: auto;
+        }
+    }
   }
 }
 </style>

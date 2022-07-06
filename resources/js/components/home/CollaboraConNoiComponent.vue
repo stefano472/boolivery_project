@@ -31,9 +31,9 @@ export default {
   background-color: white;
   .collab-cover {
     background-image: url("/img/img_rest/collab.jpg");
-    background-size: 120%;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: 90% 25%;
+    background-position: center;
     width: 60%;
     min-height: 500px;
   }
@@ -56,6 +56,7 @@ export default {
     }
     button {
       border-color: $primary-color;
+      margin-bottom: 50px;
       &:hover {
         background-color: $primary-color;
       }
@@ -70,7 +71,10 @@ export default {
       width: 100%;
     }
     .collab-text {
-      width: 100%;
+      width: 80%;
+      margin-inline: auto;
+      padding-right: 15px;
+      text-align: center;
     }
   }
 }

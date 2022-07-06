@@ -195,7 +195,7 @@ footer{
 }
 
 
- @media screen and (max-width: 850px){
+ @media screen and (max-width: 992px){
 
     footer{
       .container-footer{

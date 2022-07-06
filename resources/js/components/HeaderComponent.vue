@@ -1,12 +1,12 @@
 <template>
   <div id="header">
-    <div class="container">
+    <div class="container2">
         <a class="logo" href="/">
             <img src="/logo.svg" alt="logo">
             <p>oolivery</p>
         </a>
         <nav>
-            <ul> 
+            <ul>
                 <li>
                     <a href="/restaurants">Ristoranti</a>
                 </li>
@@ -22,8 +22,30 @@
             </ul>
         </nav>
         <div class="cart-login">
-            <div>
+            <div class="accedi">
                 <a href="/login">Accedi</a>
+            </div>
+            <div class="hamburger">
+                <i @click="addActiveClassHamburger" class="fa-solid fa-bars fa-2x"></i>
+            </div>
+            <div class="hamburger-menu">
+                <ul>
+                    <li>
+                        <a href="/restaurants">Ristoranti</a>
+                    </li>
+                    <li>
+                        <a href="#">Collabora con noi</a>
+                    </li>
+                    <li>
+                        <a href="#">About us</a>
+                    </li>
+                    <li>
+                        <a href="#">Contatti</a>
+                    </li>
+                </ul>
+                <a href="#" class="close" @click="addCloseClassHamburger">
+                    <i class="fas fa-times"></i>
+                </a>
             </div>
             <div>
                 <i @click="openModal" class="cart fa-solid fa-cart-shopping">
@@ -31,7 +53,7 @@
                         <span>{{totalQuantity()}}</span>
                     </div>
                 </i>
-                
+
                 <div id="modal-container" :class="activeModal ? 'sp-show' : ''">
                     <div class="sp-modal">
                         <i @click="closeModal" class="close-modal fa-solid fa-xmark"></i>
@@ -68,11 +90,10 @@
                         <div class="checkout">
                             <div class="total-price">
                                 Totale: &euro; {{checkoutPrice()}}
-                                <!-- <router-link v-if="checkoutPrice()>0" class="btn" :to="{name: 'payment', params: 1}">Checkout</router-link> -->
-                                <router-link v-if="checkoutPrice()>0" class="btn" :to="{name: 'payment'}">Checkout</router-link>
-                                <!-- <a v-if="checkoutPrice()>0" class="btn" href="payment">Checkout</a> -->
+                                <!-- <router-link class="btn" :to="{name: 'payment'}">Checkout</router-link> -->
+                                <a class="btn" href="payment">Checkout</a>
                                 <!-- <a class="btn" href="/order">Checkout</a> -->
-                                <button v-else class="btn">Checkout</button>
+                                <!-- <button class="btn">Checkout</button> -->
                             </div>
                         </div>
                     </div>
@@ -98,16 +119,12 @@ export default {
     },
 
     methods: {
-        // getPaymentUrl(cart){
-        //     const url = '/payment/' + cart[0].id
-        //     return url
-        // },
         removeItem(index){
 
             this.cart.splice(index, 1)
             console.log(this.cart)
             // const items = JSON.parse(localStorage.getItem('cart'));
-    
+
             // items.splice(index)
             // console.log(items);
             // const cart = JSON.stringify(items)
@@ -139,7 +156,7 @@ export default {
         checkoutPrice(){
             let total = 0;
             this.cart.forEach(dish => {
-                total += (dish.price * dish.quantity)              
+                total += (dish.price * dish.quantity)
             });
             return total.toFixed(2);
         },
@@ -147,7 +164,7 @@ export default {
             // console.log('cart', this.cart)
             // for (let i = 0; i<this.cart.length; i++){
             //     if (this.cart.includes(this.cart[i])){
-            //         this.quantity += 1 
+            //         this.quantity += 1
             //     }
             // }
             this.activeModal = true
@@ -155,6 +172,17 @@ export default {
         closeModal(){
             this.activeModal = false
         },
+        addActiveClassHamburger () {
+            let hamburger = document.querySelector('.hamburger-menu');
+            hamburger.classList.add('active');
+        },
+        addCloseClassHamburger () {
+            let hamburger = document.querySelector('.hamburger-menu');
+            hamburger.classList.remove('active');
+
+        }
+
+
 
     },
 
@@ -183,7 +211,7 @@ export default {
         padding: 0;
     }
     background: $dark-color;
-    .container{
+    .container2{
         color: $brand-color;
         height: 70px;
         max-width: 1400px;
@@ -229,11 +257,56 @@ export default {
             gap: 1rem;
             a{
                 color: $brand-color;
-                cursor: pointer;  
+                cursor: pointer;
                 &:hover{
                     color: $white_color;
                 }
             }
+
+            .hamburger{
+                display: none;
+            }
+
+            .hamburger-menu {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+                padding: 20px;
+                width: 100%;
+                height: 100%;
+                min-width: 100vw;
+                min-height: 100vh;
+                background: $brand-color;
+                z-index: 100;
+
+                ul {
+                    display: flex;
+                    height: 100%;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    list-style: none;
+                }
+
+                li a {
+                    color: white;
+                    text-decoration: none;
+                    font-size: 25px;
+                    cursor: pointer;
+                }
+
+                .close {
+                    display: block;
+                    position: absolute;
+                    right: 20px;
+                    top: 20px;
+                    color: white;
+                    font-size: 35px;
+                    text-decoration: none;
+                }
+            }
+
             i.cart{
                 position: relative;
                 font-size: 1.2rem;
@@ -390,5 +463,109 @@ export default {
             }
         }
     }
+
+@media screen and (max-width: 992px) {
+    #header{
+        margin-inline: auto;
+        //max-width: 992px;
+        max-width: 992px;
+          .container2{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #header{
+        margin-inline: auto;
+        max-width: 768px;
+        //width: 100%;
+        .container2{
+            width: 100vw;
+            nav{
+                display: none;
+            }
+            .cart-login{
+                .accedi{
+                    display: none;
+                }
+                i.cart{
+                    display: none;
+                    .number-cart{
+                        display: none;
+                    }
+                }
+
+                .hamburger{
+                    display: block;
+                }
+                .hamburger-menu.active {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #header{
+        margin-inline: auto;
+        max-width: 576px;
+        //width: 100%;
+
+        .container2{
+            width: 100vw;
+            nav{
+                display: none;
+            }
+            .cart-login{
+                //display: none;
+                .hamburger{
+                    display: block;
+                }
+                .hamburger-menu.active {
+                    display: block;
+                }
+                i.cart{
+                    display: none;
+                    .number-cart{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 370px) {
+    #header{
+        margin-inline: auto;
+        max-width: 370px;
+        //width: 100%;
+
+        .container2{
+            width: 100vw;
+            nav{
+                display: none;
+            }
+            .cart-login{
+                display: none;
+
+                .hamburger{
+                    display: block;
+                }
+                .hamburger-menu.active {
+                    display: block;
+                }
+                i.cart{
+                    display: none;
+                    .number-cart{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
 
 </style>

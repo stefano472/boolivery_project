@@ -38,7 +38,7 @@ export default {
     },
 
     mounted(){
-        
+
         window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
 
             if (status === 200) {
@@ -53,5 +53,4 @@ export default {
 </script>
 
 <style>
-
 </style>

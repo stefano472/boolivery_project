@@ -13,9 +13,9 @@
           <router-link class="link-router" :to="{name:'restaurants'}">
             <div class="search-bar">
                 <button class="submit">
-                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <i class="fa-solid fa-rocket"></i>
                 </button>
-                <div class="input">Vai alla ricerca ristoranti</div>
+                <div class="input">Scopri i nostri ristoranti!</div>
               <!-- <input v-model="inputSearch" type="text" class="input" placeholder="Search..."> -->
             </div>
           </router-link>
@@ -37,6 +37,7 @@ export default {
 @import 'resources/sass/variables';
 
 #hero{
+    //max-width: 1400px;
   h1,
   h2,
   h3,
@@ -50,7 +51,7 @@ export default {
   background: $dark-color;
   .container2 {
     // padding-bottom: 4rem;
-    max-width: 1400px;
+    //max-width: 1400px;
       margin-inline: auto;
       padding: 1rem 0;
       display: flex;
@@ -112,7 +113,6 @@ export default {
         display: flex;
         align-items: center;
         color: lightslategray;
-        width: 20rem;
         font-size: 0.8rem;
         padding: 0 1rem;
         border: 0;
@@ -135,4 +135,48 @@ export default {
     color: #38a3a5;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 767){
+    #hero{
+        margin-inline: auto;
+        min-width:320px;
+        .container2{
+            width: 100%;
+        }
+        //width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px){
+    #hero{
+        margin-inline: auto;
+        max-width: 1279px;
+        //width: 100%;
+        .container2{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1899){
+    #hero{
+        margin-inline: auto;
+        max-width: 1899px;
+        //width: 100%;
+        .container2{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 1900px){
+    #hero{
+        margin-inline: auto;
+        max-width: 1900px;        //width: 100%;
+        .container2{
+            width: 100%;
+        }
+    }
+}
+
 </style>

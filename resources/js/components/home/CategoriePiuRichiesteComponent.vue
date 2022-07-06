@@ -8,12 +8,12 @@
         </div>
         <div class="row1 mt-5 mb-3" >
 
-        
+
             <a :href="setUrlFilters(category.id)" v-for="(category, index) in categories.slice(0, 4)" :key="index">
                 <img class="single-cat" :src="category.img" alt="">
             </a>
-            
-            
+
+
         </div>
 
         <div class="row1" >
@@ -71,7 +71,7 @@ export default {
 
    },
 
-    
+
 
 
 }
@@ -95,12 +95,13 @@ export default {
     }
     .row1{
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 2.5rem;
     }
     .single-cat{
-        width: 150px;
-        height: 150px;
+        width: 10rem;
+        //height: 150px;
         padding-right: 5px;
 
     }
@@ -116,6 +117,23 @@ export default {
     // .pad-4{
     //     margin: 30px 0 10px;
     // }
+}
+@media screen and (min-width: 663px) and (max-width: 899px) {
+    #ms-container{
+    .category{
+        .row1{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+        .single-cat{
+            width: 20rem;
+            height: 20rem;
+            padding-right: 5px;
+        }
+    }
+}
 }
 
 </style>
