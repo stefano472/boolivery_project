@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-between align-items-center">
+    <div class="bo-container">
+        <div class="">
             <div class="col-12 ">
-                <div class="allPosts d-flex justify-content-between align-items-center">
+                <div class="allPosts d-flex justify-content-between align-items-center mb-4">
                     <h1>I piatti del menù</h1>
-                    <a href="{{ route('user.dishes.create') }}" class="btn btn-info">
+                    <a href="{{ route('user.dishes.create') }}" class="bo-btn">
                         Aggiungi un piatto
                     </a>
                 </div>
@@ -27,7 +27,7 @@
                         <tbody>
                             {{-- Table content --}}
                             @foreach ($dishes as $dish)
-                                <tr class="{{$dish->available === 1 ? '' : 'back-red'}}">
+                                <tr class="bo-tr {{$dish->available === 1 ? '' : 'back-red'}}">
                                     <td>{{ $dish->name }}</td>
                                     <td>{{ $dish->description }}</td>
                                     <td>
@@ -55,9 +55,9 @@
                                             <p>Attenzione!!!! Una volta cancellato il piatto, sarà perso...</p>
                                             <form class="delete" action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST">
                                               @csrf
-                                  
+
                                               @method('DELETE')
-                                  
+
                                               <button class="btn btn-danger" type="submit">Si</button>
                                               <button class='close-modal' class="btn btn-outline-info" type="button">No</button>
                                             </form>

@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="container">
+    <div class="bo-container">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <h1>{{ $dish->name }}</h1>
-                    <a href="{{ route('user.dishes.index') }}" class="btn btn-info">Vai al menù completo</a>
+                    <a href="{{ route('user.dishes.index') }}" class="bo-btn">Vai al menù completo</a>
                 </div>
                 {{-- Contenuti --}}
                 {{-- <img src="{{ $dish->cover }}" alt="{{ $dish->name }}" class="w-25"> --}}
@@ -43,9 +43,9 @@
                     <p>Attenzione!!!! Una volta cancellato il piatto, sarà perso...</p>
                     <form class="delete" action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST">
                       @csrf
-          
+
                       @method('DELETE')
-          
+
                       <button class="btn btn-danger" type="submit">Si</button>
                       <button id='close-modal' class="btn btn-outline-info" type="button">No</button>
                     </form>

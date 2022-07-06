@@ -2,12 +2,29 @@
     font-family: 'Epilogue', sans-serif;
 }
 
+body{
+
+}
+
+/***************** app.blade.php ***************/
+.bo-nav-item{
+    display:flex;
+}
+
+
+
+
 .bo-restaurant-cover {
 
     //     height: 200px;
     //     width: 100%;
     img {
         height: 300px;
+        width: 100%;
+        object-fit: cover;
+        border: solid 1px #38A3A5;
+        border-radius: 10px;
+
     }
 }
 
@@ -47,6 +64,7 @@
       width: min(400px, 100%);
       box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
       text-align: center;
+
       p {
         font-size: 0.9rem;
         opacity: 0.7;
@@ -59,3 +77,289 @@
       }
     }
   }
+
+
+
+
+
+  /************* app.blade.php --> HEADER ******************/
+
+.bo-nav{
+    background-color: #1E282F;
+    height: 70px;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    .logo{
+        cursor: pointer;
+        text-decoration: underline;
+        color: $brand-color;
+        display: flex;
+        gap: 0.1rem;
+        img{
+            width: 100%;
+        }
+        p{
+            font-size: 2.2rem;
+            margin-top: 0.4rem;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+    }
+
+    .bo-nav-link{
+        margin-top: 10px;
+        display: flex;
+
+        gap: 1.5rem;
+        align-items: center;
+        list-style-type: none;
+        li{
+            display: flex;
+        }
+
+        a{
+            color: #98F1AD;
+            cursor: pointer;
+            &:hover{
+                color: white;
+            }
+        }
+    }
+}
+
+
+
+
+/************* dashboard.blade.php ******************/
+
+.container-fluid-dashboard{
+    display: flex;
+    background-color: #98F1AD;
+    //height: 100vh;
+
+    .main{
+        width: calc(100% - 250px);
+        display: flex;
+        margin-bottom: 20px;
+        overflow-y: auto;
+        height: 100%;
+    }
+}
+
+
+
+
+/************* dashboard.blade.php --> LEFT SIDEBAR ******************/
+
+.bo-sidebar{
+    background-color: #38A3A5;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 250px;
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 2rem;
+        li{
+            list-style: none;
+            margin: 0 15px;
+            padding: 1rem 0;
+
+            a {
+                position: relative;
+                display: block;
+                height: 60px;
+                text-align: center;
+                line-height: 63px;
+                font-size: 16px;
+                transition: .5s;
+              }
+
+              a::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: .5s;
+                transform: scale(.9);
+                z-index: -1;
+              }
+
+            a:hover::before {
+                transform: scale(1.1);
+                box-shadow: 0 0 10px #57CC99;
+              }
+
+            a:hover {
+                color: #1E282F;
+                box-shadow: 0 0 5px #38A3A5;
+                text-shadow: 0 0 5px #38A3A5;
+              }
+            }
+    }
+
+    a{
+        color: #1E282F;
+    }
+}
+
+
+
+
+
+/********************* index.blade.php *********************/
+
+.bo-container{
+    padding: 30px 0px 0 20px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    //border: solid 10px #38A3A5;
+
+
+    .welcome-msg{
+        //background-color: #98F1AD;
+        padding: 20px 0px 0 20px;
+        color: #1E282F;
+        font-size: 30px;
+
+    }
+
+    .info-restaurant-container{
+        margin: 50px 20px;
+        padding: 30px 20px;
+        background-color: white;
+
+        .bo-restaurant-info{
+            margin-top: 30px;
+            span{
+                color: #38A3A5;
+            }
+        }
+
+        .bo-restaurant-index{
+            display:flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+
+            h2{
+                font-size: 20px;
+                font-weight: bold;
+                padding: 0px 0px 0px 0;
+                line-height: 20px;
+            }
+
+
+        }
+
+
+    }
+}
+
+
+
+
+
+    .bo-btn{
+        position: relative;
+        background-color: #38A3A5;
+        display: block;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 16px;
+        transition: .5s;
+        border: solid 1px #38A3A5;
+        border-radius: 10px;
+        padding: 0 20px;
+        color: white;
+      }
+
+      .bo-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: .5s;
+        transform: scale(.9);
+        z-index: -1;
+      }
+
+    .bo-btn:hover::before {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px #1E282F;
+      }
+
+    .bo-btn:hover {
+        color: #1E282F;
+        box-shadow: 0 0 5px #1E282F;
+      }
+
+
+
+
+/************* RESTAURANT edit.blade.php ******************/
+
+.form-container{
+    margin-top: 30px;
+
+}
+
+h1{
+    //padding: 20px 0px 0 20px;
+    color: #1E282F;
+    font-size: 30px;
+    line-height: 30px;
+    height: 16px;
+}
+
+table{
+    padding-top: 20px;
+    border: solid 5px #38A3A5;
+}
+thead{
+    background-color: #38A3A5;
+
+
+}
+
+.bo-tr{
+    background-color: white;
+    vertical-align: center;
+    td{
+        vertical-align: middle;
+        .fa-solid{
+            color: red;
+        }
+    }
+}
+
+
+
+
+/************* AUTH login.blade.php ************/
+
+.card{
+    border: solid 2px #38A3A5;
+    border-radius: 10px;
+    .card-header{
+        background-color: #98F1AD;
+        border-radius: 10px;
+
+    }
+
+}

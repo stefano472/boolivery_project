@@ -2,6 +2,7 @@
 
 <!-- Form di creazione -->
 @section('content')
+<div class="bo-container">
     <h1>Modifica il piatto</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
@@ -64,7 +65,7 @@
             </span>
             <input type="radio" name="available" value="0" {{ $dish->available == 0 ? 'checked' : '' }}>
             <span>
-                No 
+                No
             </span>
 
             <!-- errore relativo all'input -->
@@ -115,6 +116,9 @@
             <a href="{{ route('user.dishes.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
         </div>
     </form>
+
+
+</div>
 
 
 

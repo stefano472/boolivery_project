@@ -2,6 +2,8 @@
 
 <!-- Form di creazione -->
 @section('content')
+
+<div class="bo-container">
     <h1>Inserisci i dati del piatto</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
@@ -15,12 +17,12 @@
     <form action="{{ route('user.dishes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="input-box mb-2">
+        <div class="input-box mb-2 mt-5">
 
             <label for="name">Nome del piatto *</label>
             <br>
-            <input type="text" name="name" placeholder="nome" 
-                value="{{ old('name')}}" 
+            <input type="text" name="name" placeholder="nome"
+                value="{{ old('name')}}"
                 class="form-control @error('name') is-invalid @enderror" required>
 
             <!-- errore relativo all'input -->
@@ -33,7 +35,7 @@
 
             <label for="description">Descrizione</label>
             <br>
-            <textarea name="description" id="" cols="30" rows="10" 
+            <textarea name="description" id="" cols="30" rows="10"
                 placeholder="descrizione">{{old('description')}}</textarea>
 
             <!-- errore relativo all'input -->
@@ -94,5 +96,7 @@
             <input type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
             <a href="{{ route('user.dishes.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
         </div>
+
+    </div>
     </form>
 @endsection

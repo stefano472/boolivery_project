@@ -6,6 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
+                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                    <div class="container">
+
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}"
@@ -67,7 +70,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="bo-btn">
                                     {{ __('Register') }}
                                 </button>
                             </div>

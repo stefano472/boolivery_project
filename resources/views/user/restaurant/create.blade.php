@@ -14,7 +14,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/backoffice.js') }}" defer></script>
-    
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,31 +24,25 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Boolivery</a>
-        {{-- <ul class="navbar-nav px-3 ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000">
-                    Visita il sito
-                </a>
-            </li> --}}
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li> --}}
-        {{-- </ul> --}}
+
+    {{-- HEADER --}}
+    <nav class="bo-nav">
+        <a class="logo" href="/">
+            <img src="/logo.svg" alt="logo">
+            <p>oolivery</p>
+        </a>
     </nav>
-    <div class="container-fluid">
-        <div class="row">
-            
+
+
+    <div class="container-fluid-dashboard">
+
+        {{-- <div class="row"> --}}
+            {{-- <div class="bo-container"> --}}
+
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
+
+
                 <h1>Inserisci i Dati</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
@@ -59,8 +53,8 @@
         </div>
     @endif
 
-    <form action="{{ route('user.restaurant.store') }}" 
-        onsubmit="return valthisform()" method="POST" 
+    <form action="{{ route('user.restaurant.store') }}"
+        onsubmit="return valthisform()" method="POST"
         enctype="multipart/form-data">
         @csrf
 
@@ -68,7 +62,7 @@
 
             <label for="name">Nome del ristorante *</label>
             <br>
-            <input type="text" name="name" placeholder="nome" 
+            <input type="text" name="name" placeholder="nome"
                 value="{{ old('name')}}"
                 class="form-control @error('name') is-invalid @enderror"
                 required>
@@ -140,12 +134,12 @@
             <div>Categoria *</div>
             <br>
             <div class="container">
-                <div class="row">    
+                <div class="row">
                     @foreach ($categories as $category)
                     <div class="col-4">
                         <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
                         {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
-                        class="categoryInput form-check-input @error('categories')  @enderror"> 
+                        class="categoryInput form-check-input @error('categories')  @enderror">
                         <label for="category">{{ $category->name }}</label>
                         <br>
                     </div>
@@ -212,6 +206,7 @@
             </main>
         </div>
     </div>
+    {{-- </div> --}}
 </body>
 
 </html>
@@ -234,7 +229,7 @@
 
             <label for="name">Nome del ristorante *</label>
             <br>
-            <input type="text" name="name" placeholder="nome" 
+            <input type="text" name="name" placeholder="nome"
                 value="{{ old('name')}}"
                 class="form-control @error('name') is-invalid @enderror"
                 required>
@@ -306,12 +301,12 @@
             <div>Categoria *</div>
             <br>
             <div class="container">
-                <div class="row">    
+                <div class="row">
                     @foreach ($categories as $category)
                     <div class="col-4">
                         <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
                         {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
-                        class="form-check-input @error('categories')  @enderror"> 
+                        class="form-check-input @error('categories')  @enderror">
                         <label for="category">{{ $category->name }}</label>
                         <br>
                     </div>
