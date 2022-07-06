@@ -2407,9 +2407,9 @@ __webpack_require__.r(__webpack_exports__);
     addToLocalStorage: function addToLocalStorage(dish) {
       console.log(dish);
       /*this.cart.push(item);
-             console.log(this.cart);
-             localStorage.setItem('cart', JSON.stringify(this.cart))
-             */
+              console.log(this.cart);
+              localStorage.setItem('cart', JSON.stringify(this.cart))
+              */
 
       this.$emit("addToCart", dish);
     }
@@ -84535,14 +84535,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./resources/js/pages/checkout/Payment.vue ***!
   \*************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Payment_vue_vue_type_template_id_4e8ead06_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Payment.vue?vue&type=template&id=4e8ead06&scoped=true& */ "./resources/js/pages/checkout/Payment.vue?vue&type=template&id=4e8ead06&scoped=true&");
 /* harmony import */ var _Payment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Payment.vue?vue&type=script&lang=js& */ "./resources/js/pages/checkout/Payment.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Payment_vue_vue_type_style_index_0_id_4e8ead06_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Payment.vue?vue&type=style&index=0&id=4e8ead06&lang=scss&scoped=true& */ "./resources/js/pages/checkout/Payment.vue?vue&type=style&index=0&id=4e8ead06&lang=scss&scoped=true&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Payment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Payment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _Payment_vue_vue_type_style_index_0_id_4e8ead06_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Payment.vue?vue&type=style&index=0&id=4e8ead06&lang=scss&scoped=true& */ "./resources/js/pages/checkout/Payment.vue?vue&type=style&index=0&id=4e8ead06&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -84574,7 +84575,7 @@ component.options.__file = "resources/js/pages/checkout/Payment.vue"
 /*!**************************************************************************!*\
   !*** ./resources/js/pages/checkout/Payment.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84781,7 +84782,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pulcio/Desktop/Progetto Finale Boolean/boolivery/resources/js/front-app.js */"./resources/js/front-app.js");
+module.exports = __webpack_require__(/*! C:\Users\stefa\Desktop\Stefen\boolean\php\boolivery\resources\js\front-app.js */"./resources/js/front-app.js");
 
 
 /***/ })
