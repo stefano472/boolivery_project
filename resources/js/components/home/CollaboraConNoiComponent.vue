@@ -78,4 +78,21 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  #collab {
+    flex-direction: column;
+    .collab-cover {
+      width: 100%;
+      background-size: cover;
+      min-height: 300px;
+    }
+    .collab-text {
+      width: 80%;
+      margin-inline: auto;
+      padding-right: 15px;
+      text-align: center;
+    }
+  }
+}
 </style>

@@ -105,6 +105,7 @@ export default {
         .description{
             color: gray;
             font-size: 0.7rem;
+            text-align: center;
         }
         .tipology{
             font-size: 0.7rem;
@@ -192,13 +193,26 @@ export default {
                 font-size: 1.4rem;
             }
             }
+            .block{
+                flex-direction: column;
+            }
             .add-padd{
-                padding: 30px;
-                width: 60%;
+                padding: 10px;
                 height: 250px;
+                .bg-img{
+                    width: 280px;
+                    height: 100%;
+                }
             }
             .box-info{
-                width: 45%;
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                padding: 0;
+                text-align: center;
+                justify-content: start;
+                padding-top: 20px;
+
             }
  }
 }}

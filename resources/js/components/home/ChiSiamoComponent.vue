@@ -149,14 +149,14 @@ export default {
             .img-container{
                 width: 20rem;
                 padding: 0;
-                padding-left: 45px;
+                margin: 0;
+                padding-left: 15px;
                 img{
                     width: 80%;
                 }
             }
         .description-container{
-            width: 80%;
-            margin-inline: auto;
+            padding: 0px 10px;
         }
     }
   }

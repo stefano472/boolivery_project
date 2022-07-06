@@ -55,11 +55,6 @@ export default {
       margin-inline: auto;
       padding: 1rem 0;
       display: flex;
-      background-image: url("/img/hero-img.png");
-      background-size: 1000px;
-      // background-position: 300px;
-      background-position: right;
-      background-repeat: no-repeat;
     .sx-text{
       // width: 40%;
       width: 80%;
@@ -136,14 +131,20 @@ export default {
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 767){
+
+@media screen and (min-width: 1280px) and (max-width: 1900px){
     #hero{
         margin-inline: auto;
-        min-width:320px;
+        max-width: 1899px;
+        //width: 100%;
         .container2{
             width: 100%;
+            background-image: url("/img/hero-img.png");
+            background-size: 1000px;
+            // background-position: 300px;
+            background-position: right;
+            background-repeat: no-repeat;
         }
-        //width: 100%;
     }
 }
 
@@ -154,29 +155,24 @@ export default {
         //width: 100%;
         .container2{
             width: 100%;
+            background-image: url("/img/hero-img.png");
+            background-size: 1000px;
+            // background-position: 300px;
+            background-position: right;
+            background-repeat: no-repeat;
         }
     }
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1899){
+@media screen and (min-width: 320px) and (max-width: 767){
     #hero{
         margin-inline: auto;
-        max-width: 1899px;
-        //width: 100%;
-        .container2{
+        min-width:320px;
+        .container2 {
             width: 100%;
         }
     }
 }
 
-@media screen and (max-width: 1900px){
-    #hero{
-        margin-inline: auto;
-        max-width: 1900px;        //width: 100%;
-        .container2{
-            width: 100%;
-        }
-    }
-}
 
 </style>

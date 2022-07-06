@@ -25,6 +25,11 @@
             <div class="accedi">
                 <a href="/login">Accedi</a>
             </div>
+            <i @click="openModal" class="cart fa-solid fa-cart-shopping">
+                <div v-if="totalQuantity()>0" class="number-cart">
+                    <span>{{totalQuantity()}}</span>
+                </div>
+            </i>
             <div class="hamburger">
                 <i @click="addActiveClassHamburger" class="fa-solid fa-bars fa-2x"></i>
             </div>
@@ -42,18 +47,15 @@
                     <li>
                         <a href="#">Contatti</a>
                     </li>
+                    <li>
+                        <a href="#">Accedi</a>
+                    </li>
                 </ul>
                 <a href="#" class="close" @click="addCloseClassHamburger">
                     <i class="fas fa-times"></i>
                 </a>
             </div>
             <div>
-                <i @click="openModal" class="cart fa-solid fa-cart-shopping">
-                    <div v-if="totalQuantity()>0" class="number-cart">
-                        <span>{{totalQuantity()}}</span>
-                    </div>
-                </i>
-
                 <div id="modal-container" :class="activeModal ? 'sp-show' : ''">
                     <div class="sp-modal">
                         <i @click="closeModal" class="close-modal fa-solid fa-xmark"></i>
@@ -489,13 +491,6 @@ export default {
                 .accedi{
                     display: none;
                 }
-                i.cart{
-                    display: none;
-                    .number-cart{
-                        display: none;
-                    }
-                }
-
                 .hamburger{
                     display: block;
                 }
@@ -526,12 +521,6 @@ export default {
                 .hamburger-menu.active {
                     display: block;
                 }
-                i.cart{
-                    display: none;
-                    .number-cart{
-                        display: none;
-                    }
-                }
             }
         }
     }
@@ -556,12 +545,6 @@ export default {
                 }
                 .hamburger-menu.active {
                     display: block;
-                }
-                i.cart{
-                    display: none;
-                    .number-cart{
-                        display: none;
-                    }
                 }
             }
         }

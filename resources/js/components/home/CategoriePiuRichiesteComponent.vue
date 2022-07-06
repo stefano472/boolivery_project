@@ -9,8 +9,9 @@
         <div class="row1 mt-5 mb-3" >
 
 
-            <a :href="setUrlFilters(category.id)" v-for="(category, index) in categories.slice(0, 4)" :key="index">
+            <a href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(0, 4)" :key="index" class="categories-cards">
                 <img class="single-cat" :src="category.img" alt="">
+                <p>{{ category.name }}</p>
             </a>
 
 
@@ -18,8 +19,9 @@
 
         <div class="row1" >
 
-            <a :href="setUrlFilters(category.id)" v-for="(category, index) in categories.slice(4, 8)" :key="index">
+            <a href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(4, 8)" :key="index" class="categories-cards">
                 <img class="single-cat" :src="category.img" alt="">
+                <p>{{ category.name }}</p>
             </a>
 
         </div>
@@ -52,6 +54,8 @@ export default {
     methods:{
 
 
+
+
       setUrlFilters(index){
 
         const url = 'http://127.0.0.1:8000/restaurants/' + index;
@@ -67,13 +71,7 @@ export default {
         return url;
 
       }
-
-
    },
-
-
-
-
 }
 </script>
 
@@ -98,6 +96,30 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
         gap: 2.5rem;
+
+        .categories-cards{
+            position: relative;
+
+           p {
+                opacity: 0;
+                font-size: 1.5rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: 800;
+                color: white;
+                }
+                &:hover {
+                cursor: pointer;
+                p {
+                    opacity: 1;
+                }
+                img {
+                    filter: opacity(0.5);
+                }
+            }
+        }
     }
     .single-cat{
         width: 10rem;
