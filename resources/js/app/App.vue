@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.$root._route.name === 'payment'">
+  <div v-if="this.$root._route.name === 'payment' || this.$root._route.name === 'success' ">
     <router-view @addToCart="addToCart" :cart='cart'/>
   </div>
   <div v-else>
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <router-view @addToCart="addToCart" :cart='cart'/>
+    <router-view @addToCart="addToCart"/>
     <!-- oppure 
     
     <router-view></router-view> -->

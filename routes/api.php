@@ -1,5 +1,6 @@
 <?php
 
+use Api\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +31,17 @@ Route::get('/dishes', 'Api\DishController@index')->name('dishes.index');
 
 Route::get('/categories', 'Api\CategoryController@index')->name('category.index');
 
-// Api pagamenti
+Route::get('/user/{id}', 'Api\UserController@getUserEmail');
+
+// per popolare la tabella ordini
+Route::post("/payment","Api\OrderController@payment");
 
 // Route::get('orders/generate', 'Api\OrderController@generate')->name('order.generate');
 Route::get('orders/generate', 'Api\OrderController@generate');
 
 // Route::post('orders/make/payment', 'Api\OrderController@makePayment')->name('order.makepayment');
 Route::post('orders/make/payment', 'Api\OrderController@makePayment');
+
+// Route::post('orders/make/payment', 'Api\OrderController@makePayment');
 
 

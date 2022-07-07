@@ -9,7 +9,15 @@ class Order extends Model
     protected $table = 'orders';
 
     protected $fillable = [
-        'total', 'customer_address', 'customer_name', 'customer_surname', 'customer_phone', 'special_request', 'payment_approval',
+        'total', 
+        'customer_address', 
+        'customer_name', 
+        'customer_surname', 
+        'customer_phone', 
+        'special_request', 
+        'payment_approval', 
+        'restaurant_id',
+        'customer_email', 
     ];
 
     public function restaurant(){

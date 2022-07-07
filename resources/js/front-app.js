@@ -31,9 +31,13 @@ window.Vue = require('vue');
  import App from './app/App';
 
  import router from './route'
- 
-new Vue({
+ import Vue from 'vue'
+ import vueBraintree from 'vue-braintree'
+
+ new Vue({
      el: '#app',
      render: (createApp) =>  createApp(App),
      router
- });
+    });
+    
+Vue.use(vueBraintree)

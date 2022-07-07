@@ -92,10 +92,10 @@
                         <div class="checkout">
                             <div class="total-price">
                                 Totale: &euro; {{checkoutPrice()}}
-                                <!-- <router-link class="btn" :to="{name: 'payment'}">Checkout</router-link> -->
-                                <a class="btn" href="payment">Checkout</a>
-                                <!-- <a class="btn" href="/order">Checkout</a> -->
-                                <!-- <button class="btn">Checkout</button> -->
+                                
+                                <router-link v-if="checkoutPrice()>0" class="btn checkout-btn" :to="{name: 'payment'}">Checkout</router-link>
+                           
+                                <button v-else class="btn checkout-btn">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -415,14 +415,14 @@ export default {
                         font-size: 1.2rem;
                         display: flex;
                         flex-direction: column;
-                        button{
-                            color: #212529;
-                            background-color: $brand-color;
-                            border-color: $brand-color;
+
+                        .checkout-btn{
+                            color: #fff;
+                            background-color: $secondary-color;
+                            border-color: $secondary-color;
                             &:hover{
-                                color: #212529;
-                                background-color: $secondary-color;
-                                border-color: $secondary-color;
+                            background-color: $primary-color;
+                            border-color: $primary-color;
                             }
                         }
                         }

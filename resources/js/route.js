@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import SingleRestaurant from './pages/SingleRestaurant';
 import RestaurantsList from './pages/RestaurantsList';
 import PaymentPage from './pages/checkout/PaymentPage';
+import SuccessPayment from './pages/checkout/SuccessPayment';
 // import FilteredList from './pages/FilteredList';
 // import FilteredList from './pages/FilteredList';
 // import BlogComponent from './pages/BlogComponent';
@@ -39,6 +40,11 @@ const router = new VueRouter({
             path: '/payment',
             name: 'payment',
             component: PaymentPage
+        },
+        {
+            path: "/payment/success",
+            name: "success",
+            component: SuccessPayment
         },
         // {
         //     path: '/who-we-are',

@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_address', 255);
             $table->string('customer_name', 30);
             $table->string('customer_surname', 30);
-            $table->integer('customer_phone');
+            $table->bigInteger('customer_phone');
             $table->mediumText('special_request');
             $table->boolean('payment_approval');
 
