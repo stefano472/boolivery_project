@@ -10,7 +10,7 @@
             <div class="restaurants">
                 <div class="block" v-for="(restaurant, index) in restaurants.slice(0,3)" :key="index">
                     <div class="add-padd">
-                        <div class="bg-img"></div>
+                        <div class="bg-img" :style="`background-image: url(${restaurant.cover})`"></div>
                     </div>
 
                     <div class="box-info" >
@@ -81,7 +81,7 @@ export default {
         .bg-img{
             width: 100%;
             height: 100%;
-            background-image: url(https://images.wallpaperscraft.com/image/single/restaurant_table_interior_modern_style_39288_1920x1080.jpg);
+            // background-image: url(https://images.wallpaperscraft.com/image/single/restaurant_table_interior_modern_style_39288_1920x1080.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position-y: center;

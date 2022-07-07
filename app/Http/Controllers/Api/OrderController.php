@@ -17,27 +17,30 @@ class OrderController extends Controller
     //
     public function payment(Request $request){
         $data = $request->all();
+        // return($data);
+        $newOrder = new Order();
+        $newOrder->fill($data);
+        $newOrder->save();
 
-        $add = DB::table('orders')->insert([
-            'total'=> $data['total'], 
-            'customer_address'=> $data['customer_address'], 
-            'customer_name'=> $data['customer_name'],
-            'customer_surname'=> $data['customer_surname'], 
-            'customer_phone'=> $data['customer_phone'], 
-            'special_request'=> $data['special_request'], 
-            'payment_approval'=> $data['payment_approval'], 
-            'restaurant_id'=> $data['restaurant_id'],
-            'customer_email'=> $data['customer_email'],
-        ]);
+        $dishes_id = [];
+        $dishes_quantity = [];
+        foreach($data['plates'] as $plate){
+            $dishes_id[] = $plate['id'];
+            $dishes_quantity[] = $plate['quantity'];
+        }
+    
+        $sync_data = [];
+        for($i = 0; $i < count($dishes_id); $i++)
+            $sync_data[$dishes_id[$i]] = ['quantity' => $dishes_quantity[$i]];
+    
+        $newOrder->dishes()->sync($sync_data);
 
-        if($add){
+        if($newOrder){
             return 'data saved succesfully';
         } else {
             return 'data not sent';
         }
 
-        // dd($data);
-        
             // $validator = Validator::make($data , [
             //         'name' => 'required|string|max:30',
             //         'surname' => 'required|string|max:30',
@@ -58,33 +61,6 @@ class OrderController extends Controller
             //                 ]);
             //     }
                     
-            // $newOrder = new Order();
-            // $newOrder->customer_name = $data['name'];
-            // $newOrder->customer_surname = $data['surname'];
-            // $newOrder->customer_email = $data['email'];
-            // $newOrder->customer_phone = $data['phone'];
-            // $newOrder->customer_address = $data['address'];
-            // $newOrder->payment_approval = $data['status'];
-            // $newOrder->total = $data['total'];
-            // $newOrder->restaurant_id = $data['restaurant_id'];
-
-            // // $newOrder->fill($data);
-            
-
-            // $newOrder->save();
-                
-                //     $plates_id = [];
-                //     $plates_quantity = [];
-                //     foreach($data['plates'] as $plate){
-                    //         $plates_id[] = $plate['plate']['id'];
-                    //         $plates_quantity[] = $plate['quantity'];
-                    //     }
-                    
-                    //     $sync_data = [];
-                    //     for($i = 0; $i < count($plates_id); $i++)
-                    //         $sync_data[$plates_id[$i]] = ['quantity' => $plates_quantity[$i]];
-                    
-                    //     $order->plates()->sync($sync_data);
                     
                     //     if(isset($data['email']) && isset($data['user_email'])){
                         //         $order->plates;
@@ -97,7 +73,6 @@ class OrderController extends Controller
                             //         "status" => true,
                             //     ]);
                             // return response()->json($data);
-            // return redirect()->route('guests.home');
             
     }
     

@@ -3424,9 +3424,7 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('http://127.0.0.1:8000/api/orders/generate').then(function (response) {
       _this.Token = response.data.token;
       console.log(response.data, 'genera token');
-      _this.tokenGenerate = true; // setTimeout(() => {
-      //   this.$emit('tokenReady');
-      // }, 1000);
+      _this.tokenGenerate = true;
     })["catch"](function (e) {
       return console.log(e);
     });
@@ -3482,13 +3480,15 @@ __webpack_require__.r(__webpack_exports__);
         'special_request': this.formData.special_request,
         'payment_approval': this.formData.status,
         'restaurant_id': this.formData.restaurant_id,
-        'customer_email': this.formData.email
+        'customer_email': this.formData.email,
+        'restaurant_email': this.formData.restaurant_email,
+        'plates': this.formData.plates
       }).then(function (response) {
         // handle success
         console.log('chiamata axios post per payment');
         console.log(response, 'response axios'); // alert(response)
 
-        if (response.data == 'data saved succesfully') {
+        if (response.status === 200) {
           localStorage.clear();
 
           _this3.$router.push({
@@ -3886,6 +3886,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -32792,7 +32794,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#description[data-v-240efd29] {\n  background: #98f1ad;\n  min-height: 500px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 50px;\n}\n#description .about-us[data-v-240efd29] {\n  width: 30%;\n  margin-right: 50px;\n}\n#description .about-us h2[data-v-240efd29] {\n  color: #38a3a5;\n}\n#description .description-cover[data-v-240efd29] {\n  margin-left: 50px;\n}\n#description .description-cover img[data-v-240efd29] {\n  width: 400px;\n  border-radius: 20px;\n}\n@media screen and (max-width: 1024px) {\n#description[data-v-240efd29] {\n    flex-direction: column;\n}\n#description .about-us[data-v-240efd29] {\n    width: 100%;\n}\n#description .description-cover[data-v-240efd29] {\n    width: 100%;\n}\n#description .description-cover img[data-v-240efd29] {\n    width: 100%;\n}\n}", ""]);
+exports.push([module.i, "#description[data-v-240efd29] {\n  background: #98f1ad;\n  min-height: 500px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 50px;\n}\n#description .about-us[data-v-240efd29] {\n  width: 30%;\n  margin-right: 50px;\n  text-align: center;\n}\n#description .about-us h2[data-v-240efd29] {\n  color: #38a3a5;\n}\n#description .description-cover[data-v-240efd29] {\n  margin-left: 50px;\n}\n#description .description-cover img[data-v-240efd29] {\n  width: 400px;\n  border-radius: 20px;\n}\n@media screen and (max-width: 1024px) {\n#description[data-v-240efd29] {\n    flex-direction: column;\n}\n#description .about-us[data-v-240efd29] {\n    width: 100%;\n    margin: 0;\n}\n#description .about-us p[data-v-240efd29] {\n    margin-bottom: 2rem;\n}\n#description .description-cover[data-v-240efd29] {\n    width: 100%;\n    margin: 0;\n}\n#description .description-cover img[data-v-240efd29] {\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -32849,7 +32851,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-hero[data-v-0a33e68b] {\n  display: flex;\n  justify-content: center;\n  background-image: url(\"/img/img_rest/jakub-kapusnak-4f4YZfDMLeU-unsplash-1024x683.jpeg\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  position: relative;\n  text-align: center;\n}\n.container-hero .info-resturant[data-v-0a33e68b] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #57cc99;\n  opacity: 0.9;\n  padding: 50px 150px;\n  margin: 100px 0;\n  color: #1e282f;\n}\n.container-hero h1[data-v-0a33e68b] {\n  color: #1e282f;\n  font-size: 2.5rem;\n}\n.container-hero h2[data-v-0a33e68b] {\n  font-size: 1.6rem;\n}\n.container-hero p[data-v-0a33e68b] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n.container-hero .btn-go[data-v-0a33e68b] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 20px 0;\n}\n@media (max-width: 480px) {\n.info-resturant[data-v-0a33e68b] {\n    padding: 50px 0 !important;\n}\n}", ""]);
+exports.push([module.i, ".container-hero[data-v-0a33e68b] {\n  display: flex;\n  justify-content: center;\n  background-image: url(\"/img/img_rest/jakub-kapusnak-4f4YZfDMLeU-unsplash-1024x683.jpeg\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  position: relative;\n  text-align: center;\n}\n.container-hero .info-resturant[data-v-0a33e68b] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #57cc99;\n  opacity: 0.9;\n  padding: 50px 150px;\n  margin: 100px 0;\n  color: #1e282f;\n}\n.container-hero h1[data-v-0a33e68b] {\n  color: #1e282f;\n  font-size: 2.5rem;\n  margin-bottom: 20px;\n  width: 100%;\n}\n.container-hero h2[data-v-0a33e68b] {\n  font-size: 1.6rem;\n}\n.container-hero p[data-v-0a33e68b] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n.container-hero .btn-go[data-v-0a33e68b] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 20px 0;\n}\n@media (max-width: 480px) {\n.info-resturant[data-v-0a33e68b] {\n    padding: 50px 50px !important;\n}\n}", ""]);
 
 // exports
 
@@ -32906,7 +32908,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container[data-v-7c6977f6] {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 70px;\n  margin-bottom: 70px;\n}\n.container .other-categories-list h2[data-v-7c6977f6] {\n  margin-bottom: 36px;\n}\n.container .other-categories-list .category p[data-v-7c6977f6] {\n  width: 50%;\n  margin-bottom: 0.3rem;\n  color: #38a3a5;\n}\n.container .other-categories-list .category p[data-v-7c6977f6]:hover {\n  cursor: pointer;\n  border-bottom: 1px solid #38a3a5;\n  border-radius: 5px;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n  margin-left: 80px;\n}\n.container .restaurants-list h1[data-v-7c6977f6] {\n  font-size: 2.5rem;\n}\n@media screen and (max-width: 495px) {\n.container[data-v-7c6977f6] {\n    flex-direction: column;\n}\n.container .other-categories-list[data-v-7c6977f6] {\n    display: flex;\n    flex-direction: column;\n    padding-bottom: 30px;\n}\n.container .other-categories-list .categories[data-v-7c6977f6] {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n}\n.container .other-categories-list .categories .category[data-v-7c6977f6] {\n    margin: 15px;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n    margin: 0;\n}\n}", ""]);
+exports.push([module.i, ".container[data-v-7c6977f6] {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 50px;\n  margin-bottom: 50px;\n}\n.container .other-categories-list h2[data-v-7c6977f6] {\n  margin-bottom: 36px;\n}\n.container .other-categories-list .category p[data-v-7c6977f6] {\n  width: 50%;\n  margin-bottom: 0.3rem;\n  color: #38a3a5;\n}\n.container .other-categories-list .category p[data-v-7c6977f6]:hover {\n  cursor: pointer;\n  border-bottom: 1px solid #38a3a5;\n  border-radius: 5px;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n  margin-left: 80px;\n}\n.container .restaurants-list h1[data-v-7c6977f6] {\n  font-size: 2.5rem;\n}\n@media screen and (max-width: 495px) {\n.container[data-v-7c6977f6] {\n    flex-direction: column;\n}\n.container .other-categories-list[data-v-7c6977f6] {\n    display: flex;\n    flex-direction: column;\n    padding-bottom: 30px;\n}\n.container .other-categories-list .categories[data-v-7c6977f6] {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: space-between;\n}\n.container .other-categories-list .categories .category[data-v-7c6977f6] {\n    margin: 15px;\n    width: 80px;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n    margin: 0;\n}\n}", ""]);
 
 // exports
 
@@ -33039,7 +33041,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 35%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-image: url(https://images.wallpaperscraft.com/image/single/restaurant_table_interior_modern_style_39288_1920x1080.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 280px;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
+exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 35%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 280px;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
 
 // exports
 
@@ -33153,7 +33155,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#success-payment .header[data-v-96fd2d9a] {\n  background: #1e282f;\n}\n#success-payment .header .wave[data-v-96fd2d9a] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#success-payment .header .container[data-v-96fd2d9a] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#success-payment .header .container .logo[data-v-96fd2d9a] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#success-payment .header .container .logo img[data-v-96fd2d9a] {\n  width: 100%;\n}\n#success-payment .header .container .logo p[data-v-96fd2d9a] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#success-payment .header .container nav[data-v-96fd2d9a] {\n  display: flex;\n  align-items: center;\n}\n#success-payment .header .container nav ul[data-v-96fd2d9a] {\n  display: flex;\n  gap: 1.5rem;\n}\n#success-payment .header .container nav ul li a[data-v-96fd2d9a] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#success-payment .header .container nav ul li a[data-v-96fd2d9a]:hover {\n  color: white;\n}\n#success-payment .thank-you[data-v-96fd2d9a] {\n  margin-top: 1rem;\n  text-align: center;\n}", ""]);
+exports.push([module.i, "#success-payment[data-v-96fd2d9a] {\n  background-color: white;\n}\n#success-payment .header[data-v-96fd2d9a] {\n  background: #1e282f;\n}\n#success-payment .header .wave[data-v-96fd2d9a] {\n  width: 100%;\n  height: 20px;\n  color: white;\n}\n#success-payment .header .container[data-v-96fd2d9a] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#success-payment .header .container .logo[data-v-96fd2d9a] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#success-payment .header .container .logo img[data-v-96fd2d9a] {\n  width: 100%;\n}\n#success-payment .header .container .logo p[data-v-96fd2d9a] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#success-payment .header .container nav[data-v-96fd2d9a] {\n  display: flex;\n  align-items: center;\n}\n#success-payment .header .container nav ul[data-v-96fd2d9a] {\n  display: flex;\n  gap: 1.5rem;\n}\n#success-payment .header .container nav ul li a[data-v-96fd2d9a] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#success-payment .header .container nav ul li a[data-v-96fd2d9a]:hover {\n  color: white;\n}\n#success-payment .thank-you[data-v-96fd2d9a] {\n  margin-top: 1rem;\n  text-align: center;\n  background-image: url(\"https://img.freepik.com/free-vector/delivery-service-with-masks-concept_23-2148497067.jpg?w=2000&t=st=1657180383~exp=1657180983~hmac=41669774a73cf64eaa6bb0a4f3c2a642a881fd3cc87ad071819e8a9f7febfb5f\");\n  height: calc(100vh - 187px);\n}\n#success-payment .thank-you h1[data-v-96fd2d9a] {\n  font-size: 50px;\n  color: #57cc99;\n}", ""]);
 
 // exports
 
@@ -67098,7 +67100,12 @@ var render = function () {
           { staticClass: "restaurants" },
           _vm._l(_vm.restaurants.slice(0, 3), function (restaurant, index) {
             return _c("div", { key: index, staticClass: "block" }, [
-              _vm._m(1, true),
+              _c("div", { staticClass: "add-padd" }, [
+                _c("div", {
+                  staticClass: "bg-img",
+                  style: "background-image: url(" + restaurant.cover + ")",
+                }),
+              ]),
               _vm._v(" "),
               _c(
                 "div",
@@ -67144,14 +67151,6 @@ var staticRenderFns = [
       _c("h2", [_vm._v("I ristoranti piu' cercati")]),
       _vm._v(" "),
       _c("h5", [_vm._v("Selezionati proprio da voi")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "add-padd" }, [
-      _c("div", { staticClass: "bg-img" }),
     ])
   },
 ]
@@ -67976,7 +67975,7 @@ var render = function () {
           _c("path", {
             staticStyle: { transform: "translate(0, 0px)", opacity: "1" },
             attrs: {
-              fill: "#f8fafc",
+              fill: "#ffffff",
               d: "M0,0L80,8.3C160,17,320,33,480,38.3C640,43,800,37,960,28.3C1120,20,1280,10,1440,20C1600,30,1760,60,1920,65C2080,70,2240,50,2400,36.7C2560,23,2720,17,2880,20C3040,23,3200,37,3360,45C3520,53,3680,57,3840,58.3C4000,60,4160,60,4320,53.3C4480,47,4640,33,4800,36.7C4960,40,5120,60,5280,63.3C5440,67,5600,53,5760,50C5920,47,6080,53,6240,60C6400,67,6560,73,6720,71.7C6880,70,7040,60,7200,55C7360,50,7520,50,7680,41.7C7840,33,8000,17,8160,21.7C8320,27,8480,53,8640,68.3C8800,83,8960,87,9120,76.7C9280,67,9440,43,9600,28.3C9760,13,9920,7,10080,16.7C10240,27,10400,53,10560,68.3C10720,83,10880,87,11040,83.3C11200,80,11360,70,11440,65L11520,60L11520,100L11440,100C11360,100,11200,100,11040,100C10880,100,10720,100,10560,100C10400,100,10240,100,10080,100C9920,100,9760,100,9600,100C9440,100,9280,100,9120,100C8960,100,8800,100,8640,100C8480,100,8320,100,8160,100C8000,100,7840,100,7680,100C7520,100,7360,100,7200,100C7040,100,6880,100,6720,100C6560,100,6400,100,6240,100C6080,100,5920,100,5760,100C5600,100,5440,100,5280,100C5120,100,4960,100,4800,100C4640,100,4480,100,4320,100C4160,100,4000,100,3840,100C3680,100,3520,100,3360,100C3200,100,3040,100,2880,100C2720,100,2560,100,2400,100C2240,100,2080,100,1920,100C1760,100,1600,100,1440,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z",
             },
           }),
@@ -68013,7 +68012,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "thank-you" }, [
-      _c("h1", [_vm._v("Grazie per averci scelto")]),
+      _c("h1", { staticClass: "mb-5" }, [_vm._v("Grazie per averci scelto")]),
+      _vm._v(" "),
+      _c("h2", { staticClass: "mt-5" }, [
+        _vm._v("Il tuo ordine sta arrivando!!"),
+      ]),
     ])
   },
 ]

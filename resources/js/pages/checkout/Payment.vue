@@ -55,10 +55,7 @@ export default {
         this.Token = response.data.token;
         console.log(response.data,'genera token');
           this.tokenGenerate = true;
-        // setTimeout(() => {
-        //   this.$emit('tokenReady');
-        // }, 1000);
-        
+
       })
       .catch(e => console.log(e));
   },
@@ -109,12 +106,14 @@ export default {
           'payment_approval': this.formData.status, 
           'restaurant_id': this.formData.restaurant_id,
           'customer_email': this.formData.email,
+          'restaurant_email': this.formData.restaurant_email,
+          'plates': this.formData.plates,
         }).then((response) => {
           // handle success
               console.log('chiamata axios post per payment');
               console.log(response,'response axios');
               // alert(response)
-              if(response.data == 'data saved succesfully'){
+              if(response.status === 200){
                 localStorage.clear();
                 this.$router.push({
                   name: 'success'
