@@ -46,8 +46,10 @@ export default {
   h1 {
     color: $dark-color;
     font-size: 2.5rem;
+    line-height: 40px;
     margin-bottom: 20px;
     width: 100%;
+    height: auto;
   }
   h2 {
     font-size: 1.6rem;

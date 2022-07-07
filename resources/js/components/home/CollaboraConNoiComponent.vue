@@ -11,7 +11,9 @@
         servizio clienti dedicato.
       </p>
       <div>
-        <button class="btn btn_blue">Diventa partner ></button>
+        <form action="/register">
+          <button class="btn btn_blue">Diventa partner ></button>
+        </form>
       </div>
     </div>
   </div>
