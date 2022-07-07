@@ -537,7 +537,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 300px) {
   #header {
     margin-inline: auto;
     max-width: 370px;

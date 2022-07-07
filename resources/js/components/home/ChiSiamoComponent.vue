@@ -69,7 +69,6 @@ export default {
       }
       p {
         color: $dark-color;
-        line-height: 3rem;
         font-size: 16px;
         padding-top: 20px;
       }
@@ -152,7 +151,6 @@ export default {
       display: flex;
       flex-direction: column;
       .img-container {
-        width: 20rem;
         padding: 0;
         margin: 0;
         padding-left: 15px;
