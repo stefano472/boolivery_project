@@ -1938,11 +1938,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'App',
+  name: "App",
   data: function data() {
     return {
       cart: [],
@@ -1970,10 +1976,10 @@ __webpack_require__.r(__webpack_exports__);
       // console.log('AppVue emitted', dish.restaurant_id );
       // console.log('cart', this.cart)
       if (this.cart.length === 0) {
-        console.log('no cart');
+        console.log("no cart");
         dish.quantity = 1;
         this.cart.push(dish);
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+        localStorage.setItem("cart", JSON.stringify(this.cart));
       } else {
         if (this.cart[0].restaurant_id === dish.restaurant_id) {
           var product = this.cart.find(function (o) {
@@ -1985,11 +1991,11 @@ __webpack_require__.r(__webpack_exports__);
             // dish.quantity = contatore
             product.quantity += 1; // console.log('entro nel if ', contatore)
 
-            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem("cart", JSON.stringify(this.cart));
           } else {
-            console.log('entra nell\'else', this.cart);
+            console.log("entra nell'else", this.cart);
             dish.quantity = 1, this.cart.push(dish);
-            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem("cart", JSON.stringify(this.cart));
           } // if (!this.cart.includes(dish)){
           //   dish.quantity = 1;
           //   console.log('entra nell\'if', this.cart);
@@ -2009,7 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log('console', this.$root._route.name);
+    console.log("console", this.$root._route.name);
 
     if (localStorage.cart) {
       this.cart = JSON.parse(localStorage.cart);
@@ -2254,8 +2260,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeaderComponent',
+  name: "HeaderComponent",
   data: function data() {
     return {
       activeModal: false // checkoutPrice: 0,
@@ -2273,7 +2295,7 @@ __webpack_require__.r(__webpack_exports__);
       // console.log(items);
       // const cart = JSON.stringify(items)
 
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
     reduceQuantity: function reduceQuantity(dish, index) {
       dish.quantity -= 1;
@@ -2282,11 +2304,11 @@ __webpack_require__.r(__webpack_exports__);
         this.removeItem(index);
       }
 
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
     addQuantity: function addQuantity(dish) {
       dish.quantity += 1;
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
     totalQuantity: function totalQuantity() {
       var quantity = 0;
@@ -2320,12 +2342,12 @@ __webpack_require__.r(__webpack_exports__);
       this.activeModal = false;
     },
     addActiveClassHamburger: function addActiveClassHamburger() {
-      var hamburger = document.querySelector('.hamburger-menu');
-      hamburger.classList.add('active');
+      var hamburger = document.querySelector(".hamburger-menu");
+      hamburger.classList.add("active");
     },
     addCloseClassHamburger: function addCloseClassHamburger() {
-      var hamburger = document.querySelector('.hamburger-menu');
-      hamburger.classList.remove('active');
+      var hamburger = document.querySelector(".hamburger-menu");
+      hamburger.classList.remove("active");
     }
   } // computed: {
   //     cart(){
@@ -2863,8 +2885,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ChiSiamoComponent'
+  name: "ChiSiamoComponent"
 });
 
 /***/ }),
@@ -2878,6 +2907,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3005,8 +3036,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'RistorantiPiuCercatiComponent',
+  name: "RistorantiPiuCercatiComponent",
   props: {
     restaurants: Array
   }
@@ -3117,13 +3155,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'SocialComponent'
+  name: "SocialComponent"
 });
 
 /***/ }),
@@ -32737,7 +32770,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  font-family: \"Epilogue\", sans-serif;\n}\nul {\n  list-style-type: none;\n  margin: 0;\n}\n#modal-container-app {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: grid;\n  place-content: center;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#modal-container-app.sp-show {\n  pointer-events: auto;\n  opacity: 1;\n}\n#modal-container-app .sp-modal {\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#modal-container-app .sp-modal h2 {\n  text-align: center;\n}\n#modal-container-app .sp-modal .title {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#modal-container-app .sp-modal .title i {\n  font-size: 1.5rem;\n}\n#modal-container-app .sp-modal .title p {\n  margin: 0;\n  padding: 0;\n}\n#modal-container-app .sp-modal .close-modal {\n  color: white;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#modal-container-app .sp-modal .close-modal:hover {\n  background: #57cc99;\n}", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  font-family: \"Epilogue\", sans-serif;\n}\nh1 {\n  height: auto;\n}\nul {\n  list-style-type: none;\n  margin: 0;\n}\n#modal-container-app {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: grid;\n  place-content: center;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#modal-container-app.sp-show {\n  pointer-events: auto;\n  opacity: 1;\n}\n#modal-container-app .sp-modal {\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#modal-container-app .sp-modal h2 {\n  text-align: center;\n}\n#modal-container-app .sp-modal .title {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#modal-container-app .sp-modal .title i {\n  font-size: 1.5rem;\n}\n#modal-container-app .sp-modal .title p {\n  margin: 0;\n  padding: 0;\n}\n#modal-container-app .sp-modal .close-modal {\n  color: white;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#modal-container-app .sp-modal .close-modal:hover {\n  background: #57cc99;\n}", ""]);
 
 // exports
 
@@ -32775,7 +32808,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container2[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container2 .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container2 .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container2 nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container2 nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container2 nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container2 .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n  display: none;\n}\n#header .container2 .cart-login .hamburger-menu[data-v-153bfd55] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: none;\n  padding: 20px;\n  width: 100%;\n  height: 100%;\n  min-width: 100vw;\n  min-height: 100vh;\n  background: #98f1ad;\n  z-index: 100;\n}\n#header .container2 .cart-login .hamburger-menu ul[data-v-153bfd55] {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n  list-style: none;\n}\n#header .container2 .cart-login .hamburger-menu li a[data-v-153bfd55] {\n  color: white;\n  text-decoration: none;\n  font-size: 25px;\n  cursor: pointer;\n}\n#header .container2 .cart-login .hamburger-menu .close[data-v-153bfd55] {\n  display: block;\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  color: white;\n  font-size: 35px;\n  text-decoration: none;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55] {\n  position: relative;\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container2 .cart-login i.cart .number-cart[data-v-153bfd55] {\n  position: absolute;\n  right: 0;\n  font-size: 18px;\n}\n#header .container2 .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container2 .cart-login #modal-container .dish-cart[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid gray;\n  border-radius: 10px;\n  padding: 0.5rem;\n  gap: 1rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img[data-v-153bfd55] {\n  width: 20%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img img[data-v-153bfd55] {\n  width: 100%;\n  border-radius: 10px;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs[data-v-153bfd55] {\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity[data-v-153bfd55] {\n  display: flex;\n  gap: 0.4rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity i[data-v-153bfd55] {\n  cursor: pointer;\n  width: 1rem;\n  height: 1rem;\n  padding: 0.6rem;\n  border-radius: 5px;\n  background: lightgray;\n  display: grid;\n  place-content: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .remove[data-v-153bfd55]:hover {\n  cursor: pointer;\n  color: lightcoral;\n}\n#header .container2 .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container2 .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  min-height: 60%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  position: relative;\n}\n#header .container2 .cart-login #modal-container .sp-modal .checkout[data-v-153bfd55] {\n  flex-grow: 1;\n  display: flex;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price[data-v-153bfd55] {\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: column;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#header .container2 .cart-login #modal-container .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}\n@media screen and (max-width: 992px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 768px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .accedi[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 576px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 370px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 370px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container2[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container2 .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container2 .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container2 nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container2 nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container2 nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container2 .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n  display: none;\n}\n#header .container2 .cart-login .hamburger-menu[data-v-153bfd55] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: none;\n  padding: 20px;\n  width: 100%;\n  height: 100%;\n  min-width: 100vw;\n  min-height: 100vh;\n  background: #98f1ad;\n  z-index: 100;\n}\n#header .container2 .cart-login .hamburger-menu ul[data-v-153bfd55] {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n  list-style: none;\n}\n#header .container2 .cart-login .hamburger-menu li a[data-v-153bfd55] {\n  color: white;\n  text-decoration: none;\n  font-size: 25px;\n  cursor: pointer;\n}\n#header .container2 .cart-login .hamburger-menu .close[data-v-153bfd55] {\n  display: block;\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  color: white;\n  font-size: 35px;\n  text-decoration: none;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55] {\n  position: relative;\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container2 .cart-login i.cart .number-cart[data-v-153bfd55] {\n  position: absolute;\n  right: 0;\n  font-size: 18px;\n}\n#header .container2 .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container2 .cart-login #modal-container .dish-cart[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid gray;\n  border-radius: 10px;\n  padding: 0.5rem;\n  gap: 1rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img[data-v-153bfd55] {\n  width: 20%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img img[data-v-153bfd55] {\n  width: 100%;\n  border-radius: 10px;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs[data-v-153bfd55] {\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity[data-v-153bfd55] {\n  display: flex;\n  gap: 0.4rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity i[data-v-153bfd55] {\n  cursor: pointer;\n  width: 1rem;\n  height: 1rem;\n  padding: 0.6rem;\n  border-radius: 5px;\n  background: lightgray;\n  display: grid;\n  place-content: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .remove[data-v-153bfd55]:hover {\n  cursor: pointer;\n  color: lightcoral;\n}\n#header .container2 .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container2 .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  min-height: 60%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  position: relative;\n}\n#header .container2 .cart-login #modal-container .sp-modal .checkout[data-v-153bfd55] {\n  flex-grow: 1;\n  display: flex;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price[data-v-153bfd55] {\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: column;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#header .container2 .cart-login #modal-container .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}\n@media screen and (max-width: 992px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 768px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .accedi[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 576px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 300px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 370px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -32851,7 +32884,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-hero[data-v-0a33e68b] {\n  display: flex;\n  justify-content: center;\n  background-image: url(\"/img/img_rest/jakub-kapusnak-4f4YZfDMLeU-unsplash-1024x683.jpeg\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  position: relative;\n  text-align: center;\n}\n.container-hero .info-resturant[data-v-0a33e68b] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #57cc99;\n  opacity: 0.9;\n  padding: 50px 150px;\n  margin: 100px 0;\n  color: #1e282f;\n}\n.container-hero h1[data-v-0a33e68b] {\n  color: #1e282f;\n  font-size: 2.5rem;\n  margin-bottom: 20px;\n  width: 100%;\n}\n.container-hero h2[data-v-0a33e68b] {\n  font-size: 1.6rem;\n}\n.container-hero p[data-v-0a33e68b] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n.container-hero .btn-go[data-v-0a33e68b] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 20px 0;\n}\n@media (max-width: 480px) {\n.info-resturant[data-v-0a33e68b] {\n    padding: 50px 50px !important;\n}\n}", ""]);
+exports.push([module.i, ".container-hero[data-v-0a33e68b] {\n  display: flex;\n  justify-content: center;\n  background-image: url(\"/img/img_rest/jakub-kapusnak-4f4YZfDMLeU-unsplash-1024x683.jpeg\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  position: relative;\n  text-align: center;\n}\n.container-hero .info-resturant[data-v-0a33e68b] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #57cc99;\n  opacity: 0.9;\n  padding: 50px 150px;\n  margin: 100px 0;\n  color: #1e282f;\n}\n.container-hero h1[data-v-0a33e68b] {\n  color: #1e282f;\n  font-size: 2.5rem;\n  line-height: 40px;\n  margin-bottom: 20px;\n  width: 100%;\n  height: auto;\n}\n.container-hero h2[data-v-0a33e68b] {\n  font-size: 1.6rem;\n}\n.container-hero p[data-v-0a33e68b] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n.container-hero .btn-go[data-v-0a33e68b] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 20px 0;\n}\n@media (max-width: 480px) {\n.info-resturant[data-v-0a33e68b] {\n    padding: 50px 50px !important;\n}\n}", ""]);
 
 // exports
 
@@ -32965,7 +32998,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  line-height: 3rem;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    width: 20rem;\n    padding: 0;\n    margin: 0;\n    padding-left: 15px;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
+exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    padding: 0;\n    margin: 0;\n    padding-left: 15px;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
 
 // exports
 
@@ -33041,7 +33074,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 35%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 280px;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
+exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
 
 // exports
 
@@ -65997,7 +66030,7 @@ var render = function () {
                 _c("div", { staticClass: "title" }, [
                   _c("p", [
                     _vm._v(
-                      "puoi aggiungere al carrello, solo i piatti di un solo ristorante"
+                      "\n          puoi aggiungere al carrello, solo i piatti di un solo ristorante\n        "
                     ),
                   ]),
                   _vm._v(" "),
@@ -66134,10 +66167,30 @@ var render = function () {
     _c("div", { staticClass: "container2" }, [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c("nav", [
+        _c("ul", [
+          _vm._m(1),
+          _vm._v(" "),
+          this.$root._route.name === "home"
+            ? _c("li", [
+                _c("a", { attrs: { href: "#collab" } }, [
+                  _vm._v("Collabora con noi"),
+                ]),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.$root._route.name === "home"
+            ? _c("li", [
+                _c("a", { attrs: { href: "#about-us" } }, [_vm._v("About us")]),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._m(2),
+        ]),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "cart-login" }, [
-        _vm._m(2),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "i",
@@ -66162,7 +66215,29 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "hamburger-menu" }, [
-          _vm._m(3),
+          _c("ul", [
+            _vm._m(4),
+            _vm._v(" "),
+            this.$root._route.name === "home"
+              ? _c("li", [
+                  _c("a", { attrs: { href: "#collab" } }, [
+                    _vm._v("Collabora con noi"),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            this.$root._route.name === "home"
+              ? _c("li", [
+                  _c("a", { attrs: { href: "#about-us" } }, [
+                    _vm._v("About us"),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _vm._m(6),
+          ]),
           _vm._v(" "),
           _c(
             "a",
@@ -66189,7 +66264,7 @@ var render = function () {
                   on: { click: _vm.closeModal },
                 }),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(7),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -66217,9 +66292,9 @@ var render = function () {
                               _vm._v(" "),
                               _c("span", [
                                 _vm._v(
-                                  "\n                                                  " +
+                                  "\n                          " +
                                     _vm._s(item.quantity) +
-                                    "\n                                              "
+                                    "\n                        "
                                 ),
                               ]),
                               _vm._v(" "),
@@ -66259,9 +66334,9 @@ var render = function () {
                     { staticClass: "total-price" },
                     [
                       _vm._v(
-                        "\n                              Totale: € " +
+                        "\n                Totale: € " +
                           _vm._s(_vm.checkoutPrice()) +
-                          "\n                              \n                              "
+                          "\n\n                "
                       ),
                       _vm.checkoutPrice() > 0
                         ? _c(
@@ -66302,20 +66377,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", [
-      _c("ul", [
-        _c("li", [
-          _c("a", { attrs: { href: "/restaurants" } }, [_vm._v("Ristoranti")]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Collabora con noi")]),
-        ]),
-        _vm._v(" "),
-        _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("About us")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("Contatti")])]),
-      ]),
+    return _c("li", [
+      _c("a", { attrs: { href: "/restaurants" } }, [_vm._v("Ristoranti")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#contacts" } }, [_vm._v("Contatti")]),
     ])
   },
   function () {
@@ -66330,20 +66401,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [
-        _c("a", { attrs: { href: "/restaurants" } }, [_vm._v("Ristoranti")]),
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Collabora con noi")]),
-      ]),
-      _vm._v(" "),
-      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("About us")])]),
-      _vm._v(" "),
-      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Contatti")])]),
-      _vm._v(" "),
-      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Accedi")])]),
+    return _c("li", [
+      _c("a", { attrs: { href: "/restaurants" } }, [_vm._v("Ristoranti")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#contacts" } }, [_vm._v("Contatti")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("Accedi")]),
     ])
   },
   function () {
@@ -66900,25 +66975,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-section" }, [
-      _c("div", { staticClass: "container-chi-siamo" }, [
-        _c("div", { staticClass: "img-container" }, [
-          _c("img", { attrs: { src: "img/img_rest/chi-siamo.png", alt: "" } }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "description-container" }, [
-          _c("h1", [_vm._v("BOOLIVERY")]),
+    return _c(
+      "div",
+      { staticClass: "container-section", attrs: { id: "about-us" } },
+      [
+        _c("div", { staticClass: "container-chi-siamo" }, [
+          _c("div", { staticClass: "img-container" }, [
+            _c("img", {
+              attrs: { src: "img/img_rest/chi-siamo.png", alt: "" },
+            }),
+          ]),
           _vm._v(" "),
-          _c("h2", [_vm._v("CHI SIAMO")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, quidem eos. Consequatur, itaque assumenda aspernatur, ducimus asperiores doloribus et at consectetur error nulla nemo hic beatae dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla culpa veritatis laboriosam quidem obcaecati nam quod porro commodi recusandae ut quam voluptatum ad dicta officia assumenda eaque!\n            "
-            ),
+          _c("div", { staticClass: "description-container" }, [
+            _c("h1", [_vm._v("BOOLIVERY")]),
+            _vm._v(" "),
+            _c("h2", [_vm._v("CHI SIAMO")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,\n        quidem eos. Consequatur, itaque assumenda aspernatur, ducimus\n        asperiores doloribus et at consectetur error nulla nemo hic beatae\n        dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet\n        consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla\n        culpa veritatis laboriosam quidem obcaecati nam quod porro commodi\n        recusandae ut quam voluptatum ad dicta officia assumenda eaque!\n      "
+              ),
+            ]),
           ]),
         ]),
-      ]),
-    ])
+      ]
+    )
   },
 ]
 render._withStripped = true
@@ -66962,8 +67043,10 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", [
-          _c("button", { staticClass: "btn btn_blue" }, [
-            _vm._v("Diventa partner >"),
+          _c("form", { attrs: { action: "/register" } }, [
+            _c("button", { staticClass: "btn btn_blue" }, [
+              _vm._v("Diventa partner >"),
+            ]),
           ]),
         ]),
       ]),
@@ -67271,35 +67354,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "social-component" }, [
-      _c("h1", [_vm._v("SEGUICI SUI SOCIAL")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "social-box" }, [
-        _c("div", { staticClass: "social-icon" }, [
-          _c(
-            "a",
-            { attrs: { href: "https://www.facebook.com/", target: "_blank" } },
-            [_c("i", { staticClass: "fa-brands fa-facebook" })]
-          ),
-        ]),
+    return _c(
+      "div",
+      { staticClass: "social-component", attrs: { id: "contacts" } },
+      [
+        _c("h1", [_vm._v("SEGUICI SUI SOCIAL")]),
         _vm._v(" "),
-        _c("div", { staticClass: "social-icon" }, [
-          _c(
-            "a",
-            { attrs: { href: "https://www.instagram.com/", target: "_blank" } },
-            [_c("i", { staticClass: "fa-brands fa-instagram" })]
-          ),
+        _c("div", { staticClass: "social-box" }, [
+          _c("div", { staticClass: "social-icon" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "https://www.facebook.com/", target: "_blank" },
+              },
+              [_c("i", { staticClass: "fa-brands fa-facebook" })]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "social-icon" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "https://www.instagram.com/", target: "_blank" },
+              },
+              [_c("i", { staticClass: "fa-brands fa-instagram" })]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "social-icon" }, [
+            _c(
+              "a",
+              { attrs: { href: "https://twitter.com/", target: "_blank" } },
+              [_c("i", { staticClass: "fa-brands fa-twitter" })]
+            ),
+          ]),
         ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "social-icon" }, [
-          _c(
-            "a",
-            { attrs: { href: "https://twitter.com/", target: "_blank" } },
-            [_c("i", { staticClass: "fa-brands fa-twitter" })]
-          ),
-        ]),
-      ]),
-    ])
+      ]
+    )
   },
 ]
 render._withStripped = true
