@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_name', 30);
             $table->string('customer_surname', 30);
             $table->bigInteger('customer_phone');
-            $table->mediumText('special_request');
+            $table->mediumText('special_request')->nullable();
             $table->boolean('payment_approval');
 
             $table->timestamps();
