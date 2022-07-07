@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Order;
+use App\Dish;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -14,10 +17,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-        $cart = [];
 
-        return view('order.index', compact('cart'));
+        $id = Auth::id();        
+        
+        $orders = Order::where('restaurant_id', $id)->get();
+
+        // $dishes = Dish::where('order', $orders->id)
+
+        return view('user.restaurant.orders.index', compact('orders'));
     }
 
     /**
@@ -28,7 +35,6 @@ class OrderController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -40,7 +46,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-
     }
 
     /**
@@ -52,6 +57,13 @@ class OrderController extends Controller
     public function show($id)
     {
         //
+        $userId = Auth::id();
+
+        $order = Order::find($id);
+
+        // $dishes= Dish::with('orders')->where('id', $order->id)->get();
+
+        return view('user.restaurant.orders.show', compact('order'));
     }
 
     /**

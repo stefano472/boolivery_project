@@ -29,9 +29,8 @@ Route::middleware('auth')
         Route::get('/', 'HomeController@index')->name('index');
         Route::resource('/restaurant', 'RestaurantController');
         Route::resource('/dishes', 'DishController');
+        Route::resource('/orders', 'OrderController');
     });
-
-Route::get('/order', 'OrderController@index')->name('order.index');
 
 Route::get('{any}', function(){
         return view('guests.home');
