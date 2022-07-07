@@ -65,8 +65,8 @@ export default {
 .container {
   display: flex;
   justify-content: space-between;
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   .other-categories-list {
     h2 {
       margin-bottom: 36px;
@@ -103,8 +103,10 @@ export default {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: space-between;
         .category {
           margin: 15px;
+          width: 80px;
         }
       }
     }

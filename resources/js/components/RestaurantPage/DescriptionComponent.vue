@@ -36,6 +36,7 @@ export default {
   .about-us {
     width: 30%;
     margin-right: 50px;
+    text-align: center;
     h2 {
       color: $primary-color;
     }
@@ -54,9 +55,14 @@ export default {
     flex-direction: column;
     .about-us {
       width: 100%;
+      margin: 0;
+      p {
+        margin-bottom: 2rem;
+      }
     }
     .description-cover {
       width: 100%;
+      margin: 0;
       img {
         width: 100%;
       }

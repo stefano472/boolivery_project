@@ -46,6 +46,8 @@ export default {
   h1 {
     color: $dark-color;
     font-size: 2.5rem;
+    margin-bottom: 20px;
+    width: 100%;
   }
   h2 {
     font-size: 1.6rem;
@@ -68,7 +70,7 @@ export default {
 
 @media (max-width: 480px) {
   .info-resturant {
-    padding: 50px 0 !important;
+    padding: 50px 50px !important;
   }
 }
 </style>
