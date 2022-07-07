@@ -25,14 +25,16 @@
                 </p>
                     <div>
                         <p>Piatti dell'ordine:</p>
+                        {{-- {{$order->pivot}} --}}
                         <ul>
                             @foreach ($order->dishes as $dish)
-
+                            
                                 <li style="
                                 display: flex;
                                 gap: 30px;">
                                     <span><strong>{{$dish->name}} </strong></span>
-                                    <span><strong>&euro;{{$dish->price}}</strong></span>
+                                    <span><strong>x{{$dish->pivot->quantity}} </strong></span>
+                                    <span><strong>&euro;{{number_format(($dish->price * $dish->pivot->quantity), 2, '.', "")}}</strong></span>
                                 </li>
 
                             @endforeach
@@ -46,5 +48,5 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/show-dish.js') }}" defer></script>
+
 @endsection

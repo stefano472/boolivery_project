@@ -105,7 +105,8 @@
 
             <label for="tax_id">Partita IVA *</label>
             <br>
-            <input type="number" name="tax_id" placeholder="partita iva"
+            <input type="text" minlength="11" maxlength="11" name="tax_id" placeholder="partita iva"
+                {{-- pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" --}}
                 value="{{ old('tax_id')}}"
                 class="form-control @error('tax_id') is-invalid @enderror" required>
 

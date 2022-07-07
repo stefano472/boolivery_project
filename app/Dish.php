@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Dish extends Model
@@ -20,4 +21,8 @@ class Dish extends Model
     public function orders(){
         return $this->belongsToMany('App\Order');
     }
+//     public function orders(){
+//         return $this->belongsToMany('App\Order', 'dish_order','dish_id','order_id');
+//         // ->withPivot("quantity");
+//     }
 }

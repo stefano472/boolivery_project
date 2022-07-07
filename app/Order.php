@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Dish;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -24,7 +25,10 @@ class Order extends Model
         return $this->belongsTo('App\Restaurant');
     }
 
+    // public function dishes(){
+    //     return $this->belongsToMany('App\Dish');
+    // }
     public function dishes(){
-        return $this->belongsToMany('App\Dish');
+        return $this->belongsToMany('App\Dish')->withPivot("quantity");
     }
 }
