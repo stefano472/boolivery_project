@@ -3,7 +3,7 @@
 <!-- Form di creazione -->
 @section('content')
 <div class="bo-container">
-    <h1>Modifica il piatto</h1>
+    <h1 class="mb-4">Modifica il piatto</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -17,7 +17,7 @@
         @csrf
 
         @method('PUT')
-        <div class="input-box mb-2">
+        <div class="input-box mb-4">
 
             <label for="name">Nome del piatto *</label>
             <br>
@@ -42,7 +42,7 @@
             @enderror
 
         </div>
-        <div class="input-box mb-2">
+        <div class="input-box mb-4">
 
             <label for="price">Prezzo *</label>
             <br>
@@ -60,7 +60,7 @@
             <label for="available">Disponibile</label>
             <br>
             <input type="radio" name="available" value="1" {{ $dish->available == 1 ? 'checked' : '' }}>
-            <span class="mr-2">
+            <span class="mr-4">
                 Si
             </span>
             <input type="radio" name="available" value="0" {{ $dish->available == 0 ? 'checked' : '' }}>
@@ -80,7 +80,7 @@
             <input type="file" name="cover" class="mb-2">
             @if ($dish->cover)
 
-                <div class="mb-3">
+                <div class="mb-4">
 
                         <p>Immagine corrente</p>
 
@@ -95,7 +95,7 @@
 
             @else
 
-                    <div class="mb-3">
+                    <div class="mb-4">
 
                         <p>Nessuna immagine inserita</p>
 
@@ -123,3 +123,4 @@
 
 
 @endsection
+
