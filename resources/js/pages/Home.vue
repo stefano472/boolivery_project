@@ -4,7 +4,7 @@
     <ChiSiamoComponent/>
     <ParallaxComponent/>
     <RistorantiPiuCercatiComponent :restaurants="restaurants"/>
-    <CategoriePiuRichiesteComponent/>
+    <CategoriePiuRichiesteComponent @categorySelected='categorySelected'/>
     <ServiziComponent/>
     <CollaboraConNoiComponent/>
   </div>
@@ -35,6 +35,11 @@ export default {
         CategoriePiuRichiesteComponent,
         ServiziComponent,
         CollaboraConNoiComponent,
+    },
+    methods:{
+        categorySelected(idCategory) {
+          this.$emit("categorySelected", idCategory);
+        },
     },
 
     mounted(){

@@ -129,6 +129,7 @@ export default {
 @import 'resources/sass/variables';
 
 #paybox{
+  margin: 0 1rem;
   .brain{
     width: 50%;
     margin-inline: auto;

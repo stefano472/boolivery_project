@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <router-view @addToCart="addToCart" />
+    <router-view :categoriaSelezionataHome='categoriaSelezionataHome' @addToCart="addToCart" @categorySelected='categorySelected' />
     <!-- oppure
 
     <router-view></router-view> -->
@@ -39,6 +39,7 @@ export default {
     return {
       cart: [],
       activeModalApp: false,
+      categoriaSelezionataHome : undefined,
       // quantity: 0,
 
       // addToCart: this.addToCart(),
@@ -52,6 +53,11 @@ export default {
   },
 
   methods: {
+    categorySelected(idCategory) {
+      console.log('id categoria from home', idCategory)
+      this.categoriaSelezionataHome = idCategory
+      console.log(this.categoriaSelezionataHome, 'cate selezionata')
+    },
     remove() {
       this.activeComponent = false;
     },

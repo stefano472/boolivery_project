@@ -9,12 +9,18 @@
           :key="index"
           @click="emitCategory(category.id)"
         >
+          <!-- <div>
+            <input type="checkbox" name="categories"  v-model="categoriesSelected" :value="category.id" @click="emitCategoriesSelected(category.id)" >
+            <label for="categories">{{ category.name }}</label>
+          </div> -->
           <p>{{ category.name }}</p>
+        
         </div>
       </div>
     </div>
 
     <div class="restaurants-list">
+      <!-- {{categoriesSelected}} -->
       <h1>RISTORANTI</h1>
       <RestaurantCard :restaurants="restaurants" />
     </div>
@@ -29,12 +35,16 @@ export default {
   data() {
     return {
       categories: "",
+      categoriesSelected: [],
     };
   },
 
   methods: {
     emitCategory(idCategory) {
       this.$emit("categorySelected", idCategory);
+    },
+    emitCategoriesSelected(idCategory) {
+      this.$emit("categoryCheckbox", idCategory);
     },
   },
 

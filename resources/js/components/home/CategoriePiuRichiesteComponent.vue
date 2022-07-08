@@ -9,21 +9,28 @@
         <div class="row1 mt-5 mb-3" >
 
 
-            <a href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(0, 4)" :key="index" class="categories-cards">
-                <img class="single-cat" :src="category.img" alt="">
+            <!-- <a href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(0, 4)" :key="index" class="categories-cards">
+                <img @click="emitCategory(category.id)" class="single-cat" :src="category.img" alt="">
                 <p>{{ category.name }}</p>
-            </a>
+            </a> -->
+            <router-link :to="{name: 'restaurants'}" v-for="(category, index) in categories.slice(0, 4)" :key="index" class="categories-cards">
+                <img @click="emitCategory(category.id)" class="single-cat" :src="category.img" alt="">
+                <p @click="emitCategory(category.id)">{{ category.name }}</p>
+            </router-link>
 
 
         </div>
 
         <div class="row1" >
 
-            <a href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(4, 8)" :key="index" class="categories-cards">
+            <!-- <a @click="emitCategory(category.id)" href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(4, 8)" :key="index" class="categories-cards">
                 <img class="single-cat" :src="category.img" alt="">
                 <p>{{ category.name }}</p>
-            </a>
-
+            </a> -->
+            <router-link :to="{name: 'restaurants'}" v-for="(category, index) in categories.slice(4, 8)" :key="index" class="categories-cards">
+                <img @click="emitCategory(category.id)" class="single-cat" :src="category.img" alt="">
+                <p @click="emitCategory(category.id)">{{ category.name }}</p>
+            </router-link>
         </div>
 
     </section>
@@ -54,23 +61,17 @@ export default {
     methods:{
 
 
+        emitCategory(idCategory) {
+        this.$emit("categorySelected", idCategory);
+        },
 
+        setUrlCategoryCover(cover){
 
-      setUrlFilters(index){
+            const url = cover;
 
-        const url = 'http://127.0.0.1:8000/restaurants/' + index;
+            return url;
 
-        return url;
-
-      },
-
-      setUrlCategoryCover(cover){
-
-        const url = cover;
-
-        return url;
-
-      }
+        }
    },
 }
 </script>

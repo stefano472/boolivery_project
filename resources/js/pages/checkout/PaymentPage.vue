@@ -125,40 +125,49 @@
 
         <div v-else class="payment-part">
           <p>Inserisci i dati del pagamento</p>
-          <div class="dati-forniti">
+          <!-- <div class="dati-forniti">
             <p>{{formData.surname}} {{formData.name}}</p>
             <p>{{formData.address}}</p>
             <p>+39 {{formData.phone}}</p>
             <p>{{formData.email}}</p>
 
-          </div>
+          </div> -->
           <Payment :formData="formData" :cart="cart" />
           <!-- <button @click="beforeBuy()">Procedi con l'acquisto 🎉</button> -->
         </div>
 
       </div>
       <div class="right-payment">
-        <h2>
-          Riepilogo ordine
-        </h2>
-        <div class="cart">
-          <div class="cart-card" v-for="dish in cart" :key='dish.id'>
-            <div class="dish-name">
-              {{dish.name}}
-            </div>
-            <div class="dish-specs">
-              <span>x{{dish.quantity}}</span>
-              <span>&euro; {{dish.price.toFixed(2)}}</span>
+        <div class="cart-summary">
+          <h2>
+            Riepilogo ordine
+          </h2>
+          <div class="cart">
+            <div class="cart-card" v-for="dish in cart" :key='dish.id'>
+              <div class="dish-name">
+                {{dish.name}}
+              </div>
+              <div class="dish-specs">
+                <span>x{{dish.quantity}}</span>
+                <span>&euro; {{dish.price.toFixed(2)}}</span>
+              </div>
             </div>
           </div>
+          <div class="totale">
+            <p>
+              Totale: 
+            </p>
+            <p>
+              &euro; {{checkoutPrice()}}
+            </p>
+          </div>
         </div>
-        <div class="totale">
-          <p>
-            Totale: 
-          </p>
-          <p>
-            &euro; {{checkoutPrice()}}
-          </p>
+        <div v-if="formComplete" class="data-summary">
+          <h2>Riepilogo dati</h2>
+          <p>{{formData.surname}} {{formData.name}}</p>
+          <p>{{formData.address}}</p>
+          <p>+39 {{formData.phone}}</p>
+          <p>{{formData.email}}</p>
         </div>
       </div>
     </div>
@@ -469,36 +478,47 @@ export default {
   }
   .right-payment{
     color: $primary-color;
-    margin: 8rem auto 0;
-    margin-inline-end: 0;
-    min-width: 18rem;
-    padding: 1rem;
-    border: 2px solid $primary-color;
-    height: fit-content;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
-    .cart{
-      font-size: 0.9rem;
-      padding: 0.5rem 0 1rem;
-      border-bottom: 1px solid lightgrey;
-    }
-    .cart-card{
-      color: $dark-color;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .totale{
-      margin-top: 1rem;
-      font-weight: bold;
-      text-align: end;
-      font-size: 1.1rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      p{
-        margin: 0;
+    margin-top: 8rem;
+    // margin-inline-end: 0;
+    .cart-summary{
+      margin-bottom: 2rem;
+      min-width: 18rem;
+      padding: 1rem;
+      border: 2px solid $primary-color;
+      height: fit-content;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+      .cart{
+        font-size: 0.9rem;
+        padding: 0.5rem 0 1rem;
+        border-bottom: 1px solid lightgrey;
+        .cart-card{
+          color: $dark-color;
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+        .totale{
+          margin-top: 1rem;
+          font-weight: bold;
+          text-align: end;
+          font-size: 1.1rem;
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+          p{
+            margin: 0;
+          }
+        }
       }
+    }
+    .data-summary{
+      min-width: 18rem;
+      padding: 1rem;
+      border: 2px solid $primary-color;
+      height: fit-content;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
     }
   }
 }

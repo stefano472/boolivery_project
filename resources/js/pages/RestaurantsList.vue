@@ -14,7 +14,7 @@
     </div> -->
 
     <!-- Lista dei filtri -->
-    <FilterComponents :restaurants="filteredRestaurants" @categorySelected='categorySelected'/>
+    <FilterComponents :restaurants="filteredRestaurants" @categorySelected='categorySelected' @categoryCheckbox='categoryCheckbox'/>
   </div>
 </template>
 
@@ -29,6 +29,9 @@ export default {
         CategoriesComponent,
         FilterComponents,
     },
+    props: {
+      categoriaSelezionataHome: Number
+    },
 
     data(){
 
@@ -38,6 +41,8 @@ export default {
             filteredRestaurants : [],
 
             categoryFilter: '',
+
+            categoriesArray:[],
         }
         
     },
@@ -48,33 +53,70 @@ export default {
         this.chiamataAxios()
 
       },
+      categoryCheckbox(categoriesGroup){
+        if(!this.categoriesArray.includes(categoriesGroup)){
+          this.categoriesArray.push(categoriesGroup)
+          } else {
+            let index = this.categoriesArray.indexOf(categoriesGroup, 0)
+            this.categoriesArray.splice(index, 1)
+        }
+        console.log('categorycheckbox', this.categoriesArray)
+        this.chiamataAxios()
 
-    chiamataAxios() {
-      window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
-    
-                if (status === 200) {
-                  this.restaurants = data.response
-                  this.filteredRestaurants= [],
-                  console.log('dati', data)
-                  this.restaurants.forEach(restaurant => {
-                    restaurant.categories.forEach(category => {
-                      if(category.id === this.categoryFilter){
-                        this.filteredRestaurants.push(restaurant)
-                      }
-                    })
-                  });
-                      console.log ('filtered rest', this.filteredRestaurants)
-                }
-            }).catch(e => console.log(e))   
-    }
-  },
+      },
+      chiamataAxios() {
+        window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
+      
+                  if (status === 200) {
+                    this.restaurants = data.response
+                    this.filteredRestaurants= [],
+                    // console.log('dati', data)
+                    this.restaurants.forEach(restaurant => {
+                      restaurant.categories.forEach(category => {
+                        // console.log('category', category)
+                        // this.categoriesArray.forEach(checkedCategory=>{
+                          
+                          // restaurant.categories === this.categoriesArray
+                          //   if(category.id === checkedCategory){
+                          //     this.filteredRestaurants.push(restaurant)
+                          //   }
+                          // })
+                          if(category.id === this.categoryFilter){
+                            this.filteredRestaurants.push(restaurant)
+                          }
+                      })
+                    });
+                        // console.log ('filtered rest', this.filteredRestaurants)
+                  }
+              }).catch(e => console.log(e))   
+      }
+    },
 
     mounted(){
-            window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
-    
-                if (status === 200) {
-                  console.log('dati', data)
-                    this.filteredRestaurants = data.response
+      window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
+        
+        // if (status === 200) {
+        //           console.log(this.categoriaSelezionataHome, 'idcategoria')
+        //           console.log('dati', data)
+        //             this.filteredRestaurants = data.response
+        //         }
+        
+          if (status === 200) {
+                  this.restaurants = data.response
+                  this.filteredRestaurants= [],
+                  // console.log('dati', data)
+                  this.restaurants.forEach(restaurant => {
+                    if (this.categoriaSelezionataHome){
+                      restaurant.categories.forEach(category => {
+                        if(category.id === this.categoriaSelezionataHome){
+                          this.filteredRestaurants.push(restaurant)
+                        }
+                      })
+                    } else {
+                      this.filteredRestaurants = data.response
+                    }
+                  });
+                      // console.log ('filtered rest', this.filteredRestaurants)
                 }
             }).catch(e => console.log(e))        
     },

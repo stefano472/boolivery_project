@@ -1948,7 +1948,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cart: [],
-      activeModalApp: false // quantity: 0,
+      activeModalApp: false,
+      categoriaSelezionataHome: undefined // quantity: 0,
       // addToCart: this.addToCart(),
 
     };
@@ -1959,6 +1960,11 @@ __webpack_require__.r(__webpack_exports__);
     SocialComponent: _components_home_SocialComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   methods: {
+    categorySelected: function categorySelected(idCategory) {
+      console.log('id categoria from home', idCategory);
+      this.categoriaSelezionataHome = idCategory;
+      console.log(this.categoriaSelezionataHome, 'cate selezionata');
+    },
     remove: function remove() {
       this.activeComponent = false;
     },
@@ -2452,9 +2458,9 @@ __webpack_require__.r(__webpack_exports__);
     addToLocalStorage: function addToLocalStorage(dish) {
       console.log(dish);
       /*this.cart.push(item);
-             console.log(this.cart);
-             localStorage.setItem('cart', JSON.stringify(this.cart))
-             */
+              console.log(this.cart);
+              localStorage.setItem('cart', JSON.stringify(this.cart))
+              */
 
       this.$emit("addToCart", dish);
     }
@@ -2695,17 +2701,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FilterComponent",
   data: function data() {
     return {
-      categories: ""
+      categories: "",
+      categoriesSelected: []
     };
   },
   methods: {
     emitCategory: function emitCategory(idCategory) {
       this.$emit("categorySelected", idCategory);
+    },
+    emitCategoriesSelected: function emitCategoriesSelected(idCategory) {
+      this.$emit("categoryCheckbox", idCategory);
     }
   },
   mounted: function mounted() {
@@ -2821,6 +2837,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CategoriePiuRichiesteComponent',
   data: function data() {
@@ -2843,9 +2866,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    setUrlFilters: function setUrlFilters(index) {
-      var url = 'http://127.0.0.1:8000/restaurants/' + index;
-      return url;
+    emitCategory: function emitCategory(idCategory) {
+      this.$emit("categorySelected", idCategory);
     },
     setUrlCategoryCover: function setUrlCategoryCover(cover) {
       var url = cover;
@@ -3208,6 +3230,11 @@ __webpack_require__.r(__webpack_exports__);
     ServiziComponent: _components_home_ServiziComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     CollaboraConNoiComponent: _components_home_CollaboraConNoiComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
+  methods: {
+    categorySelected: function categorySelected(idCategory) {
+      this.$emit("categorySelected", idCategory);
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -3356,16 +3383,31 @@ __webpack_require__.r(__webpack_exports__);
     CategoriesComponent: _components_RestaurantsListPage_CategoriesComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     FilterComponents: _components_RestaurantsListPage_FilterComponents_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: {
+    categoriaSelezionataHome: Number
+  },
   data: function data() {
     return {
       restaurants: [],
       filteredRestaurants: [],
-      categoryFilter: ''
+      categoryFilter: '',
+      categoriesArray: []
     };
   },
   methods: {
     categorySelected: function categorySelected(categoryId) {
       this.categoryFilter = categoryId, this.chiamataAxios();
+    },
+    categoryCheckbox: function categoryCheckbox(categoriesGroup) {
+      if (!this.categoriesArray.includes(categoriesGroup)) {
+        this.categoriesArray.push(categoriesGroup);
+      } else {
+        var index = this.categoriesArray.indexOf(categoriesGroup, 0);
+        this.categoriesArray.splice(index, 1);
+      }
+
+      console.log('categorycheckbox', this.categoriesArray);
+      this.chiamataAxios();
     },
     chiamataAxios: function chiamataAxios() {
       var _this = this;
@@ -3376,17 +3418,21 @@ __webpack_require__.r(__webpack_exports__);
 
         if (status === 200) {
           _this.restaurants = data.response;
-          _this.filteredRestaurants = [], console.log('dati', data);
-
+          _this.filteredRestaurants = [], // console.log('dati', data)
           _this.restaurants.forEach(function (restaurant) {
             restaurant.categories.forEach(function (category) {
+              // console.log('category', category)
+              // this.categoriesArray.forEach(checkedCategory=>{
+              // restaurant.categories === this.categoriesArray
+              //   if(category.id === checkedCategory){
+              //     this.filteredRestaurants.push(restaurant)
+              //   }
+              // })
               if (category.id === _this.categoryFilter) {
                 _this.filteredRestaurants.push(restaurant);
               }
             });
-          });
-
-          console.log('filtered rest', _this.filteredRestaurants);
+          }); // console.log ('filtered rest', this.filteredRestaurants)
         }
       })["catch"](function (e) {
         return console.log(e);
@@ -3400,9 +3446,25 @@ __webpack_require__.r(__webpack_exports__);
       var status = _ref2.status,
           data = _ref2.data;
 
+      // if (status === 200) {
+      //           console.log(this.categoriaSelezionataHome, 'idcategoria')
+      //           console.log('dati', data)
+      //             this.filteredRestaurants = data.response
+      //         }
       if (status === 200) {
-        console.log('dati', data);
-        _this2.filteredRestaurants = data.response;
+        _this2.restaurants = data.response;
+        _this2.filteredRestaurants = [], // console.log('dati', data)
+        _this2.restaurants.forEach(function (restaurant) {
+          if (_this2.categoriaSelezionataHome) {
+            restaurant.categories.forEach(function (category) {
+              if (category.id === _this2.categoriaSelezionataHome) {
+                _this2.filteredRestaurants.push(restaurant);
+              }
+            });
+          } else {
+            _this2.filteredRestaurants = data.response;
+          }
+        }); // console.log ('filtered rest', this.filteredRestaurants)
       }
     })["catch"](function (e) {
       return console.log(e);
@@ -3635,6 +3697,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Payment_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Payment.vue */ "./resources/js/pages/checkout/Payment.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33256,7 +33327,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#paybox .brain[data-v-4e8ead06] {\n  width: 50%;\n  margin-inline: auto;\n}\n#paybox .brain .btnPay[data-v-4e8ead06] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#paybox .brain .btnPay[data-v-4e8ead06]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}", ""]);
+exports.push([module.i, "#paybox[data-v-4e8ead06] {\n  margin: 0 1rem;\n}\n#paybox .brain[data-v-4e8ead06] {\n  width: 50%;\n  margin-inline: auto;\n}\n#paybox .brain .btnPay[data-v-4e8ead06] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#paybox .brain .btnPay[data-v-4e8ead06]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}", ""]);
 
 // exports
 
@@ -33275,7 +33346,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".header[data-v-3afcad35] {\n  background: #1e282f;\n}\n.header .container[data-v-3afcad35] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n.header .container .logo[data-v-3afcad35] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n.header .container .logo img[data-v-3afcad35] {\n  width: 100%;\n}\n.header .container .logo p[data-v-3afcad35] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n.header .container nav[data-v-3afcad35] {\n  display: flex;\n  align-items: center;\n}\n.header .container nav ul[data-v-3afcad35] {\n  display: flex;\n  gap: 1.5rem;\n}\n.header .container nav ul li a[data-v-3afcad35] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n.header .container nav ul li a[data-v-3afcad35]:hover {\n  color: white;\n}\n.header .wave[data-v-3afcad35] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#payment[data-v-3afcad35] {\n  color: #1e282f;\n  margin-top: 1rem;\n  width: min(80%, 1400px);\n  margin-inline: auto;\n  display: flex;\n  gap: 3rem;\n}\n#payment h1[data-v-3afcad35] {\n  margin-bottom: 2rem;\n}\n#payment .left-payment[data-v-3afcad35] {\n  flex-basis: 70%;\n}\n#payment .left-payment .form[data-v-3afcad35] {\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .form > p[data-v-3afcad35] {\n  font-size: 1rem;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#payment .left-payment .payment-part > p[data-v-3afcad35] {\n  font-size: 1rem;\n}\n#payment .left-payment .payment-part .dati-forniti[data-v-3afcad35] {\n  width: 15rem;\n  margin-inline: auto;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .payment-part .dati-forniti p[data-v-3afcad35]:last-child {\n  margin-bottom: 0;\n}\n#payment .right-payment[data-v-3afcad35] {\n  color: #38a3a5;\n  margin: 8rem auto 0;\n  -webkit-margin-end: 0;\n          margin-inline-end: 0;\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .cart[data-v-3afcad35] {\n  font-size: 0.9rem;\n  padding: 0.5rem 0 1rem;\n  border-bottom: 1px solid lightgrey;\n}\n#payment .right-payment .cart-card[data-v-3afcad35] {\n  color: #1e282f;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .totale[data-v-3afcad35] {\n  margin-top: 1rem;\n  font-weight: bold;\n  text-align: end;\n  font-size: 1.1rem;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .totale p[data-v-3afcad35] {\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".header[data-v-3afcad35] {\n  background: #1e282f;\n}\n.header .container[data-v-3afcad35] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n.header .container .logo[data-v-3afcad35] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n.header .container .logo img[data-v-3afcad35] {\n  width: 100%;\n}\n.header .container .logo p[data-v-3afcad35] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n.header .container nav[data-v-3afcad35] {\n  display: flex;\n  align-items: center;\n}\n.header .container nav ul[data-v-3afcad35] {\n  display: flex;\n  gap: 1.5rem;\n}\n.header .container nav ul li a[data-v-3afcad35] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n.header .container nav ul li a[data-v-3afcad35]:hover {\n  color: white;\n}\n.header .wave[data-v-3afcad35] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#payment[data-v-3afcad35] {\n  color: #1e282f;\n  margin-top: 1rem;\n  width: min(80%, 1400px);\n  margin-inline: auto;\n  display: flex;\n  gap: 3rem;\n}\n#payment h1[data-v-3afcad35] {\n  margin-bottom: 2rem;\n}\n#payment .left-payment[data-v-3afcad35] {\n  flex-basis: 70%;\n}\n#payment .left-payment .form[data-v-3afcad35] {\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .form > p[data-v-3afcad35] {\n  font-size: 1rem;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#payment .left-payment .payment-part > p[data-v-3afcad35] {\n  font-size: 1rem;\n}\n#payment .left-payment .payment-part .dati-forniti[data-v-3afcad35] {\n  width: 15rem;\n  margin-inline: auto;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .payment-part .dati-forniti p[data-v-3afcad35]:last-child {\n  margin-bottom: 0;\n}\n#payment .right-payment[data-v-3afcad35] {\n  color: #38a3a5;\n  margin-top: 8rem;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n  margin-bottom: 2rem;\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .cart-summary .cart[data-v-3afcad35] {\n  font-size: 0.9rem;\n  padding: 0.5rem 0 1rem;\n  border-bottom: 1px solid lightgrey;\n}\n#payment .right-payment .cart-summary .cart .cart-card[data-v-3afcad35] {\n  color: #1e282f;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .cart .totale[data-v-3afcad35] {\n  margin-top: 1rem;\n  font-weight: bold;\n  text-align: end;\n  font-size: 1.1rem;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .cart .totale p[data-v-3afcad35] {\n  margin: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}", ""]);
 
 // exports
 
@@ -66180,7 +66251,13 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _c("router-view", { on: { addToCart: _vm.addToCart } }),
+          _c("router-view", {
+            attrs: { categoriaSelezionataHome: _vm.categoriaSelezionataHome },
+            on: {
+              addToCart: _vm.addToCart,
+              categorySelected: _vm.categorySelected,
+            },
+          }),
           _vm._v(" "),
           _c("SocialComponent"),
           _vm._v(" "),
@@ -67027,23 +67104,38 @@ var render = function () {
         { staticClass: "row1 mt-5 mb-3" },
         _vm._l(_vm.categories.slice(0, 4), function (category, index) {
           return _c(
-            "a",
+            "router-link",
             {
               key: index,
               staticClass: "categories-cards",
-              attrs: { href: "http://127.0.0.1:8000/restaurants/" },
+              attrs: { to: { name: "restaurants" } },
             },
             [
               _c("img", {
                 staticClass: "single-cat",
                 attrs: { src: category.img, alt: "" },
+                on: {
+                  click: function ($event) {
+                    return _vm.emitCategory(category.id)
+                  },
+                },
               }),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(category.name))]),
+              _c(
+                "p",
+                {
+                  on: {
+                    click: function ($event) {
+                      return _vm.emitCategory(category.id)
+                    },
+                  },
+                },
+                [_vm._v(_vm._s(category.name))]
+              ),
             ]
           )
         }),
-        0
+        1
       ),
       _vm._v(" "),
       _c(
@@ -67051,23 +67143,38 @@ var render = function () {
         { staticClass: "row1" },
         _vm._l(_vm.categories.slice(4, 8), function (category, index) {
           return _c(
-            "a",
+            "router-link",
             {
               key: index,
               staticClass: "categories-cards",
-              attrs: { href: "http://127.0.0.1:8000/restaurants/" },
+              attrs: { to: { name: "restaurants" } },
             },
             [
               _c("img", {
                 staticClass: "single-cat",
                 attrs: { src: category.img, alt: "" },
+                on: {
+                  click: function ($event) {
+                    return _vm.emitCategory(category.id)
+                  },
+                },
               }),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(category.name))]),
+              _c(
+                "p",
+                {
+                  on: {
+                    click: function ($event) {
+                      return _vm.emitCategory(category.id)
+                    },
+                  },
+                },
+                [_vm._v(_vm._s(category.name))]
+              ),
             ]
           )
         }),
-        0
+        1
       ),
     ]),
   ])
@@ -67564,7 +67671,9 @@ var render = function () {
         attrs: { restaurants: _vm.restaurants },
       }),
       _vm._v(" "),
-      _c("CategoriePiuRichiesteComponent"),
+      _c("CategoriePiuRichiesteComponent", {
+        on: { categorySelected: _vm.categorySelected },
+      }),
       _vm._v(" "),
       _c("ServiziComponent"),
       _vm._v(" "),
@@ -67886,7 +67995,10 @@ var render = function () {
       _vm._v(" "),
       _c("FilterComponents", {
         attrs: { restaurants: _vm.filteredRestaurants },
-        on: { categorySelected: _vm.categorySelected },
+        on: {
+          categorySelected: _vm.categorySelected,
+          categoryCheckbox: _vm.categoryCheckbox,
+        },
       }),
     ],
     1
@@ -68331,22 +68443,6 @@ var render = function () {
               [
                 _c("p", [_vm._v("Inserisci i dati del pagamento")]),
                 _vm._v(" "),
-                _c("div", { staticClass: "dati-forniti" }, [
-                  _c("p", [
-                    _vm._v(
-                      _vm._s(_vm.formData.surname) +
-                        " " +
-                        _vm._s(_vm.formData.name)
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(_vm.formData.address))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("+39 " + _vm._s(_vm.formData.phone))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(_vm.formData.email))]),
-                ]),
-                _vm._v(" "),
                 _c("Payment", {
                   attrs: { formData: _vm.formData, cart: _vm.cart },
                 }),
@@ -68356,36 +68452,60 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "right-payment" }, [
-        _c("h2", [_vm._v("\n        Riepilogo ordine\n      ")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "cart" },
-          _vm._l(_vm.cart, function (dish) {
-            return _c("div", { key: dish.id, staticClass: "cart-card" }, [
-              _c("div", { staticClass: "dish-name" }, [
-                _vm._v("\n            " + _vm._s(dish.name) + "\n          "),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "dish-specs" }, [
-                _c("span", [_vm._v("x" + _vm._s(dish.quantity))]),
-                _vm._v(" "),
-                _c("span", [_vm._v("€ " + _vm._s(dish.price.toFixed(2)))]),
-              ]),
-            ])
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "totale" }, [
-          _c("p", [_vm._v("\n          Totale: \n        ")]),
+        _c("div", { staticClass: "cart-summary" }, [
+          _c("h2", [_vm._v("\n          Riepilogo ordine\n        ")]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n          € " + _vm._s(_vm.checkoutPrice()) + "\n        "
-            ),
+          _c(
+            "div",
+            { staticClass: "cart" },
+            _vm._l(_vm.cart, function (dish) {
+              return _c("div", { key: dish.id, staticClass: "cart-card" }, [
+                _c("div", { staticClass: "dish-name" }, [
+                  _vm._v(
+                    "\n              " + _vm._s(dish.name) + "\n            "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dish-specs" }, [
+                  _c("span", [_vm._v("x" + _vm._s(dish.quantity))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("€ " + _vm._s(dish.price.toFixed(2)))]),
+                ]),
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "totale" }, [
+            _c("p", [_vm._v("\n            Totale: \n          ")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n            € " +
+                  _vm._s(_vm.checkoutPrice()) +
+                  "\n          "
+              ),
+            ]),
           ]),
         ]),
+        _vm._v(" "),
+        _vm.formComplete
+          ? _c("div", { staticClass: "data-summary" }, [
+              _c("h2", [_vm._v("Riepilogo dati")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  _vm._s(_vm.formData.surname) + " " + _vm._s(_vm.formData.name)
+                ),
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.formData.address))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("+39 " + _vm._s(_vm.formData.phone))]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.formData.email))]),
+            ])
+          : _vm._e(),
       ]),
     ]),
   ])
@@ -86345,7 +86465,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pulcio/Desktop/Progetto Finale Boolean/boolivery/resources/js/front-app.js */"./resources/js/front-app.js");
+module.exports = __webpack_require__(/*! C:\Users\stefa\Desktop\Stefen\boolean\php\boolivery\resources\js\front-app.js */"./resources/js/front-app.js");
 
 
 /***/ })
