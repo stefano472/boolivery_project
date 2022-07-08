@@ -36,7 +36,7 @@ class SendNewMail extends Mailable
 
             ->with([
 
-            'data1'  =>  $this->newOrder,
+            'order'  =>  $this->newOrder,
 
             ]);
         // return $this->view('view.name');

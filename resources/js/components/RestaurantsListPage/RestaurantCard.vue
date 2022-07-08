@@ -98,6 +98,7 @@ export default {
       flex-wrap: wrap;
       row-gap: 0;
       margin: 0;
+      padding: 30px 20px;
       .foto {
         margin-bottom: 20px;
       }

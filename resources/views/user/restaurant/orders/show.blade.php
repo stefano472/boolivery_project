@@ -5,12 +5,13 @@
     <div class="row m-0 justify-content-center">
         <div class="col-12">
 
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1>Ordine numero {{ $order->id }}</h1>
                 <a href="{{ route('user.orders.index') }}" class="bo-btn">Indietro</a>
             </div>
 
             <div class="order-details">
+                <p>Eseguito in data: <strong>{{ $order->created_at}}</strong></p>
                 <p>Nome cliente: <strong>{{$order->customer_name}}</strong></p>
                 <p>Cognome cliente: <strong>{{$order->customer_surname }}</strong></p>
                 <p>Indirizzo di consegna:  <strong>{{ $order->customer_address }}</strong></p>
