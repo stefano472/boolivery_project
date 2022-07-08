@@ -117,7 +117,7 @@ export default {
                     opacity: 1;
                 }
                 img {
-                    filter: opacity(0.5);
+                    filter: opacity(0.6);
                 }
             }
         }

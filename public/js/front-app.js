@@ -33141,7 +33141,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a] {\n  position: relative;\n}\n#ms-container .row1 .categories-cards p[data-v-e8a4ff6a] {\n  opacity: 0;\n  font-size: 1.5rem;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 800;\n  color: white;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a]:hover {\n  cursor: pointer;\n}\n#ms-container .row1 .categories-cards:hover p[data-v-e8a4ff6a] {\n  opacity: 1;\n}\n#ms-container .row1 .categories-cards:hover img[data-v-e8a4ff6a] {\n  filter: opacity(0.5);\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 10rem;\n  padding-right: 5px;\n}\n@media screen and (min-width: 663px) and (max-width: 899px) {\n#ms-container .category .row1[data-v-e8a4ff6a] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    gap: 2.5rem;\n}\n#ms-container .category .single-cat[data-v-e8a4ff6a] {\n    width: 20rem;\n    height: 20rem;\n    padding-right: 5px;\n}\n}", ""]);
+exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a] {\n  position: relative;\n}\n#ms-container .row1 .categories-cards p[data-v-e8a4ff6a] {\n  opacity: 0;\n  font-size: 1.5rem;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 800;\n  color: white;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a]:hover {\n  cursor: pointer;\n}\n#ms-container .row1 .categories-cards:hover p[data-v-e8a4ff6a] {\n  opacity: 1;\n}\n#ms-container .row1 .categories-cards:hover img[data-v-e8a4ff6a] {\n  filter: opacity(0.6);\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 10rem;\n  padding-right: 5px;\n}\n@media screen and (min-width: 663px) and (max-width: 899px) {\n#ms-container .category .row1[data-v-e8a4ff6a] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    gap: 2.5rem;\n}\n#ms-container .category .single-cat[data-v-e8a4ff6a] {\n    width: 20rem;\n    height: 20rem;\n    padding-right: 5px;\n}\n}", ""]);
 
 // exports
 
@@ -86456,7 +86456,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/*',
     name: 'notFound',
     component: _pages_NotFoundPage__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }]
+  }],
+  scrollBehavior: function scrollBehavior() {
+    return {
+      x: 0,
+      y: 0
+    };
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
