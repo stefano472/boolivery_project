@@ -19,9 +19,9 @@
       </svg>
     </div>
 
+    <h1>Stai ordinando da: {{restaurantSelected}}</h1>
     <div id="payment" class="">
       <div class="left-payment">
-        <h1>Stai ordinando da: {{restaurantSelected}}</h1>
 
         <!-- {{cart[0]}} -->
         <!-- {{userEmail}} -->
@@ -378,6 +378,10 @@ export default {
 
 <style scoped lang='scss'>
 @import 'resources/sass/variables';
+
+h1{ 
+  margin: 2rem;
+}
 .header{
    background: $dark-color;
     .container{
@@ -478,7 +482,7 @@ export default {
   }
   .right-payment{
     color: $primary-color;
-    margin-top: 8rem;
+    margin-top: 3rem;
     // margin-inline-end: 0;
     .cart-summary{
       margin-bottom: 2rem;
@@ -521,5 +525,23 @@ export default {
       box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
     }
   }
+}
+
+@media screen and (max-width: 900px) {
+  #payment {
+    flex-direction: column;
+    gap: 0;
+    .left-payment{
+      order: 1;
+      margin-bottom: 2rem;
+    }
+    .right-payment {
+      align-self: center;
+      max-width: 18rem;
+      margin-top: 2rem;
+      order: 0;
+    }
+  }
+  
 }
 </style>

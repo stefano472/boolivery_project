@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="bo-container">
-    <div class="row justify-content-center">
+    <div class="row m-0 justify-content-center">
         <div class="col-12">
 
             <div class="d-flex justify-content-between align-items-center">
