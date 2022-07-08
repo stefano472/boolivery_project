@@ -72,6 +72,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'resources/sass/variables';
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -83,13 +85,13 @@ export default {
     }
     .category {
       p {
-        width: 50%;
         margin-bottom: 0.3rem;
-        color: #38a3a5;
+        color: $primary-color;
+        padding: 0.4rem 0.75rem;
+        border-radius: 5px;
         &:hover {
           cursor: pointer;
-          border-bottom: 1px solid #38a3a5;
-          border-radius: 5px;
+          background: $brand-color;
         }
       }
     }

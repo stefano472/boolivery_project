@@ -45,10 +45,10 @@ export default {
   .restaurant-card {
     display: flex;
     justify-content: space-between;
-    padding: 30px 20px;
-    border-bottom: 1px solid gray;
-    border-radius: 20px;
-    margin: 30px 0;
+    padding: 0 20px 30px;
+    border-bottom: 1px solid lightgray;
+    // border-radius: 20px;
+    margin: 30px 2px 0 0;
 
     //foto del piatto
     .foto {

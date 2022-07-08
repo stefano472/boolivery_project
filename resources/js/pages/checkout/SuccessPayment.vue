@@ -23,8 +23,12 @@
     </div>
 
     <div class="thank-you">
-        <h1 class="mb-5">Grazie per averci scelto</h1>
-        <h2 class="mt-5">Il tuo ordine sta arrivando!!</h2>
+        <div class="text-thanks">
+            <div class="styling">
+                <h1 class="">Grazie per averci scelto</h1>
+                <h2 class="">Il tuo ordine sta arrivando!!</h2>
+            </div>
+        </div>
         <!-- <img src="https://img.freepik.com/free-vector/delivery-service-with-masks-concept_23-2148497067.jpg?w=2000&t=st=1657180383~exp=1657180983~hmac=41669774a73cf64eaa6bb0a4f3c2a642a881fd3cc87ad071819e8a9f7febfb5f" alt=""> -->
     </div>
 
@@ -41,9 +45,15 @@ export default {
 @import 'resources/sass/variables';
 
 #success-payment{
-
+    h1 {
+        height: auto;
+        line-height: inherit;
+    }
     background-color: white;
     .header{
+        position: fixed;
+        top: 0;
+        width: 100%;
         background: $dark-color;
         .wave{
           width: 100%;
@@ -96,16 +106,55 @@ export default {
 
 
     .thank-you{
-        margin-top: 1rem;
+        // margin-top: 1rem;
         text-align: center;
-        background-image: url("https://img.freepik.com/free-vector/delivery-service-with-masks-concept_23-2148497067.jpg?w=2000&t=st=1657180383~exp=1657180983~hmac=41669774a73cf64eaa6bb0a4f3c2a642a881fd3cc87ad071819e8a9f7febfb5f");
-        height: calc(100vh - 187px);
-        h1{
-            font-size: 50px;
-            color: $secondary-color;
+        background-image: url('/img/background-success.jpg');
+        background-size: cover;
+        background-position: top left;
+        background-repeat: no-repeat;
+
+        height: 100vh;
+        .text-thanks{
+            display: grid;
+            place-content: center;
+            /* padding-top: 25rem; */
+            height: 100%;
+            .styling{
+                background: rgba($color: $primary-color, $alpha: 0.7);
+                margin: 0 0.5rem;
+                padding: 1rem;
+                width: fit-content;
+                // opacity: 0.;
+                border-radius: 10px;
+            }
+            h1{
+                font-size: 50px;
+                color: $white-color;
+            }
+            h2{
+                color: $dark-color;
+            }
         }
     }
 
 }
+@media screen and (max-width: 600px) {
+    #success-payment{
+        .thank-you{
+            background-position: top;
 
+            .text-thanks{
+                .styling{
+                    h1 {
+                        font-size: 30px;
+                    }
+                    h2{
+                        font-size: 20px;
+                    }
+        
+                }
+            }
+        }
+    }
+}
 </style>
