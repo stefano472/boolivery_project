@@ -31,6 +31,7 @@ export default {
   background-size: cover;
   position: relative;
   text-align: center;
+  padding-top: 70px;
 
   .info-resturant {
     display: flex;

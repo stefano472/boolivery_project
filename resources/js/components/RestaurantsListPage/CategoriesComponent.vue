@@ -71,7 +71,7 @@ img {
   justify-content: center;
   column-gap: 30px;
   row-gap: 30px;
-  padding: 60px 86px;
+  padding: 130px 86px 60px;
   background-color: #1e282f;
   .categories-cards {
     position: relative;

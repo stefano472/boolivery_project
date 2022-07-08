@@ -213,6 +213,12 @@ export default {
 @import "resources/sass/variables";
 
 #header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+#header {
   h1,
   h2,
   h3,
