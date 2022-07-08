@@ -15,7 +15,7 @@ import SuccessPayment from './pages/checkout/SuccessPayment';
 // import SingleBlogComponent from './pages/SingleBlogComponent';
 // import WhoWeAreComponent from './pages/WhoWeAreComponent';
 // import ContactsComponent from './pages/ContactsComponent';
-// import NotFoundComponent from './pages/NotFoundComponent';
+ import NotFoundPage from './pages/NotFoundPage';
 
 
 const router = new VueRouter({
@@ -36,6 +36,11 @@ const router = new VueRouter({
              name: 'restaurants',
              component: RestaurantsList
         },
+        //{
+        //    path: '/restaurants/{id}',
+        //    name: 'restaurants',
+        //  component: RestaurantsList
+       //},
         {
             path: '/payment',
             name: 'payment',
@@ -56,11 +61,11 @@ const router = new VueRouter({
         //     name: 'contacts',
         //     component: ContactsComponent
         // },
-        // {
-        //     path: '/*',
-        //     name: 'not-found',
-        //     component: NotFoundComponent
-        // }
+         {
+             path: '/*',
+             name: 'notFound',
+             component: NotFoundPage
+         }
     ]
 })
 

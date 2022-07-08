@@ -1,10 +1,6 @@
 <template>
-  <div
-    v-if="
-      this.$root._route.name === 'payment' ||
-      this.$root._route.name === 'success'
-    "
-  >
+  <div v-if="this.$root._route.name === 'payment' || this.$root._route.name === 'success' || this.$root._route.name === 'notFound' ">
+
     <router-view @addToCart="addToCart" :cart="cart" />
   </div>
   <div v-else>

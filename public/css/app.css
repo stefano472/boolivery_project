@@ -9387,10 +9387,10 @@ h3 {
 
 /************* dashboard.blade.php --> LEFT SIDEBAR ******************/
 .bo-sidebar {
+  display: flex;
+  justify-content: flex-start;
   background-color: #38A3A5;
   height: 100vh;
-  display: flex;
-  justify-content: space-around;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -9402,21 +9402,18 @@ h3 {
   align-items: flex-start;
   margin-top: 2rem;
 }
-.bo-sidebar ul li {
+.bo-sidebar ul .bo-nav-item {
   list-style: none;
-  margin: 0 15px;
-  padding: 1rem 0;
-}
-.bo-sidebar ul li a {
+  width: 100%;
   position: relative;
   display: block;
-  height: 60px;
-  text-align: center;
-  line-height: 63px;
+  height: 80px;
+  line-height: 80px;
   font-size: 16px;
   transition: 0.5s;
+  padding: 0px 20px;
 }
-.bo-sidebar ul li a::before {
+.bo-sidebar ul .bo-nav-item::before {
   content: "";
   position: absolute;
   top: 0;
@@ -9424,17 +9421,24 @@ h3 {
   width: 100%;
   height: 100%;
   transition: 0.5s;
-  transform: scale(0.9);
+  transform: scale(1);
   z-index: -1;
+  border-radius: 10px;
 }
-.bo-sidebar ul li a:hover::before {
+.bo-sidebar ul .bo-nav-item:hover::before {
   transform: scale(1.1);
   box-shadow: 0 0 10px #57CC99;
+  border-radius: 10px;
 }
-.bo-sidebar ul li a:hover {
+.bo-sidebar ul .bo-nav-item:hover {
   color: #1E282F;
   box-shadow: 0 0 5px #38A3A5;
   text-shadow: 0 0 5px #38A3A5;
+  background-color: #98F1AD;
+  border-radius: 10px;
+}
+.bo-sidebar ul .selected {
+  background-color: red;
 }
 .bo-sidebar a {
   color: #1E282F;
@@ -9457,6 +9461,7 @@ h3 {
   margin: 50px 20px;
   padding: 30px 20px;
   background-color: white;
+  border-radius: 10px;
 }
 .bo-container .info-restaurant-container .bo-restaurant-info {
   margin-top: 30px;
@@ -9477,6 +9482,7 @@ h3 {
   line-height: 20px;
 }
 
+/**** BUTTON ****/
 .bo-btn {
   position: relative;
   background-color: #38A3A5;
@@ -9526,26 +9532,6 @@ h1 {
   height: 16px;
 }
 
-table {
-  padding-top: 20px;
-  border: solid 5px #38A3A5;
-}
-
-thead {
-  background-color: #38A3A5;
-}
-
-.bo-tr {
-  background-color: white;
-  vertical-align: center;
-}
-.bo-tr td {
-  vertical-align: middle;
-}
-.bo-tr td .fa-solid {
-  color: red;
-}
-
 /************* AUTH login.blade.php ************/
 .card {
   border: solid 2px #38A3A5;
@@ -9556,4 +9542,46 @@ thead {
   border-radius: 10px;
 }
 
-/************* ORDERS index.blade.php ************/
+/**** TABLE ****/
+.bo-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  padding-top: 20px;
+  border: solid 5px #38A3A5;
+  border-radius: 10%;
+}
+.bo-table thead {
+  background-color: #38A3A5;
+  height: 50px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #fff;
+  padding: 20px 15px;
+  text-align: left;
+}
+.bo-table tbody {
+  background-color: white;
+  vertical-align: center;
+}
+.bo-table tbody td {
+  vertical-align: middle;
+}
+.bo-table tbody td .fa-solid {
+  color: red;
+}
+
+.input-box .img-rest {
+  padding: 10px 0;
+}
+.input-box .img-rest div {
+  width: 100%;
+}
+.input-box .img-rest div img {
+  height: 300px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: solid 1px #38A3A5;
+  border-radius: 10px;
+}
