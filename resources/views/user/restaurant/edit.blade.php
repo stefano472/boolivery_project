@@ -22,7 +22,7 @@
                 @csrf
 
                 @method('PUT')
-                <div class="input-box mb-2">
+                <div class="input-box mb-4">
 
                     <label for="name">Nome del ristorante *</label>
                     <br>
@@ -35,7 +35,7 @@
                     @enderror
 
                 </div>
-                <div class="input-box mb-2">
+                <div class="input-box mb-4">
 
                     <label for="address">Indirizzo *</label>
                     <br>
@@ -49,7 +49,7 @@
                     @enderror
 
                 </div>
-                <div class="input-box mb-2">
+                <div class="input-box mb-4">
 
                     <label for="motto">Motto *</label>
                     <br>
@@ -63,7 +63,7 @@
                     @enderror
 
                 </div>
-                <div class="input-box mb-2">
+                <div class="input-box mb-4">
 
                     <label for="tax_id">Partita IVA *</label>
                     <br>
@@ -77,7 +77,7 @@
                     @enderror
 
                 </div>
-                <div class="input-box mb-2">
+                <div class="input-box mb-4">
 
                     <label for="phone_number">Numero di telefono *</label>
                     <br>
@@ -91,8 +91,67 @@
                     @enderror
 
                 </div>
-                <div class="input-box mb-2">
 
+                {{-- IMG RISTORANTE --}}
+                <div class="input-box mb-4">
+
+                    <label for="cover">Copertina ristorante</label>
+                    <br>
+                    <input type="file" name="cover">
+
+                    <!-- errore relativo all'input -->
+                    @error('cover')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
+
+                    @if ($restaurant->cover)
+                        <div class="img-rest mb-4">
+                                Immagine corrente
+                            <div>
+                                {{-- <img src="{{$dish->cover}}" class="w-25"> --}}
+                                <img src="{{ asset('storage/' . $restaurant->cover)}}">
+                            </div>
+                        </div>
+                    @else
+                            <div class="mb-5">
+                                <p>Nessuna immagine inserita</p>
+                            </div>
+                    @endif
+                </div>
+
+
+                {{-- IMG LOGO --}}
+                <div class="input-box mb-4">
+
+                    <label for="logo">Logo ristorante</label>
+                    <br>
+                    <input type="file" name="logo">
+
+                    <!-- errore relativo all'input -->
+                    @error('logo')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                {{-- DESCRIZIONE --}}
+                <div class="input-box mb-4">
+
+                    <label for="description">Descrizione *</label>
+                    <br>
+                    <textarea name="description" id="" cols="30" rows="10" placeholder="..."
+                        class="form-control @error('description') is-invalid @enderror"
+                        required>{{ old('description', $restaurant->description) }}</textarea>
+
+                    <!-- errore relativo all'input -->
+                    @error('description')
+                        <p class="invalid-feedback">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+                {{-- CATEGORIE --}}
+                <div class="input-box mb-4">
                     <div>Categoria *</div>
                     <br>
                     <div class="container">
@@ -111,85 +170,20 @@
                         </div>
                     </div>
 
-
                     <!-- errore relativo all'input -->
                     @error('category')
                         <p class="error">{{ $message }}</p>
                     @enderror
-
-                </div>
-                <div class="input-box mb-2">
-
-
-
-                    <label for="cover">Copertina ristorante</label>
-                    <br>
-                    <input type="file" name="cover">
-
-                    <!-- errore relativo all'input -->
-                    @error('cover')
-                        <p class="error">{{ $message }}</p>
-                    @enderror
-
-                    @if ($restaurant->cover)
-
-                        <div class="mb-1">
-
-                                Immagine corrente
-
-                            <div>
-
-                                {{-- <img src="{{$dish->cover}}" class="w-25"> --}}
-                                <img src="{{ asset('storage/' . $restaurant->cover)}}" class="w-25">
-
-                            </div>
-
-                        </div>
-
-                    @else
-
-                            <div class="mb-3">
-
-                                <p>Nessuna immagine inserita</p>
-
-                            </div>
-
-                    @endif
-
-                </div>
-                <div class="input-box mb-2">
-
-                    <label for="logo">Logo ristorante</label>
-                    <br>
-                    <input type="file" name="logo">
-
-                    <!-- errore relativo all'input -->
-                    @error('logo')
-                        <p class="error">{{ $message }}</p>
-                    @enderror
-
-                </div>
-                <div class="input-box mb-2">
-
-                    <label for="description">Descrizione *</label>
-                    <br>
-                    <textarea name="description" id="" cols="30" rows="10" placeholder="..."
-                        class="form-control @error('description') is-invalid @enderror"
-                        required>{{ old('description', $restaurant->description) }}</textarea>
-
-                    <!-- errore relativo all'input -->
-                    @error('description')
-                        <p class="invalid-feedback">{{ $message }}</p>
-                    @enderror
-
                 </div>
 
-                <!-- ...content... -->
 
+                {{-- BUTTON FORM --}}
                 <div class="d-flex justify-content-end">
                     <input id="updateDish" type="submit" name="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2">
                     <a href="{{ route('user.restaurant.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a>
                 </div>
+
+
             </form>
 
         </div>
@@ -199,3 +193,4 @@
 
     </div>
 @endsection
+

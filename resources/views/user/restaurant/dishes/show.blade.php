@@ -1,68 +1,52 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="bo-container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h1>{{ $dish->name }}</h1>
-                    <a href="{{ route('user.dishes.index') }}" class="bo-btn">Vai al menù completo</a>
-                </div>
-                {{-- Contenuti --}}
-                {{-- <img src="{{ $dish->cover }}" alt="{{ $dish->name }}" class="w-25"> --}}
+<div class="bo-container">
+    <div class="row justify-content-center">
+        <div class="col-12">
 
-                <div class="d-flex mb-2">
-                    @if ($dish->cover)
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Ordine numero {{ $order->id }}</h1>
+                <a href="{{ route('user.orders.index') }}" class="bo-btn">Indietro</a>
+            </div>
 
-                        <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25">
-
-                    @else
-
-                        <p class="alert-danger">Inserisci l'immagine del piatto, gli utenti vogliono sapere cosa comprano! ;)</p>
-
-                    @endif
-                </div>
-
-                <p>Descrizione:{{ $dish->description }}</p>
-                <p>Prezzo: &euro;{{ $dish->price }}</p>
+            <div class="order-details">
+                <p>Nome cliente: <strong>{{$order->customer_name}}</strong></p>
+                <p>Cognome cliente: <strong>{{$order->customer_surname }}</strong></p>
+                <p>Indirizzo di consegna:  <strong>{{ $order->customer_address }}</strong></p>
+                <p>Numero di telefono:  <strong>{{ $order->customer_phone }}</strong></p>
+                <p>Totale:  <strong>&euro;{{ $order->total }}</strong></p>
                 <p>
-                    @if ($dish->available === 1)
-                        disponibile
+                    @if ($order->special_request)
+                        Richieste speciali: {{$order->special_request}}
                     @else
-                        non disponibile
+                        ---
                     @endif
                 </p>
-                {{-- / Contenuti --}}
+                    <div>
+                        <p>Piatti dell'ordine:</p>
+                        {{-- {{$order->pivot}} --}}
+                        <ul>
+                            @foreach ($order->dishes as $dish)
 
-                <a href="{{ route('user.dishes.edit', $dish->id) }}" class="btn btn-outline-info">Edit</a>
-                <button id='open-modal' class="btn btn-danger" type="button">Delete</button>
+                                <li style="
+                                display: flex;
+                                gap: 30px;">
+                                    <span><strong>{{$dish->name}} </strong></span>
+                                    <span><strong>x{{$dish->pivot->quantity}} </strong></span>
+                                    <span><strong>&euro;{{number_format(($dish->price * $dish->pivot->quantity), 2, '.', "")}}</strong></span>
+                                </li>
 
-                <div id="modal-container">
-                  <div class="bo-modal">
-                    <h2>Sei sicuro???</h2>
-                    <p>Attenzione!!!! Una volta cancellato il piatto, sarà perso...</p>
-                    <form class="delete" action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST">
-                      @csrf
+                            @endforeach
+                        </ul>
 
-                      @method('DELETE')
-
-                      <button class="btn btn-danger" type="submit">Si</button>
-                      <button id='close-modal' class="btn btn-outline-info" type="button">No</button>
-                    </form>
-                  </div>
-                </div>
-                {{-- <form action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST" class="d-inline-block ">
-                    @csrf
-                    @method('DELETE')
-
-                    <button class="btn btn-danger" onclick="return confirm('Are you sure you wanna delete the Dish?');">
-                        Delete
-                    </button>
-                </form> --}}
-                {{-- </dl> --}}
+                    </div>
 
             </div>
+
+
         </div>
     </div>
-    <script src="{{ asset('js/show-dish.js') }}" defer></script>
+</div>
+
 @endsection

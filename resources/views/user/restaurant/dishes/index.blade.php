@@ -12,7 +12,7 @@
                 </div>
                 @if (sizeof($dishes) > 0)
                     {{-- Creo una tabella --}}
-                    <table class="table">
+                    <table class="table bo-table">
                         <thead>
                             {{-- Table title --}}
                             <tr>
@@ -32,7 +32,7 @@
                                     <td>{{ $dish->description }}</td>
                                     <td>
                                         @if ($dish->available === 1)
-                                            disponibile
+                                        <i class="fa-solid fa-check"></i>
                                         @else
                                             non disponibile
                                         @endif

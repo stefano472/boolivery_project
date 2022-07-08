@@ -5,7 +5,7 @@
     <div class="">
         <div class="col-12 ">
             <div class="allPosts d-flex justify-content-between align-items-center mb-4">
-                <h1>I tuoi ordini 
+                <h1>I tuoi ordini
                     <span class="orders-count">{{count($orders)}}</span>
                 </h1>
                 {{-- <a href="{{ route('user.orders.show') }}" class="bo-btn">
@@ -14,7 +14,7 @@
             </div>
             @if (sizeof($orders) > 0)
                 {{-- Creo una tabella --}}
-                <table class="table">
+                <table class="table bo-table">
                     <thead>
                         {{-- Table title --}}
                         <tr>
@@ -40,9 +40,9 @@
                                     <a href="{{ route('user.orders.show', $order->id) }}"
                                         class="btn btn-outline-secondary text-decoration-none">
                                         Show
-                                    </a>    
+                                    </a>
                                 </td>
-                                
+
                             </tr>
                         @endforeach
                         {{-- / Table content --}}

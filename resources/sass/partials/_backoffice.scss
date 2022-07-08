@@ -154,10 +154,11 @@ body{
 /************* dashboard.blade.php --> LEFT SIDEBAR ******************/
 
 .bo-sidebar{
+    display: flex;
+    justify-content: flex-start;
     background-color: #38A3A5;
     height: 100vh;
-    display: flex;
-    justify-content: space-around;
+
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -168,45 +169,54 @@ body{
         flex-direction: column;
         align-items: flex-start;
         margin-top: 2rem;
-        li{
+        .bo-nav-item{
             list-style: none;
-            margin: 0 15px;
-            padding: 1rem 0;
+            width: 100%;
 
-            a {
-                position: relative;
-                display: block;
-                height: 60px;
-                text-align: center;
-                line-height: 63px;
-                font-size: 16px;
-                transition: .5s;
-              }
+            position: relative;
+            display: block;
+            height: 80px;
+            line-height: 80px;
+            font-size: 16px;
+            transition: .5s;
+            padding: 0px 20px;
 
-              a::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                transition: .5s;
-                transform: scale(.9);
-                z-index: -1;
-              }
+        }
 
-            a:hover::before {
-                transform: scale(1.1);
-                box-shadow: 0 0 10px #57CC99;
-              }
+        .bo-nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: .5s;
+            transform: scale(1);
+            z-index: -1;
+            border-radius: 10px;
+        }
 
-            a:hover {
-                color: #1E282F;
-                box-shadow: 0 0 5px #38A3A5;
-                text-shadow: 0 0 5px #38A3A5;
-              }
+        .bo-nav-item:hover::before {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #57CC99;
+            border-radius: 10px;
             }
+
+        .bo-nav-item:hover {
+            color: #1E282F;
+            box-shadow: 0 0 5px #38A3A5;
+            text-shadow: 0 0 5px #38A3A5;
+            background-color: #98F1AD;
+            border-radius: 10px;
+            }
+
+        .selected{
+            background-color: red;
+
+        }
+
     }
+
 
     a{
         color: #1E282F;
@@ -240,6 +250,7 @@ body{
         margin: 50px 20px;
         padding: 30px 20px;
         background-color: white;
+        border-radius: 10px;
 
         .bo-restaurant-info{
             margin-top: 30px;
@@ -269,7 +280,7 @@ body{
 }
 
 
-
+/**** BUTTON ****/
 
 
     .bo-btn{
@@ -327,26 +338,9 @@ h1{
     height: 16px;
 }
 
-table{
-    padding-top: 20px;
-    border: solid 5px #38A3A5;
-}
-thead{
-    background-color: #38A3A5;
 
 
-}
 
-.bo-tr{
-    background-color: white;
-    vertical-align: center;
-    td{
-        vertical-align: middle;
-        .fa-solid{
-            color: red;
-        }
-    }
-}
 
 
 
@@ -365,9 +359,55 @@ thead{
 }
 
 
-/************* ORDERS index.blade.php ************/
 
-.orders-count{
-    
+/**** TABLE ****/
+
+.bo-table{
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    padding-top: 20px;
+    border: solid 5px #38A3A5;
+    border-radius: 10%;
+
+    thead{
+        background-color: #38A3A5;
+        height: 50px;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: #fff;
+        padding: 20px 15px;
+        text-align: left;
+    }
+
+    tbody{
+        background-color: white;
+        vertical-align: center;
+            td{
+                vertical-align: middle;
+                .fa-solid{
+                    color: red;
+                }
+            }
+        }
+    }
+
+
+
+.input-box{
+    .img-rest{
+        padding: 10px 0;
+        div{
+            width: 100%;
+            img{
+                height: 300px;
+                width: 100%;
+                object-fit: cover;
+                border: solid 1px #38A3A5;
+                border-radius: 10px;
+            }
+
+        }
+    }
 }
 
