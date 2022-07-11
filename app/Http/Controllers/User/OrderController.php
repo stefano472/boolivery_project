@@ -20,8 +20,9 @@ class OrderController extends Controller
 
         $id = Auth::id();        
         
-        $orders = Order::where('restaurant_id', $id)->get();
+        $orders = Order::where('restaurant_id', $id)->orderBy('created_at', 'DESC')->get();
 
+        // $orders = Order::orderBy('created_at', 'DESC')->get();
         // $dishes = Dish::where('order', $orders->id)
 
         return view('user.restaurant.orders.index', compact('orders'));

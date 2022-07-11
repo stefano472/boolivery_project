@@ -16,7 +16,7 @@
                 <p><span>Cognome cliente: </span><strong>{{$order->customer_surname }}</strong></p>
                 <p><span>Indirizzo di consegna:  </span><strong>{{ $order->customer_address }}</strong></p>
                 <p><span>Numero di telefono:  </span><strong>{{ $order->customer_phone }}</strong></p>
-                <p><span>Totale:  </span><strong>&euro;{{ $order->total }}</strong></p>
+                <p><span>Totale:  </span><strong>&euro;{{ number_format($order->total, 2, '.', "") }}</strong></p>
                 <p><span>
                     @if ($order->special_request)
                         Richieste speciali: {{$order->special_request}}

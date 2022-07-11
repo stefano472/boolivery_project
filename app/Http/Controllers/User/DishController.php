@@ -22,7 +22,8 @@ class DishController extends Controller
     {
         //
         $id = Auth::id();
-        $dishes= Dish::where('restaurant_id', $id)->get();
+        $dishes= Dish::where('restaurant_id', $id)->orderBy('name', 'ASC')->get();
+        // $dishes = Dish::orderBy('name', 'ASC')->get();
         $restaurant = Restaurant::find($id);
         if (!$restaurant) {
             abort(403);

@@ -12,15 +12,15 @@
                 </div>
                 {{-- Contenuti --}}
                 {{-- <img src="{{ $dish->cover }}" alt="{{ $dish->name }}" class="w-25"> --}}
-                <div class="d-flex mb-2">
+                <div class="d-flex mt-3 mb-3">
                     @if ($dish->cover)
-                        <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25">
+                        <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25 rounded-sm">
                     @else
                         <p class="alert-danger">Inserisci l'immagine del piatto, gli utenti vogliono sapere cosa comprano! ;)</p>
                     @endif
                 </div>
                 <p>Descrizione: {{ $dish->description }}</p>
-                <p>Prezzo: &euro;{{ $dish->price }}</p>
+                <p>Prezzo: &euro;{{ number_format($dish->price, 2, '.', "") }}</p>
                 <p>
                     @if ($dish->available === 1)
                         disponibile

@@ -46,7 +46,7 @@
                                     <td>{{ $order->customer_surname }}</td>
                                     <td>{{ $order->customer_address }}</td>
                                     <td>{{ $order->customer_phone }}</td>
-                                    <td><strong>&euro; {{ $order->total }}</strong></td>
+                                    <td><strong>&euro; {{ number_format($order->total, 2, '.', "") }}</strong></td>
                                     <td>
                                         <a href="{{ route('user.orders.show', $order->id) }}"
                                             class="btn btn-outline-secondary text-decoration-none">
