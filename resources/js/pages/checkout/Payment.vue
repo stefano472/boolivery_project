@@ -1,7 +1,10 @@
 <template>
   <div id="paybox" class="payment-box">
     <!-- <p v-if="loaded">Inserisci i dati del pagamento</p> -->
-    <v-braintree v-if="tokenGenerate" class="brain" 
+    <div v-if="!tokenGenerate || !loadPostPay" class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <v-braintree v-else class="brain" 
         :authorization="Token"
         locale='it_IT'
         @success="onSuccess"
@@ -35,9 +38,7 @@
         }
     }
      -->
-    <div v-else class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
+
   </div>
 </template>
 
@@ -49,6 +50,7 @@ export default {
       Token: null,
       tokenGenerate: false,
       loaded: false,
+      loadPostPay: true,
     }
   },
   props:{
@@ -88,6 +90,7 @@ export default {
     onSuccess (payload) {
       let nonce = payload.nonce;
       console.log(nonce)
+      this.loadPostPay=false;
       window.axios.post("http://127.0.0.1:8000/api/orders/make/payment", {}, {
             params: {
               'token': nonce,
@@ -100,6 +103,7 @@ export default {
           if(response.data.success){
             // console.log(this.formData)
             this.sendOrder()
+
           }
         })
         .catch( e => console.log(e));
@@ -129,6 +133,7 @@ export default {
               console.log(response,'response axios');
               // alert(response)
               if(response.status === 200){
+                this.loadPostPay=true;
                 localStorage.clear();
                 this.$router.push({
                   name: 'success'

@@ -106,4 +106,14 @@ export default {
     }
   }
 }
+
+@media screen and(max-width: 496px) {
+  .restaurant-list{
+    .restaurant-card{
+      text-align: center;
+      justify-content: center;
+    }
+  }
+  
+}
 </style>

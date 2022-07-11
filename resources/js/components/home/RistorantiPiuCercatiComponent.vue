@@ -3,8 +3,8 @@
     <div id="sm-container">
       <section class="most-want" v-scrollAnimation>
         <div class="main-titles">
-          <h2>I ristoranti piu' cercati</h2>
-          <h5>Selezionati proprio da voi</h5>
+          <h2>I ristoranti consigliati da noi</h2>
+          <h5>Inizia a dare un occhio</h5>
         </div>
         <div class="restaurants">
           <div
@@ -21,6 +21,7 @@
 
             <div class="box-info">
               <h6 class="name-restaurant">{{ restaurant.name }}</h6>
+              <p><span v-for="(category, index) in restaurant.categories" :key="index" >{{category.name}} </span></p>
               <p class="description">{{ restaurant.motto }}</p>
               <!-- <p class="tipology">Tipologia ristorante</p> -->
               <router-link class="btn btn-restaurant"
@@ -125,9 +126,11 @@ export default {
   .name-restaurant {
     text-transform: uppercase;
     font-size: 1.2rem;
+    color: $primary-color;
   }
   .description {
-    color: gray;
+
+    // color: gray;
     font-size: 0.7rem;
     text-align: center;
   }

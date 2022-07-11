@@ -132,6 +132,9 @@
 
 /************* dashboard.blade.php ******************/
 
+.dashboard-nav:hover{
+    text-decoration: none;
+}
 .container-fluid-dashboard{
     display: flex;
     background-color: #98F1AD;

@@ -165,7 +165,7 @@
 
 
                 {{-- IMG LOGO --}}
-                <div class="input-box mb-4">
+                {{-- <div class="input-box mb-4">
 
                     <label for="logo">Logo ristorante</label>
                     <br>
@@ -176,7 +176,7 @@
                         <p class="error">{{ $message }}</p>
                     @enderror
 
-                </div>
+                </div> --}}
 
                 {{-- BUTTON FORM --}}
                 <div class="d-flex justify-content-end">

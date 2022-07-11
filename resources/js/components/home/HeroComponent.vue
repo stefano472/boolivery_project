@@ -67,7 +67,7 @@ export default {
   .container2 {
     // padding-bottom: 4rem;
     //max-width: 1400px;
-     width: 100%;
+     width: 80%;
     background-image: url("/img/hero-img.png");
     background-size: 1000px;
     // background-position: 300px;
@@ -206,6 +206,14 @@ export default {
 //   }
 // }
 
+@media screen and (max-width: 1400px) {
+  #hero{
+    .container2{
+      width: 100%;
+    }
+  }
+  
+}
 @media screen and (max-width: 996px) {
   #hero{
     .container2{

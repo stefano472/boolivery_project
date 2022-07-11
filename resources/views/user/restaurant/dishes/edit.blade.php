@@ -32,9 +32,9 @@
         </div>
         <div class="input-box">
 
-            <label for="description">Descrizione</label>
+            <label for="description">Descrizione *</label>
             <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="descrizione">{{ old('description', $dish->description) }}</textarea>
+            <textarea name="description" id="" cols="30" rows="10" required placeholder="descrizione">{{ old('description', $dish->description) }}</textarea>
 
             <!-- errore relativo all'input -->
             @error('description')

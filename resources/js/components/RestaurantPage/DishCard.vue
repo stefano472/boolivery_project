@@ -26,7 +26,7 @@
         <div class="price add-to-cart">
           <!-- prezzo -->
           <div class="price-dish">
-            <p>&euro;{{ dish.price }}</p>
+            <p>&euro;{{ dish.price.toFixed(2) }}</p>
           </div>
 
           <!-- pulsante di aggiunta al carrello -->

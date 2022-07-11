@@ -40,10 +40,10 @@
             {{-- <div class="bo-container"> --}}
 
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
 
 
-                <h1>Inserisci i Dati</h1>
+        <h1 class="mb-4">Inserisci i Dati</h1>
     <!-- visione degli errori -->
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -188,7 +188,7 @@
             @enderror
 
         </div>
-        <div class="input-box mb-2">
+        {{-- <div class="input-box mb-2">
 
             <label for="logo">Logo ristorante</label>
             <br>
@@ -199,7 +199,7 @@
                 <p class="error">{{ $message }}</p>
             @enderror
 
-        </div>
+        </div> --}}
 
 
         <!-- ...content... -->

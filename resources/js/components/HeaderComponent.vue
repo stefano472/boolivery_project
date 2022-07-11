@@ -11,10 +11,13 @@
             <a href="/restaurants">Ristoranti</a>
           </li>
           <li v-if="this.$root._route.name === 'home'">
-            <a href="#collab">Collabora con noi</a>
+            <a href="#about-us">About us</a>
           </li>
           <li v-if="this.$root._route.name === 'home'">
-            <a href="#about-us">About us</a>
+              <a @click="addCloseClassHamburger" href="#services">Servizi</a>
+          </li>
+          <li v-if="this.$root._route.name === 'home'">
+            <a href="#collab">Collabora con noi</a>
           </li>
           <li>
             <a href="#contacts">Contatti</a>
@@ -36,22 +39,27 @@
             class="fa-solid fa-bars fa-2x"
           ></i>
         </div>
+
+        <!-- hamburger menu -->
         <div class="hamburger-menu">
           <ul>
             <li>
               <a href="/restaurants">Ristoranti</a>
             </li>
             <li v-if="this.$root._route.name === 'home'">
-              <a href="#collab">Collabora con noi</a>
+              <a @click="addCloseClassHamburger" href="#about-us">About us</a>
             </li>
             <li v-if="this.$root._route.name === 'home'">
-              <a href="#about-us">About us</a>
+              <a @click="addCloseClassHamburger" href="#services">Servizi</a>
+            </li>
+            <li v-if="this.$root._route.name === 'home'">
+              <a @click="addCloseClassHamburger" href="#collab">Collabora con noi</a>
             </li>
             <li>
-              <a href="#contacts">Contatti</a>
+              <a @click="addCloseClassHamburger" href="#contacts">Contatti</a>
             </li>
             <li>
-              <a href="/login">Accedi</a>
+              <a  href="/login">Accedi</a>
             </li>
           </ul>
           <a href="#" class="close" @click="addCloseClassHamburger">
@@ -300,6 +308,10 @@ export default {
 
       .hamburger {
         display: none;
+        cursor: pointer;
+        &:hover{
+          color: white
+        }
       }
 
       .hamburger-menu {
@@ -325,7 +337,7 @@ export default {
         }
 
         li a {
-          color: white;
+          color: $primary-color;
           text-decoration: none;
           font-size: 25px;
           cursor: pointer;
@@ -334,11 +346,14 @@ export default {
         .close {
           display: block;
           position: absolute;
-          right: 20px;
+          right: 35px;
           top: 20px;
-          color: white;
+          color: $primary-color;
           font-size: 35px;
           text-decoration: none;
+          &:hover{
+            color: white;
+          }
         }
       }
 

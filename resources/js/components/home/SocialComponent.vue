@@ -49,7 +49,7 @@ export default {
   color: white;
   .social-box {
     display: flex;
-    width: 275px;
+    // width: 275px;
     justify-content: space-between;
     .social-icon {
       a {
@@ -69,13 +69,13 @@ export default {
   }
 }
 
-@media screen and (max-width: 715px) {
-  .social-component {
-    .social-box {
-      width: 42%;
-    }
-  }
-}
+// @media screen and (max-width: 715px) {
+//   .social-component {
+//     .social-box {
+//       width: 42%;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 459px) {
   .social-component {

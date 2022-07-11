@@ -2278,6 +2278,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
@@ -2386,6 +2394,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DescriptionComponent",
   props: {
@@ -2404,6 +2415,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2599,7 +2613,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "InfoRestaurantComponent"
+  name: "InfoRestaurantComponent",
+  props: {
+    restaurant: Object
+  },
+  methods: {
+    ristoName: function ristoName() {
+      return this.restaurant.name.toLowerCase().replace(/\s/g, '');
+    }
+  } // data(){
+  //   return {
+  //     ristoEmail: '',  
+  //   }
+  // },
+  // computed: {
+  //   ristoEmail() {
+  //     return restaurant.name
+  //   }
+  // }
+
 });
 
 /***/ }),
@@ -2634,11 +2666,16 @@ __webpack_require__.r(__webpack_exports__);
     return {
       category: "",
       categories: [],
+      // categorySelected:'',
       arrayRestaurants: []
     };
   },
+  props: {
+    categoryFilter: Number
+  },
   methods: {
     emitCategory: function emitCategory(idCategory) {
+      // this.categorySelected = idCategory
       this.$emit("categorySelected", idCategory);
     },
     // setUrlFilters(index){
@@ -2712,17 +2749,18 @@ __webpack_require__.r(__webpack_exports__);
   name: "FilterComponent",
   data: function data() {
     return {
-      categories: "",
-      categoriesSelected: []
+      categories: "" // categorySelected: '',
+
     };
   },
   methods: {
     emitCategory: function emitCategory(idCategory) {
+      // this.categorySelected = idCategory
       this.$emit("categorySelected", idCategory);
-    },
-    emitCategoriesSelected: function emitCategoriesSelected(idCategory) {
-      this.$emit("categoryCheckbox", idCategory);
-    }
+    } // emitCategoriesSelected(idCategory) {
+    //   this.$emit("categoryCheckbox", idCategory);
+    // },
+
   },
   mounted: function mounted() {
     var _this = this;
@@ -2742,7 +2780,8 @@ __webpack_require__.r(__webpack_exports__);
     RestaurantCard: _RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    restaurants: Array
+    restaurants: Array,
+    categoryFilter: Number
   }
 });
 
@@ -2757,6 +2796,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2946,6 +2986,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CollaboraConNoiComponent"
 });
@@ -3024,6 +3066,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3142,6 +3185,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -3390,7 +3436,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       restaurants: [],
       filteredRestaurants: [],
-      categoryFilter: '',
+      categoryFilter: null,
       categoriesArray: []
     };
   },
@@ -3458,6 +3504,8 @@ __webpack_require__.r(__webpack_exports__);
           if (_this2.categoriaSelezionataHome) {
             restaurant.categories.forEach(function (category) {
               if (category.id === _this2.categoriaSelezionataHome) {
+                _this2.categoryFilter = _this2.categoriaSelezionataHome;
+
                 _this2.filteredRestaurants.push(restaurant);
               }
             });
@@ -3591,13 +3639,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Paybox",
   data: function data() {
     return {
       Token: null,
       tokenGenerate: false,
-      loaded: false
+      loaded: false,
+      loadPostPay: true
     };
   },
   props: {
@@ -3639,6 +3692,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var nonce = payload.nonce;
       console.log(nonce);
+      this.loadPostPay = false;
       window.axios.post("http://127.0.0.1:8000/api/orders/make/payment", {}, {
         params: {
           'token': nonce,
@@ -3683,6 +3737,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response, 'response axios'); // alert(response)
 
         if (response.status === 200) {
+          _this3.loadPostPay = true;
           localStorage.clear();
 
           _this3.$router.push({
@@ -32937,7 +32992,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  font-family: \"Epilogue\", sans-serif;\n}\nh1 {\n  height: auto;\n}\nul {\n  list-style-type: none;\n  margin: 0;\n}\n#modal-container-app {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: grid;\n  place-content: center;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#modal-container-app.sp-show {\n  pointer-events: auto;\n  opacity: 1;\n}\n#modal-container-app .sp-modal {\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#modal-container-app .sp-modal h2 {\n  text-align: center;\n}\n#modal-container-app .sp-modal .title {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#modal-container-app .sp-modal .title i {\n  font-size: 1.5rem;\n}\n#modal-container-app .sp-modal .title p {\n  margin: 0;\n  padding: 0;\n}\n#modal-container-app .sp-modal .close-modal {\n  color: white;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#modal-container-app .sp-modal .close-modal:hover {\n  background: #57cc99;\n}", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  font-family: \"Epilogue\", sans-serif;\n}\n.before-enter {\n  opacity: 0;\n  transform: translateY(50px);\n  transition: all 1s ease-out;\n}\n.enter {\n  opacity: 1;\n  transform: translateY(0px);\n}\nh1 {\n  height: auto;\n}\nul {\n  list-style-type: none;\n  margin: 0;\n}\n#modal-container-app {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: grid;\n  place-content: center;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#modal-container-app.sp-show {\n  pointer-events: auto;\n  opacity: 1;\n}\n#modal-container-app .sp-modal {\n  background: white;\n  padding: 2rem;\n  border-radius: 0.2rem;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#modal-container-app .sp-modal h2 {\n  color: #38a3a5;\n  text-align: center;\n}\n#modal-container-app .sp-modal .title {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#modal-container-app .sp-modal .title i {\n  font-size: 1.5rem;\n}\n#modal-container-app .sp-modal .title p {\n  margin: 0;\n  padding: 0;\n}\n#modal-container-app .sp-modal .close-modal {\n  color: white;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #38a3a5;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#modal-container-app .sp-modal .close-modal:hover {\n  background: #98f1ad;\n}", ""]);
 
 // exports
 
@@ -32975,7 +33030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#header[data-v-153bfd55] {\n  position: fixed;\n  width: 100%;\n  z-index: 2;\n}\n#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container2[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container2 .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container2 .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container2 nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container2 nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container2 nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container2 .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n  display: none;\n}\n#header .container2 .cart-login .hamburger-menu[data-v-153bfd55] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: none;\n  padding: 20px;\n  width: 100%;\n  height: 100%;\n  min-width: 100vw;\n  min-height: 100vh;\n  background: #98f1ad;\n  z-index: 100;\n}\n#header .container2 .cart-login .hamburger-menu ul[data-v-153bfd55] {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n  list-style: none;\n}\n#header .container2 .cart-login .hamburger-menu li a[data-v-153bfd55] {\n  color: white;\n  text-decoration: none;\n  font-size: 25px;\n  cursor: pointer;\n}\n#header .container2 .cart-login .hamburger-menu .close[data-v-153bfd55] {\n  display: block;\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  color: white;\n  font-size: 35px;\n  text-decoration: none;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55] {\n  position: relative;\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container2 .cart-login i.cart .number-cart[data-v-153bfd55] {\n  position: absolute;\n  right: 0;\n  font-size: 18px;\n}\n#header .container2 .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container2 .cart-login #modal-container .dish-cart[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid gray;\n  border-radius: 10px;\n  padding: 0.5rem;\n  gap: 1rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img[data-v-153bfd55] {\n  width: 20%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img img[data-v-153bfd55] {\n  width: 100%;\n  border-radius: 10px;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs[data-v-153bfd55] {\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity[data-v-153bfd55] {\n  display: flex;\n  gap: 0.4rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity i[data-v-153bfd55] {\n  cursor: pointer;\n  width: 1rem;\n  height: 1rem;\n  padding: 0.6rem;\n  border-radius: 5px;\n  background: lightgray;\n  display: grid;\n  place-content: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .remove[data-v-153bfd55]:hover {\n  cursor: pointer;\n  color: lightcoral;\n}\n#header .container2 .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container2 .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  min-height: 60%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  position: relative;\n}\n#header .container2 .cart-login #modal-container .sp-modal .checkout[data-v-153bfd55] {\n  flex-grow: 1;\n  display: flex;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price[data-v-153bfd55] {\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: column;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#header .container2 .cart-login #modal-container .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}\n@media screen and (max-width: 992px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 768px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .accedi[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 576px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 300px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 370px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "#header[data-v-153bfd55] {\n  position: fixed;\n  width: 100%;\n  z-index: 2;\n}\n#header[data-v-153bfd55] {\n  background: #1e282f;\n}\n#header h1[data-v-153bfd55],\n#header h2[data-v-153bfd55],\n#header h3[data-v-153bfd55],\n#header h4[data-v-153bfd55],\n#header h5[data-v-153bfd55],\n#header h6[data-v-153bfd55],\n#header p[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n}\n#header .container2[data-v-153bfd55] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#header .container2 .logo[data-v-153bfd55] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#header .container2 .logo img[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .logo p[data-v-153bfd55] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#header .container2 nav[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\n#header .container2 nav ul[data-v-153bfd55] {\n  display: flex;\n  gap: 1.5rem;\n}\n#header .container2 nav ul li a[data-v-153bfd55] {\n  color: #98f1ad;\n  padding-bottom: 0.75rem;\n  transition: 0.2s;\n  cursor: pointer;\n}\n#header .container2 nav ul li a[data-v-153bfd55]:hover {\n  color: white;\n  text-decoration: none;\n  box-shadow: inset 0 -3px 0 0 white;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n#header .container2 .cart-login .accedi a[data-v-153bfd55] {\n  transition: 0.2s;\n  padding-bottom: 0.75rem;\n}\n#header .container2 .cart-login .accedi a[data-v-153bfd55]:hover {\n  box-shadow: inset 0 -3px 0 0 white;\n}\n#header .container2 .cart-login a[data-v-153bfd55] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#header .container2 .cart-login a[data-v-153bfd55]:hover {\n  color: white;\n  text-decoration: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n  display: none;\n  cursor: pointer;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login .hamburger-menu[data-v-153bfd55] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: none;\n  padding: 20px;\n  width: 100%;\n  height: 100%;\n  min-width: 100vw;\n  min-height: 100vh;\n  background: #98f1ad;\n  z-index: 100;\n}\n#header .container2 .cart-login .hamburger-menu ul[data-v-153bfd55] {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n  list-style: none;\n}\n#header .container2 .cart-login .hamburger-menu li a[data-v-153bfd55] {\n  color: #38a3a5;\n  text-decoration: none;\n  font-size: 25px;\n  cursor: pointer;\n}\n#header .container2 .cart-login .hamburger-menu .close[data-v-153bfd55] {\n  display: block;\n  position: absolute;\n  right: 35px;\n  top: 20px;\n  color: #38a3a5;\n  font-size: 35px;\n  text-decoration: none;\n}\n#header .container2 .cart-login .hamburger-menu .close[data-v-153bfd55]:hover {\n  color: white;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55] {\n  position: relative;\n  font-size: 1.2rem;\n  cursor: pointer;\n  height: 1.5rem;\n  width: 1.5rem;\n  display: grid;\n  place-content: center;\n  padding: 1.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\n#header .container2 .cart-login i.cart[data-v-153bfd55]:hover {\n  transform: scale(1.1);\n  color: white;\n  background: #38a3a5;\n}\n#header .container2 .cart-login i.cart .number-cart[data-v-153bfd55] {\n  position: absolute;\n  right: 0;\n  font-size: 18px;\n}\n#header .container2 .cart-login #modal-container[data-v-153bfd55] {\n  color: #1e282f;\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 10;\n  display: flex;\n  justify-content: flex-end;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n#header .container2 .cart-login #modal-container .dish-cart[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid lightgray;\n  padding: 0.5rem;\n  gap: 1rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img[data-v-153bfd55] {\n  width: 20%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .dish-img img[data-v-153bfd55] {\n  width: 100%;\n  border-radius: 10px;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition[data-v-153bfd55] {\n  width: 100%;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs[data-v-153bfd55] {\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity[data-v-153bfd55] {\n  display: flex;\n  gap: 0.4rem;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .quantity i[data-v-153bfd55] {\n  cursor: pointer;\n  width: 1rem;\n  height: 1rem;\n  padding: 0.6rem;\n  border-radius: 5px;\n  background: lightgray;\n  display: grid;\n  place-content: center;\n}\n#header .container2 .cart-login #modal-container .dish-cart .definition .dish-specs .remove[data-v-153bfd55]:hover {\n  cursor: pointer;\n  color: lightcoral;\n}\n#header .container2 .cart-login #modal-container.sp-show[data-v-153bfd55] {\n  pointer-events: auto;\n  opacity: 1;\n}\n#header .container2 .cart-login #modal-container .sp-modal[data-v-153bfd55] {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  padding: 2rem;\n  border-radius: 0.5rem;\n  width: min(400px, 100%);\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  min-height: 60%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  position: relative;\n}\n#header .container2 .cart-login #modal-container .sp-modal .checkout[data-v-153bfd55] {\n  flex-grow: 1;\n  display: flex;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price[data-v-153bfd55] {\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: column;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#header .container2 .cart-login #modal-container .sp-modal .total-price .checkout-btn[data-v-153bfd55]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#header .container2 .cart-login #modal-container .title[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .title i[data-v-153bfd55] {\n  font-size: 1.5rem;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55] {\n  color: white;\n  position: absolute;\n  top: 2rem;\n  right: 2rem;\n  height: 2rem;\n  width: 2rem;\n  padding: 0.5rem;\n  border-radius: 5px;\n  background: #98f1ad;\n  /* display: flex; */\n  /* justify-content: center; */\n  /* align-items: center; */\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n#header .container2 .cart-login #modal-container .close-modal[data-v-153bfd55]:hover {\n  background: #57cc99;\n}\n@media screen and (max-width: 992px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 768px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .accedi[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 576px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}\n@media screen and (max-width: 300px) {\n#header[data-v-153bfd55] {\n    margin-inline: auto;\n    max-width: 370px;\n}\n#header .container2[data-v-153bfd55] {\n    width: 100vw;\n}\n#header .container2 nav[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login[data-v-153bfd55] {\n    display: none;\n}\n#header .container2 .cart-login .hamburger[data-v-153bfd55] {\n    display: block;\n}\n#header .container2 .cart-login .hamburger-menu.active[data-v-153bfd55] {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -32994,7 +33049,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#description[data-v-240efd29] {\n  background: #98f1ad;\n  min-height: 500px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 50px;\n}\n#description .about-us[data-v-240efd29] {\n  width: 30%;\n  margin-right: 50px;\n  text-align: center;\n}\n#description .about-us h2[data-v-240efd29] {\n  color: #38a3a5;\n}\n#description .description-cover[data-v-240efd29] {\n  margin-left: 50px;\n}\n#description .description-cover img[data-v-240efd29] {\n  width: 400px;\n  border-radius: 20px;\n}\n@media screen and (max-width: 1024px) {\n#description[data-v-240efd29] {\n    flex-direction: column;\n}\n#description .about-us[data-v-240efd29] {\n    width: 100%;\n    margin: 0;\n}\n#description .about-us p[data-v-240efd29] {\n    margin-bottom: 2rem;\n}\n#description .description-cover[data-v-240efd29] {\n    width: 100%;\n    margin: 0;\n}\n#description .description-cover img[data-v-240efd29] {\n    width: 100%;\n}\n}", ""]);
+exports.push([module.i, "#description[data-v-240efd29] {\n  background: #98f1ad;\n  min-height: 500px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#description .mid-class[data-v-240efd29] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#description .about-us[data-v-240efd29] {\n  width: 30%;\n  margin-right: 50px;\n  text-align: center;\n}\n#description .about-us h2[data-v-240efd29] {\n  color: #38a3a5;\n}\n#description .description-cover[data-v-240efd29] {\n  margin-left: 50px;\n}\n#description .description-cover img[data-v-240efd29] {\n  width: 400px;\n  border-radius: 20px;\n}\n@media screen and (max-width: 1024px) {\n#description[data-v-240efd29] {\n    padding: 50px;\n}\n#description .mid-class[data-v-240efd29] {\n    flex-direction: column;\n}\n#description .mid-class .about-us[data-v-240efd29] {\n    width: 100%;\n    margin: 0;\n}\n#description .mid-class .description-cover[data-v-240efd29] {\n    width: 100%;\n    margin: 0;\n}\n#description .mid-class .description-cover img[data-v-240efd29] {\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -33013,7 +33068,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".dish-card[data-v-1dd457dc] {\n  display: flex;\n  justify-content: space-around;\n  padding: 30px 20px;\n  border-bottom: 1px solid gray;\n  border-radius: 20px;\n  margin: 31px 0;\n}\n.dish-card .foto[data-v-1dd457dc] {\n  width: 250px;\n}\n.dish-card .foto img[data-v-1dd457dc] {\n  width: 100%;\n  border-radius: 20px;\n  min-width: 146px;\n}\n.dish-card .name-description[data-v-1dd457dc] {\n  padding: 0 20px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  row-gap: 20px;\n}\n.dish-card .name-description .dish-name h2[data-v-1dd457dc] {\n  color: #1e282f;\n}\n.dish-card .name-description .dish-description p[data-v-1dd457dc] {\n  color: #8c9e9e;\n}\n.dish-card .price.add-to-cart[data-v-1dd457dc] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.dish-card .price.add-to-cart .price-dish[data-v-1dd457dc] {\n  font-size: 25px;\n}\n@media screen and (max-width: 484px) {\n.dish-card[data-v-1dd457dc] {\n    flex-wrap: wrap;\n}\n.dish-card .foto[data-v-1dd457dc] {\n    width: 100%;\n    margin-bottom: 17px;\n}\n.dish-card .foto img[data-v-1dd457dc] {\n    width: 100%;\n    border-radius: 20px;\n}\n.dish-card .name-description[data-v-1dd457dc] {\n    width: 100%;\n    text-align: center;\n}\n.dish-card .price.add-to-cart[data-v-1dd457dc] {\n    align-items: center;\n}\n}\n.btn-outline-info[data-v-1dd457dc] {\n  background-color: transparent;\n  color: #38a3a5;\n  border-color: #38a3a5;\n}\n.btn-outline-info[data-v-1dd457dc]:hover {\n  color: white;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}", ""]);
+exports.push([module.i, ".dish-card[data-v-1dd457dc] {\n  display: flex;\n  justify-content: space-around;\n  padding: 30px 20px;\n  border-bottom: 1px solid lightgray;\n  margin: 31px 0;\n}\n.dish-card .foto[data-v-1dd457dc] {\n  width: 250px;\n}\n.dish-card .foto img[data-v-1dd457dc] {\n  width: 100%;\n  border-radius: 20px;\n  min-width: 146px;\n}\n.dish-card .name-description[data-v-1dd457dc] {\n  padding: 0 20px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  row-gap: 20px;\n}\n.dish-card .name-description .dish-name h2[data-v-1dd457dc] {\n  color: #1e282f;\n}\n.dish-card .name-description .dish-description p[data-v-1dd457dc] {\n  color: #8c9e9e;\n}\n.dish-card .price.add-to-cart[data-v-1dd457dc] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.dish-card .price.add-to-cart .price-dish[data-v-1dd457dc] {\n  font-size: 25px;\n}\n@media screen and (max-width: 484px) {\n.dish-card[data-v-1dd457dc] {\n    flex-wrap: wrap;\n}\n.dish-card .foto[data-v-1dd457dc] {\n    width: 100%;\n    margin-bottom: 17px;\n}\n.dish-card .foto img[data-v-1dd457dc] {\n    width: 100%;\n    border-radius: 20px;\n}\n.dish-card .name-description[data-v-1dd457dc] {\n    width: 100%;\n    text-align: center;\n}\n.dish-card .price.add-to-cart[data-v-1dd457dc] {\n    align-items: center;\n}\n}\n.btn-outline-info[data-v-1dd457dc] {\n  background-color: transparent;\n  color: #38a3a5;\n  border-color: #38a3a5;\n}\n.btn-outline-info[data-v-1dd457dc]:hover {\n  color: white;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}", ""]);
 
 // exports
 
@@ -33070,7 +33125,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".out-container[data-v-5f8f3b9a] {\n  background-color: #98f1ad;\n}\n.info-container[data-v-5f8f3b9a] {\n  width: 70%;\n  max-width: 1400px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-inline: auto;\n}\n.info-container .info-title[data-v-5f8f3b9a] {\n  padding: 40px 0;\n  text-transform: uppercase;\n  color: #38a3a5;\n}\n.info-container .info-title h2[data-v-5f8f3b9a] {\n  text-align: center;\n}\n.info-container .box[data-v-5f8f3b9a] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  row-gap: 1rem;\n  margin-bottom: 2rem;\n}\n.info-container .address[data-v-5f8f3b9a],\n.info-container .contacts[data-v-5f8f3b9a],\n.info-container .opening[data-v-5f8f3b9a] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 10px;\n  margin: 15px;\n}\n.info-container .address h5[data-v-5f8f3b9a],\n.info-container .contacts h5[data-v-5f8f3b9a],\n.info-container .opening h5[data-v-5f8f3b9a] {\n  margin: 15px 0;\n  text-transform: uppercase;\n  font-size: 0.9rem;\n  font-weight: 600;\n}\n.info-container .address p[data-v-5f8f3b9a],\n.info-container .contacts p[data-v-5f8f3b9a],\n.info-container .opening p[data-v-5f8f3b9a] {\n  font-size: 0.8rem;\n  margin-bottom: 7px;\n}\n.info-container a[data-v-5f8f3b9a] {\n  text-decoration: underline;\n  color: #1e282f;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".out-container[data-v-5f8f3b9a] {\n  background-color: #98f1ad;\n}\n.info-container[data-v-5f8f3b9a] {\n  width: 70%;\n  max-width: 1400px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-inline: auto;\n}\n.info-container .info-title[data-v-5f8f3b9a] {\n  padding: 4.5rem 0 0;\n  text-transform: uppercase;\n  color: #38a3a5;\n}\n.info-container .info-title h2[data-v-5f8f3b9a] {\n  text-align: center;\n}\n.info-container .box[data-v-5f8f3b9a] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  row-gap: 1rem;\n  margin-bottom: 2rem;\n}\n.info-container .address[data-v-5f8f3b9a],\n.info-container .contacts[data-v-5f8f3b9a],\n.info-container .opening[data-v-5f8f3b9a] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 10px;\n  margin: 15px;\n}\n.info-container .address h5[data-v-5f8f3b9a],\n.info-container .contacts h5[data-v-5f8f3b9a],\n.info-container .opening h5[data-v-5f8f3b9a] {\n  margin: 15px 0;\n  text-transform: uppercase;\n  font-size: 0.9rem;\n  font-weight: 600;\n}\n.info-container .address p[data-v-5f8f3b9a],\n.info-container .contacts p[data-v-5f8f3b9a],\n.info-container .opening p[data-v-5f8f3b9a] {\n  font-size: 0.8rem;\n  margin-bottom: 7px;\n}\n.info-container a[data-v-5f8f3b9a] {\n  text-decoration: underline;\n  color: #1e282f;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -33089,7 +33144,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "img[data-v-6abf503a] {\n  width: 98px;\n}\n.categories-list[data-v-6abf503a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  row-gap: 30px;\n  padding: 130px 86px 60px;\n  background-color: #1e282f;\n}\n.categories-list .categories-cards[data-v-6abf503a] {\n  position: relative;\n}\n.categories-list .categories-cards p[data-v-6abf503a] {\n  opacity: 0;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 600;\n  color: white;\n}\n.categories-list .categories-cards[data-v-6abf503a]:hover {\n  cursor: pointer;\n}\n.categories-list .categories-cards:hover p[data-v-6abf503a] {\n  opacity: 1;\n}\n.categories-list .categories-cards:hover img[data-v-6abf503a] {\n  filter: opacity(0.5);\n}", ""]);
+exports.push([module.i, "img[data-v-6abf503a] {\n  width: 98px;\n  border-radius: 2px;\n}\n.categories-list[data-v-6abf503a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  -moz-column-gap: 30px;\n       column-gap: 30px;\n  row-gap: 30px;\n  padding: 130px 86px 60px;\n  background-color: #1e282f;\n}\n.categories-list .categories-cards[data-v-6abf503a] {\n  position: relative;\n}\n.categories-list .categories-cards .active-category[data-v-6abf503a] {\n  cursor: pointer;\n}\n.categories-list .categories-cards .active-category p[data-v-6abf503a] {\n  opacity: 1;\n}\n.categories-list .categories-cards .active-category img[data-v-6abf503a] {\n  filter: opacity(0.5);\n}\n.categories-list .categories-cards p[data-v-6abf503a] {\n  opacity: 0;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 600;\n  color: white;\n}\n.categories-list .categories-cards[data-v-6abf503a]:hover {\n  cursor: pointer;\n}\n.categories-list .categories-cards:hover p[data-v-6abf503a] {\n  opacity: 1;\n}\n.categories-list .categories-cards:hover img[data-v-6abf503a] {\n  filter: opacity(0.5);\n}\n@media screen and (max-width: 540px) {\n.categories-list[data-v-6abf503a] {\n    padding: 130px 20px 60px;\n}\n}\n@media screen and (max-width: 410px) {\n.categories-list .categories-cards[data-v-6abf503a]:last-child {\n    display: none;\n}\n}", ""]);
 
 // exports
 
@@ -33108,7 +33163,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container[data-v-7c6977f6] {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 50px;\n  margin-bottom: 50px;\n}\n.container .other-categories-list h2[data-v-7c6977f6] {\n  margin-bottom: 36px;\n}\n.container .other-categories-list .category p[data-v-7c6977f6] {\n  margin-bottom: 0.3rem;\n  color: #38a3a5;\n  padding: 0.4rem 0.75rem;\n  border-radius: 5px;\n}\n.container .other-categories-list .category p[data-v-7c6977f6]:hover {\n  cursor: pointer;\n  background: #98f1ad;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n  margin-left: 80px;\n}\n.container .restaurants-list h1[data-v-7c6977f6] {\n  font-size: 2.5rem;\n}\n@media screen and (max-width: 495px) {\n.container[data-v-7c6977f6] {\n    flex-direction: column;\n}\n.container .other-categories-list[data-v-7c6977f6] {\n    display: flex;\n    flex-direction: column;\n    padding-bottom: 30px;\n}\n.container .other-categories-list .categories[data-v-7c6977f6] {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: space-between;\n}\n.container .other-categories-list .categories .category[data-v-7c6977f6] {\n    margin: 15px;\n    width: 80px;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n    margin: 0;\n}\n}", ""]);
+exports.push([module.i, ".container[data-v-7c6977f6] {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 50px;\n  margin-bottom: 50px;\n}\n.container .other-categories-list h2[data-v-7c6977f6] {\n  margin-bottom: 36px;\n}\n.container .other-categories-list .category .active-category[data-v-7c6977f6] {\n  background: #98f1ad;\n}\n.container .other-categories-list .category p[data-v-7c6977f6] {\n  margin-bottom: 0.3rem;\n  color: #38a3a5;\n  padding: 0.4rem 0.75rem;\n  border-radius: 5px;\n}\n.container .other-categories-list .category p[data-v-7c6977f6]:hover {\n  cursor: pointer;\n  background: #98f1ad;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n  margin-left: 80px;\n}\n.container .restaurants-list h1[data-v-7c6977f6] {\n  font-size: 2.5rem;\n}\n@media screen and (max-width: 495px) {\n.container[data-v-7c6977f6] {\n    flex-direction: column;\n}\n.container .other-categories-list[data-v-7c6977f6] {\n    display: flex;\n    flex-direction: column;\n    padding-bottom: 30px;\n}\n.container .other-categories-list .categories[data-v-7c6977f6] {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: space-between;\n}\n.container .other-categories-list .categories .category[data-v-7c6977f6] {\n    margin: 15px;\n    width: 80px;\n}\n.container .restaurants-list[data-v-7c6977f6] {\n    margin: 0;\n}\n}", ""]);
 
 // exports
 
@@ -33127,7 +33182,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".restaurant-list[data-v-e132e0f8] {\n  max-height: 500px;\n  overflow-y: auto;\n}\n.restaurant-list .restaurant-card[data-v-e132e0f8] {\n  display: flex;\n  justify-content: space-between;\n  padding: 0 20px 30px;\n  border-bottom: 1px solid lightgray;\n  margin: 30px 2px 0 0;\n}\n.restaurant-list .restaurant-card .foto[data-v-e132e0f8] {\n  width: 250px;\n}\n.restaurant-list .restaurant-card .foto img[data-v-e132e0f8] {\n  width: 100%;\n  border-radius: 20px;\n  min-width: 146px;\n}\n.restaurant-list .restaurant-card .name-description[data-v-e132e0f8] {\n  padding: 0 20px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  row-gap: 10px;\n}\n.restaurant-list .restaurant-card .show-restaurant[data-v-e132e0f8] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.restaurant-list .restaurant-card .show-restaurant .price-dish[data-v-e132e0f8] {\n  font-size: 25px;\n}\n.restaurant-list .restaurant-card .btn-outline-info[data-v-e132e0f8] {\n  background-color: transparent;\n  color: #38a3a5;\n  border-color: #38a3a5;\n}\n.restaurant-list .restaurant-card .btn-outline-info[data-v-e132e0f8]:hover {\n  color: white;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n@media screen and (max-width: 991px) {\n.restaurant-list[data-v-e132e0f8] {\n    margin: 30px 0 0 0;\n}\n.restaurant-list .restaurant-card[data-v-e132e0f8] {\n    flex-wrap: wrap;\n    row-gap: 0;\n    margin: 0;\n    padding: 30px 20px;\n}\n.restaurant-list .restaurant-card .foto[data-v-e132e0f8] {\n    margin-bottom: 20px;\n}\n}", ""]);
+exports.push([module.i, ".restaurant-list[data-v-e132e0f8] {\n  max-height: 500px;\n  overflow-y: auto;\n}\n.restaurant-list .restaurant-card[data-v-e132e0f8] {\n  display: flex;\n  justify-content: space-between;\n  padding: 0 20px 30px;\n  border-bottom: 1px solid lightgray;\n  margin: 30px 2px 0 0;\n}\n.restaurant-list .restaurant-card .foto[data-v-e132e0f8] {\n  width: 250px;\n}\n.restaurant-list .restaurant-card .foto img[data-v-e132e0f8] {\n  width: 100%;\n  border-radius: 20px;\n  min-width: 146px;\n}\n.restaurant-list .restaurant-card .name-description[data-v-e132e0f8] {\n  padding: 0 20px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  row-gap: 10px;\n}\n.restaurant-list .restaurant-card .show-restaurant[data-v-e132e0f8] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.restaurant-list .restaurant-card .show-restaurant .price-dish[data-v-e132e0f8] {\n  font-size: 25px;\n}\n.restaurant-list .restaurant-card .btn-outline-info[data-v-e132e0f8] {\n  background-color: transparent;\n  color: #38a3a5;\n  border-color: #38a3a5;\n}\n.restaurant-list .restaurant-card .btn-outline-info[data-v-e132e0f8]:hover {\n  color: white;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n@media screen and (max-width: 991px) {\n.restaurant-list[data-v-e132e0f8] {\n    margin: 30px 0 0 0;\n}\n.restaurant-list .restaurant-card[data-v-e132e0f8] {\n    flex-wrap: wrap;\n    row-gap: 0;\n    margin: 0;\n    padding: 30px 20px;\n}\n.restaurant-list .restaurant-card .foto[data-v-e132e0f8] {\n    margin-bottom: 20px;\n}\n}\n@media screen and (max-width: 496px) {\n.restaurant-list .restaurant-card[data-v-e132e0f8] {\n    text-align: center;\n    justify-content: center;\n}\n}", ""]);
 
 // exports
 
@@ -33146,7 +33201,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 50px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a] {\n  position: relative;\n}\n#ms-container .row1 .categories-cards p[data-v-e8a4ff6a] {\n  opacity: 0;\n  font-size: 1.5rem;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 800;\n  color: white;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a]:hover {\n  cursor: pointer;\n}\n#ms-container .row1 .categories-cards:hover p[data-v-e8a4ff6a] {\n  opacity: 1;\n}\n#ms-container .row1 .categories-cards:hover img[data-v-e8a4ff6a] {\n  filter: opacity(0.6);\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 10rem;\n  padding-right: 5px;\n}\n@media screen and (max-width: 966px) {\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: none;\n}\n}\n@media screen and (max-width: 720px) {\n#ms-container .category .row1[data-v-e8a4ff6a] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    gap: 2.5rem;\n}\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: block;\n}\n}\n@media screen and (max-width: 480px) {\n#ms-container .category .row1[data-v-e8a4ff6a]:last-child {\n    display: none;\n}\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 50px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a] {\n  position: relative;\n}\n#ms-container .row1 .categories-cards p[data-v-e8a4ff6a] {\n  opacity: 0;\n  font-size: 1.5rem;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 800;\n  color: white;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a]:hover {\n  cursor: pointer;\n}\n#ms-container .row1 .categories-cards:hover p[data-v-e8a4ff6a] {\n  opacity: 1;\n}\n#ms-container .row1 .categories-cards:hover img[data-v-e8a4ff6a] {\n  filter: brightness(0.7);\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 10rem;\n  border-radius: 3px;\n}\n@media screen and (max-width: 966px) {\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: none;\n}\n}\n@media screen and (max-width: 720px) {\n#ms-container .category .row1[data-v-e8a4ff6a] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    gap: 2.5rem;\n}\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: block;\n}\n}\n@media screen and (max-width: 480px) {\n#ms-container .category .row1[data-v-e8a4ff6a]:last-child {\n    display: none;\n}\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -33165,7 +33220,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  gap: 2rem;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n    text-align: center;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    display: flex;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n    margin-inline: auto;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
+exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  gap: 2rem;\n  align-items: center;\n  margin: 0 10%;\n  transition-delay: 0.5s;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n    text-align: center;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    display: flex;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n    margin-inline: auto;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
 
 // exports
 
@@ -33184,7 +33239,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  display: flex;\n  background-color: white;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img_rest/collab.jpg\");\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n  margin: 3rem 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 35%;\n  text-align: end;\n  padding-right: 85px;\n}\n#collab .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .collab-text button[data-v-2e69cfdb] {\n  border-color: #38a3a5;\n}\n#collab .collab-text button[data-v-2e69cfdb]:hover {\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    margin-top: 0;\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}\n@media screen and (max-width: 400px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n    background-size: cover;\n    min-height: 300px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}", ""]);
+exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  background-color: white;\n}\n#collab .coll[data-v-2e69cfdb] {\n  display: flex;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img_rest/collab.jpg\");\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n  margin: 3rem 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 30%;\n  text-align: end;\n}\n#collab .coll .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .coll .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .coll .collab-text button[data-v-2e69cfdb] {\n  border-color: #38a3a5;\n}\n#collab .coll .collab-text button[data-v-2e69cfdb]:hover {\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab .coll[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n    margin-top: 0;\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}\n@media screen and (max-width: 400px) {\n#collab .coll[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n    background-size: cover;\n    min-height: 300px;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}", ""]);
 
 // exports
 
@@ -33203,7 +33258,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#hero[data-v-e429ce44] {\n  padding-top: 70px;\n}\n#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  width: 100%;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  margin: 4rem 0 2rem;\n  padding: 1rem;\n  border-radius: 10px;\n  background: rgba(30, 40, 47, 0.7);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  align-items: center;\n  color: lightslategray;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}\n@media screen and (max-width: 996px) {\n#hero .container2[data-v-e429ce44] {\n    background-position: left;\n}\n}\n@media screen and (max-width: 500px) {\n#hero .container2[data-v-e429ce44] {\n    background: none;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}", ""]);
+exports.push([module.i, "#hero[data-v-e429ce44] {\n  padding-top: 70px;\n}\n#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero .before-enter[data-v-e429ce44] {\n  opacity: 0;\n  transform: translatex(100px);\n  transition: all 1s cubic-bezier(0.24, -0.13, 0.42, 1.45);\n}\n#hero .enter[data-v-e429ce44] {\n  opacity: 1;\n  transform: translatex(0px);\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  width: 80%;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n  transition-delay: 0.5s;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  margin: 4rem 0 2rem;\n  padding: 1rem;\n  border-radius: 10px;\n  background: rgba(30, 40, 47, 0.7);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n  transition: 0.3s;\n}\n#hero .search-bar[data-v-e429ce44]:hover {\n  transform: scale(1.05);\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .submit i[data-v-e429ce44] {\n  margin: 3px 3px 0 0;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  align-items: center;\n  color: lightslategray;\n  font-size: 0.8rem;\n  padding: 3px 1rem 0;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}\n@media screen and (max-width: 1400px) {\n#hero .container2[data-v-e429ce44] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 996px) {\n#hero .container2[data-v-e429ce44] {\n    background-position: left;\n}\n}\n@media screen and (max-width: 500px) {\n#hero .container2[data-v-e429ce44] {\n    background: none;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}", ""]);
 
 // exports
 
@@ -33241,7 +33296,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 70px 0 20px;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034] {\n  background: #38a3a5;\n  border: #38a3a5;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034]:hover {\n  background: white;\n  border: white;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n  text-align: center;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
+exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 70px 0 20px;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034] {\n  color: white;\n  background: #38a3a5;\n  border: #38a3a5;\n  transition: 0.2s;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034]:hover {\n  color: #38a3a5;\n  background: white;\n  border: white;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n  text-align: center;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n  color: #38a3a5;\n}\n#sm-container .description[data-v-64dd5034] {\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
 
 // exports
 
@@ -33279,7 +33334,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".social-component[data-v-53e630ea] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  row-gap: 27px;\n  padding: 77px 0;\n  background-color: #38a3a5;\n  color: white;\n}\n.social-component .social-box[data-v-53e630ea] {\n  display: flex;\n  width: 275px;\n  justify-content: space-between;\n}\n.social-component .social-box .social-icon a[data-v-53e630ea] {\n  color: black;\n  font-size: 30px;\n  background-color: #98f1ad;\n  border-radius: 50%;\n  padding-top: 16px;\n  padding-left: 14px;\n  padding-right: 14px;\n  padding-bottom: 9px;\n}\n.social-component .social-box .social-icon a[data-v-53e630ea]:hover {\n  background-color: #cafbd6;\n}\n@media screen and (max-width: 715px) {\n.social-component .social-box[data-v-53e630ea] {\n    width: 42%;\n}\n}\n@media screen and (max-width: 459px) {\n.social-component .social-box[data-v-53e630ea] {\n    flex-wrap: wrap;\n}\n.social-component .social-box .social-icon[data-v-53e630ea] {\n    width: 100%;\n    text-align: center;\n    margin-bottom: 47px;\n}\n.social-component .social-box .social-icon a[data-v-53e630ea] {\n    font-size: 53px;\n}\n}\n@media screen and (max-width: 333px) {\n.social-component h1[data-v-53e630ea] {\n    font-size: 21px;\n}\n}", ""]);
+exports.push([module.i, ".social-component[data-v-53e630ea] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  row-gap: 27px;\n  padding: 4.5rem 0;\n  background-color: #38a3a5;\n  color: white;\n}\n.social-component .social-box[data-v-53e630ea] {\n  display: flex;\n  justify-content: space-between;\n}\n.social-component .social-box .social-icon a[data-v-53e630ea] {\n  color: black;\n  font-size: 30px;\n  background-color: #98f1ad;\n  border-radius: 50%;\n  padding-top: 16px;\n  padding-left: 14px;\n  padding-right: 14px;\n  padding-bottom: 9px;\n}\n.social-component .social-box .social-icon a[data-v-53e630ea]:hover {\n  background-color: #cafbd6;\n}\n@media screen and (max-width: 459px) {\n.social-component .social-box[data-v-53e630ea] {\n    flex-wrap: wrap;\n}\n.social-component .social-box .social-icon[data-v-53e630ea] {\n    width: 100%;\n    text-align: center;\n    margin-bottom: 47px;\n}\n.social-component .social-box .social-icon a[data-v-53e630ea] {\n    font-size: 53px;\n}\n}\n@media screen and (max-width: 333px) {\n.social-component h1[data-v-53e630ea] {\n    font-size: 21px;\n}\n}", ""]);
 
 // exports
 
@@ -33336,7 +33391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#paybox[data-v-4e8ead06] {\n  margin: 0 1rem;\n}\n#paybox p[data-v-4e8ead06] {\n  color: #38a3a5;\n  font-size: 1.2rem;\n  margin: 0 0 -1rem;\n}\n#paybox .brain[data-v-4e8ead06] {\n  margin-inline: auto;\n}\n#paybox .brain .d-flex[data-v-4e8ead06] {\n  justify-content: space-around;\n  gap: 1rem;\n}\n#paybox .brain .btnPay[data-v-4e8ead06] {\n  color: #fff;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#paybox .brain .btnPay[data-v-4e8ead06]:hover {\n  background-color: #57cc99;\n  border-color: #57cc99;\n}", ""]);
+exports.push([module.i, ".spinner-border[data-v-4e8ead06] {\n  color: #38a3a5 !important;\n  height: 4rem !important;\n  width: 4rem !important;\n  margin-top: 11rem;\n}\n#paybox[data-v-4e8ead06] {\n  margin: 0 1rem;\n}\n#paybox p[data-v-4e8ead06] {\n  color: #38a3a5;\n  font-size: 1.2rem;\n  margin: 0 0 -1rem;\n}\n#paybox .brain[data-v-4e8ead06] {\n  margin-inline: auto;\n}\n#paybox .brain .d-flex[data-v-4e8ead06] {\n  justify-content: space-around;\n  gap: 1rem;\n}\n#paybox .brain .btnPay[data-v-4e8ead06] {\n  color: #fff;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#paybox .brain .btnPay[data-v-4e8ead06]:hover {\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n@media screen and (max-width: 900px) {\n.spinner-border[data-v-4e8ead06] {\n    margin-top: 6rem;\n}\n}", ""]);
 
 // exports
 
@@ -33355,7 +33410,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h1[data-v-3afcad35] {\n  margin: 2rem 2rem 0;\n  color: #38a3a5;\n}\n.header[data-v-3afcad35] {\n  background: #1e282f;\n}\n.header .container[data-v-3afcad35] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n.header .container .logo[data-v-3afcad35] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n.header .container .logo img[data-v-3afcad35] {\n  width: 100%;\n}\n.header .container .logo p[data-v-3afcad35] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n.header .container nav[data-v-3afcad35] {\n  display: flex;\n  align-items: center;\n}\n.header .container nav a[data-v-3afcad35] {\n  padding: 0.375rem 0.75rem;\n  color: #98f1ad;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.header .container nav a[data-v-3afcad35]:hover {\n  text-decoration: none;\n  background: #98f1ad;\n  border: #98f1ad;\n  color: #1e282f;\n}\n.header .wave[data-v-3afcad35] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#payment[data-v-3afcad35] {\n  color: #1e282f;\n  margin-top: 1rem;\n  width: min(80%, 1400px);\n  margin-inline: auto;\n  display: flex;\n  gap: 3rem;\n}\n#payment .left-payment[data-v-3afcad35] {\n  flex-basis: 70%;\n  margin-bottom: 2rem;\n}\n#payment .left-payment .form[data-v-3afcad35] {\n  margin-top: 2rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .form > p[data-v-3afcad35] {\n  font-size: 1.3rem;\n  color: #38a3a5;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35] {\n  color: #fff;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35]:hover {\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#payment .right-payment[data-v-3afcad35] {\n  color: #38a3a5;\n  margin-top: 2rem;\n}\n#payment .right-payment h2[data-v-3afcad35] {\n  font-size: 1.5rem;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n  margin-bottom: 2rem;\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .cart-summary .cart[data-v-3afcad35] {\n  font-size: 0.9rem;\n  padding: 0.5rem 0 1rem;\n  border-bottom: 1px solid lightgrey;\n}\n#payment .right-payment .cart-summary .cart .cart-card[data-v-3afcad35] {\n  color: #1e282f;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .totale[data-v-3afcad35] {\n  margin-top: 1rem;\n  text-align: end;\n  font-size: 1.1rem;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .totale p[data-v-3afcad35] {\n  margin: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n  min-width: 18rem;\n  margin-bottom: 2rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .data-summary p[data-v-3afcad35] {\n  color: #1e282f;\n}\n#payment .right-payment .data-summary p[data-v-3afcad35]:last-child {\n  margin-bottom: 0;\n}\n@media screen and (max-width: 900px) {\n#payment[data-v-3afcad35] {\n    flex-direction: column;\n    gap: 0;\n}\n#payment .left-payment[data-v-3afcad35] {\n    order: 1;\n}\n#payment .right-payment[data-v-3afcad35] {\n    align-self: center;\n    display: flex;\n    gap: 1rem;\n    margin-top: 1rem;\n    order: 0;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n    margin-bottom: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n    margin-bottom: 0;\n}\n}\n@media screen and (max-width: 650px) {\n.right-payment[data-v-3afcad35] {\n    flex-direction: column;\n}\n}", ""]);
+exports.push([module.i, "h1[data-v-3afcad35] {\n  margin: 2rem 2rem 0;\n  color: #38a3a5;\n}\n.header[data-v-3afcad35] {\n  background: #1e282f;\n}\n.header .container[data-v-3afcad35] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n.header .container .logo[data-v-3afcad35] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n.header .container .logo img[data-v-3afcad35] {\n  width: 100%;\n}\n.header .container .logo p[data-v-3afcad35] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n.header .container nav[data-v-3afcad35] {\n  display: flex;\n  align-items: center;\n}\n.header .container nav a[data-v-3afcad35] {\n  padding: 0.375rem 0.75rem;\n  color: #98f1ad;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.header .container nav a[data-v-3afcad35]:hover {\n  text-decoration: none;\n  background: #98f1ad;\n  border: #98f1ad;\n  color: #1e282f;\n}\n.header .wave[data-v-3afcad35] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#payment[data-v-3afcad35] {\n  color: #1e282f;\n  margin-top: 1rem;\n  width: min(80%, 1400px);\n  margin-inline: auto;\n  display: flex;\n  gap: 3rem;\n}\n#payment .left-payment[data-v-3afcad35] {\n  flex-basis: 70%;\n  margin-bottom: 2rem;\n}\n#payment .left-payment .payment-part[data-v-3afcad35] {\n  text-align: center;\n}\n#payment .left-payment .form[data-v-3afcad35] {\n  margin-top: 2rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .form > p[data-v-3afcad35] {\n  font-size: 1.3rem;\n  color: #38a3a5;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35] {\n  color: #fff;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35]:hover {\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#payment .right-payment[data-v-3afcad35] {\n  color: #38a3a5;\n  margin-top: 2rem;\n}\n#payment .right-payment h2[data-v-3afcad35] {\n  font-size: 1.5rem;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n  margin-bottom: 2rem;\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .cart-summary .cart[data-v-3afcad35] {\n  font-size: 0.9rem;\n  padding: 0.5rem 0 1rem;\n  border-bottom: 1px solid lightgrey;\n}\n#payment .right-payment .cart-summary .cart .cart-card[data-v-3afcad35] {\n  color: #1e282f;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .totale[data-v-3afcad35] {\n  margin-top: 1rem;\n  text-align: end;\n  font-size: 1.1rem;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .totale p[data-v-3afcad35] {\n  margin: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n  min-width: 18rem;\n  margin-bottom: 2rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .data-summary p[data-v-3afcad35] {\n  color: #1e282f;\n}\n#payment .right-payment .data-summary p[data-v-3afcad35]:last-child {\n  margin-bottom: 0;\n}\n@media screen and (max-width: 900px) {\n#payment[data-v-3afcad35] {\n    flex-direction: column;\n    gap: 0;\n}\n#payment .left-payment[data-v-3afcad35] {\n    order: 1;\n}\n#payment .right-payment[data-v-3afcad35] {\n    align-self: center;\n    display: flex;\n    gap: 1rem;\n    margin-top: 1rem;\n    order: 0;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n    margin-bottom: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n    margin-bottom: 0;\n}\n}\n@media screen and (max-width: 650px) {\n.right-payment[data-v-3afcad35] {\n    flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -66396,15 +66451,28 @@ var render = function () {
           _vm._v(" "),
           this.$root._route.name === "home"
             ? _c("li", [
-                _c("a", { attrs: { href: "#collab" } }, [
-                  _vm._v("Collabora con noi"),
-                ]),
+                _c("a", { attrs: { href: "#about-us" } }, [_vm._v("About us")]),
               ])
             : _vm._e(),
           _vm._v(" "),
           this.$root._route.name === "home"
             ? _c("li", [
-                _c("a", { attrs: { href: "#about-us" } }, [_vm._v("About us")]),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#services" },
+                    on: { click: _vm.addCloseClassHamburger },
+                  },
+                  [_vm._v("Servizi")]
+                ),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.$root._route.name === "home"
+            ? _c("li", [
+                _c("a", { attrs: { href: "#collab" } }, [
+                  _vm._v("Collabora con noi"),
+                ]),
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -66443,23 +66511,55 @@ var render = function () {
             _vm._v(" "),
             this.$root._route.name === "home"
               ? _c("li", [
-                  _c("a", { attrs: { href: "#collab" } }, [
-                    _vm._v("Collabora con noi"),
-                  ]),
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#about-us" },
+                      on: { click: _vm.addCloseClassHamburger },
+                    },
+                    [_vm._v("About us")]
+                  ),
                 ])
               : _vm._e(),
             _vm._v(" "),
             this.$root._route.name === "home"
               ? _c("li", [
-                  _c("a", { attrs: { href: "#about-us" } }, [
-                    _vm._v("About us"),
-                  ]),
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#services" },
+                      on: { click: _vm.addCloseClassHamburger },
+                    },
+                    [_vm._v("Servizi")]
+                  ),
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm._m(5),
+            this.$root._route.name === "home"
+              ? _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#collab" },
+                      on: { click: _vm.addCloseClassHamburger },
+                    },
+                    [_vm._v("Collabora con noi")]
+                  ),
+                ])
+              : _vm._e(),
             _vm._v(" "),
-            _vm._m(6),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#contacts" },
+                  on: { click: _vm.addCloseClassHamburger },
+                },
+                [_vm._v("Contatti")]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(5),
           ]),
           _vm._v(" "),
           _c(
@@ -66487,7 +66587,7 @@ var render = function () {
                   on: { click: _vm.closeModal },
                 }),
                 _vm._v(" "),
-                _vm._m(7),
+                _vm._m(6),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -66633,14 +66733,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", [
-      _c("a", { attrs: { href: "#contacts" } }, [_vm._v("Contatti")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
       _c("a", { attrs: { href: "/login" } }, [_vm._v("Accedi")]),
     ])
   },
@@ -66677,19 +66769,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "description" } }, [
-    _c("div", { staticClass: "about-us" }, [
-      _c("h2", [_vm._v("ABOUT US")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v("\n      " + _vm._s(_vm.restaurant.description) + "\n    "),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "description-cover" }, [
-      _c("img", {
-        attrs: { src: "/storage/" + _vm.restaurant.cover, alt: "" },
-      }),
-    ]),
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "mid-class",
+      },
+      [
+        _c("div", { staticClass: "about-us" }, [
+          _c("h2", [_vm._v("ABOUT US")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n        " + _vm._s(_vm.restaurant.description) + "\n      "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "description-cover" }, [
+          _c("img", {
+            attrs: { src: "/storage/" + _vm.restaurant.cover, alt: "" },
+          }),
+        ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -66717,42 +66820,55 @@ var render = function () {
   return _c(
     "div",
     _vm._l(_vm.dishes, function (dish, index) {
-      return _c("div", { key: index, staticClass: "dish-card" }, [
-        _c("div", { staticClass: "foto" }, [
-          _c("img", { attrs: { src: dish.cover, alt: "Dish" } }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "name-description" }, [
-          _c("div", { staticClass: "dish-name" }, [
-            _c("h3", [_vm._v(_vm._s(dish.name))]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "dish-description" }, [
-            _c("p", [_vm._v(_vm._s(dish.description))]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "price add-to-cart" }, [
-          _c("div", { staticClass: "price-dish" }, [
-            _c("p", [_vm._v("€" + _vm._s(dish.price))]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "add-to-cart-btn" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-info",
-                on: {
-                  click: function ($event) {
-                    return _vm.addToLocalStorage(dish)
-                  },
-                },
-              },
-              [_vm._v("\n          Add to cart\n        ")]
-            ),
-          ]),
-        ]),
-      ])
+      return _c(
+        "div",
+        {
+          directives: [
+            { name: "scrollAnimation", rawName: "v-scrollAnimation" },
+          ],
+          key: index,
+        },
+        [
+          dish.available === 1
+            ? _c("div", { staticClass: "dish-card" }, [
+                _c("div", { staticClass: "foto" }, [
+                  _c("img", { attrs: { src: dish.cover, alt: "Dish" } }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name-description" }, [
+                  _c("div", { staticClass: "dish-name" }, [
+                    _c("h3", [_vm._v(_vm._s(dish.name))]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dish-description" }, [
+                    _c("p", [_vm._v(_vm._s(dish.description))]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "price add-to-cart" }, [
+                  _c("div", { staticClass: "price-dish" }, [
+                    _c("p", [_vm._v("€" + _vm._s(dish.price.toFixed(2)))]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "add-to-cart-btn" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info",
+                        on: {
+                          click: function ($event) {
+                            return _vm.addToLocalStorage(dish)
+                          },
+                        },
+                      },
+                      [_vm._v("\n            Add to cart\n          ")]
+                    ),
+                  ]),
+                ]),
+              ])
+            : _vm._e(),
+        ]
+      )
     }),
     0
   )
@@ -66780,20 +66896,27 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "dishes-list" }, [
-    _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        [
-          _c("DishCard", {
-            attrs: { dishes: _vm.dishes },
-            on: { addToCart: _vm.addToCart },
-          }),
-        ],
-        1
-      ),
-    ]),
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "container",
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _c("DishCard", {
+              attrs: { dishes: _vm.dishes },
+              on: { addToCart: _vm.addToCart },
+            }),
+          ],
+          1
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -66828,11 +66951,18 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-hero" }, [
-    _c("div", { staticClass: "info-resturant" }, [
-      _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
-      _vm._v(" "),
-      _c("h2", [_vm._v(_vm._s(_vm.restaurant.motto))]),
-    ]),
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "info-resturant",
+      },
+      [
+        _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
+        _vm._v(" "),
+        _c("h2", [_vm._v(_vm._s(_vm.restaurant.motto))]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -66857,48 +66987,60 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "out-container" }, [
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "info-container",
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "box" }, [
+          _c("div", { staticClass: "address" }, [
+            _c("h5", [_vm._v("Indirizzo")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contacts" }, [
+            _c("h5", [_vm._v("Contatti")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v("Phone: +39 " + _vm._s(_vm.restaurant.phone_number)),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-center" }, [
+              _vm._v("Email: " + _vm._s(_vm.ristoName()) + "@gmail.com"),
+            ]),
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+        ]),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "out-container" }, [
-      _c("div", { staticClass: "info-container" }, [
-        _c("div", { staticClass: "info-title" }, [
-          _c("h2", [_vm._v("Informazioni ristorante")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c("div", { staticClass: "address" }, [
-            _c("h5", [_vm._v("Indirizzo")]),
-            _vm._v(" "),
-            _c("p", [_vm._v("Via Roma, 21")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contacts" }, [
-            _c("h5", [_vm._v("Contatti")]),
-            _vm._v(" "),
-            _c("p", [_vm._v("Phone: +1 800 755 50 30")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-center" }, [
-              _vm._v("Email: "),
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v("contacts@company.com"),
-              ]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "opening" }, [
-            _c("h5", [_vm._v("Orari")]),
-            _vm._v(" "),
-            _c("p", [_vm._v("Mon-Fri 10:00 - 19:00")]),
-            _vm._v(" "),
-            _c("p", [_vm._v("Sat-Sun 10:00 - 14:00")]),
-          ]),
-        ]),
-      ]),
+    return _c("div", { staticClass: "info-title" }, [
+      _c("h2", [_vm._v("Informazioni ristorante")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "opening" }, [
+      _c("h5", [_vm._v("Orari")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Mon-Fri 10:00 - 19:00")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Sat-Sun 10:00 - 14:00")]),
     ])
   },
 ]
@@ -66931,6 +67073,8 @@ var render = function () {
         _c(
           "div",
           {
+            staticClass: "category-card",
+            class: category.id == _vm.categoryFilter ? "active-category" : "",
             on: {
               click: function ($event) {
                 return _vm.emitCategory(category.id)
@@ -66973,30 +67117,48 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "other-categories-list" }, [
-      _c("h4", [_vm._v("CATEGORIE")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "categories" },
-        _vm._l(_vm.categories, function (category, index) {
-          return _c(
-            "div",
-            {
-              key: index,
-              staticClass: "category",
-              on: {
-                click: function ($event) {
-                  return _vm.emitCategory(category.id)
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "other-categories-list",
+      },
+      [
+        _c("h4", [_vm._v("CATEGORIE")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "categories" },
+          _vm._l(_vm.categories, function (category, index) {
+            return _c(
+              "div",
+              {
+                key: index,
+                staticClass: "category",
+                on: {
+                  click: function ($event) {
+                    return _vm.emitCategory(category.id)
+                  },
                 },
               },
-            },
-            [_c("p", [_vm._v(_vm._s(category.name))])]
-          )
-        }),
-        0
-      ),
-    ]),
+              [
+                _c(
+                  "p",
+                  {
+                    class:
+                      category.id == _vm.categoryFilter
+                        ? "active-category"
+                        : "",
+                  },
+                  [_vm._v(_vm._s(category.name))]
+                ),
+              ]
+            )
+          }),
+          0
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -67004,7 +67166,12 @@ var render = function () {
       [
         _c("h1", [_vm._v("RISTORANTI")]),
         _vm._v(" "),
-        _c("RestaurantCard", { attrs: { restaurants: _vm.restaurants } }),
+        _c("RestaurantCard", {
+          directives: [
+            { name: "scrollAnimation", rawName: "v-scrollAnimation" },
+          ],
+          attrs: { restaurants: _vm.restaurants },
+        }),
       ],
       1
     ),
@@ -67036,48 +67203,58 @@ var render = function () {
     "div",
     { staticClass: "restaurant-list" },
     _vm._l(_vm.restaurants, function (restaurant, index) {
-      return _c("div", { key: index, staticClass: "restaurant-card" }, [
-        restaurant.cover
-          ? _c("div", { staticClass: "foto" }, [
-              _c("img", {
-                attrs: {
-                  src: "/storage/" + restaurant.cover,
-                  alt: "Cover Ristorante",
-                },
-              }),
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "name-description" }, [
-          _c("h2", [_vm._v(_vm._s(restaurant.name))]),
+      return _c(
+        "div",
+        {
+          directives: [
+            { name: "scrollAnimation", rawName: "v-scrollAnimation" },
+          ],
+          key: index,
+          staticClass: "restaurant-card",
+        },
+        [
+          restaurant.cover
+            ? _c("div", { staticClass: "foto" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/storage/" + restaurant.cover,
+                    alt: "Cover Ristorante",
+                  },
+                }),
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(restaurant.motto))]),
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "show-restaurant" },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: {
-                    name: "restaurant",
-                    params: Object.assign({}, restaurant),
+          _c("div", { staticClass: "name-description" }, [
+            _c("h2", [_vm._v(_vm._s(restaurant.name))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(restaurant.motto))]),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "show-restaurant" },
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: {
+                      name: "restaurant",
+                      params: Object.assign({}, restaurant),
+                    },
                   },
                 },
-              },
-              [
-                _c("button", { staticClass: "btn btn-outline-info" }, [
-                  _vm._v("Vai al Ristorante"),
-                ]),
-              ]
-            ),
-          ],
-          1
-        ),
-      ])
+                [
+                  _c("button", { staticClass: "btn btn-outline-info" }, [
+                    _vm._v("Vai al Ristorante"),
+                  ]),
+                ]
+              ),
+            ],
+            1
+          ),
+        ]
+      )
     }),
     0
   )
@@ -67105,87 +67282,94 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "ms-container" } }, [
-    _c("section", { staticClass: "category" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row1 mt-5 mb-5" },
-        _vm._l(_vm.categories.slice(0, 4), function (category, index) {
-          return _c(
-            "router-link",
-            {
-              key: index,
-              staticClass: "categories-cards",
-              attrs: { to: { name: "restaurants" } },
-            },
-            [
-              _c("img", {
-                staticClass: "single-cat",
-                attrs: { src: category.img, alt: "" },
-                on: {
-                  click: function ($event) {
-                    return _vm.emitCategory(category.id)
-                  },
-                },
-              }),
-              _vm._v(" "),
-              _c(
-                "p",
-                {
+    _c(
+      "section",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "category",
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row1 mt-5 mb-5" },
+          _vm._l(_vm.categories.slice(0, 4), function (category, index) {
+            return _c(
+              "router-link",
+              {
+                key: index,
+                staticClass: "categories-cards",
+                attrs: { to: { name: "restaurants" } },
+              },
+              [
+                _c("img", {
+                  staticClass: "single-cat",
+                  attrs: { src: category.img, alt: "" },
                   on: {
                     click: function ($event) {
                       return _vm.emitCategory(category.id)
                     },
                   },
-                },
-                [_vm._v(_vm._s(category.name))]
-              ),
-            ]
-          )
-        }),
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row1" },
-        _vm._l(_vm.categories.slice(4, 8), function (category, index) {
-          return _c(
-            "router-link",
-            {
-              key: index,
-              staticClass: "categories-cards",
-              attrs: { to: { name: "restaurants" } },
-            },
-            [
-              _c("img", {
-                staticClass: "single-cat",
-                attrs: { src: category.img, alt: "" },
-                on: {
-                  click: function ($event) {
-                    return _vm.emitCategory(category.id)
+                }),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    on: {
+                      click: function ($event) {
+                        return _vm.emitCategory(category.id)
+                      },
+                    },
                   },
-                },
-              }),
-              _vm._v(" "),
-              _c(
-                "p",
-                {
+                  [_vm._v(_vm._s(category.name))]
+                ),
+              ]
+            )
+          }),
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row1" },
+          _vm._l(_vm.categories.slice(4, 8), function (category, index) {
+            return _c(
+              "router-link",
+              {
+                key: index,
+                staticClass: "categories-cards",
+                attrs: { to: { name: "restaurants" } },
+              },
+              [
+                _c("img", {
+                  staticClass: "single-cat",
+                  attrs: { src: category.img, alt: "" },
                   on: {
                     click: function ($event) {
                       return _vm.emitCategory(category.id)
                     },
                   },
-                },
-                [_vm._v(_vm._s(category.name))]
-              ),
-            ]
-          )
-        }),
-        1
-      ),
-    ]),
+                }),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    on: {
+                      click: function ($event) {
+                        return _vm.emitCategory(category.id)
+                      },
+                    },
+                  },
+                  [_vm._v(_vm._s(category.name))]
+                ),
+              ]
+            )
+          }),
+          1
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -67221,38 +67405,47 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "container-section", attrs: { id: "about-us" } },
+    [
+      _c(
+        "div",
+        {
+          directives: [
+            { name: "scrollAnimation", rawName: "v-scrollAnimation" },
+          ],
+          staticClass: "container-chi-siamo",
+        },
+        [_vm._m(0), _vm._v(" "), _vm._m(1)]
+      ),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container-section", attrs: { id: "about-us" } },
-      [
-        _c("div", { staticClass: "container-chi-siamo" }, [
-          _c("div", { staticClass: "img-container" }, [
-            _c("img", {
-              attrs: { src: "img/img_rest/chi-siamo.png", alt: "" },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "description-container" }, [
-            _c("h1", [_vm._v("BOOLIVERY")]),
-            _vm._v(" "),
-            _c("h2", [_vm._v("CHI SIAMO")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,\n        quidem eos. Consequatur, itaque assumenda aspernatur, ducimus\n        asperiores doloribus et at consectetur error nulla nemo hic beatae\n        dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet\n        consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla\n        culpa veritatis laboriosam quidem obcaecati nam quod porro commodi\n        recusandae ut quam voluptatum ad dicta officia assumenda eaque!\n      "
-              ),
-            ]),
-          ]),
-        ]),
-      ]
-    )
+    return _c("div", { staticClass: "img-container" }, [
+      _c("img", { attrs: { src: "img/img_rest/chi-siamo.png", alt: "" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "description-container" }, [
+      _c("h1", [_vm._v("BOOLIVERY")]),
+      _vm._v(" "),
+      _c("h2", [_vm._v("CHI SIAMO")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,\n        quidem eos. Consequatur, itaque assumenda aspernatur, ducimus\n        asperiores doloribus et at consectetur error nulla nemo hic beatae\n        dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet\n        consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla\n        culpa veritatis laboriosam quidem obcaecati nam quod porro commodi\n        recusandae ut quam voluptatum ad dicta officia assumenda eaque!\n      "
+        ),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -67276,31 +67469,42 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "collab" } }, [
+    _c("div", { staticClass: "coll" }, [
+      _c("div", { staticClass: "collab-cover" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            { name: "scrollAnimation", rawName: "v-scrollAnimation" },
+          ],
+          staticClass: "collab-text",
+        },
+        [
+          _c("h2", [_vm._v("COLLABORA CON NOI")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n        Aumenta le tue vendite diventando partner del più grande servizio online\n        di ordini a domicilio d'Italia. Metti il tuo ristorante a disposizione\n        di migliaia di nuovi clienti entrando nel gruppo Boolivery. Appena\n        affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un\n        servizio clienti dedicato.\n      "
+            ),
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+        ]
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "collab" } }, [
-      _c("div", { staticClass: "collab-cover" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "collab-text" }, [
-        _c("h2", [_vm._v("COLLABORA CON NOI")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "\n      Aumenta le tue vendite diventando partner del più grande servizio online\n      di ordini a domicilio d'Italia. Metti il tuo ristorante a disposizione\n      di migliaia di nuovi clienti entrando nel gruppo Boolivery. Appena\n      affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un\n      servizio clienti dedicato.\n    "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("form", { attrs: { action: "/register" } }, [
-            _c("button", { staticClass: "btn btn_blue" }, [
-              _vm._v("Diventa partner >"),
-            ]),
-          ]),
+    return _c("div", [
+      _c("form", { attrs: { action: "/register" } }, [
+        _c("button", { staticClass: "btn btn_blue" }, [
+          _vm._v("Diventa partner >"),
         ]),
       ]),
     ])
@@ -67328,35 +67532,42 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "hero" } }, [
-    _c("div", { staticClass: "container2" }, [
-      _c(
-        "div",
-        { staticClass: "sx-text" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              staticClass: "link-router",
-              attrs: { to: { name: "restaurants" } },
-            },
-            [
-              _c("div", { staticClass: "search-bar" }, [
-                _c("button", { staticClass: "submit" }, [
-                  _c("i", { staticClass: "fa-solid fa-rocket" }),
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "container2",
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "sx-text" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "link-router",
+                attrs: { to: { name: "restaurants" } },
+              },
+              [
+                _c("div", { staticClass: "search-bar ml-3" }, [
+                  _c("button", { staticClass: "submit" }, [
+                    _c("i", { staticClass: "fa-solid fa-rocket" }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input" }, [
+                    _vm._v("Scopri i nostri ristoranti!"),
+                  ]),
                 ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input" }, [
-                  _vm._v("Scopri i nostri ristoranti!"),
-                ]),
-              ]),
-            ]
-          ),
-        ],
-        1
-      ),
-    ]),
+              ]
+            ),
+          ],
+          1
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c("svg", { staticClass: "wave" }, [
       _c("use", { attrs: { "xlink:href": "img/wave.svg#wave-1hkxOo" } }),
@@ -67428,54 +67639,73 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "out-container" }, [
     _c("div", { attrs: { id: "sm-container" } }, [
-      _c("section", { staticClass: "most-want" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "restaurants" },
-          _vm._l(_vm.restaurants.slice(0, 3), function (restaurant, index) {
-            return _c("div", { key: index, staticClass: "block" }, [
-              _c("div", { staticClass: "add-padd" }, [
-                _c("div", {
-                  staticClass: "bg-img",
-                  style: "background-image: url(" + restaurant.cover + ")",
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "box-info" },
-                [
-                  _c("h6", { staticClass: "name-restaurant" }, [
-                    _vm._v(_vm._s(restaurant.name)),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "description" }, [
-                    _vm._v(_vm._s(restaurant.motto)),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-restaurant",
-                      attrs: {
-                        to: {
-                          name: "restaurant",
-                          params: Object.assign({}, restaurant),
+      _c(
+        "section",
+        {
+          directives: [
+            { name: "scrollAnimation", rawName: "v-scrollAnimation" },
+          ],
+          staticClass: "most-want",
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "restaurants" },
+            _vm._l(_vm.restaurants.slice(0, 3), function (restaurant, index) {
+              return _c("div", { key: index, staticClass: "block" }, [
+                _c("div", { staticClass: "add-padd" }, [
+                  _c("div", {
+                    staticClass: "bg-img",
+                    style: "background-image: url(" + restaurant.cover + ")",
+                  }),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "box-info" },
+                  [
+                    _c("h6", { staticClass: "name-restaurant" }, [
+                      _vm._v(_vm._s(restaurant.name)),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      _vm._l(restaurant.categories, function (category, index) {
+                        return _c("span", { key: index }, [
+                          _vm._v(_vm._s(category.name) + " "),
+                        ])
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "description" }, [
+                      _vm._v(_vm._s(restaurant.motto)),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-restaurant",
+                        attrs: {
+                          to: {
+                            name: "restaurant",
+                            params: Object.assign({}, restaurant),
+                          },
                         },
                       },
-                    },
-                    [_vm._v("Vai al ristorante")]
-                  ),
-                ],
-                1
-              ),
-            ])
-          }),
-          0
-        ),
-      ]),
+                      [_vm._v("Vai al ristorante")]
+                    ),
+                  ],
+                  1
+                ),
+              ])
+            }),
+            0
+          ),
+        ]
+      ),
     ]),
   ])
 }
@@ -67485,9 +67715,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "main-titles" }, [
-      _c("h2", [_vm._v("I ristoranti piu' cercati")]),
+      _c("h2", [_vm._v("I ristoranti consigliati da noi")]),
       _vm._v(" "),
-      _c("h5", [_vm._v("Selezionati proprio da voi")]),
+      _c("h5", [_vm._v("Inizia a dare un occhio")]),
     ])
   },
 ]
@@ -67512,69 +67742,78 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "services" } }, [
+    _c(
+      "div",
+      {
+        directives: [{ name: "scrollAnimation", rawName: "v-scrollAnimation" }],
+        staticClass: "container",
+      },
+      [_vm._m(0), _vm._v(" "), _vm._m(1)]
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "services" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "section-title" }, [
-          _c("h2", [_vm._v("BOOLIVERY")]),
-          _vm._v(" "),
-          _c("h3", [_vm._v("Portiamo il cibo per tutta la city")]),
-        ]),
+    return _c("div", { staticClass: "section-title" }, [
+      _c("h2", [_vm._v("BOOLIVERY")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Portiamo il cibo per tutta la city")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "services-list" }, [
+      _c("div", { staticClass: "service" }, [
+        _c("i", { staticClass: "mb-2 fas fa-motorcycle fa-2x" }),
         _vm._v(" "),
-        _c("div", { staticClass: "services-list" }, [
-          _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "mb-2 fas fa-motorcycle fa-2x" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("CONSEGNA RAPIDA E GRATUITA")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n          La rapidità è un nostro punto d'orgoglio. Ordina o invia qualsiasi\n          cosa nella tua città e lo ritireremo e te lo consegneremo nel giro\n          di qualche minuto.\n        "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "mb-2 fas fa-check fa-2x" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("SICUREZZA E CONTROLLO")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n          Abbiamo un team dedicato a seguire tutta la tua esperienza con\n          Boolivery, dal momento in cui effettui l'ordine a quando ti viene\n          consegnato.\n        "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "mb-2 fas fa-money-bill-alt fa-2x" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("SODDISFATTI O RIMBORSATI")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n          Non sei soddisfatto del prodotto? Rimborseremo l'importo pagato\n          interamente. La vostra soddisfazione è alla base delle nostre\n          politiche di reso.\n        "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "mb-2 fas fa-leaf fa-2x" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("ECO FRIENDLY")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n          Evitare la plastica si può, almeno dove è possibile. Noi di\n          Boolivery crediamo fermamente nei benefici del packaging ecologico.\n        "
-              ),
-            ]),
-          ]),
+        _c("span", [_vm._v("CONSEGNA RAPIDA E GRATUITA")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n          La rapidità è un nostro punto d'orgoglio. Ordina o invia qualsiasi\n          cosa nella tua città e lo ritireremo e te lo consegneremo nel giro\n          di qualche minuto.\n        "
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "service" }, [
+        _c("i", { staticClass: "mb-2 fas fa-check fa-2x" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("SICUREZZA E CONTROLLO")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n          Abbiamo un team dedicato a seguire tutta la tua esperienza con\n          Boolivery, dal momento in cui effettui l'ordine a quando ti viene\n          consegnato.\n        "
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "service" }, [
+        _c("i", { staticClass: "mb-2 fas fa-money-bill-alt fa-2x" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("SODDISFATTI O RIMBORSATI")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n          Non sei soddisfatto del prodotto? Rimborseremo l'importo pagato\n          interamente. La vostra soddisfazione è alla base delle nostre\n          politiche di reso.\n        "
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "service" }, [
+        _c("i", { staticClass: "mb-2 fas fa-leaf fa-2x" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("ECO FRIENDLY")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n          Evitare la plastica si può, almeno dove è possibile. Noi di\n          Boolivery crediamo fermamente nei benefici del packaging ecologico.\n        "
+          ),
         ]),
       ]),
     ])
@@ -67612,35 +67851,45 @@ var staticRenderFns = [
       "div",
       { staticClass: "social-component", attrs: { id: "contacts" } },
       [
-        _c("h1", [_vm._v("SEGUICI SUI SOCIAL")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "social-box" }, [
-          _c("div", { staticClass: "social-icon" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "https://www.facebook.com/", target: "_blank" },
-              },
-              [_c("i", { staticClass: "fa-brands fa-facebook" })]
-            ),
+        _c("div", [
+          _c("h1", { staticClass: "mb-5 text-center" }, [
+            _vm._v("SEGUICI SUI SOCIAL"),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "social-icon" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "https://www.instagram.com/", target: "_blank" },
-              },
-              [_c("i", { staticClass: "fa-brands fa-instagram" })]
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "social-icon" }, [
-            _c(
-              "a",
-              { attrs: { href: "https://twitter.com/", target: "_blank" } },
-              [_c("i", { staticClass: "fa-brands fa-twitter" })]
-            ),
+          _c("div", { staticClass: "social-box" }, [
+            _c("div", { staticClass: "social-icon" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "https://www.facebook.com/",
+                    target: "_blank",
+                  },
+                },
+                [_c("i", { staticClass: "fa-brands fa-facebook" })]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "social-icon" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "https://www.instagram.com/",
+                    target: "_blank",
+                  },
+                },
+                [_c("i", { staticClass: "fa-brands fa-instagram" })]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "social-icon" }, [
+              _c(
+                "a",
+                { attrs: { href: "https://twitter.com/", target: "_blank" } },
+                [_c("i", { staticClass: "fa-brands fa-twitter" })]
+              ),
+            ]),
           ]),
         ]),
       ]
@@ -68000,15 +68249,16 @@ var render = function () {
     "div",
     [
       _c("CategoriesComponent", {
+        attrs: { categoryFilter: _vm.categoryFilter },
         on: { categorySelected: _vm.categorySelected },
       }),
       _vm._v(" "),
       _c("FilterComponents", {
-        attrs: { restaurants: _vm.filteredRestaurants },
-        on: {
-          categorySelected: _vm.categorySelected,
-          categoryCheckbox: _vm.categoryCheckbox,
+        attrs: {
+          restaurants: _vm.filteredRestaurants,
+          categoryFilter: _vm.categoryFilter,
         },
+        on: { categorySelected: _vm.categorySelected },
       }),
     ],
     1
@@ -68075,12 +68325,17 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.tokenGenerate
-    ? _c(
-        "div",
-        { staticClass: "payment-box", attrs: { id: "paybox" } },
-        [
-          _c("v-braintree", {
+  return _c(
+    "div",
+    { staticClass: "payment-box", attrs: { id: "paybox" } },
+    [
+      !_vm.tokenGenerate || !_vm.loadPostPay
+        ? _c(
+            "div",
+            { staticClass: "spinner-border", attrs: { role: "status" } },
+            [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+          )
+        : _c("v-braintree", {
             staticClass: "brain",
             attrs: { authorization: _vm.Token, locale: "it_IT" },
             on: {
@@ -68088,62 +68343,56 @@ var render = function () {
               error: _vm.onError,
               load: _vm.onLoad,
             },
-            scopedSlots: _vm._u(
-              [
-                {
-                  key: "button",
-                  fn: function (slotProps) {
-                    return [
-                      _c("button", {
-                        ref: "paymentBtnRef",
-                        staticStyle: { display: "none" },
-                        on: { click: slotProps.submit },
-                      }),
+            scopedSlots: _vm._u([
+              {
+                key: "button",
+                fn: function (slotProps) {
+                  return [
+                    _c("button", {
+                      ref: "paymentBtnRef",
+                      staticStyle: { display: "none" },
+                      on: { click: slotProps.submit },
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex mt-3 mb-2" }, [
+                      _vm.loaded
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btnPay btn",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.beforeBuy()
+                                },
+                              },
+                            },
+                            [_vm._v("Procedi con l'acquisto 🎉")]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("div", { staticClass: "d-flex mt-3 mb-2" }, [
-                        _vm.loaded
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btnPay btn",
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.beforeBuy()
-                                  },
+                      _vm.loaded
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btnPay btn",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.changeData()
                                 },
                               },
-                              [_vm._v("Procedi con l'acquisto 🎉")]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.loaded
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btnPay btn",
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.changeData()
-                                  },
-                                },
-                              },
-                              [_vm._v("Modifica i tuoi dati")]
-                            )
-                          : _vm._e(),
-                      ]),
-                    ]
-                  },
+                            },
+                            [_vm._v("Modifica i tuoi dati")]
+                          )
+                        : _vm._e(),
+                    ]),
+                  ]
                 },
-              ],
-              null,
-              false,
-              943281687
-            ),
+              },
+            ]),
           }),
-        ],
-        1
-      )
-    : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -85764,6 +86013,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/directives/scrollanimation.js":
+/*!****************************************************!*\
+  !*** ./resources/js/directives/scrollanimation.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+
+var animatedScrollObserver = new IntersectionObserver(function (entries, animatedScrollObserver) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('enter');
+      animatedScrollObserver.unobserve(entry.target);
+    }
+  });
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  bind: function bind(el) {
+    el.classList.add('before-enter');
+    animatedScrollObserver.observe(el);
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/front-app.js":
 /*!***********************************!*\
   !*** ./resources/js/front-app.js ***!
@@ -85778,6 +86056,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_braintree__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-braintree */ "./node_modules/vue-braintree/dist/vue-braintree.esm.js");
+/* harmony import */ var _directives_scrollanimation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./directives/scrollanimation */ "./resources/js/directives/scrollanimation.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -85810,6 +86089,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.directive('scrollAnimation', _directives_scrollanimation__WEBPACK_IMPORTED_MODULE_4__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: '#app',
   render: function render(createApp) {
