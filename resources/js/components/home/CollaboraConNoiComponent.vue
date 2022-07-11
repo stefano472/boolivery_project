@@ -40,6 +40,7 @@ export default {
     min-height: 500px;
   }
   .collab-text {
+    margin: 3rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +59,7 @@ export default {
     }
     button {
       border-color: $primary-color;
-      margin-bottom: 50px;
+      // margin-bottom: 50px;
       &:hover {
         background-color: $primary-color;
       }
@@ -73,6 +74,7 @@ export default {
       width: 100%;
     }
     .collab-text {
+      margin-top: 0;
       width: 80%;
       margin-inline: auto;
       padding-right: 15px;

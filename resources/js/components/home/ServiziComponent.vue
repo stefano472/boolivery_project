@@ -7,7 +7,7 @@
       </div>
       <div class="services-list">
         <div class="service">
-          <i class="fas fa-motorcycle fa-2x"></i>
+          <i class="mb-2 fas fa-motorcycle fa-2x"></i>
           <span>CONSEGNA RAPIDA E GRATUITA</span>
           <p>
             La rapidità è un nostro punto d'orgoglio. Ordina o invia qualsiasi
@@ -16,7 +16,7 @@
           </p>
         </div>
         <div class="service">
-          <i class="fas fa-check fa-2x"></i>
+          <i class="mb-2 fas fa-check fa-2x"></i>
           <span>SICUREZZA E CONTROLLO</span>
           <p>
             Abbiamo un team dedicato a seguire tutta la tua esperienza con
@@ -25,7 +25,7 @@
           </p>
         </div>
         <div class="service">
-          <i class="fas fa-money-bill-alt fa-2x"></i>
+          <i class="mb-2 fas fa-money-bill-alt fa-2x"></i>
           <span>SODDISFATTI O RIMBORSATI</span>
           <p>
             Non sei soddisfatto del prodotto? Rimborseremo l'importo pagato
@@ -34,7 +34,7 @@
           </p>
         </div>
         <div class="service">
-          <i class="fas fa-leaf fa-2x"></i>
+          <i class="mb-2 fas fa-leaf fa-2x"></i>
           <span>ECO FRIENDLY</span>
           <p>
             Evitare la plastica si può, almeno dove è possibile. Noi di

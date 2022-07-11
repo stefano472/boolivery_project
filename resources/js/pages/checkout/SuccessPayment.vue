@@ -8,11 +8,7 @@
             <p>oolivery</p>
         </a>
         <nav>
-            <ul>
-                <li>
-                    <a href="/">Torna al Sito</a>
-                </li>
-            </ul>
+            <a href="/">Torna al Sito</a>
         </nav>
       </div>
       <!-- <svg class="wave">
@@ -45,21 +41,21 @@ export default {
 @import 'resources/sass/variables';
 
 #success-payment{
+    background: #ccc;
     h1 {
         height: auto;
         line-height: inherit;
     }
-    background-color: white;
     .header{
         position: fixed;
         top: 0;
         width: 100%;
         background: $dark-color;
-        .wave{
-          width: 100%;
-          height: 20px;
-          color: white;
-        }
+        // .wave{
+        //   width: 100%;
+        //   height: 20px;
+        //   color: rgba(0, 0, 0, 0.2);
+        // }
         .container{
             color: $brand-color;
             height: 70px;
@@ -86,19 +82,19 @@ export default {
             nav{
                 display: flex;
                 align-items: center;
-                ul{
-                    display: flex;
-                    gap: 1.5rem;
-                    li{
-                        a{
-                            color: $brand-color;
-                            cursor: pointer;
-                            &:hover{
-                                color: $white_color;
-                            }
-                        }
+                a{
+                    padding: 0.375rem 0.75rem;
+                    color: $brand-color;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    &:hover{
+                    text-decoration: none;
+                    background: $brand-color;
+                    border: $brand-color;
+                    color: $dark_color;
                     }
-                }
+                }   
             }
 
         }
@@ -110,17 +106,19 @@ export default {
         text-align: center;
         background-image: url('/img/background-success.jpg');
         background-size: cover;
-        background-position: top left;
+        background-position: 0 20;
         background-repeat: no-repeat;
+        // background-blend-mode: multiply;
+        // background-color: rgba(0, 0, 0, 0.2);
 
-        height: 100vh;
+        // height: calc(100vh - 10rem);
         .text-thanks{
             display: grid;
             place-content: center;
             /* padding-top: 25rem; */
             height: 100%;
             .styling{
-                background: rgba($color: $primary-color, $alpha: 0.7);
+                background: rgba($color: $dark-color, $alpha: 0.7);
                 margin: 0 0.5rem;
                 padding: 1rem;
                 width: fit-content;
@@ -132,7 +130,7 @@ export default {
                 color: $white-color;
             }
             h2{
-                color: $dark-color;
+                color: $brand-color;
             }
         }
     }

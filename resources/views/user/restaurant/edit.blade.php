@@ -26,7 +26,7 @@
 
                     <label for="name">Nome del ristorante *</label>
                     <br>
-                    <input type="text" name="name" placeholder="nome" value="{{ old('name', $restaurant->name) }}"
+                    <input type="text" name="name" placeholder="Nome..." value="{{ old('name', $restaurant->name) }}"
                         class="form-control @error('name') is-invalid @enderror" required>
 
                     <!-- errore relativo all'input -->
@@ -39,7 +39,7 @@
 
                     <label for="address">Indirizzo *</label>
                     <br>
-                    <input type="text" name="address" placeholder="indirizzo"
+                    <input type="text" name="address" placeholder="Indirizzo..."
                         value="{{ old('address', $restaurant->address) }}"
                         class="form-control @error('address') is-invalid @enderror" required>
 
@@ -49,25 +49,12 @@
                     @enderror
 
                 </div>
-                <div class="input-box mb-4">
 
-                    <label for="motto">Motto *</label>
-                    <br>
-                    <textarea name="motto" id="" cols="30" rows="5" placeholder="motto"
-                        class="form-control @error('motto') is-invalid @enderror"
-                        required>{{ old('motto', $restaurant->motto) }}</textarea>
-
-                    <!-- errore relativo all'input -->
-                    @error('motto')
-                        <p class="invalid-feedback">{{ $message }}</p>
-                    @enderror
-
-                </div>
                 <div class="input-box mb-4">
 
                     <label for="tax_id">Partita IVA *</label>
                     <br>
-                    <input type="number" name="tax_id" placeholder="partita iva"
+                    <input type="number" name="tax_id" placeholder="Partita iva..."
                         value="{{ old('tax_id', $restaurant->tax_id) }}"
                         class="form-control @error('tax_id') is-invalid @enderror" required>
 
@@ -81,7 +68,7 @@
 
                     <label for="phone_number">Numero di telefono *</label>
                     <br>
-                    <input type="number" name="phone_number" placeholder="..."
+                    <input type="number" name="phone_number" placeholder="+39...."
                         value="{{ old('phone_number', $restaurant->phone_number) }}"
                         class="form-control @error('phone_number') is-invalid @enderror" required>
 
@@ -91,6 +78,63 @@
                     @enderror
 
                 </div>
+
+                <div class="input-box mb-4">
+
+                    <label for="motto">Motto *</label>
+                    <br>
+                    <textarea name="motto" id="" cols="30" rows="5" placeholder="Motto..."
+                        class="form-control @error('motto') is-invalid @enderror"
+                        required>{{ old('motto', $restaurant->motto) }}</textarea>
+
+                    <!-- errore relativo all'input -->
+                    @error('motto')
+                        <p class="invalid-feedback">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                {{-- DESCRIZIONE --}}
+                <div class="input-box mb-4">
+
+                    <label for="description">Descrizione *</label>
+                    <br>
+                    <textarea name="description" id="" cols="30" rows="10" placeholder="..."
+                        class="form-control @error('description') is-invalid @enderror"
+                        required>{{ old('description', $restaurant->description) }}</textarea>
+
+                    <!-- errore relativo all'input -->
+                    @error('description')
+                        <p class="invalid-feedback">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                {{-- CATEGORIE --}}
+                <div class="input-box mb-4">
+                    <div>Categoria *</div>
+                    <br>
+                    <div class="container">
+                        <div class="row">
+                            @foreach ($categories as $category)
+                            <div class="col-4">
+                                <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
+                                {{ $restaurant->categories->contains($category->id) ? 'checked' : '' }}
+                                class="categoryInput form-check-input @error('categories')  @enderror">
+                                <label for="category">{{ $category->name }}</label>
+                            </div>
+                            @endforeach
+                        </div>
+                        <div id="alert" class="alert alert-danger" style="display:none">
+                            Aggiungi almeno una categoria
+                        </div>
+                    </div>
+
+                    <!-- errore relativo all'input -->
+                    @error('category')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
+                </div>
+
 
                 {{-- IMG RISTORANTE --}}
                 <div class="input-box mb-4">
@@ -133,49 +177,6 @@
                     @enderror
 
                 </div>
-
-                {{-- DESCRIZIONE --}}
-                <div class="input-box mb-4">
-
-                    <label for="description">Descrizione *</label>
-                    <br>
-                    <textarea name="description" id="" cols="30" rows="10" placeholder="..."
-                        class="form-control @error('description') is-invalid @enderror"
-                        required>{{ old('description', $restaurant->description) }}</textarea>
-
-                    <!-- errore relativo all'input -->
-                    @error('description')
-                        <p class="invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
-
-
-                {{-- CATEGORIE --}}
-                <div class="input-box mb-4">
-                    <div>Categoria *</div>
-                    <br>
-                    <div class="container">
-                        <div class="row">
-                            @foreach ($categories as $category)
-                            <div class="col-4">
-                                <input type="checkbox" name="categories[]" id="" value="{{ $category->id }}"
-                                {{ $restaurant->categories->contains($category->id) ? 'checked' : '' }}
-                                class="categoryInput form-check-input @error('categories')  @enderror">
-                                <label for="category">{{ $category->name }}</label>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div id="alert" class="alert alert-danger" style="display:none">
-                            Aggiungi almeno una categoria
-                        </div>
-                    </div>
-
-                    <!-- errore relativo all'input -->
-                    @error('category')
-                        <p class="error">{{ $message }}</p>
-                    @enderror
-                </div>
-
 
                 {{-- BUTTON FORM --}}
                 <div class="d-flex justify-content-end">

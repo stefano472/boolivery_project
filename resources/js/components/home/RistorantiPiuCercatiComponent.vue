@@ -23,7 +23,7 @@
               <h6 class="name-restaurant">{{ restaurant.name }}</h6>
               <p class="description">{{ restaurant.motto }}</p>
               <!-- <p class="tipology">Tipologia ristorante</p> -->
-              <router-link
+              <router-link class="btn btn-restaurant"
                 :to="{ name: 'restaurant', params: { ...restaurant } }"
                 >Vai al ristorante</router-link
               >
@@ -64,7 +64,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 0;
+    padding: 70px 0 20px;
     h2 {
       font-size: 2.5rem;
     }
@@ -102,6 +102,15 @@ export default {
     align-items: center;
     padding-top: 50px;
     padding-left: 1rem;
+    .btn-restaurant{
+      background: $primary-color;
+      border: $primary-color;
+      &:hover{
+        background: $white-color;
+        border: $white-color;
+
+      }
+    }
     h6 {
       font-size: 1.8rem;
     }

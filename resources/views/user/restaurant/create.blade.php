@@ -62,7 +62,7 @@
 
             <label for="name">Nome del ristorante *</label>
             <br>
-            <input type="text" name="name" placeholder="nome"
+            <input type="text" name="name" placeholder="Nome..."
                 value="{{ old('name')}}"
                 class="form-control @error('name') is-invalid @enderror"
                 required>
@@ -77,7 +77,7 @@
 
             <label for="address">Indirizzo *</label>
             <br>
-            <input type="text" name="address" placeholder="indirizzo"
+            <input type="text" name="address" placeholder="Indirizzo..."
                 value="{{ old('address')}}"
                 class="form-control @error('address') is-invalid @enderror" required>
 
@@ -87,25 +87,12 @@
             @enderror
 
         </div>
-        <div class="input-box mb-2">
 
-            <label for="motto">Motto *</label>
-            <br>
-            <textarea name="motto" id="" cols="30" rows="5" placeholder="motto"
-                class="form-control @error('motto') is-invalid @enderror"
-                required>{{ old('motto')}}</textarea>
-
-            <!-- errore relativo all'input -->
-            @error('motto')
-                <p class="invalid-feedback">{{ $message }}</p>
-            @enderror
-
-        </div>
         <div class="input-box mb-2">
 
             <label for="tax_id">Partita IVA *</label>
             <br>
-            <input type="text" minlength="11" maxlength="11" name="tax_id" placeholder="partita iva"
+            <input type="text" minlength="11" maxlength="11" name="tax_id" placeholder="Partita iva..."
                 {{-- pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" --}}
                 value="{{ old('tax_id')}}"
                 class="form-control @error('tax_id') is-invalid @enderror" required>
@@ -120,7 +107,7 @@
 
             <label for="phone_number">Numero di telefono *</label>
             <br>
-            <input type="number" name="phone_number" placeholder="..."
+            <input type="number" name="phone_number" placeholder="+39...."
                 value="{{ old('phone_number')}}"
                 class="form-control @error('phone_number') is-invalid @enderror" required>
 
@@ -130,6 +117,37 @@
             @enderror
 
         </div>
+
+        <div class="input-box mb-2">
+
+            <label for="motto">Motto *</label>
+            <br>
+            <textarea name="motto" id="" cols="30" rows="5" placeholder="Motto..."
+                class="form-control @error('motto') is-invalid @enderror"
+                required>{{ old('motto')}}</textarea>
+
+            <!-- errore relativo all'input -->
+            @error('motto')
+                <p class="invalid-feedback">{{ $message }}</p>
+            @enderror
+
+        </div>
+
+        <div class="input-box mb-2">
+
+            <label for="description">Descrizione *</label>
+            <br>
+            <textarea name="description" id="" cols="30" rows="10" placeholder="Descrizione..."
+                class="form-control @error('description') is-invalid @enderror"
+                required>{{ old('description')}}</textarea>
+
+            <!-- errore relativo all'input -->
+            @error('description')
+                <p class="invalid-feedback">{{ $message }}</p>
+            @enderror
+
+        </div>
+
         <div class="input-box mb-2">
 
             <div>Categoria *</div>
@@ -182,20 +200,7 @@
             @enderror
 
         </div>
-        <div class="input-box mb-2">
 
-            <label for="description">Descrizione *</label>
-            <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="..."
-                class="form-control @error('description') is-invalid @enderror"
-                required>{{ old('description')}}</textarea>
-
-            <!-- errore relativo all'input -->
-            @error('description')
-                <p class="invalid-feedback">{{ $message }}</p>
-            @enderror
-
-        </div>
 
         <!-- ...content... -->
 

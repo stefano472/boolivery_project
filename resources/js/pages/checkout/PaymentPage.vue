@@ -7,11 +7,7 @@
             <p>oolivery</p>
         </a>
         <nav>
-            <ul> 
-                <li>
-                    <a href="/">Torna alla Home</a>
-                </li>
-            </ul>
+            <a href="/">Torna alla Home</a>
         </nav>
       </div>
       <svg class="wave">
@@ -38,9 +34,7 @@
                     <br>
                     <input type="text" name="name" placeholder="Nome..."
                         v-model="name" 
-                        value=""
-                        class="form-control"
-                        required>
+                        class="form-control">
                     <div v-if="!validation.name.success" class="alert alert-danger">
                             {{validation.name.message}}
                     </div>
@@ -107,7 +101,7 @@
 
                     <label for="special_request">Richieste particolari</label>
                     <br>
-                    <textarea v-model="special_request" name="special_request" id="" cols="30" rows="5" placeholder="Rischieste particolari..."
+                    <textarea v-model="special_request" name="special_request" id="" cols="30" rows="5" placeholder="Richieste particolari..."
                         class="form-control"
                         required></textarea>
 
@@ -124,7 +118,7 @@
         </div>
 
         <div v-else class="payment-part">
-          <p>Inserisci i dati del pagamento</p>
+          <!-- <p>Inserisci i dati del pagamento</p> -->
           <!-- <div class="dati-forniti">
             <p>{{formData.surname}} {{formData.name}}</p>
             <p>{{formData.address}}</p>
@@ -132,7 +126,7 @@
             <p>{{formData.email}}</p>
 
           </div> -->
-          <Payment :formData="formData" :cart="cart" />
+          <Payment :formData="formData" :cart="cart" @changeData='changeData'/>
           <!-- <button @click="beforeBuy()">Procedi con l'acquisto 🎉</button> -->
         </div>
 
@@ -240,6 +234,9 @@ export default {
     }
   },
   methods: {
+    changeData(){
+      this.formComplete=false
+    },
     validateForm(){
       console.log('validation...');
       if (!this.name) {
@@ -379,9 +376,10 @@ export default {
 <style scoped lang='scss'>
 @import 'resources/sass/variables';
 
-h1{ 
-  margin: 2rem;
-}
+  h1{
+    margin: 2rem 2rem 0;
+    color: $primary-color;
+  }
 .header{
    background: $dark-color;
     .container{
@@ -410,21 +408,20 @@ h1{
         nav{
             display: flex;
             align-items: center;
-            ul{
-                display: flex;
-                gap: 1.5rem;
-                li{
-                    a{
-                        color: $brand-color;
-                        cursor: pointer;
-                        &:hover{
-                            color: $white_color;
-                        }
-                    }
+            a{
+                padding: 0.375rem 0.75rem;
+                color: $brand-color;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover{
+                  text-decoration: none;
+                  background: $brand-color;
+                  border: $brand-color;
+                  color: $dark_color;
                 }
-            }
+            }   
         }
-
     }
     .wave{
       width: 100%;
@@ -439,14 +436,15 @@ h1{
   margin-inline: auto;
   display: flex;
   gap: 3rem;
-  h1{
-    margin-bottom: 2rem;
-  }
   .left-payment{
     flex-basis: 70%;
+    margin-bottom: 2rem;
+
     .form{
+      margin-top: 2rem;
       &>p{
-        font-size: 1rem;
+        font-size: 1.3rem;
+        color: $primary-color;
       }
       padding: 1rem;
       border: 2px solid $primary-color;
@@ -454,35 +452,38 @@ h1{
       box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
       .form-btn{
         color: #fff;
-        background-color: $secondary-color;
-        border-color: $secondary-color;
+        background-color: $primary-color;
+        border-color: $primary-color;
         &:hover{
-          background-color: $primary-color;
-          border-color: $primary-color;
+          background-color: $secondary-color;
+          border-color: $secondary-color;
         }
       }
     }
-    .payment-part{
-      &>p{
-        font-size: 1rem;
-      }
-      .dati-forniti{
-        width: 15rem;
-        margin-inline: auto;
-        // text-align: center;
-        padding: 1rem;
-        border: 2px solid $primary-color;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
-        p:last-child{
-          margin-bottom: 0;
-        }
-      }
-    }
+    // .payment-part{
+    //   &>p{
+    //     font-size: 1rem;
+    //   }
+    //   .dati-forniti{
+    //     width: 15rem;
+    //     margin-inline: auto;
+    //     // text-align: center;
+    //     padding: 1rem;
+    //     border: 2px solid $primary-color;
+    //     border-radius: 5px;
+    //     box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+    //     p:last-child{
+    //       margin-bottom: 0;
+    //     }
+    //   }
+    // }
   }
   .right-payment{
     color: $primary-color;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    h2{
+      font-size: 1.5rem;
+    }
     // margin-inline-end: 0;
     .cart-summary{
       margin-bottom: 2rem;
@@ -502,9 +503,10 @@ h1{
           justify-content: space-between;
           gap: 1rem;
         }
+        }
         .totale{
           margin-top: 1rem;
-          font-weight: bold;
+          // font-weight: bold;
           text-align: end;
           font-size: 1.1rem;
           display: flex;
@@ -513,16 +515,22 @@ h1{
           p{
             margin: 0;
           }
-        }
       }
     }
     .data-summary{
       min-width: 18rem;
+      margin-bottom: 2rem;
       padding: 1rem;
       border: 2px solid $primary-color;
       height: fit-content;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+      p{
+        color: $dark-color;
+      }
+      p:last-child{
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -533,15 +541,28 @@ h1{
     gap: 0;
     .left-payment{
       order: 1;
-      margin-bottom: 2rem;
+      // margin-bottom: 2rem;
     }
     .right-payment {
       align-self: center;
-      max-width: 18rem;
-      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      // max-width: 18rem;
+      margin-top: 1rem;
       order: 0;
+      .cart-summary {
+        margin-bottom: 0;
+      }
+      .data-summary {
+        margin-bottom: 0;
+      }
     }
+  }  
+}
+
+@media screen and (max-width: 650px) {
+  .right-payment{
+    flex-direction: column;
   }
-  
 }
 </style>

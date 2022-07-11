@@ -34,19 +34,20 @@ export default {
   background-color: $primary-color;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: center;
   padding: 80px 0;
 
   .container-chi-siamo {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    gap: 2rem;
     align-items: center;
     margin: 0 10%;
 
     .img-container {
-      flex: 50%;
-      padding: 0px 50;
+      // flex-basis: 50%;
+      // padding: 0px 50;
 
       img {
         width: 25rem;
@@ -56,8 +57,8 @@ export default {
     }
 
     .description-container {
-      flex: 50%;
-      padding: 0px 50;
+      // flex-basis: 50%;
+      // padding: 0px 50;
 
       h1 {
         color: $white-color;
@@ -79,7 +80,7 @@ export default {
 @media (max-width: 1900px) {
   .container-section {
     width: 100%;
-    flex-direction: column;
+    // flex-direction: column;
     .container-chi-siamo {
       .description-container {
         h1 {
@@ -96,7 +97,7 @@ export default {
 @media (max-width: 1400px) {
   .container-section {
     width: 100%;
-    flex-direction: column;
+    // flex-direction: column;
     .container-chi-siamo {
       .description-container {
         h1 {
@@ -115,12 +116,15 @@ export default {
     width: 100%;
     flex-direction: column;
     .container-chi-siamo {
+      flex-direction: column;
       .description-container {
         h1 {
           font-size: 2rem;
+          text-align: center;
         }
         h2 {
           font-size: 1.6rem;
+          text-align: center;
         }
       }
     }
@@ -151,11 +155,13 @@ export default {
       display: flex;
       flex-direction: column;
       .img-container {
-        padding: 0;
-        margin: 0;
-        padding-left: 15px;
+        display: flex;
+        // padding: 0;
+        // margin: 0;
+        // padding-left: 15px;
         img {
           width: 80%;
+          margin-inline: auto;
         }
       }
       .description-container {

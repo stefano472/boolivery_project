@@ -1,34 +1,39 @@
 <template>
   <div id="paybox" v-if="tokenGenerate" class="payment-box">
+    <!-- <p v-if="loaded">Inserisci i dati del pagamento</p> -->
     <v-braintree class="brain" 
         :authorization="Token"
+        locale='it_IT'
         @success="onSuccess"
         @error="onError"
-    >
+        @load="onLoad"
+    > 
       <template #button="slotProps">
         <button ref="paymentBtnRef" @click="slotProps.submit" style="display:none"></button>
-        <button class="btnPay btn mb-2" @click="beforeBuy()">Procedi con l'acquisto 🎉</button>
-        <button class="btnPay btn">Modifica i tuoi dati</button>
+        <div class="d-flex mt-3 mb-2">
+          <button v-if="loaded" class="btnPay btn" @click="beforeBuy()">Procedi con l'acquisto 🎉</button>
+          <button v-if="loaded" class="btnPay btn" @click="changeData()">Modifica i tuoi dati</button>
+        </div>
       </template>
     </v-braintree>
-                            <!-- <div class="checkout">
-                            <div class="total-price">
-                                Totale: &euro; {{checkoutPrice()}}
-                                
-                                <router-link v-if="checkoutPrice()>0" class="btn checkout-btn" :to="{name: 'payment'}">Checkout</router-link>
-                           
-                                <button v-else class="btn checkout-btn">Checkout</button>
-                            </div>
+        <!-- <div class="checkout">
+        <div class="total-price">
+            Totale: &euro; {{checkoutPrice()}}
+            
+            <router-link v-if="checkoutPrice()>0" class="btn checkout-btn" :to="{name: 'payment'}">Checkout</router-link>
+        
+            <button v-else class="btn checkout-btn">Checkout</button>
+        </div>
 
-                                                    .checkout-btn{
-                            color: #fff;
-                            background-color: $secondary-color;
-                            border-color: $secondary-color;
-                            &:hover{
-                            background-color: $primary-color;
-                            border-color: $primary-color;
-                            }
-                        }
+                                .checkout-btn{
+        color: #fff;
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+        &:hover{
+        background-color: $primary-color;
+        border-color: $primary-color;
+        }
+    }
      -->
   </div>
 </template>
@@ -40,6 +45,7 @@ export default {
     return{
       Token: null,
       tokenGenerate: false,
+      loaded: false,
     }
   },
   props:{
@@ -60,6 +66,9 @@ export default {
       .catch(e => console.log(e));
   },
   methods: {
+    changeData(){
+      this.$emit("changeData");
+    },
     beforeBuy(){
       this.$refs.paymentBtnRef.click()
     },
@@ -69,6 +78,9 @@ export default {
             total += (dish.price * dish.quantity)              
         });
         return total.toFixed(2);
+    },
+    onLoad(){
+      this.loaded = true
     },
     onSuccess (payload) {
       let nonce = payload.nonce;
@@ -130,16 +142,24 @@ export default {
 
 #paybox{
   margin: 0 1rem;
+  p{
+    color: $primary-color;
+    font-size: 1.2rem;
+    margin: 0 0 -1rem;
+  }
   .brain{
-    width: 50%;
     margin-inline: auto;
+  	.d-flex {
+      justify-content: space-around;
+      gap: 1rem;
+    }
     .btnPay{
         color: #fff;
-        background-color: $secondary-color;
-        border-color: $secondary-color;
+        background-color: $primary-color;
+        border-color: $primary-color;
         &:hover{
-          background-color: $primary-color;
-          border-color: $primary-color;
+          background-color: $secondary-color;
+          border-color: $secondary-color;
         }
     }
   }

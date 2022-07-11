@@ -3586,12 +3586,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Paybox",
   data: function data() {
     return {
       Token: null,
-      tokenGenerate: false
+      tokenGenerate: false,
+      loaded: false
     };
   },
   props: {
@@ -3612,6 +3618,9 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    changeData: function changeData() {
+      this.$emit("changeData");
+    },
     beforeBuy: function beforeBuy() {
       this.$refs.paymentBtnRef.click();
     },
@@ -3621,6 +3630,9 @@ __webpack_require__.r(__webpack_exports__);
         total += dish.price * dish.quantity;
       });
       return total.toFixed(2);
+    },
+    onLoad: function onLoad() {
+      this.loaded = true;
     },
     onSuccess: function onSuccess(payload) {
       var _this2 = this;
@@ -3867,12 +3879,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PaymentPage',
@@ -3934,6 +3940,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    changeData: function changeData() {
+      this.formComplete = false;
+    },
     validateForm: function validateForm() {
       console.log('validation...');
 
@@ -4077,10 +4086,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -33141,7 +33146,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 30px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a] {\n  position: relative;\n}\n#ms-container .row1 .categories-cards p[data-v-e8a4ff6a] {\n  opacity: 0;\n  font-size: 1.5rem;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 800;\n  color: white;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a]:hover {\n  cursor: pointer;\n}\n#ms-container .row1 .categories-cards:hover p[data-v-e8a4ff6a] {\n  opacity: 1;\n}\n#ms-container .row1 .categories-cards:hover img[data-v-e8a4ff6a] {\n  filter: opacity(0.6);\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 10rem;\n  padding-right: 5px;\n}\n@media screen and (min-width: 663px) and (max-width: 899px) {\n#ms-container .category .row1[data-v-e8a4ff6a] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    gap: 2.5rem;\n}\n#ms-container .category .single-cat[data-v-e8a4ff6a] {\n    width: 20rem;\n    height: 20rem;\n    padding-right: 5px;\n}\n}", ""]);
+exports.push([module.i, "#ms-container[data-v-e8a4ff6a] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#ms-container .category[data-v-e8a4ff6a] {\n  padding: 30px 0 50px;\n}\n#ms-container .title-categ[data-v-e8a4ff6a] {\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 1.7rem;\n  margin: 20px 0;\n}\n#ms-container .row1[data-v-e8a4ff6a] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 2.5rem;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a] {\n  position: relative;\n}\n#ms-container .row1 .categories-cards p[data-v-e8a4ff6a] {\n  opacity: 0;\n  font-size: 1.5rem;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 800;\n  color: white;\n}\n#ms-container .row1 .categories-cards[data-v-e8a4ff6a]:hover {\n  cursor: pointer;\n}\n#ms-container .row1 .categories-cards:hover p[data-v-e8a4ff6a] {\n  opacity: 1;\n}\n#ms-container .row1 .categories-cards:hover img[data-v-e8a4ff6a] {\n  filter: opacity(0.6);\n}\n#ms-container .single-cat[data-v-e8a4ff6a] {\n  width: 10rem;\n  padding-right: 5px;\n}\n@media screen and (max-width: 966px) {\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: none;\n}\n}\n@media screen and (max-width: 720px) {\n#ms-container .category .row1[data-v-e8a4ff6a] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    gap: 2.5rem;\n}\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: block;\n}\n}\n@media screen and (max-width: 480px) {\n#ms-container .category .row1[data-v-e8a4ff6a]:last-child {\n    display: none;\n}\n#ms-container .category .row1 .categories-cards[data-v-e8a4ff6a]:last-child {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -33160,7 +33165,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex: 50%;\n  padding: 0px 50;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    padding: 0;\n    margin: 0;\n    padding-left: 15px;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
+exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  gap: 2rem;\n  align-items: center;\n  margin: 0 10%;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n    text-align: center;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    display: flex;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n    margin-inline: auto;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
 
 // exports
 
@@ -33179,7 +33184,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  display: flex;\n  background-color: white;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img_rest/collab.jpg\");\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 35%;\n  text-align: end;\n  padding-right: 85px;\n}\n#collab .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .collab-text button[data-v-2e69cfdb] {\n  border-color: #38a3a5;\n  margin-bottom: 50px;\n}\n#collab .collab-text button[data-v-2e69cfdb]:hover {\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}\n@media screen and (max-width: 400px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n    background-size: cover;\n    min-height: 300px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}", ""]);
+exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  display: flex;\n  background-color: white;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img_rest/collab.jpg\");\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n  margin: 3rem 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 35%;\n  text-align: end;\n  padding-right: 85px;\n}\n#collab .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .collab-text button[data-v-2e69cfdb] {\n  border-color: #38a3a5;\n}\n#collab .collab-text button[data-v-2e69cfdb]:hover {\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    margin-top: 0;\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}\n@media screen and (max-width: 400px) {\n#collab[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n    background-size: cover;\n    min-height: 300px;\n}\n#collab .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}", ""]);
 
 // exports
 
@@ -33198,7 +33203,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#hero[data-v-e429ce44] {\n  padding-top: 70px;\n}\n#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  padding: 4rem 0 2rem;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  align-items: center;\n  color: lightslategray;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}\n@media screen and (min-width: 1280px) and (max-width: 1900px) {\n#hero[data-v-e429ce44] {\n    margin-inline: auto;\n    max-width: 1899px;\n}\n#hero .container2[data-v-e429ce44] {\n    width: 100%;\n    background-image: url(\"/img/hero-img.png\");\n    background-size: 1000px;\n    background-position: right;\n    background-repeat: no-repeat;\n}\n}\n@media screen and (min-width: 768px) and (max-width: 1279px) {\n#hero[data-v-e429ce44] {\n    margin-inline: auto;\n    max-width: 1279px;\n}\n#hero .container2[data-v-e429ce44] {\n    width: 100%;\n    background-image: url(\"/img/hero-img.png\");\n    background-size: 1000px;\n    background-position: right;\n    background-repeat: no-repeat;\n}\n}\n@media screen and (min-width: 320px) and (max-width: 767) {\n#hero[data-v-e429ce44] {\n    margin-inline: auto;\n    min-width: 320px;\n}\n#hero .container2[data-v-e429ce44] {\n    width: 100%;\n}\n}", ""]);
+exports.push([module.i, "#hero[data-v-e429ce44] {\n  padding-top: 70px;\n}\n#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  width: 100%;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  margin: 4rem 0 2rem;\n  padding: 1rem;\n  border-radius: 10px;\n  background: rgba(30, 40, 47, 0.7);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  align-items: center;\n  color: lightslategray;\n  font-size: 0.8rem;\n  padding: 0 1rem;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}\n@media screen and (max-width: 996px) {\n#hero .container2[data-v-e429ce44] {\n    background-position: left;\n}\n}\n@media screen and (max-width: 500px) {\n#hero .container2[data-v-e429ce44] {\n    background: none;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}", ""]);
 
 // exports
 
@@ -33236,7 +33241,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
+exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 70px 0 20px;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  height: 200px;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding-top: 50px;\n  padding-left: 1rem;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034] {\n  background: #38a3a5;\n  border: #38a3a5;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034]:hover {\n  background: white;\n  border: white;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n  text-align: center;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n}\n#sm-container .description[data-v-64dd5034] {\n  color: gray;\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
 
 // exports
 
@@ -33331,7 +33336,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#paybox[data-v-4e8ead06] {\n  margin: 0 1rem;\n}\n#paybox .brain[data-v-4e8ead06] {\n  width: 50%;\n  margin-inline: auto;\n}\n#paybox .brain .btnPay[data-v-4e8ead06] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#paybox .brain .btnPay[data-v-4e8ead06]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}", ""]);
+exports.push([module.i, "#paybox[data-v-4e8ead06] {\n  margin: 0 1rem;\n}\n#paybox p[data-v-4e8ead06] {\n  color: #38a3a5;\n  font-size: 1.2rem;\n  margin: 0 0 -1rem;\n}\n#paybox .brain[data-v-4e8ead06] {\n  margin-inline: auto;\n}\n#paybox .brain .d-flex[data-v-4e8ead06] {\n  justify-content: space-around;\n  gap: 1rem;\n}\n#paybox .brain .btnPay[data-v-4e8ead06] {\n  color: #fff;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#paybox .brain .btnPay[data-v-4e8ead06]:hover {\n  background-color: #57cc99;\n  border-color: #57cc99;\n}", ""]);
 
 // exports
 
@@ -33350,7 +33355,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h1[data-v-3afcad35] {\n  margin: 2rem;\n}\n.header[data-v-3afcad35] {\n  background: #1e282f;\n}\n.header .container[data-v-3afcad35] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n.header .container .logo[data-v-3afcad35] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n.header .container .logo img[data-v-3afcad35] {\n  width: 100%;\n}\n.header .container .logo p[data-v-3afcad35] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n.header .container nav[data-v-3afcad35] {\n  display: flex;\n  align-items: center;\n}\n.header .container nav ul[data-v-3afcad35] {\n  display: flex;\n  gap: 1.5rem;\n}\n.header .container nav ul li a[data-v-3afcad35] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n.header .container nav ul li a[data-v-3afcad35]:hover {\n  color: white;\n}\n.header .wave[data-v-3afcad35] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#payment[data-v-3afcad35] {\n  color: #1e282f;\n  margin-top: 1rem;\n  width: min(80%, 1400px);\n  margin-inline: auto;\n  display: flex;\n  gap: 3rem;\n}\n#payment h1[data-v-3afcad35] {\n  margin-bottom: 2rem;\n}\n#payment .left-payment[data-v-3afcad35] {\n  flex-basis: 70%;\n}\n#payment .left-payment .form[data-v-3afcad35] {\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .form > p[data-v-3afcad35] {\n  font-size: 1rem;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35] {\n  color: #fff;\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35]:hover {\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#payment .left-payment .payment-part > p[data-v-3afcad35] {\n  font-size: 1rem;\n}\n#payment .left-payment .payment-part .dati-forniti[data-v-3afcad35] {\n  width: 15rem;\n  margin-inline: auto;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .payment-part .dati-forniti p[data-v-3afcad35]:last-child {\n  margin-bottom: 0;\n}\n#payment .right-payment[data-v-3afcad35] {\n  color: #38a3a5;\n  margin-top: 3rem;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n  margin-bottom: 2rem;\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .cart-summary .cart[data-v-3afcad35] {\n  font-size: 0.9rem;\n  padding: 0.5rem 0 1rem;\n  border-bottom: 1px solid lightgrey;\n}\n#payment .right-payment .cart-summary .cart .cart-card[data-v-3afcad35] {\n  color: #1e282f;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .cart .totale[data-v-3afcad35] {\n  margin-top: 1rem;\n  font-weight: bold;\n  text-align: end;\n  font-size: 1.1rem;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .cart .totale p[data-v-3afcad35] {\n  margin: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n@media screen and (max-width: 900px) {\n#payment[data-v-3afcad35] {\n    flex-direction: column;\n    gap: 0;\n}\n#payment .left-payment[data-v-3afcad35] {\n    order: 1;\n    margin-bottom: 2rem;\n}\n#payment .right-payment[data-v-3afcad35] {\n    align-self: center;\n    max-width: 18rem;\n    margin-top: 2rem;\n    order: 0;\n}\n}", ""]);
+exports.push([module.i, "h1[data-v-3afcad35] {\n  margin: 2rem 2rem 0;\n  color: #38a3a5;\n}\n.header[data-v-3afcad35] {\n  background: #1e282f;\n}\n.header .container[data-v-3afcad35] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n.header .container .logo[data-v-3afcad35] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n.header .container .logo img[data-v-3afcad35] {\n  width: 100%;\n}\n.header .container .logo p[data-v-3afcad35] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n.header .container nav[data-v-3afcad35] {\n  display: flex;\n  align-items: center;\n}\n.header .container nav a[data-v-3afcad35] {\n  padding: 0.375rem 0.75rem;\n  color: #98f1ad;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.header .container nav a[data-v-3afcad35]:hover {\n  text-decoration: none;\n  background: #98f1ad;\n  border: #98f1ad;\n  color: #1e282f;\n}\n.header .wave[data-v-3afcad35] {\n  width: 100%;\n  height: 20px;\n  color: #f8fafc;\n}\n#payment[data-v-3afcad35] {\n  color: #1e282f;\n  margin-top: 1rem;\n  width: min(80%, 1400px);\n  margin-inline: auto;\n  display: flex;\n  gap: 3rem;\n}\n#payment .left-payment[data-v-3afcad35] {\n  flex-basis: 70%;\n  margin-bottom: 2rem;\n}\n#payment .left-payment .form[data-v-3afcad35] {\n  margin-top: 2rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .left-payment .form > p[data-v-3afcad35] {\n  font-size: 1.3rem;\n  color: #38a3a5;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35] {\n  color: #fff;\n  background-color: #38a3a5;\n  border-color: #38a3a5;\n}\n#payment .left-payment .form .form-btn[data-v-3afcad35]:hover {\n  background-color: #57cc99;\n  border-color: #57cc99;\n}\n#payment .right-payment[data-v-3afcad35] {\n  color: #38a3a5;\n  margin-top: 2rem;\n}\n#payment .right-payment h2[data-v-3afcad35] {\n  font-size: 1.5rem;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n  margin-bottom: 2rem;\n  min-width: 18rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .cart-summary .cart[data-v-3afcad35] {\n  font-size: 0.9rem;\n  padding: 0.5rem 0 1rem;\n  border-bottom: 1px solid lightgrey;\n}\n#payment .right-payment .cart-summary .cart .cart-card[data-v-3afcad35] {\n  color: #1e282f;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .totale[data-v-3afcad35] {\n  margin-top: 1rem;\n  text-align: end;\n  font-size: 1.1rem;\n  display: flex;\n  justify-content: space-between;\n  gap: 1rem;\n}\n#payment .right-payment .cart-summary .totale p[data-v-3afcad35] {\n  margin: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n  min-width: 18rem;\n  margin-bottom: 2rem;\n  padding: 1rem;\n  border: 2px solid #38a3a5;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n#payment .right-payment .data-summary p[data-v-3afcad35] {\n  color: #1e282f;\n}\n#payment .right-payment .data-summary p[data-v-3afcad35]:last-child {\n  margin-bottom: 0;\n}\n@media screen and (max-width: 900px) {\n#payment[data-v-3afcad35] {\n    flex-direction: column;\n    gap: 0;\n}\n#payment .left-payment[data-v-3afcad35] {\n    order: 1;\n}\n#payment .right-payment[data-v-3afcad35] {\n    align-self: center;\n    display: flex;\n    gap: 1rem;\n    margin-top: 1rem;\n    order: 0;\n}\n#payment .right-payment .cart-summary[data-v-3afcad35] {\n    margin-bottom: 0;\n}\n#payment .right-payment .data-summary[data-v-3afcad35] {\n    margin-bottom: 0;\n}\n}\n@media screen and (max-width: 650px) {\n.right-payment[data-v-3afcad35] {\n    flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -33369,7 +33374,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#success-payment[data-v-96fd2d9a] {\n  background-color: white;\n}\n#success-payment h1[data-v-96fd2d9a] {\n  height: auto;\n  line-height: inherit;\n}\n#success-payment .header[data-v-96fd2d9a] {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  background: #1e282f;\n}\n#success-payment .header .wave[data-v-96fd2d9a] {\n  width: 100%;\n  height: 20px;\n  color: white;\n}\n#success-payment .header .container[data-v-96fd2d9a] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#success-payment .header .container .logo[data-v-96fd2d9a] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#success-payment .header .container .logo img[data-v-96fd2d9a] {\n  width: 100%;\n}\n#success-payment .header .container .logo p[data-v-96fd2d9a] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#success-payment .header .container nav[data-v-96fd2d9a] {\n  display: flex;\n  align-items: center;\n}\n#success-payment .header .container nav ul[data-v-96fd2d9a] {\n  display: flex;\n  gap: 1.5rem;\n}\n#success-payment .header .container nav ul li a[data-v-96fd2d9a] {\n  color: #98f1ad;\n  cursor: pointer;\n}\n#success-payment .header .container nav ul li a[data-v-96fd2d9a]:hover {\n  color: white;\n}\n#success-payment .thank-you[data-v-96fd2d9a] {\n  text-align: center;\n  background-image: url(\"/img/background-success.jpg\");\n  background-size: cover;\n  background-position: top left;\n  background-repeat: no-repeat;\n  height: 100vh;\n}\n#success-payment .thank-you .text-thanks[data-v-96fd2d9a] {\n  display: grid;\n  place-content: center;\n  /* padding-top: 25rem; */\n  height: 100%;\n}\n#success-payment .thank-you .text-thanks .styling[data-v-96fd2d9a] {\n  background: rgba(56, 163, 165, 0.7);\n  margin: 0 0.5rem;\n  padding: 1rem;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 10px;\n}\n#success-payment .thank-you .text-thanks h1[data-v-96fd2d9a] {\n  font-size: 50px;\n  color: white;\n}\n#success-payment .thank-you .text-thanks h2[data-v-96fd2d9a] {\n  color: #1e282f;\n}\n@media screen and (max-width: 600px) {\n#success-payment .thank-you[data-v-96fd2d9a] {\n    background-position: top;\n}\n#success-payment .thank-you .text-thanks .styling h1[data-v-96fd2d9a] {\n    font-size: 30px;\n}\n#success-payment .thank-you .text-thanks .styling h2[data-v-96fd2d9a] {\n    font-size: 20px;\n}\n}", ""]);
+exports.push([module.i, "#success-payment[data-v-96fd2d9a] {\n  background: #ccc;\n}\n#success-payment h1[data-v-96fd2d9a] {\n  height: auto;\n  line-height: inherit;\n}\n#success-payment .header[data-v-96fd2d9a] {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  background: #1e282f;\n}\n#success-payment .header .container[data-v-96fd2d9a] {\n  color: #98f1ad;\n  height: 70px;\n  max-width: 1400px;\n  margin-inline: auto;\n  display: flex;\n  justify-content: space-between;\n  padding: 0.5rem 1rem;\n}\n#success-payment .header .container .logo[data-v-96fd2d9a] {\n  cursor: pointer;\n  text-decoration: underline;\n  color: #98f1ad;\n  display: flex;\n  gap: 0.1rem;\n}\n#success-payment .header .container .logo img[data-v-96fd2d9a] {\n  width: 100%;\n}\n#success-payment .header .container .logo p[data-v-96fd2d9a] {\n  font-size: 2.2rem;\n  margin-top: 0.4rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#success-payment .header .container nav[data-v-96fd2d9a] {\n  display: flex;\n  align-items: center;\n}\n#success-payment .header .container nav a[data-v-96fd2d9a] {\n  padding: 0.375rem 0.75rem;\n  color: #98f1ad;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n#success-payment .header .container nav a[data-v-96fd2d9a]:hover {\n  text-decoration: none;\n  background: #98f1ad;\n  border: #98f1ad;\n  color: #1e282f;\n}\n#success-payment .thank-you[data-v-96fd2d9a] {\n  text-align: center;\n  background-image: url(\"/img/background-success.jpg\");\n  background-size: cover;\n  background-position: 0 20;\n  background-repeat: no-repeat;\n}\n#success-payment .thank-you .text-thanks[data-v-96fd2d9a] {\n  display: grid;\n  place-content: center;\n  /* padding-top: 25rem; */\n  height: 100%;\n}\n#success-payment .thank-you .text-thanks .styling[data-v-96fd2d9a] {\n  background: rgba(30, 40, 47, 0.7);\n  margin: 0 0.5rem;\n  padding: 1rem;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 10px;\n}\n#success-payment .thank-you .text-thanks h1[data-v-96fd2d9a] {\n  font-size: 50px;\n  color: white;\n}\n#success-payment .thank-you .text-thanks h2[data-v-96fd2d9a] {\n  color: #98f1ad;\n}\n@media screen and (max-width: 600px) {\n#success-payment .thank-you[data-v-96fd2d9a] {\n    background-position: top;\n}\n#success-payment .thank-you .text-thanks .styling h1[data-v-96fd2d9a] {\n    font-size: 30px;\n}\n#success-payment .thank-you .text-thanks .styling h2[data-v-96fd2d9a] {\n    font-size: 20px;\n}\n}", ""]);
 
 // exports
 
@@ -67105,7 +67110,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "row1 mt-5 mb-3" },
+        { staticClass: "row1 mt-5 mb-5" },
         _vm._l(_vm.categories.slice(0, 4), function (category, index) {
           return _c(
             "router-link",
@@ -67453,6 +67458,7 @@ var render = function () {
                   _c(
                     "router-link",
                     {
+                      staticClass: "btn btn-restaurant",
                       attrs: {
                         to: {
                           name: "restaurant",
@@ -67523,7 +67529,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "services-list" }, [
           _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "fas fa-motorcycle fa-2x" }),
+            _c("i", { staticClass: "mb-2 fas fa-motorcycle fa-2x" }),
             _vm._v(" "),
             _c("span", [_vm._v("CONSEGNA RAPIDA E GRATUITA")]),
             _vm._v(" "),
@@ -67535,7 +67541,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "fas fa-check fa-2x" }),
+            _c("i", { staticClass: "mb-2 fas fa-check fa-2x" }),
             _vm._v(" "),
             _c("span", [_vm._v("SICUREZZA E CONTROLLO")]),
             _vm._v(" "),
@@ -67547,7 +67553,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "fas fa-money-bill-alt fa-2x" }),
+            _c("i", { staticClass: "mb-2 fas fa-money-bill-alt fa-2x" }),
             _vm._v(" "),
             _c("span", [_vm._v("SODDISFATTI O RIMBORSATI")]),
             _vm._v(" "),
@@ -67559,7 +67565,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "service" }, [
-            _c("i", { staticClass: "fas fa-leaf fa-2x" }),
+            _c("i", { staticClass: "mb-2 fas fa-leaf fa-2x" }),
             _vm._v(" "),
             _c("span", [_vm._v("ECO FRIENDLY")]),
             _vm._v(" "),
@@ -68076,8 +68082,12 @@ var render = function () {
         [
           _c("v-braintree", {
             staticClass: "brain",
-            attrs: { authorization: _vm.Token },
-            on: { success: _vm.onSuccess, error: _vm.onError },
+            attrs: { authorization: _vm.Token, locale: "it_IT" },
+            on: {
+              success: _vm.onSuccess,
+              error: _vm.onError,
+              load: _vm.onLoad,
+            },
             scopedSlots: _vm._u(
               [
                 {
@@ -68090,21 +68100,36 @@ var render = function () {
                         on: { click: slotProps.submit },
                       }),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btnPay btn mb-2",
-                          on: {
-                            click: function ($event) {
-                              return _vm.beforeBuy()
-                            },
-                          },
-                        },
-                        [_vm._v("Procedi con l'acquisto 🎉")]
-                      ),
-                      _vm._v(" "),
-                      _c("button", { staticClass: "btnPay btn" }, [
-                        _vm._v("Modifica i tuoi dati"),
+                      _c("div", { staticClass: "d-flex mt-3 mb-2" }, [
+                        _vm.loaded
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btnPay btn",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.beforeBuy()
+                                  },
+                                },
+                              },
+                              [_vm._v("Procedi con l'acquisto 🎉")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.loaded
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btnPay btn",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.changeData()
+                                  },
+                                },
+                              },
+                              [_vm._v("Modifica i tuoi dati")]
+                            )
+                          : _vm._e(),
                       ]),
                     ]
                   },
@@ -68112,7 +68137,7 @@ var render = function () {
               ],
               null,
               false,
-              3199784753
+              943281687
             ),
           }),
         ],
@@ -68179,8 +68204,6 @@ var render = function () {
                       type: "text",
                       name: "name",
                       placeholder: "Nome...",
-                      value: "",
-                      required: "",
                     },
                     domProps: { value: _vm.name },
                     on: {
@@ -68408,7 +68431,7 @@ var render = function () {
                       id: "",
                       cols: "30",
                       rows: "5",
-                      placeholder: "Rischieste particolari...",
+                      placeholder: "Richieste particolari...",
                       required: "",
                     },
                     domProps: { value: _vm.special_request },
@@ -68443,10 +68466,9 @@ var render = function () {
               "div",
               { staticClass: "payment-part" },
               [
-                _c("p", [_vm._v("Inserisci i dati del pagamento")]),
-                _vm._v(" "),
                 _c("Payment", {
                   attrs: { formData: _vm.formData, cart: _vm.cart },
+                  on: { changeData: _vm.changeData },
                 }),
               ],
               1
@@ -68525,11 +68547,7 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("nav", [
-        _c("ul", [
-          _c("li", [
-            _c("a", { attrs: { href: "/" } }, [_vm._v("Torna alla Home")]),
-          ]),
-        ]),
+        _c("a", { attrs: { href: "/" } }, [_vm._v("Torna alla Home")]),
       ]),
     ])
   },
@@ -68630,13 +68648,7 @@ var staticRenderFns = [
         _c("p", [_vm._v("oolivery")]),
       ]),
       _vm._v(" "),
-      _c("nav", [
-        _c("ul", [
-          _c("li", [
-            _c("a", { attrs: { href: "/" } }, [_vm._v("Torna al Sito")]),
-          ]),
-        ]),
-      ]),
+      _c("nav", [_c("a", { attrs: { href: "/" } }, [_vm._v("Torna al Sito")])]),
     ])
   },
   function () {

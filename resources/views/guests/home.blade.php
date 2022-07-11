@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }}</title>
-    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
     <!-- Scripts -->
     <script src="{{ asset('js/front-app.js') }}" defer></script>
 

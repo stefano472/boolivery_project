@@ -55,6 +55,12 @@ export default {
   .container2 {
     // padding-bottom: 4rem;
     //max-width: 1400px;
+     width: 100%;
+    background-image: url("/img/hero-img.png");
+    background-size: 1000px;
+    // background-position: 300px;
+    background-position: right;
+    background-repeat: no-repeat;
     margin-inline: auto;
     padding: 1rem 0;
     display: flex;
@@ -67,7 +73,11 @@ export default {
     }
   }
   .text {
-    padding: 4rem 0 2rem;
+    margin: 4rem 0 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba($color: $dark-color, $alpha: 0.7);
+    width: fit-content;
     color: $brand-color;
     font-size: 2.5rem;
     .logo {
@@ -134,45 +144,68 @@ export default {
   }
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1900px) {
-  #hero {
-    margin-inline: auto;
-    max-width: 1899px;
-    //width: 100%;
-    .container2 {
-      width: 100%;
-      background-image: url("/img/hero-img.png");
-      background-size: 1000px;
-      // background-position: 300px;
-      background-position: right;
-      background-repeat: no-repeat;
-    }
-  }
-}
+// @media screen and (min-width: 1280px) and (max-width: 1900px) {
+//   #hero {
+//     margin-inline: auto;
+//     max-width: 1899px;
+//     //width: 100%;
+//     .container2 {
+//       width: 100%;
+//       background-image: url("/img/hero-img.png");
+//       background-size: 1000px;
+//       // background-position: 300px;
+//       background-position: right;
+//       background-repeat: no-repeat;
+//     }
+//   }
+// }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  #hero {
-    margin-inline: auto;
-    max-width: 1279px;
-    //width: 100%;
-    .container2 {
-      width: 100%;
-      background-image: url("/img/hero-img.png");
-      background-size: 1000px;
-      // background-position: 300px;
-      background-position: right;
-      background-repeat: no-repeat;
-    }
-  }
-}
+// @media screen and (min-width: 768px) and (max-width: 1279px) {
+//   #hero {
+//     margin-inline: auto;
+//     max-width: 1279px;
+//     //width: 100%;
+//     .container2 {
+//       width: 100%;
+//       background-image: url("/img/hero-img.png");
+//       background-size: 1000px;
+//       // background-position: 300px;
+//       background-position: right;
+//       background-repeat: no-repeat;
+//     }
+//   }
+// }
 
-@media screen and (min-width: 320px) and (max-width: 767) {
-  #hero {
-    margin-inline: auto;
-    min-width: 320px;
-    .container2 {
-      width: 100%;
+// @media screen and (min-width: 320px) and (max-width: 767) {
+//   #hero {
+//     margin-inline: auto;
+//     min-width: 320px;
+//     .container2 {
+//       width: 100%;
+//     }
+//   }
+// }
+
+@media screen and (max-width: 996px) {
+  #hero{
+    .container2{
+      background-position: left;
     }
   }
+  
+}
+@media screen and (max-width: 500px) {
+  #hero{
+    .container2{
+      background: none;
+      .sx-text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      // background-position: left;
+    }
+  }
+  
 }
 </style>
