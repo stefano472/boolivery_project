@@ -7009,7 +7009,6 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
-  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -7029,9 +7028,8 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
+@supports (position: sticky) {
   .sticky-top {
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -9391,7 +9389,6 @@ h3 {
   justify-content: flex-start;
   background-color: #38A3A5;
   height: 100vh;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 250px;
@@ -9443,6 +9440,8 @@ h3 {
 }
 .bo-sidebar a {
   color: #1E282F;
+  padding: 5px;
+  display: block;
 }
 
 /********************* index.blade.php *********************/
@@ -9544,6 +9543,16 @@ h1 {
 }
 
 /**** TABLE ****/
+.bo-table-th {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-radius: 5px;
+  height: 70px;
+  padding: 10px;
+  background-color: #38A3A5;
+}
+
 .bo-table {
   width: 100%;
   margin-bottom: 1rem;
@@ -9552,8 +9561,13 @@ h1 {
   border: solid 5px #38A3A5;
   border-radius: 10%;
 }
-.bo-table thead {
-  background-color: #38A3A5;
+.bo-table .bo-th {
+  padding: 20px 15px;
+  text-align: left;
+}
+
+.thead .bo-th {
+  background-color: red;
   height: 50px;
   text-transform: uppercase;
   font-size: 14px;
@@ -9561,14 +9575,15 @@ h1 {
   padding: 20px 15px;
   text-align: left;
 }
-.bo-table tbody {
+
+tbody {
   background-color: white;
   vertical-align: center;
 }
-.bo-table tbody td {
+tbody td {
   vertical-align: middle;
 }
-.bo-table tbody td .fa-solid {
+tbody td .fa-solid {
   color: red;
 }
 
@@ -9588,3 +9603,97 @@ h1 {
 }
 
 /************* Restaurant order show.blade ************/
+.order-h1 {
+  padding: 20px 0px 0 20px;
+}
+
+.order-details-container {
+  margin: 50px 20px;
+  padding: 30px 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+.order-details-container span {
+  color: #38A3A5;
+}
+.order-details-container ul li {
+  margin: 10px 0;
+}
+.order-details-container ul span {
+  color: #1E282F;
+}
+.order-details-container .bo-restaurant-info {
+  margin-top: 30px;
+}
+.order-details-container .bo-restaurant-info span {
+  color: #38A3A5;
+}
+.order-details-container .bo-restaurant-index {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.order-details-container .bo-restaurant-index h2 {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 0px 0px 0;
+  line-height: 20px;
+}
+
+.details-order-container {
+  background-color: #38A3A5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details-order-container h2 {
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 20px 0 10px 0;
+}
+.details-order-container .bo-table {
+  border-radius: 10px;
+}
+.details-order-container .bo-table thead {
+  background-color: #98F1AD;
+}
+
+.order-list-container {
+  margin: 50px 20px;
+  padding: 30px 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+.order-list-container span {
+  color: #38A3A5;
+}
+.order-list-container ul li {
+  margin: 10px 0;
+}
+.order-list-container ul span {
+  color: #1E282F;
+}
+.order-list-container .bo-restaurant-info {
+  margin-top: 30px;
+}
+.order-list-container .bo-restaurant-info span {
+  color: #38A3A5;
+}
+.order-list-container .bo-restaurant-index {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.order-list-container .bo-restaurant-index h2 {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 0px 0px 0;
+  line-height: 20px;
+}
+
+.td-svg {
+  text-align: center;
+}
