@@ -1,6 +1,6 @@
 <template>
   <div class="dishes-list">
-    <div class="container">
+    <div class="container" v-scrollAnimation>
       <!-- I nostri piatti -->
       <div class="title">
         <h2>I NOSTRI PIATTI</h2>

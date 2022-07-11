@@ -1,6 +1,6 @@
 <template>
   <div id="hero">
-    <div class="container2">
+    <div class="container2" v-scrollAnimation>
       <div class="sx-text">
         <div class="text">
           <div class="logo">
@@ -11,7 +11,7 @@
           <p class="uppercase">A UN CLICK</p>
         </div>
         <router-link class="link-router" :to="{ name: 'restaurants' }">
-          <div class="search-bar">
+          <div class="search-bar ml-3">
             <button class="submit">
               <i class="fa-solid fa-rocket"></i>
             </button>
@@ -40,6 +40,18 @@ export default {
   padding-top: 70px;
 }
 #hero {
+  .before-enter{
+    opacity: 0;
+    transform: translatex(100px);
+    transition: all 1s cubic-bezier(.24,-0.13,.42,1.45);
+  }
+  .enter{
+    opacity: 1;
+    transform: translatex(0px);
+  }
+  // .before-enter{
+
+  // }
   //max-width: 1400px;
   h1,
   h2,
@@ -64,6 +76,7 @@ export default {
     margin-inline: auto;
     padding: 1rem 0;
     display: flex;
+    transition-delay: 0.5s;
     .sx-text {
       // width: 40%;
       width: 80%;
@@ -106,6 +119,10 @@ export default {
     display: flex;
     border-radius: 2.2rem;
     background: $white-color;
+    transition: 0.3s;
+    &:hover{
+      transform: scale(1.05);
+    }
     .submit {
       cursor: pointer;
       border: 0;
@@ -116,13 +133,16 @@ export default {
       &:hover {
         color: white;
       }
+      i{
+        margin: 3px 3px 0 0;
+      }
     }
     .input {
       display: flex;
       align-items: center;
       color: lightslategray;
       font-size: 0.8rem;
-      padding: 0 1rem;
+      padding: 3px 1rem 0;
       border: 0;
       background: transparent;
       &:hover {

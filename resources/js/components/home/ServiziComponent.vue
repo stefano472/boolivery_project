@@ -1,6 +1,6 @@
 <template>
   <div id="services">
-    <div class="container">
+    <div class="container" v-scrollAnimation>
       <div class="section-title">
         <h2>BOOLIVERY</h2>
         <h3>Portiamo il cibo per tutta la city</h3>

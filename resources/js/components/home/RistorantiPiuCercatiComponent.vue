@@ -1,7 +1,7 @@
 <template>
   <div class="out-container">
     <div id="sm-container">
-      <section class="most-want">
+      <section class="most-want" v-scrollAnimation>
         <div class="main-titles">
           <h2>I ristoranti piu' cercati</h2>
           <h5>Selezionati proprio da voi</h5>
@@ -103,9 +103,12 @@ export default {
     padding-top: 50px;
     padding-left: 1rem;
     .btn-restaurant{
+      color: $white-color;
       background: $primary-color;
       border: $primary-color;
+      transition: 0.2s;
       &:hover{
+        color: $primary-color;
         background: $white-color;
         border: $white-color;
 

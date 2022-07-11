@@ -4,6 +4,7 @@
       v-for="(restaurant, index) in restaurants"
       :key="index"
       class="restaurant-card"
+       v-scrollAnimation
     >
       <div class="foto" v-if="restaurant.cover">
         <img :src="'/storage/' + restaurant.cover" alt="Cover Ristorante" />

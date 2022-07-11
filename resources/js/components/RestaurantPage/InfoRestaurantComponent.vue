@@ -1,18 +1,18 @@
 <template>
   <div class="out-container">
-    <div class="info-container">
+    <div class="info-container" v-scrollAnimation>
       <div class="info-title">
         <h2>Informazioni ristorante</h2>
       </div>
       <div class="box">
         <div class="address">
           <h5>Indirizzo</h5>
-          <p>Via Roma, 21</p>
+          <p>{{restaurant.address}}</p>
         </div>
         <div class="contacts">
           <h5>Contatti</h5>
-          <p>Phone: +1 800 755 50 30</p>
-          <p class="text-center">Email: <a href="#">contacts@company.com</a></p>
+          <p>Phone: +39 {{restaurant.phone_number}}</p>
+          <p class="text-center">Email: {{ristoName()}}@gmail.com</p>
         </div>
         <div class="opening">
           <h5>Orari</h5>
@@ -27,6 +27,24 @@
 <script>
 export default {
   name: "InfoRestaurantComponent",
+  props: {
+    restaurant: Object,
+  },
+  methods:{
+    ristoName(){
+      return this.restaurant.name.toLowerCase().replace(/\s/g, '')
+    }
+  }
+  // data(){
+  //   return {
+  //     ristoEmail: '',  
+  //   }
+  // },
+  // computed: {
+  //   ristoEmail() {
+  //     return restaurant.name
+  //   }
+  // }
 };
 </script>
 
@@ -45,7 +63,7 @@ export default {
   margin-inline: auto;
 
   .info-title {
-    padding: 40px 0;
+    padding: 4.5rem 0 0;
     text-transform: uppercase;
     color: $primary-color;
     h2 {

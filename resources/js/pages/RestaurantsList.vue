@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Categorie -->
-    <CategoriesComponent @categorySelected='categorySelected' />
+    <CategoriesComponent :categoryFilter='categoryFilter' @categorySelected='categorySelected' />
 
     <!-- SearchBar per i filtri -->
     <!-- <div class="search-bar">
@@ -14,7 +14,7 @@
     </div> -->
 
     <!-- Lista dei filtri -->
-    <FilterComponents :restaurants="filteredRestaurants" @categorySelected='categorySelected' @categoryCheckbox='categoryCheckbox'/>
+    <FilterComponents :restaurants="filteredRestaurants" :categoryFilter='categoryFilter' @categorySelected='categorySelected' />
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
 
             filteredRestaurants : [],
 
-            categoryFilter: '',
+            categoryFilter: null,
 
             categoriesArray:[],
         }
@@ -109,6 +109,7 @@ export default {
                     if (this.categoriaSelezionataHome){
                       restaurant.categories.forEach(category => {
                         if(category.id === this.categoriaSelezionataHome){
+                          this.categoryFilter = this.categoriaSelezionataHome;
                           this.filteredRestaurants.push(restaurant)
                         }
                       })

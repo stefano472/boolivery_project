@@ -1,6 +1,6 @@
 <template>
   <div class="container-hero">
-    <div class="info-resturant">
+    <div class="info-resturant" v-scrollAnimation>
       <h1>{{ restaurant.name }}</h1>
       <h2>{{ restaurant.motto }}</h2>
       <!-- <h3>{{restaurant.name}}</h3> -->

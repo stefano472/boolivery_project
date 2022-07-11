@@ -134,6 +134,16 @@ export default {
   font-family: "Epilogue", sans-serif;
   // font-family: 'Josefin Sans', sans-serif;
 }
+
+.before-enter{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+.enter{
+  opacity: 1;
+  transform: translateY(0px);
+}
 h1 {
   height: auto;
 }
@@ -164,12 +174,13 @@ ul {
   .sp-modal {
     background: white;
     padding: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     // width: min(400px, 100%);
     box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
     // text-align: center;
     // position: relative;
     h2 {
+      color: $primary-color;
       text-align: center;
     }
     .title {
@@ -198,7 +209,7 @@ ul {
       width: 2rem;
       padding: 0.5rem;
       border-radius: 5px;
-      background: $brand-color;
+      background: $primary-color;
       /* display: flex; */
       /* justify-content: center; */
       /* align-items: center; */
@@ -206,7 +217,7 @@ ul {
       place-content: center;
       cursor: pointer;
       &:hover {
-        background: $secondary-color;
+        background: $brand-color;
       }
     }
   }

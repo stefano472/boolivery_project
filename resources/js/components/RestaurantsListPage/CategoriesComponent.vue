@@ -5,7 +5,7 @@
       :key="index"
       class="categories-cards"
     >
-      <div @click="emitCategory(category.id)">
+      <div @click="emitCategory(category.id)" :class="category.id == categoryFilter ? 'active-category' : ''" class="category-card">
         <img :src="setUrlCategoryCover(category.img)" alt="" />
         <p>{{ category.name }}</p>
       </div>
@@ -21,13 +21,17 @@ export default {
     return {
       category: "",
       categories: [],
-
+      // categorySelected:'',
       arrayRestaurants: [],
     };
+  },
+  props:{
+    categoryFilter : Number
   },
 
   methods: {
     emitCategory(idCategory) {
+      // this.categorySelected = idCategory
       this.$emit("categorySelected", idCategory);
     },
     // setUrlFilters(index){
@@ -63,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 img {
   width: 98px;
+  border-radius: 2px;
 }
 
 .categories-list {
@@ -75,6 +80,15 @@ img {
   background-color: #1e282f;
   .categories-cards {
     position: relative;
+    .active-category{
+      cursor: pointer;
+      p {
+        opacity: 1;
+      }
+      img {
+        filter: opacity(0.5);
+      }
+    }
 
     p {
       opacity: 0;
@@ -95,5 +109,32 @@ img {
       }
     }
   }
+}
+
+@media screen and(max-width: 540px) {
+  .categories-list{
+        padding: 130px 20px 60px;
+    // .categories-cards{
+    //   &:last-child{
+    //     // display: none;
+    //   }
+    //   // .category-card{
+    //   // }
+    // }
+  }
+  
+}
+@media screen and(max-width: 410px) {
+  .categories-list{
+        // padding: 130px 20px 60px;
+    .categories-cards{
+      &:last-child{
+        display: none;
+      }
+      // .category-card{
+      // }
+    }
+  }
+  
 }
 </style>

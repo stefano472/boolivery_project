@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="other-categories-list">
+    <div class="other-categories-list" v-scrollAnimation>
       <h4>CATEGORIE</h4>
       <div class="categories">
         <div
@@ -13,7 +13,7 @@
             <input type="checkbox" name="categories"  v-model="categoriesSelected" :value="category.id" @click="emitCategoriesSelected(category.id)" >
             <label for="categories">{{ category.name }}</label>
           </div> -->
-          <p>{{ category.name }}</p>
+          <p :class="category.id == categoryFilter ? 'active-category' : ''">{{ category.name }}</p>
         
         </div>
       </div>
@@ -22,7 +22,7 @@
     <div class="restaurants-list">
       <!-- {{categoriesSelected}} -->
       <h1>RISTORANTI</h1>
-      <RestaurantCard :restaurants="restaurants" />
+      <RestaurantCard :restaurants="restaurants" v-scrollAnimation />
     </div>
   </div>
 </template>
@@ -35,17 +35,18 @@ export default {
   data() {
     return {
       categories: "",
-      categoriesSelected: [],
+      // categorySelected: '',
     };
   },
 
   methods: {
     emitCategory(idCategory) {
+      // this.categorySelected = idCategory
       this.$emit("categorySelected", idCategory);
     },
-    emitCategoriesSelected(idCategory) {
-      this.$emit("categoryCheckbox", idCategory);
-    },
+    // emitCategoriesSelected(idCategory) {
+    //   this.$emit("categoryCheckbox", idCategory);
+    // },
   },
 
   mounted() {
@@ -67,12 +68,14 @@ export default {
 
   props: {
     restaurants: Array,
+    categoryFilter: Number,
   },
 };
 </script>
 
 <style scoped lang="scss">
 @import 'resources/sass/variables';
+
 
 .container {
   display: flex;
@@ -84,6 +87,9 @@ export default {
       margin-bottom: 36px;
     }
     .category {
+      .active-category{
+          background: $brand-color;
+      }
       p {
         margin-bottom: 0.3rem;
         color: $primary-color;

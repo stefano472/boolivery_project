@@ -1,6 +1,6 @@
 <template>
   <div id="about-us" class="container-section">
-    <div class="container-chi-siamo">
+    <div class="container-chi-siamo" v-scrollAnimation>
       <div class="img-container">
         <img src="img/img_rest/chi-siamo.png" alt="" />
       </div>
@@ -44,6 +44,7 @@ export default {
     gap: 2rem;
     align-items: center;
     margin: 0 10%;
+    transition-delay: 0.5s;
 
     .img-container {
       // flex-basis: 50%;

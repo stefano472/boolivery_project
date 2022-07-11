@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Card del piatto -->
-    <div v-for="(dish, index) in dishes" :key="index">
+    <div v-for="(dish, index) in dishes" :key="index" v-scrollAnimation>
 
       <div class="dish-card" v-if="dish.available === 1">
         <!-- foto del piatto -->
@@ -75,8 +75,8 @@ export default {
   display: flex;
   justify-content: space-around;
   padding: 30px 20px;
-  border-bottom: 1px solid gray;
-  border-radius: 20px;
+  border-bottom: 1px solid lightgray;
+  // border-radius: 20px;
   margin: 31px 0;
 
   //foto del piatto

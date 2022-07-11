@@ -1,12 +1,12 @@
 <template>
   <div>
-    <HeroComponent/>
-    <ChiSiamoComponent/>
-    <ParallaxComponent/>
-    <RistorantiPiuCercatiComponent :restaurants="restaurants"/>
-    <CategoriePiuRichiesteComponent @categorySelected='categorySelected'/>
-    <ServiziComponent/>
-    <CollaboraConNoiComponent/>
+    <HeroComponent />
+    <ChiSiamoComponent />
+    <ParallaxComponent />
+    <RistorantiPiuCercatiComponent :restaurants="restaurants" />
+    <CategoriePiuRichiesteComponent @categorySelected='categorySelected' />
+    <ServiziComponent />
+    <CollaboraConNoiComponent />
   </div>
 </template>
 

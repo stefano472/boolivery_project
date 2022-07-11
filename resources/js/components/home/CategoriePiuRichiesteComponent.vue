@@ -1,6 +1,6 @@
 <template>
   <div id="ms-container">
-    <section class="category">
+    <section class="category" v-scrollAnimation>
         <div>
             <h2 class="title-categ">
                 Le categorie piu' richieste
@@ -117,15 +117,16 @@ export default {
                     opacity: 1;
                 }
                 img {
-                    filter: opacity(0.6);
+                    filter: brightness(0.7);
                 }
             }
         }
     }
     .single-cat{
         width: 10rem;
+        border-radius: 3px;
         //height: 150px;
-        padding-right: 5px;
+        // padding-right: 5px;
 
     }
     // .pad-1{

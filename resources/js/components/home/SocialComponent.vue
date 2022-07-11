@@ -1,29 +1,32 @@
 <template>
   <div id="contacts" class="social-component">
-    <!-- Titolo dei social -->
-    <h1>SEGUICI SUI SOCIAL</h1>
+    <div>
+      <!-- Titolo dei social -->
+      <h1 class="mb-5 text-center">SEGUICI SUI SOCIAL</h1>
 
-    <!-- icone dei social -->
-    <div class="social-box">
-      <!-- Facebook -->
-      <div class="social-icon">
-        <a href="https://www.facebook.com/" target="_blank">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-      </div>
+      <!-- icone dei social -->
+      <div class="social-box">
+        <!-- Facebook -->
+        <div class="social-icon">
+          <a href="https://www.facebook.com/" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
 
-      <!-- Instagram -->
-      <div class="social-icon">
-        <a href="https://www.instagram.com/" target="_blank">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-      </div>
+        <!-- Instagram -->
+        <div class="social-icon">
+          <a href="https://www.instagram.com/" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
 
-      <!-- Twitter -->
-      <div class="social-icon">
-        <a href="https://twitter.com/" target="_blank">
-          <i class="fa-brands fa-twitter"></i>
-        </a>
+        <!-- Twitter -->
+        <div class="social-icon">
+          <a href="https://twitter.com/" target="_blank">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </div>
+
       </div>
     </div>
   </div>
@@ -41,7 +44,7 @@ export default {
   flex-direction: column;
   align-items: center;
   row-gap: 27px;
-  padding: 77px 0;
+  padding: 4.5rem 0;
   background-color: #38a3a5;
   color: white;
   .social-box {

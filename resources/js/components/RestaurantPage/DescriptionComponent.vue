@@ -1,14 +1,17 @@
 <template>
   <div id="description">
-    <div class="about-us">
-      <h2>ABOUT US</h2>
-      <p>
-        {{ restaurant.description }}
-      </p>
-    </div>
+    <div class="mid-class" v-scrollAnimation>
 
-    <div class="description-cover">
-      <img :src="'/storage/' + restaurant.cover" alt="" />
+      <div class="about-us">
+        <h2>ABOUT US</h2>
+        <p>
+          {{ restaurant.description }}
+        </p>
+      </div>
+
+      <div class="description-cover">
+        <img :src="'/storage/' + restaurant.cover" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +35,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px;
+  .mid-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .about-us {
     width: 30%;
     margin-right: 50px;
@@ -52,20 +59,24 @@ export default {
 
 @media screen and (max-width: 1024px) {
   #description {
-    flex-direction: column;
-    .about-us {
-      width: 100%;
-      margin: 0;
-      p {
-        margin-bottom: 2rem;
-      }
-    }
-    .description-cover {
-      width: 100%;
-      margin: 0;
-      img {
+    padding: 50px;
+    .mid-class{
+      flex-direction: column;
+      .about-us {
         width: 100%;
+        margin: 0;
+        // p {
+        //   margin-bottom: 2rem;
+        // }
       }
+      .description-cover {
+        width: 100%;
+        margin: 0;
+        img {
+          width: 100%;
+        }
+      }
+
     }
   }
 }

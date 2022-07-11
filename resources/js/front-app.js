@@ -33,6 +33,9 @@ window.Vue = require('vue');
  import router from './route'
  import Vue from 'vue'
  import vueBraintree from 'vue-braintree'
+ import scrollAnimation from './directives/scrollanimation';
+
+ Vue.directive('scrollAnimation', scrollAnimation)
 
  new Vue({
      el: '#app',

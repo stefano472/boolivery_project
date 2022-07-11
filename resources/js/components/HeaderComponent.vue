@@ -262,9 +262,14 @@ export default {
         li {
           a {
             color: $brand-color;
+            padding-bottom: 0.75rem;
+            transition: 0.2s;
             cursor: pointer;
             &:hover {
               color: $white_color;
+              text-decoration: none;
+              // transform: scale(1.30);
+              box-shadow: inset 0 -3px 0 0 white;
             }
           }
         }
@@ -274,11 +279,22 @@ export default {
       display: flex;
       align-items: center;
       gap: 1rem;
+      .accedi{
+        a{
+          transition: 0.2s;
+          padding-bottom: 0.75rem;
+          &:hover {
+            box-shadow: inset 0 -3px 0 0 white;
+          }
+        }
+      }
       a {
         color: $brand-color;
         cursor: pointer;
         &:hover {
           color: $white_color;
+          text-decoration: none;
+          // transform: scale(1.30);
         }
       }
 
@@ -367,8 +383,8 @@ export default {
         .dish-cart {
           display: flex;
           align-items: center;
-          border-bottom: 1px solid gray;
-          border-radius: 10px;
+          border-bottom: 1px solid lightgray;
+          // border-radius: 10px;
           padding: 0.5rem;
           gap: 1rem;
           .dish-img {
