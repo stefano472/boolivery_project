@@ -14,7 +14,7 @@
                 {{-- <img src="{{ $dish->cover }}" alt="{{ $dish->name }}" class="w-25"> --}}
                 <div class="d-flex mt-3 mb-3">
                     @if ($dish->cover)
-                        <img src="{{ asset('storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25 rounded-sm">
+                        <img src="{{ asset('/storage/' . $dish->cover) }}" alt="{{ $dish->name }}" class="w-25 rounded-sm">
                     @else
                         <p class="alert-danger">Inserisci l'immagine del piatto, gli utenti vogliono sapere cosa comprano! ;)</p>
                     @endif

@@ -6,7 +6,7 @@
       <div class="dish-card" v-if="dish.available === 1">
         <!-- foto del piatto -->
         <div class="foto">
-          <img :src="dish.cover" alt="Dish" />
+          <img :src="'/storage/' + dish.cover" alt="Dish" />
         </div>
 
         <!-- nome e descrizione del piatto -->
@@ -86,11 +86,15 @@ export default {
       width: 100%;
       border-radius: 20px;
       min-width: 146px;
+      max-height: 180px;
+      object-fit: cover;
     }
   }
 
   // nome e descrizione del piatto
   .name-description {
+    flex-grow: 1;
+    margin-inline: 1rem;
     padding: 0 20px;
     display: flex;
     flex-direction: column;

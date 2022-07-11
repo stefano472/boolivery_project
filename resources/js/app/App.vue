@@ -10,8 +10,9 @@
         <!-- <button id='closeModal' @click="closeModal" type="button">X</button> -->
         <h2>Attenzione!!</h2>
         <div class="title">
+          <p>Svuota prima il carrello</p>
           <p>
-            puoi aggiungere al carrello, solo i piatti di un solo ristorante
+            Puoi ordinare solo da un ristorante per volta
           </p>
           <i @click="closeModal" class="close-modal fa-solid fa-xmark"></i>
         </div>
@@ -182,13 +183,18 @@ ul {
     h2 {
       color: $primary-color;
       text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
     .title {
       display: flex;
+      flex-direction:column;
+      justify-content: center;
       align-items: center;
       gap: 1rem;
       i {
         font-size: 1.5rem;
+        // align-self: end;
       }
       p {
         margin: 0;

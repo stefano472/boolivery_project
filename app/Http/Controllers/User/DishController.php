@@ -168,11 +168,11 @@ class DishController extends Controller
         if(array_key_exists('cover', $dishData)){
 
             // e un'altra condizione se è esistente
-            if($dish->cover){
+            // if($dish->cover){
 
-                 Storage::delete($dish->cover);
+            //      Storage::delete($dish->cover);
 
-            }
+            // }
 
             $img_path = Storage::put('uploads',  $dishData['cover']);
 

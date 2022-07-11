@@ -41,7 +41,7 @@ class RestaurantController extends Controller
 
     public function dishes($id)
     {
-        return response()->json(['response' => Dish::with('restaurant')->where('restaurant_id', $id)->get()]);
+        return response()->json(['response' => Dish::with('restaurant')->where('restaurant_id', $id)->orderBy('name', 'ASC')->get()]);
     }
     /**
      * Show the form for creating a new resource.

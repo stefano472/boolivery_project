@@ -80,7 +80,7 @@
                 <div v-for="(item, index) in cart" :key="index">
                   <div class="dish-cart">
                     <div class="dish-img">
-                      <img :src="item.cover" alt="" />
+                      <img :src="'/storage/' + item.cover" alt="" />
                     </div>
                     <div class="definition">
                       <h5>{{ item.name }}</h5>
@@ -525,7 +525,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 830px) {
   #header {
     margin-inline: auto;
     max-width: 768px;

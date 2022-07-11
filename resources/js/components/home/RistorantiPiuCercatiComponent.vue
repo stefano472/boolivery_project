@@ -15,7 +15,7 @@
             <div class="add-padd">
               <div
                 class="bg-img"
-                :style="`background-image: url(${restaurant.cover})`"
+                :style="`background-image: url(${'/storage/' + restaurant.cover})`"
               ></div>
             </div>
 
