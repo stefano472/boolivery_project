@@ -43,6 +43,22 @@ export default {
 .restaurant-list {
   max-height: 500px;
   overflow-y: auto;
+  
+  // // // // // // custom scrollbar
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+  &::-webkit-scrollbar-track {
+    margin-block: 0.5rem;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.8rem;
+    border: 4px solid transparent;
+    box-shadow: inset 0 0 10px 10px lightgray;
+  }
+  // // // // // // custom scrollbar
+
   .restaurant-card {
     display: flex;
     justify-content: space-between;
@@ -63,6 +79,7 @@ export default {
 
     // nome e descrizione del piatto
     .name-description {
+      flex-grow: 1;
       padding: 0 20px;
       display: flex;
       flex-direction: column;

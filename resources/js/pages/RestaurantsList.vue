@@ -14,7 +14,7 @@
           
           <input v-model="inputSearch" type="text" class="input" placeholder="Search...">
     </div> -->
-
+  
     <!-- Lista dei filtri -->
     <FilterComponents :restaurants="filteredRestaurants" :categoryFilter='categoryFilter' @categorySelected='categorySelected' />
   </div>
@@ -69,7 +69,11 @@ export default {
           }, 100);
         },
       categorySelected(categoryId){
-        this.categoryFilter = categoryId,
+        if(this.categoryFilter === categoryId){
+          this.categoryFilter = null
+        } else {
+          this.categoryFilter = categoryId
+        }
         this.chiamataAxios()
 
       },
@@ -88,24 +92,28 @@ export default {
         window.axios.get('http://127.0.0.1:8000/api/restaurants').then(({status, data})=> {
       
                   if (status === 200) {
-                    this.restaurants = data.response
-                    this.filteredRestaurants= [],
+                    this.restaurants = data.response;
+                    this.filteredRestaurants= [];
                     // console.log('dati', data)
-                    this.restaurants.forEach(restaurant => {
-                      restaurant.categories.forEach(category => {
-                        // console.log('category', category)
-                        // this.categoriesArray.forEach(checkedCategory=>{
-                          
-                          // restaurant.categories === this.categoriesArray
-                          //   if(category.id === checkedCategory){
-                          //     this.filteredRestaurants.push(restaurant)
-                          //   }
-                          // })
-                          if(category.id === this.categoryFilter){
-                            this.filteredRestaurants.push(restaurant)
-                          }
-                      })
-                    });
+                    if (this.categoryFilter){
+                      this.restaurants.forEach(restaurant => {
+                        restaurant.categories.forEach(category => {
+                          // console.log('category', category)
+                          // this.categoriesArray.forEach(checkedCategory=>{
+                            
+                            // restaurant.categories === this.categoriesArray
+                            //   if(category.id === checkedCategory){
+                            //     this.filteredRestaurants.push(restaurant)
+                            //   }
+                            // })
+                            if(category.id === this.categoryFilter){
+                              this.filteredRestaurants.push(restaurant)
+                            }
+                        })
+                      });
+                    } else {
+                      this.filteredRestaurants = this.restaurants
+                    }
                         // console.log ('filtered rest', this.filteredRestaurants)
                   }
               }).catch(e => console.log(e))   
