@@ -1,37 +1,40 @@
 <template>
   <div>
     <!-- Card del piatto -->
-    <div class="dish-card" v-for="(dish, index) in dishes" :key="index">
-      <!-- foto del piatto -->
-      <div class="foto">
-        <img :src="dish.cover" alt="Dish" />
-      </div>
+    <div v-for="(dish, index) in dishes" :key="index">
 
-      <!-- nome e descrizione del piatto -->
-      <div class="name-description">
-        <!-- name -->
-        <div class="dish-name">
-          <h3>{{ dish.name }}</h3>
+      <div class="dish-card" v-if="dish.available === 1">
+        <!-- foto del piatto -->
+        <div class="foto">
+          <img :src="dish.cover" alt="Dish" />
         </div>
 
-        <!-- description -->
-        <div class="dish-description">
-          <p>{{ dish.description }}</p>
-        </div>
-      </div>
+        <!-- nome e descrizione del piatto -->
+        <div class="name-description">
+          <!-- name -->
+          <div class="dish-name">
+            <h3>{{ dish.name }}</h3>
+          </div>
 
-      <!-- prezzo e aggiungi al carrello -->
-      <div class="price add-to-cart">
-        <!-- prezzo -->
-        <div class="price-dish">
-          <p>&euro;{{ dish.price }}</p>
+          <!-- description -->
+          <div class="dish-description">
+            <p>{{ dish.description }}</p>
+          </div>
         </div>
 
-        <!-- pulsante di aggiunta al carrello -->
-        <div class="add-to-cart-btn">
-          <button class="btn btn-outline-info" @click="addToLocalStorage(dish)">
-            Add to cart
-          </button>
+        <!-- prezzo e aggiungi al carrello -->
+        <div class="price add-to-cart">
+          <!-- prezzo -->
+          <div class="price-dish">
+            <p>&euro;{{ dish.price }}</p>
+          </div>
+
+          <!-- pulsante di aggiunta al carrello -->
+          <div class="add-to-cart-btn">
+            <button class="btn btn-outline-info" @click="addToLocalStorage(dish)">
+              Add to cart
+            </button>
+          </div>
         </div>
       </div>
     </div>
