@@ -12,7 +12,7 @@
     {{-- <link rel="shortcut icon" href="https://boolean.careers/favicon/favicon.ico" type="image/x-icon"> --}}
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <script src="{{ asset('js/backoffice.js') }}" defer></script>
 
 
@@ -92,10 +92,10 @@
 
             <label for="tax_id">Partita IVA *</label>
             <br>
-            <input type="text" minlength="11" maxlength="11" name="tax_id" placeholder="Partita iva..."
+            <input type="number" minlength="11" maxlength="11" name="tax_id" placeholder="Partita iva..."
                 {{-- pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" --}}
                 value="{{ old('tax_id')}}"
-                class="form-control @error('tax_id') is-invalid @enderror" required>
+                class="form-control @error('tax_id') is-invalid @enderror" required onkeydown="return inputNumbersNull(event)" >
 
             <!-- errore relativo all'input -->
             @error('tax_id')
@@ -109,7 +109,7 @@
             <br>
             <input type="number" name="phone_number" placeholder="+39...."
                 value="{{ old('phone_number')}}"
-                class="form-control @error('phone_number') is-invalid @enderror" required>
+                class="form-control @error('phone_number') is-invalid @enderror" required onkeydown="return inputNumbersNull(event)">
 
             <!-- errore relativo all'input -->
             @error('phone_number')

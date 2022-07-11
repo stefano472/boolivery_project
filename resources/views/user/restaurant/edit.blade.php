@@ -56,7 +56,7 @@
                     <br>
                     <input type="number" name="tax_id" placeholder="Partita iva..."
                         value="{{ old('tax_id', $restaurant->tax_id) }}"
-                        class="form-control @error('tax_id') is-invalid @enderror" required>
+                        class="form-control @error('tax_id') is-invalid @enderror"  onkeydown="return inputNumbersNull(event)" required>
 
                     <!-- errore relativo all'input -->
                     @error('tax_id')
@@ -70,7 +70,7 @@
                     <br>
                     <input type="number" name="phone_number" placeholder="+39...."
                         value="{{ old('phone_number', $restaurant->phone_number) }}"
-                        class="form-control @error('phone_number') is-invalid @enderror" required>
+                        class="form-control @error('phone_number') is-invalid @enderror" required onkeydown="return inputNumbersNull(event)">
 
                     <!-- errore relativo all'input -->
                     @error('phone_number')

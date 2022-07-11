@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Dish;
+use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,12 +19,19 @@ class OrderController extends Controller
     public function index()
     {
 
-        $id = Auth::id();        
+        $id = Auth::id(); 
+        
+        $restaurant = Restaurant::find($id);
         
         $orders = Order::where('restaurant_id', $id)->orderBy('created_at', 'DESC')->get();
 
         // $orders = Order::orderBy('created_at', 'DESC')->get();
         // $dishes = Dish::where('order', $orders->id)
+        if (!$restaurant) {
+
+            abort(403);
+
+        }
 
         return view('user.restaurant.orders.index', compact('orders'));
     }

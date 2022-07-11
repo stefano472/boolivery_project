@@ -51,3 +51,8 @@ function valthisform()
 // open_modal.addEventListener('click', () => modal_container.classList.add('show'));
 
 // close_modal.addEventListener('click', () => modal_container.classList.remove('show'));
+
+function inputNumbersNull(event) {
+
+    return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space';
+}

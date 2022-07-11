@@ -11,7 +11,21 @@
     <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript">
+
+        var invalidChars = [
+        "-",
+        "+",
+        "e",
+        "E"
+        ];
+
+        function inputNumbersNulls(event) {
+            if (invalidChars.includes(event.key)) {
+                event.preventDefault();
+            }
+        }
+    </script>
 
 
 

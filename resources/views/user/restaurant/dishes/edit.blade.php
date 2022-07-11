@@ -47,7 +47,7 @@
             <label for="price">Prezzo *</label>
             <br>
             <input type="number" min="0" step=".01" name="price" placeholder="prezzo" value="{{ old('price', $dish->price) }}"
-                class="form-control @error('name') is-invalid @enderror" required>
+                class="form-control @error('name') is-invalid @enderror" required onkeydown="return inputNumbersNulls(event)" />
 
             <!-- errore relativo all'input -->
             @error('price')
