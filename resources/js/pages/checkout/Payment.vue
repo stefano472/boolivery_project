@@ -1,7 +1,7 @@
 <template>
-  <div id="paybox" v-if="tokenGenerate" class="payment-box">
+  <div id="paybox" class="payment-box">
     <!-- <p v-if="loaded">Inserisci i dati del pagamento</p> -->
-    <v-braintree class="brain" 
+    <v-braintree v-if="tokenGenerate" class="brain" 
         :authorization="Token"
         locale='it_IT'
         @success="onSuccess"
@@ -35,9 +35,9 @@
         }
     }
      -->
-  </div>
-  <div v-else class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
+    <div v-else class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </template>
 
@@ -63,8 +63,8 @@ export default {
       .then((response) => {
         this.Token = response.data.token;
         console.log(response.data,'genera token');
-          this.tokenGenerate = true;
 
+        this.tokenGenerate = true;
       })
       .catch(e => console.log(e));
   },
@@ -76,9 +76,9 @@ export default {
       this.$refs.paymentBtnRef.click()
     },
     checkoutPrice(){
-        let total = 0;
+      let total = 0;
         this.cart.forEach(dish => {
-            total += (dish.price * dish.quantity)              
+          total += (dish.price * dish.quantity)              
         });
         return total.toFixed(2);
     },
