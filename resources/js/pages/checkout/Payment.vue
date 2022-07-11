@@ -36,6 +36,9 @@
     }
      -->
   </div>
+  <div v-else class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </template>
 
 <script>
@@ -140,6 +143,12 @@ export default {
 <style lang="scss" scoped>
 @import 'resources/sass/variables';
 
+.spinner-border{
+  color: $primary-color !important;
+  height: 4rem !important;
+  width: 4rem !important;
+  margin-top: 11rem;
+}
 #paybox{
   margin: 0 1rem;
   p{
@@ -162,6 +171,12 @@ export default {
           border-color: $secondary-color;
         }
     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .spinner-border{
+    margin-top: 6rem;
   }
 }
 </style>

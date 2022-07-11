@@ -439,6 +439,9 @@ export default {
   .left-payment{
     flex-basis: 70%;
     margin-bottom: 2rem;
+    .payment-part {
+      text-align: center;
+    }
 
     .form{
       margin-top: 2rem;
