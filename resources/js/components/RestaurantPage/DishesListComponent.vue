@@ -1,5 +1,5 @@
 <template>
-  <div class="dishes-list">
+  <div class="dishes-list" id="my-menu">
     <div class="container" v-scrollAnimation>
       <!-- I nostri piatti -->
       <div class="title">

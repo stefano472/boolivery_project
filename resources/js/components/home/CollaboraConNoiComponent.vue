@@ -62,9 +62,12 @@ export default {
         margin-bottom: 2rem;
       }
       button {
+        color: $primary-color;
         border-color: $primary-color;
         // margin-bottom: 50px;
+        transition: 0.2s;
         &:hover {
+          color: $white-color;
           background-color: $primary-color;
         }
       }

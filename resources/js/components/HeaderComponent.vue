@@ -19,6 +19,9 @@
           <li v-if="this.$root._route.name === 'home'">
             <a href="#collab">Collabora con noi</a>
           </li>
+          <li v-if="this.$root._route.name === 'restaurant'">
+            <a href="#my-menu">Menu</a>
+          </li>
           <li>
             <a href="#contacts">Contatti</a>
           </li>

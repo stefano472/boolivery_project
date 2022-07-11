@@ -377,8 +377,10 @@ export default {
 @import 'resources/sass/variables';
 
   h1{
-    margin: 2rem 2rem 0;
+    margin: 2rem auto 0;
+    // padding: 0 2rem;
     color: $primary-color;
+    width: min(80%, 1400px);
   }
 .header{
    background: $dark-color;
