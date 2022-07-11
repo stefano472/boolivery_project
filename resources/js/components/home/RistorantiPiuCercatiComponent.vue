@@ -113,6 +113,7 @@ export default {
     }
     h6 {
       font-size: 1.8rem;
+      text-align: center;
     }
     p {
       font-size: 1rem;

@@ -6,7 +6,7 @@
                 Le categorie piu' richieste
             </h2>
         </div>
-        <div class="row1 mt-5 mb-3" >
+        <div class="row1 mt-5 mb-5" >
 
 
             <!-- <a href="http://127.0.0.1:8000/restaurants/" v-for="(category, index) in categories.slice(0, 4)" :key="index" class="categories-cards">
