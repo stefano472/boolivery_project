@@ -4,7 +4,7 @@
     <router-view @addToCart="addToCart" :cart="cart" />
   </div>
   <div v-else>
-    <HeaderComponent :cart="cart" />
+    <HeaderComponent :cart="cart" @cartActive="cartActive"/>
     <div id="modal-container-app" :class="activeModalApp ? 'sp-show' : ''">
       <div class="sp-modal">
         <!-- <button id='closeModal' @click="closeModal" type="button">X</button> -->
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <router-view :categoriaSelezionataHome='categoriaSelezionataHome' @addToCart="addToCart" @categorySelected='categorySelected' />
+    <router-view :categoriaSelezionataHome='categoriaSelezionataHome' :carrelloAttivo='carrelloAttivo' @addToCart="addToCart" @categorySelected='categorySelected' />
     <!-- oppure
 
     <router-view></router-view> -->
@@ -41,6 +41,7 @@ export default {
       cart: [],
       activeModalApp: false,
       categoriaSelezionataHome : undefined,
+      carrelloAttivo : false
       // quantity: 0,
 
       // addToCart: this.addToCart(),
@@ -54,6 +55,9 @@ export default {
   },
 
   methods: {
+    cartActive(bool) {
+      this.carrelloAttivo = bool
+    },
     categorySelected(idCategory) {
       console.log('id categoria from home', idCategory)
       this.categoriaSelezionataHome = idCategory

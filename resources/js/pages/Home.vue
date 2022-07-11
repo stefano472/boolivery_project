@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i @click="scrollToTop()" v-if="scY > 100" class="fa-solid fa-circle-arrow-up btn-totop"></i>
+    <i @click="scrollToTop()" v-if="scY > 100 && !carrelloAttivo" class="fa-solid fa-circle-arrow-up btn-totop"></i>
     <HeroComponent />
     <ChiSiamoComponent />
     <ParallaxComponent />
@@ -29,6 +29,9 @@ export default {
         scTimer: 0,
         scY: 0,
       }
+    },
+    props: {
+      carrelloAttivo: Boolean
     },
     components: {
         HeroComponent,

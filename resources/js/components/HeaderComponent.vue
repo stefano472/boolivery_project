@@ -198,17 +198,21 @@ export default {
       //     }
       // }
       this.activeModal = true;
+      this.$emit("cartActive", true)
     },
     closeModal() {
       this.activeModal = false;
+      this.$emit("cartActive", false)
     },
     addActiveClassHamburger() {
       let hamburger = document.querySelector(".hamburger-menu");
       hamburger.classList.add("active");
+      this.$emit("cartActive", true)
     },
     addCloseClassHamburger() {
       let hamburger = document.querySelector(".hamburger-menu");
       hamburger.classList.remove("active");
+      this.$emit("cartActive", false)
     },
   },
 

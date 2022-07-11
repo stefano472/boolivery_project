@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i @click="scrollToTop()" v-if="scY > 100" class="fa-solid fa-circle-arrow-up btn-totop"></i>
+    <i @click="scrollToTop()" v-if="scY > 100 && !carrelloAttivo" class="fa-solid fa-circle-arrow-up btn-totop"></i>
     <HeroComponent :restaurant="restaurant"/>
     <DescriptionComponent :restaurant="restaurant"/>
     <DishesListComponent :restaurant="restaurant"  @addToCart="addToCart"/>
@@ -31,6 +31,10 @@ export default {
         DescriptionComponent,
         DishesListComponent,
         InfoRestaurantComponent
+    },
+
+    props: {
+      carrelloAttivo: Boolean
     },
 
     methods:{

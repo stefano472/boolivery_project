@@ -43,7 +43,7 @@ export default {
 .restaurant-list {
   max-height: 500px;
   overflow-y: auto;
-  
+
   // // // // // // custom scrollbar
   &::-webkit-scrollbar {
     width: 1rem;
@@ -117,6 +117,8 @@ export default {
       row-gap: 0;
       margin: 0;
       padding: 30px 20px;
+      text-align: center;
+      justify-content: center;
       .foto {
         margin-bottom: 20px;
       }

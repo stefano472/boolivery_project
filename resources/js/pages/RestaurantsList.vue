@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i @click="scrollToTop()" v-if="scY > 100" class="fa-solid fa-circle-arrow-up btn-totop"></i>
+    <i @click="scrollToTop()" v-if="scY > 100 && !carrelloAttivo" class="fa-solid fa-circle-arrow-up btn-totop"></i>
 
     <!-- Categorie -->
     <CategoriesComponent :categoryFilter='categoryFilter' @categorySelected='categorySelected' />
@@ -32,7 +32,8 @@ export default {
         FilterComponents,
     },
     props: {
-      categoriaSelezionataHome: Number
+      categoriaSelezionataHome: Number,
+      carrelloAttivo: Boolean
     },
 
     data(){
