@@ -1,3 +1,4 @@
+
 *{
     font-family: 'Epilogue', sans-serif;
 }
@@ -360,6 +361,16 @@ h1{
 
 /**** TABLE ****/
 
+.bo-table-th{
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-radius: 5px;
+    height: 70px;
+    padding: 10px;
+    background-color: #38A3A5;
+}
+
 .bo-table{
     width: 100%;
     margin-bottom: 1rem;
@@ -368,15 +379,28 @@ h1{
     border: solid 5px #38A3A5;
     border-radius: 10%;
 
-    thead{
-        background-color: #38A3A5;
-        height: 50px;
-        text-transform: uppercase;
-        font-size: 14px;
-        color: #fff;
+    .bo-th{
+
         padding: 20px 15px;
         text-align: left;
     }
+}
+
+    .thead{
+        .bo-th{
+            background-color: red;
+            height: 50px;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #fff;
+            padding: 20px 15px;
+            text-align: left;
+        }
+    }
+
+
+
+
 
     tbody{
         background-color: white;
@@ -388,7 +412,7 @@ h1{
                 }
             }
         }
-    }
+
 
 
 
@@ -410,3 +434,123 @@ h1{
 }
 
 /************* Restaurant order show.blade ************/
+
+.order-h1{
+    padding: 20px 0px 0 20px;
+}
+
+.order-details-container{
+    margin: 50px 20px;
+    padding: 30px 20px;
+    background-color: white;
+    border-radius: 10px;
+    span{
+        color: #38A3A5;
+    }
+    ul{
+        li{
+            margin: 10px 0;
+        }
+        span{
+            color: #1E282F;
+        }
+    }
+
+    .bo-restaurant-info{
+        margin-top: 30px;
+        span{
+            color: #38A3A5;
+        }
+    }
+
+    .bo-restaurant-index{
+        display:flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        align-items: center;
+
+        h2{
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0px 0px 0px 0;
+            line-height: 20px;
+        }
+
+
+    }
+
+
+}
+
+.details-order-container{
+    background-color: #38A3A5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2{
+        text-transform: uppercase;
+
+        font-size: 16px;
+        padding: 20px 0 10px 0;
+
+    }
+    .bo-table{
+        border-radius: 10px;
+        thead{
+            background-color: #98F1AD;
+        }
+    }
+
+}
+
+
+
+.order-list-container{
+    margin: 50px 20px;
+    padding: 30px 20px;
+    background-color: white;
+    border-radius: 10px;
+    span{
+        color: #38A3A5;
+    }
+    ul{
+        li{
+            margin: 10px 0;
+        }
+        span{
+            color: #1E282F;
+        }
+    }
+
+    .bo-restaurant-info{
+        margin-top: 30px;
+        span{
+            color: #38A3A5;
+        }
+    }
+
+    .bo-restaurant-index{
+        display:flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        align-items: center;
+
+        h2{
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0px 0px 0px 0;
+            line-height: 20px;
+        }
+
+
+    }
+
+
+}
+
+
+.td-svg{
+    text-align: center;
+}
+

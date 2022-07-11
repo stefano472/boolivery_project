@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+
 @section('content')
 
     <div class="bo-container">
@@ -36,10 +37,10 @@
                     <p>Attenzione!!!! Una volta cancellato il piatto, sarà perso...</p>
                     <form class="delete" action="{{ route('user.dishes.destroy', $dish->id) }}" method="POST">
                       @csrf
-          
+
 
                       @method('DELETE')
-          
+
 
                       <button class="btn btn-danger" type="submit">Si</button>
                       <button id='close-modal' class="btn btn-outline-info" type="button">No</button>
@@ -49,7 +50,8 @@
 
             </div>
         </div>
-    
+
     <script src="{{ asset('js/show-dish.js') }}" defer></script>
 
 @endsection
+
