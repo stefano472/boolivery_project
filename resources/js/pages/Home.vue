@@ -1,5 +1,6 @@
 <template>
   <div>
+    <i @click="scrollToTop()" v-if="scY > 100" class="fa-solid fa-circle-arrow-up btn-totop"></i>
     <HeroComponent />
     <ChiSiamoComponent />
     <ParallaxComponent />
@@ -25,6 +26,8 @@ export default {
     data(){
       return {
         restaurants:[],
+        scTimer: 0,
+        scY: 0,
       }
     },
     components: {
@@ -40,7 +43,26 @@ export default {
         categorySelected(idCategory) {
           this.$emit("categorySelected", idCategory);
         },
+        scrollToTop(){
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        },
+        handleScroll() {
+          if (this.scTimer) return;
+          this.scTimer = setTimeout(() => {
+            this.scY = window.scrollY;
+            clearTimeout(this.scTimer);
+            this.scTimer = 0;
+          }, 100);
+        },
     },
+    // computed:{
+    //   posScroll() {
+
+    //   }
+    // },
 
     mounted(){
 
@@ -54,8 +76,37 @@ export default {
         // this.axiosCall();
 
     },
+    created () {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+@import "resources/sass/variables";
+
+.btn-totop{
+    // display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    z-index: 99;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background-color: $primary-color;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    // border-radius: 50%;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+    &:hover{
+      transform: scale(1.05);
+    }
+}
 </style>

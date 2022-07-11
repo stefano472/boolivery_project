@@ -76,8 +76,12 @@ export default {
   .block {
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid $primary-color;
     column-gap: 5px;
     margin-bottom: 20px;
+    &:last-child{
+      border: none;
+    }
   }
   .add-padd {
     padding: 30px;
@@ -95,14 +99,15 @@ export default {
   }
   .box-info {
     width: 35%;
-    height: 200px;
+    // height: 200px;
     display: flex;
     flex-direction: column;
     line-height: 1rem;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
-    padding-left: 1rem;
+    // padding-top: 50px;
+    // padding-left: 1rem;
+    margin: 1rem auto;
     .btn-restaurant{
       color: $white-color;
       background: $primary-color;

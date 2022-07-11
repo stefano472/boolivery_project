@@ -41,8 +41,9 @@ export default {
   .container-chi-siamo {
     display: flex;
     // flex-wrap: wrap;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
+    justify-content: center;
     margin: 0 10%;
     transition-delay: 0.5s;
 
@@ -58,7 +59,7 @@ export default {
     }
 
     .description-container {
-      // flex-basis: 50%;
+      flex-basis: 50%;
       // padding: 0px 50;
 
       h1 {
@@ -125,6 +126,9 @@ export default {
         }
         h2 {
           font-size: 1.6rem;
+          text-align: center;
+        }
+        p{
           text-align: center;
         }
       }

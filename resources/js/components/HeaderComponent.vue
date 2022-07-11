@@ -113,7 +113,9 @@
               </div>
               <div class="checkout">
                 <div class="total-price">
-                  Totale: &euro; {{ checkoutPrice() }}
+                  <span v-if="checkoutPrice() > 0">
+                    Totale: &euro; {{ checkoutPrice() }}
+                  </span>
 
                   <router-link
                     v-if="checkoutPrice() > 0"
@@ -410,6 +412,8 @@ export default {
             img {
               width: 100%;
               border-radius: 10px;
+              max-height: 40px;
+              object-fit: cover;
             }
           }
           .definition {
@@ -464,6 +468,7 @@ export default {
           }
           .total-price {
             font-size: 1.2rem;
+            margin-top: 1.5rem;
             display: flex;
             flex-direction: column;
 
@@ -501,7 +506,7 @@ export default {
           width: 2rem;
           padding: 0.5rem;
           border-radius: 5px;
-          background: $brand-color;
+          background: $secondary-color;
           /* display: flex; */
           /* justify-content: center; */
           /* align-items: center; */
@@ -509,7 +514,7 @@ export default {
           place-content: center;
           cursor: pointer;
           &:hover {
-            background: $secondary-color;
+            background: $primary-color;
           }
         }
       }

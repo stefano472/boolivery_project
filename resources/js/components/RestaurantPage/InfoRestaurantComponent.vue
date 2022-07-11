@@ -12,7 +12,7 @@
         <div class="contacts">
           <h5>Contatti</h5>
           <p>Phone: +39 {{restaurant.phone_number}}</p>
-          <p class="text-center">Email: {{ristoName()}}@gmail.com</p>
+          <p v-if="restaurant.name" class="text-center">Email: {{ristoName}}@gmail.com</p>
         </div>
         <div class="opening">
           <h5>Orari</h5>
@@ -30,22 +30,12 @@ export default {
   props: {
     restaurant: Object,
   },
-  methods:{
+  computed:{
     ristoName(){
-      return this.restaurant.name.toLowerCase().replace(/\s/g, '')
+      return Object.entries(this.restaurant)[1][1].toLowerCase().replace(/\s/g, '')
     }
   }
-  // data(){
-  //   return {
-  //     ristoEmail: '',  
-  //   }
-  // },
-  // computed: {
-  //   ristoEmail() {
-  //     return restaurant.name
-  //   }
-  // }
-};
+}
 </script>
 
 <style lang="scss" scoped>

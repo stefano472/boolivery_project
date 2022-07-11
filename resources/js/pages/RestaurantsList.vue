@@ -1,5 +1,7 @@
 <template>
   <div>
+    <i @click="scrollToTop()" v-if="scY > 100" class="fa-solid fa-circle-arrow-up btn-totop"></i>
+
     <!-- Categorie -->
     <CategoriesComponent :categoryFilter='categoryFilter' @categorySelected='categorySelected' />
 
@@ -43,11 +45,29 @@ export default {
             categoryFilter: null,
 
             categoriesArray:[],
+
+            scTimer: 0,
+
+            scY: 0,
         }
         
     },
 
     methods:{
+        scrollToTop(){
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        },
+        handleScroll() {
+          if (this.scTimer) return;
+          this.scTimer = setTimeout(() => {
+            this.scY = window.scrollY;
+            clearTimeout(this.scTimer);
+            this.scTimer = 0;
+          }, 100);
+        },
       categorySelected(categoryId){
         this.categoryFilter = categoryId,
         this.chiamataAxios()
@@ -121,6 +141,12 @@ export default {
                 }
             }).catch(e => console.log(e))        
     },
+    created () {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
 
 }
 
@@ -130,38 +156,59 @@ export default {
 
 @import 'resources/sass/variables';
 
-.search-bar {
-    width: fit-content;
-      // margin-left: 10rem;
-      display: flex;
-      border-radius: 2.2rem;
-      background: $white-color;
-      .submit {
-        cursor: pointer;
-        border: 0;
-        border-radius: 50%;
-        background: $brand-color;
-        width: 2.2rem;
-        height: 2.2rem;
-        &:hover {
-          color: white;
-        }
-      }
-      .input {
-        width: 20rem;
-        font-size: 0.8rem;
-        padding: 0 1rem;
-        border: 0;
-        background: transparent;
-        &::placeholder {
-          font-size: 0.8rem;
-          color: lightslategrey;
-        }
-        &:focus {
-          outline: 0;
-        }
-      }
-
+.btn-totop{
+    // display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    z-index: 99;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background-color: $primary-color;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    // border-radius: 50%;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+    &:hover{
+      transform: scale(1.05);
+    }
 }
+// .search-bar {
+//     width: fit-content;
+//       // margin-left: 10rem;
+//       display: flex;
+//       border-radius: 2.2rem;
+//       background: $white-color;
+//       .submit {
+//         cursor: pointer;
+//         border: 0;
+//         border-radius: 50%;
+//         background: $brand-color;
+//         width: 2.2rem;
+//         height: 2.2rem;
+//         &:hover {
+//           color: white;
+//         }
+//       }
+//       .input {
+//         width: 20rem;
+//         font-size: 0.8rem;
+//         padding: 0 1rem;
+//         border: 0;
+//         background: transparent;
+//         &::placeholder {
+//           font-size: 0.8rem;
+//           color: lightslategrey;
+//         }
+//         &:focus {
+//           outline: 0;
+//         }
+//       }
+
+// }
 
 </style>
