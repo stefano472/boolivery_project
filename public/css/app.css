@@ -9337,7 +9337,7 @@ h3 {
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 5rem;
 }
 .bo-nav .logo {
   cursor: pointer;
@@ -9355,21 +9355,25 @@ h3 {
   font-family: "Josefin Sans", sans-serif;
 }
 .bo-nav .bo-nav-link {
-  margin-top: 10px;
+  margin: 0;
   display: flex;
   gap: 1.5rem;
-  align-items: center;
+  align-items: flex-end;
   list-style-type: none;
 }
 .bo-nav .bo-nav-link li {
   display: flex;
 }
 .bo-nav .bo-nav-link a {
-  color: #98F1AD;
+  color: #98f1ad;
+  padding-bottom: 0.8rem;
+  transition: 0.2s;
   cursor: pointer;
 }
 .bo-nav .bo-nav-link a:hover {
   color: white;
+  text-decoration: none;
+  box-shadow: inset 0 -3px 0 0 white;
 }
 
 /************* dashboard.blade.php ******************/
