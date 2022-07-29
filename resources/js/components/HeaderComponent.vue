@@ -436,7 +436,7 @@ export default {
                   height: 1rem;
                   padding: 0.6rem;
                   border-radius: 5px;
-                  background: lightgray;
+                  background: $brand-color;
                   display: grid;
                   place-content: center;
                 }
