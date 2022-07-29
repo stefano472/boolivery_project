@@ -369,7 +369,6 @@ h1{
 
 
 /**** TABLE ****/
-
 .bo-table-th{
     width: 100%;
     margin-bottom: 1rem;
@@ -413,9 +412,9 @@ h1{
 
     tbody{
         background-color: white;
-        vertical-align: center;
+        vertical-align: middle;
             td{
-                vertical-align: middle;
+                vertical-align: middle !important;
                 .fa-solid{
                     color: red;
                 }
@@ -560,6 +559,6 @@ h1{
 
 
 .td-svg{
-    text-align: center;
+    text-align: start;
 }
 

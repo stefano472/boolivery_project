@@ -36,7 +36,8 @@ export default {
   .coll{
     display: flex;
     .collab-cover {
-      background-image: url("/img/img_rest/collab.jpg");
+      // background-image: url("/img/img_rest/collab.jpg");
+      background-image: url("/img/collab-small.png"); 
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -44,6 +45,12 @@ export default {
       min-height: 500px;
     }
     .collab-text {
+      // background-image: url("/img/collab-small.png");
+      // background-size: contain;
+      // background-repeat: no-repeat;
+      // background-position: center;
+      // width: 60%;
+      // min-height: 500px;
       margin: 3rem 0;
       display: flex;
       flex-direction: column;

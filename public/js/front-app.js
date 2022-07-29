@@ -1951,7 +1951,8 @@ __webpack_require__.r(__webpack_exports__);
       cart: [],
       activeModalApp: false,
       categoriaSelezionataHome: undefined,
-      carrelloAttivo: false // quantity: 0,
+      carrelloAttivo: false,
+      myKey: 0 // quantity: 0,
       // addToCart: this.addToCart(),
 
     };
@@ -1999,10 +2000,11 @@ __webpack_require__.r(__webpack_exports__);
             product.quantity += 1; // console.log('entro nel if ', contatore)
 
             localStorage.setItem("cart", JSON.stringify(this.cart));
+            this.myKey++; // location.reload();
           } else {
             console.log("entra nell'else", this.cart);
             dish.quantity = 1, this.cart.push(dish);
-            localStorage.setItem("cart", JSON.stringify(this.cart));
+            localStorage.setItem("cart", JSON.stringify(this.cart)); // location.reload();
           } // if (!this.cart.includes(dish)){
           //   dish.quantity = 1;
           //   console.log('entra nell\'if', this.cart);
@@ -2021,7 +2023,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     console.log("console", this.$root._route.name);
 
     if (localStorage.cart) {
@@ -2296,11 +2298,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
     return {
-      activeModal: false // checkoutPrice: 0,
+      activeModal: false,
+      headerKey: 0 // checkoutPrice: 0,
 
     };
   },
@@ -2325,10 +2329,12 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.headerKey++;
     },
     addQuantity: function addQuantity(dish) {
       dish.quantity += 1;
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.headerKey++;
     },
     totalQuantity: function totalQuantity() {
       var quantity = 0;
@@ -2373,13 +2379,13 @@ __webpack_require__.r(__webpack_exports__);
       hamburger.classList.remove("active");
       this.$emit("cartActive", false);
     }
-  } // computed: {
-  //     cart(){
-  //         console.log(localStorage.cart);
-  //         return JSON.parse(localStorage.cart);
-  //     }
-  // }
-
+  },
+  computed: {
+    cartSorted: function cartSorted() {
+      return this.cart.sort(); // console.log('cart head', localStorage.cart);
+      // return JSON.parse(localStorage.cart);
+    }
+  }
 });
 
 /***/ }),
@@ -2554,7 +2560,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addToCart: function addToCart(dish) {
-      console.log("DishList emitted", dish);
+      // console.log("DishList emitted", dish);
       this.$emit("addToCart", dish);
     }
   }
@@ -3036,6 +3042,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeroComponent"
 });
@@ -3070,6 +3080,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33342,7 +33358,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  background-color: white;\n}\n#collab .coll[data-v-2e69cfdb] {\n  display: flex;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/img_rest/collab.jpg\");\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n  margin: 3rem 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 30%;\n  text-align: end;\n}\n#collab .coll .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .coll .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .coll .collab-text button[data-v-2e69cfdb] {\n  color: #38a3a5;\n  border-color: #38a3a5;\n  transition: 0.2s;\n}\n#collab .coll .collab-text button[data-v-2e69cfdb]:hover {\n  color: white;\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab .coll[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n    margin-top: 0;\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}\n@media screen and (max-width: 400px) {\n#collab .coll[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n    background-size: cover;\n    min-height: 300px;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}", ""]);
+exports.push([module.i, "#collab[data-v-2e69cfdb] {\n  background-color: white;\n}\n#collab .coll[data-v-2e69cfdb] {\n  display: flex;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n  background-image: url(\"/img/collab-small.png\");\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n  width: 60%;\n  min-height: 500px;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n  margin: 3rem 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 30%;\n  text-align: end;\n}\n#collab .coll .collab-text h2[data-v-2e69cfdb] {\n  font-size: 2.5rem;\n  font-weight: 600;\n  color: #38a3a5;\n}\n#collab .coll .collab-text p[data-v-2e69cfdb] {\n  color: #38a3a5;\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n#collab .coll .collab-text button[data-v-2e69cfdb] {\n  color: #38a3a5;\n  border-color: #38a3a5;\n  transition: 0.2s;\n}\n#collab .coll .collab-text button[data-v-2e69cfdb]:hover {\n  color: white;\n  background-color: #38a3a5;\n}\n@media screen and (max-width: 767px) {\n#collab .coll[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n    margin-top: 0;\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}\n@media screen and (max-width: 400px) {\n#collab .coll[data-v-2e69cfdb] {\n    flex-direction: column;\n}\n#collab .coll .collab-cover[data-v-2e69cfdb] {\n    width: 100%;\n    background-size: cover;\n    min-height: 300px;\n}\n#collab .coll .collab-text[data-v-2e69cfdb] {\n    width: 80%;\n    margin-inline: auto;\n    padding-right: 15px;\n    text-align: center;\n}\n}", ""]);
 
 // exports
 
@@ -33361,7 +33377,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#hero[data-v-e429ce44] {\n  padding-top: 70px;\n}\n#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero .before-enter[data-v-e429ce44] {\n  opacity: 0;\n  transform: translatex(100px);\n  transition: all 1s cubic-bezier(0.24, -0.13, 0.42, 1.45);\n}\n#hero .enter[data-v-e429ce44] {\n  opacity: 1;\n  transform: translatex(0px);\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  width: 80%;\n  background-image: url(\"/img/hero-img.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n  transition-delay: 0.5s;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  margin: 4rem 0 2rem;\n  padding: 1rem;\n  border-radius: 10px;\n  background: rgba(30, 40, 47, 0.7);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar[data-v-e429ce44] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  border-radius: 2.2rem;\n  background: white;\n  transition: 0.3s;\n}\n#hero .search-bar[data-v-e429ce44]:hover {\n  transform: scale(1.05);\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  cursor: pointer;\n  border: 0;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit[data-v-e429ce44]:hover {\n  color: white;\n}\n#hero .search-bar .submit i[data-v-e429ce44] {\n  margin: 3px 3px 0 0;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  align-items: center;\n  color: lightslategray;\n  font-size: 0.8rem;\n  padding: 3px 1rem 0;\n  border: 0;\n  background: transparent;\n}\n#hero .search-bar .input[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .search-bar .input[data-v-e429ce44]::-moz-placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]::placeholder {\n  font-size: 0.8rem;\n  color: lightslategrey;\n}\n#hero .search-bar .input[data-v-e429ce44]:focus {\n  outline: 0;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}\n@media screen and (max-width: 1400px) {\n#hero .container2[data-v-e429ce44] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 996px) {\n#hero .container2[data-v-e429ce44] {\n    background-position: left;\n}\n}\n@media screen and (max-width: 500px) {\n#hero .container2[data-v-e429ce44] {\n    background: none;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}", ""]);
+exports.push([module.i, "#hero[data-v-e429ce44] {\n  padding-top: 70px;\n}\n#hero[data-v-e429ce44] {\n  background: #1e282f;\n}\n#hero .before-enter[data-v-e429ce44] {\n  opacity: 0;\n  transform: translatex(100px);\n  transition: all 1s cubic-bezier(0.24, -0.13, 0.42, 1.45);\n}\n#hero .enter[data-v-e429ce44] {\n  opacity: 1;\n  transform: translatex(0px);\n}\n#hero h1[data-v-e429ce44],\n#hero h2[data-v-e429ce44],\n#hero h3[data-v-e429ce44],\n#hero h4[data-v-e429ce44],\n#hero h5[data-v-e429ce44],\n#hero h6[data-v-e429ce44],\n#hero p[data-v-e429ce44] {\n  margin: 0;\n  padding: 0;\n}\n#hero .container2[data-v-e429ce44] {\n  width: 80%;\n  background-image: url(\"/img/hero-img-small.png\");\n  background-size: 1000px;\n  background-position: right;\n  background-repeat: no-repeat;\n  margin-inline: auto;\n  padding: 1rem 0;\n  display: flex;\n  transition-delay: 0.5s;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n  width: 80%;\n  margin-inline: auto;\n  padding-bottom: 4rem;\n  z-index: 1;\n}\n#hero .text[data-v-e429ce44] {\n  margin: 4rem 0 2rem;\n  padding: 1rem;\n  border-radius: 10px;\n  background: rgba(30, 40, 47, 0.7);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  color: #98f1ad;\n  font-size: 2.5rem;\n}\n#hero .text .logo[data-v-e429ce44] {\n  text-decoration: underline;\n  display: flex;\n  gap: 0.1rem;\n}\n#hero .text .logo img[data-v-e429ce44] {\n  height: 4rem;\n}\n#hero .text .logo p[data-v-e429ce44] {\n  font-size: 3rem;\n  margin-top: 0.3rem;\n  font-family: \"Josefin Sans\", sans-serif;\n}\n#hero .text .lowercase[data-v-e429ce44] {\n  color: #38a3a5;\n}\n#hero .link-router[data-v-e429ce44] {\n  display: flex;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n#hero .link-router[data-v-e429ce44]:hover {\n  text-decoration: none;\n}\n#hero .link-router:hover .submit[data-v-e429ce44] {\n  background: #38a3a5;\n}\n#hero .link-router:hover .submit i[data-v-e429ce44] {\n  color: white;\n}\n#hero .search-bar[data-v-e429ce44] {\n  color: #1e282f;\n  display: flex;\n  gap: 0.5rem;\n  transition: 0.3s;\n}\n#hero .search-bar .submit[data-v-e429ce44] {\n  transition: 0.3s;\n  cursor: pointer;\n  border: 3px solid white;\n  border-radius: 50%;\n  background: #98f1ad;\n  width: 2.2rem;\n  height: 2.2rem;\n}\n#hero .search-bar .submit i[data-v-e429ce44] {\n  transition: 0.3s;\n  color: #1e282f;\n  margin: 2px 2px 0 0;\n}\n#hero .search-bar .input[data-v-e429ce44] {\n  display: flex;\n  /* vertical-align: middle; */\n  padding: 0.25rem 1rem;\n  /* border: 0; */\n  margin-top: 2px;\n  border: 3px solid white;\n  border-radius: 5px;\n  background: #98f1ad;\n}\n#hero .search-bar .input span[data-v-e429ce44] {\n  font-size: 0.8rem;\n}\n#hero .wave[data-v-e429ce44] {\n  width: 100%;\n  height: 60px;\n  color: #38a3a5;\n}\n@media screen and (max-width: 1400px) {\n#hero .container2[data-v-e429ce44] {\n    width: 100%;\n}\n}\n@media screen and (max-width: 996px) {\n#hero .container2[data-v-e429ce44] {\n    background-position: left;\n}\n}\n@media screen and (max-width: 500px) {\n#hero .container2[data-v-e429ce44] {\n    background: none;\n}\n#hero .container2 .sx-text[data-v-e429ce44] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}", ""]);
 
 // exports
 
@@ -33399,7 +33415,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 70px 0 20px;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  border-bottom: 1px solid #38a3a5;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .block[data-v-64dd5034]:last-child {\n  border: none;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  margin: 1rem auto;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034] {\n  color: white;\n  background: #38a3a5;\n  border: #38a3a5;\n  transition: 0.2s;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034]:hover {\n  color: #38a3a5;\n  background: white;\n  border: white;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n  text-align: center;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n  color: #38a3a5;\n}\n#sm-container .description[data-v-64dd5034] {\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    padding: 0;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
+exports.push([module.i, ".out-container[data-v-64dd5034] {\n  background-color: #98f1ad;\n  font-family: \"Epilogue\", sans-serif;\n}\n#sm-container[data-v-64dd5034] {\n  margin-inline: auto;\n  width: 80%;\n  max-width: 1400px;\n}\n#sm-container .most-want[data-v-64dd5034] {\n  width: 100%;\n  min-height: 500px;\n  padding-bottom: 20px;\n}\n#sm-container .main-titles[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 70px 0 20px;\n}\n#sm-container .main-titles h2[data-v-64dd5034] {\n  font-size: 2.5rem;\n}\n#sm-container .main-titles h5[data-v-64dd5034] {\n  font-size: 1.8rem;\n}\n#sm-container .block[data-v-64dd5034] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid #38a3a5;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  margin-bottom: 20px;\n}\n#sm-container .block[data-v-64dd5034]:last-child {\n  border: none;\n}\n#sm-container .add-padd[data-v-64dd5034] {\n  padding: 30px;\n  width: 100%;\n  height: 250px;\n}\n#sm-container .bg-img[data-v-64dd5034] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-y: center;\n  border-radius: 5px;\n}\n#sm-container .box-info[data-v-64dd5034] {\n  width: 35%;\n  display: flex;\n  flex-direction: column;\n  line-height: 1rem;\n  justify-content: center;\n  align-items: center;\n  padding: 30px 0;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034] {\n  color: white;\n  background: #38a3a5;\n  border: #38a3a5;\n  transition: 0.2s;\n}\n#sm-container .box-info .btn-restaurant[data-v-64dd5034]:hover {\n  color: #38a3a5;\n  background: white;\n  border: white;\n}\n#sm-container .box-info h6[data-v-64dd5034] {\n  font-size: 1.8rem;\n  text-align: center;\n}\n#sm-container .box-info p[data-v-64dd5034] {\n  font-size: 1rem;\n}\n#sm-container .name-restaurant[data-v-64dd5034] {\n  text-transform: uppercase;\n  font-size: 1.2rem;\n  color: #38a3a5;\n}\n#sm-container .categories[data-v-64dd5034] {\n  display: flex;\n  margin-bottom: 1rem;\n  gap: 0.5rem;\n}\n#sm-container .categories div[data-v-64dd5034] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 0.5rem;\n}\n#sm-container .categories div img[data-v-64dd5034] {\n  width: 4rem;\n  border-radius: 3px;\n}\n#sm-container .description[data-v-64dd5034] {\n  font-size: 0.7rem;\n  text-align: center;\n}\n#sm-container .tipology[data-v-64dd5034] {\n  font-size: 0.7rem;\n  font-weight: 700;\n}\n#sm-container .btn-go[data-v-64dd5034] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  padding: 5px;\n  background-color: transparent;\n  cursor: pointer;\n}\n@media screen and (max-width: 992px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 992px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2.2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.6rem;\n}\n}\n@media screen and (max-width: 768px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 768px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 2rem;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.5rem;\n}\n}\n@media screen and (max-width: 576px) {\n.out-container[data-v-64dd5034] {\n    margin-inline: auto;\n    max-width: 576px;\n}\n.out-container #sm-container .most-want[data-v-64dd5034] {\n    width: 100%;\n    min-height: 500px;\n    padding-bottom: 20px;\n}\n.out-container #sm-container .main-titles[data-v-64dd5034] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 30px 0;\n}\n.out-container #sm-container .main-titles h2[data-v-64dd5034] {\n    font-size: 1.8rem;\n    text-align: center;\n}\n.out-container #sm-container .main-titles h5[data-v-64dd5034] {\n    font-size: 1.4rem;\n}\n.out-container #sm-container .block[data-v-64dd5034] {\n    flex-direction: column;\n}\n.out-container #sm-container .add-padd[data-v-64dd5034] {\n    padding: 10px;\n    height: 250px;\n}\n.out-container #sm-container .add-padd .bg-img[data-v-64dd5034] {\n    width: 100%;\n    height: 100%;\n}\n.out-container #sm-container .box-info[data-v-64dd5034] {\n    flex-direction: column;\n    width: 100%;\n    height: auto;\n    text-align: center;\n    justify-content: start;\n    padding-top: 20px;\n}\n}", ""]);
 
 // exports
 
@@ -66489,6 +66505,7 @@ var render = function () {
         "div",
         [
           _c("HeaderComponent", {
+            key: _vm.myKey,
             attrs: { cart: _vm.cart },
             on: { cartActive: _vm.cartActive },
           }),
@@ -66650,53 +66667,14 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "header" } }, [
+  return _c("div", { key: _vm.headerKey, attrs: { id: "header" } }, [
     _c("div", { staticClass: "container2" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("nav", [
-        _c("ul", [
-          _vm._m(1),
-          _vm._v(" "),
-          this.$root._route.name === "home"
-            ? _c("li", [
-                _c("a", { attrs: { href: "#about-us" } }, [_vm._v("About us")]),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.$root._route.name === "home"
-            ? _c("li", [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "#services" },
-                    on: { click: _vm.addCloseClassHamburger },
-                  },
-                  [_vm._v("Servizi")]
-                ),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.$root._route.name === "home"
-            ? _c("li", [
-                _c("a", { attrs: { href: "#collab" } }, [
-                  _vm._v("Collabora con noi"),
-                ]),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.$root._route.name === "restaurant"
-            ? _c("li", [
-                _c("a", { attrs: { href: "#my-menu" } }, [_vm._v("Menu")]),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(2),
-        ]),
-      ]),
+      _vm._m(1),
       _vm._v(" "),
       _c("div", { staticClass: "cart-login" }, [
-        _vm._m(3),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "i",
@@ -66722,46 +66700,40 @@ var render = function () {
         _vm._v(" "),
         _c("div", { staticClass: "hamburger-menu" }, [
           _c("ul", [
-            _vm._m(4),
+            _vm._m(3),
             _vm._v(" "),
-            this.$root._route.name === "home"
-              ? _c("li", [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#about-us" },
-                      on: { click: _vm.addCloseClassHamburger },
-                    },
-                    [_vm._v("About us")]
-                  ),
-                ])
-              : _vm._e(),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "/#about-us" },
+                  on: { click: _vm.addCloseClassHamburger },
+                },
+                [_vm._v("About us")]
+              ),
+            ]),
             _vm._v(" "),
-            this.$root._route.name === "home"
-              ? _c("li", [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#services" },
-                      on: { click: _vm.addCloseClassHamburger },
-                    },
-                    [_vm._v("Servizi")]
-                  ),
-                ])
-              : _vm._e(),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "/#services" },
+                  on: { click: _vm.addCloseClassHamburger },
+                },
+                [_vm._v("Servizi")]
+              ),
+            ]),
             _vm._v(" "),
-            this.$root._route.name === "home"
-              ? _c("li", [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#collab" },
-                      on: { click: _vm.addCloseClassHamburger },
-                    },
-                    [_vm._v("Collabora con noi")]
-                  ),
-                ])
-              : _vm._e(),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "/#collab" },
+                  on: { click: _vm.addCloseClassHamburger },
+                },
+                [_vm._v("Collabora con noi")]
+              ),
+            ]),
             _vm._v(" "),
             _c("li", [
               _c(
@@ -66774,7 +66746,7 @@ var render = function () {
               ),
             ]),
             _vm._v(" "),
-            _vm._m(5),
+            _vm._m(4),
           ]),
           _vm._v(" "),
           _c(
@@ -66802,12 +66774,12 @@ var render = function () {
                   on: { click: _vm.closeModal },
                 }),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(5),
                 _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "cart" },
-                  _vm._l(_vm.cart, function (item, index) {
+                  _vm._l(_vm.cartSorted, function (item, index) {
                     return _c("div", { key: index }, [
                       _c("div", { staticClass: "dish-cart" }, [
                         _c("div", { staticClass: "dish-img" }, [
@@ -66922,16 +66894,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "/restaurants" } }, [_vm._v("Ristoranti")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "#contacts" } }, [_vm._v("Contatti")]),
+    return _c("nav", [
+      _c("ul", [
+        _c("li", [
+          _c("a", { attrs: { href: "/restaurants" } }, [_vm._v("Ristoranti")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "/#about-us" } }, [_vm._v("About us")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "/#services" } }, [_vm._v("Servizi")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "/#collab" } }, [
+            _vm._v("Collabora con noi"),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "#contacts" } }, [_vm._v("Contatti")]),
+        ]),
+      ]),
     ])
   },
   function () {
@@ -67779,12 +67765,16 @@ var render = function () {
               },
               [
                 _c("div", { staticClass: "search-bar ml-3" }, [
-                  _c("button", { staticClass: "submit" }, [
-                    _c("i", { staticClass: "fa-solid fa-rocket" }),
+                  _c("div", { staticClass: "input" }, [
+                    _c("span", [
+                      _vm._v(
+                        "\n              Scopri i nostri ristoranti!\n            "
+                      ),
+                    ]),
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input" }, [
-                    _vm._v("Scopri i nostri ristoranti!"),
+                  _c("button", { staticClass: "submit" }, [
+                    _c("i", { staticClass: "fa-solid fa-rocket" }),
                   ]),
                 ]),
               ]
@@ -67900,10 +67890,13 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c(
-                      "p",
+                      "div",
+                      { staticClass: "categories" },
                       _vm._l(restaurant.categories, function (category, index) {
-                        return _c("span", { key: index }, [
-                          _vm._v(_vm._s(category.name) + " "),
+                        return _c("div", { key: index }, [
+                          _c("img", { attrs: { src: category.img, alt: "" } }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(category.name))]),
                         ])
                       }),
                       0

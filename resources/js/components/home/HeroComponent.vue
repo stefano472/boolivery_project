@@ -12,10 +12,14 @@
         </div>
         <router-link class="link-router" :to="{ name: 'restaurants' }">
           <div class="search-bar ml-3">
+            <div class="input">
+              <span>
+                Scopri i nostri ristoranti!
+              </span>
+            </div>
             <button class="submit">
               <i class="fa-solid fa-rocket"></i>
             </button>
-            <div class="input">Scopri i nostri ristoranti!</div>
             <!-- <input v-model="inputSearch" type="text" class="input" placeholder="Search..."> -->
           </div>
         </router-link>
@@ -68,7 +72,7 @@ export default {
     // padding-bottom: 4rem;
     //max-width: 1400px;
      width: 80%;
-    background-image: url("/img/hero-img.png");
+    background-image: url("/img/hero-img-small.png");
     background-size: 1000px;
     // background-position: 300px;
     background-position: right;
@@ -110,50 +114,71 @@ export default {
       color: $primary-color;
     }
   }
+  .link-router{
+    display: flex;
+    width: fit-content;
+  }
   .link-router:hover {
     text-decoration: none;
+    .submit{
+      background: $primary-color;
+      i{
+        color: $white-color;
+      }
+    }
+    // .input{
+    //   background: $primary-color;
+    // }
   }
   .search-bar {
-    width: fit-content;
+    // width: fit-content;
     // margin-left: 10rem;
+    color: $dark-color;
     display: flex;
-    border-radius: 2.2rem;
-    background: $white-color;
+    gap: 0.5rem;
+    // align-items: baseline;
+    // border-radius: 6px;
+    // background: $secondary-color;
     transition: 0.3s;
-    &:hover{
-      transform: scale(1.05);
-    }
+    // &:hover{
+      //   transform: scale(1.05);
+    // }
     .submit {
+      transition: 0.3s;
       cursor: pointer;
-      border: 0;
+      border: 3px solid white;
       border-radius: 50%;
       background: $brand-color;
       width: 2.2rem;
       height: 2.2rem;
-      &:hover {
-        color: white;
-      }
+      // &:hover {
+        //   color: white;
+      // }
       i{
-        margin: 3px 3px 0 0;
+        transition: 0.3s;
+        color: $dark-color;
+        margin: 2px 2px 0 0;
       }
     }
     .input {
       display: flex;
-      align-items: center;
-      color: lightslategray;
-      font-size: 0.8rem;
-      padding: 3px 1rem 0;
-      border: 0;
-      background: transparent;
-      &:hover {
-        text-decoration: none;
-      }
-      &::placeholder {
+      // align-items: center;
+      /* vertical-align: middle; */
+      padding: 0.25rem 1rem;
+      /* border: 0; */
+      margin-top: 2px;
+      border: 3px solid white;
+      border-radius: 5px;
+      background: #98f1ad;
+      // &:hover {
+        //   text-decoration: none;
+      // }
+      // &:focus {
+        //   outline: 0;
+      // }
+      span{
         font-size: 0.8rem;
-        color: lightslategrey;
-      }
-      &:focus {
-        outline: 0;
+        
       }
     }
   }

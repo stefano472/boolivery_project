@@ -1,5 +1,5 @@
-<template>
-  <div id="header">
+<template >
+  <div :key="headerKey" id="header">
     <div class="container2">
       <a class="logo" href="/">
         <img src="/logo.svg" alt="logo" />
@@ -10,18 +10,18 @@
           <li>
             <a href="/restaurants">Ristoranti</a>
           </li>
-          <li v-if="this.$root._route.name === 'home'">
-            <a href="#about-us">About us</a>
+          <li >
+            <a href="/#about-us">About us</a>
           </li>
-          <li v-if="this.$root._route.name === 'home'">
-              <a @click="addCloseClassHamburger" href="#services">Servizi</a>
+          <li >
+              <a href="/#services">Servizi</a>
           </li>
-          <li v-if="this.$root._route.name === 'home'">
-            <a href="#collab">Collabora con noi</a>
+          <li >
+            <a href="/#collab">Collabora con noi</a>
           </li>
-          <li v-if="this.$root._route.name === 'restaurant'">
+          <!-- <li v-if="this.$root._route.name === 'restaurant'">
             <a href="#my-menu">Menu</a>
-          </li>
+          </li> -->
           <li>
             <a href="#contacts">Contatti</a>
           </li>
@@ -49,14 +49,14 @@
             <li>
               <a href="/restaurants">Ristoranti</a>
             </li>
-            <li v-if="this.$root._route.name === 'home'">
-              <a @click="addCloseClassHamburger" href="#about-us">About us</a>
+            <li >
+              <a @click="addCloseClassHamburger" href="/#about-us">About us</a>
             </li>
-            <li v-if="this.$root._route.name === 'home'">
-              <a @click="addCloseClassHamburger" href="#services">Servizi</a>
+            <li >
+              <a @click="addCloseClassHamburger" href="/#services">Servizi</a>
             </li>
-            <li v-if="this.$root._route.name === 'home'">
-              <a @click="addCloseClassHamburger" href="#collab">Collabora con noi</a>
+            <li >
+              <a @click="addCloseClassHamburger" href="/#collab">Collabora con noi</a>
             </li>
             <li>
               <a @click="addCloseClassHamburger" href="#contacts">Contatti</a>
@@ -69,6 +69,7 @@
             <i class="fas fa-times"></i>
           </a>
         </div>
+
         <div>
           <div id="modal-container" :class="activeModal ? 'sp-show' : ''">
             <div class="sp-modal">
@@ -80,7 +81,7 @@
               </div>
 
               <div class="cart">
-                <div v-for="(item, index) in cart" :key="index">
+                <div v-for="(item, index) in cartSorted" :key="index">
                   <div class="dish-cart">
                     <div class="dish-img">
                       <img :src="'/storage/' + item.cover" alt="" />
@@ -141,6 +142,7 @@ export default {
   data() {
     return {
       activeModal: false,
+      headerKey: 0,
       // checkoutPrice: 0,
     };
   },
@@ -166,10 +168,12 @@ export default {
         this.removeItem(index);
       }
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.headerKey ++;
     },
     addQuantity(dish) {
       dish.quantity += 1;
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.headerKey ++;
     },
     totalQuantity() {
       let quantity = 0;
@@ -216,13 +220,13 @@ export default {
     },
   },
 
-  // computed: {
-  //     cart(){
-
-  //         console.log(localStorage.cart);
-  //         return JSON.parse(localStorage.cart);
-  //     }
-  // }
+  computed: {
+      cartSorted(){
+          return this.cart.sort()
+          // console.log('cart head', localStorage.cart);
+          // return JSON.parse(localStorage.cart);
+      }
+  }
 };
 </script>
 

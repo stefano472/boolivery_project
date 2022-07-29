@@ -9589,10 +9589,10 @@ h1 {
 
 tbody {
   background-color: white;
-  vertical-align: center;
+  vertical-align: middle;
 }
 tbody td {
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 tbody td .fa-solid {
   color: red;
@@ -9706,5 +9706,5 @@ tbody td .fa-solid {
 }
 
 .td-svg {
-  text-align: center;
+  text-align: start;
 }

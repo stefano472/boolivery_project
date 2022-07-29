@@ -54,7 +54,7 @@ export default {
 
   methods: {
     addToCart(dish) {
-      console.log("DishList emitted", dish);
+      // console.log("DishList emitted", dish);
 
       this.$emit("addToCart", dish);
     },

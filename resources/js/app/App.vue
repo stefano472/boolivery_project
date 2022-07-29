@@ -4,7 +4,7 @@
     <router-view @addToCart="addToCart" :cart="cart" />
   </div>
   <div v-else>
-    <HeaderComponent :cart="cart" @cartActive="cartActive"/>
+    <HeaderComponent :key="myKey" :cart="cart" @cartActive="cartActive"/>
     <div id="modal-container-app" :class="activeModalApp ? 'sp-show' : ''">
       <div class="sp-modal">
         <!-- <button id='closeModal' @click="closeModal" type="button">X</button> -->
@@ -41,7 +41,8 @@ export default {
       cart: [],
       activeModalApp: false,
       categoriaSelezionataHome : undefined,
-      carrelloAttivo : false
+      carrelloAttivo : false,
+      myKey: 0,
       // quantity: 0,
 
       // addToCart: this.addToCart(),
@@ -81,6 +82,7 @@ export default {
         this.cart.push(dish);
         localStorage.setItem("cart", JSON.stringify(this.cart));
       } else {
+        
         if (this.cart[0].restaurant_id === dish.restaurant_id) {
           const product = this.cart.find((o) => o.id === dish.id);
           if (product) {
@@ -89,10 +91,15 @@ export default {
             product.quantity += 1;
             // console.log('entro nel if ', contatore)
             localStorage.setItem("cart", JSON.stringify(this.cart));
+            this.myKey ++;
+            // location.reload();
+            
           } else {
             console.log("entra nell'else", this.cart);
-            (dish.quantity = 1), this.cart.push(dish);
+            dish.quantity = 1, 
+            this.cart.push(dish);
             localStorage.setItem("cart", JSON.stringify(this.cart));
+            // location.reload();
           }
           // if (!this.cart.includes(dish)){
           //   dish.quantity = 1;
@@ -112,7 +119,7 @@ export default {
     },
   },
 
-  mounted() {
+  created() {
     console.log("console", this.$root._route.name);
     if (localStorage.cart) {
       this.cart = JSON.parse(localStorage.cart);

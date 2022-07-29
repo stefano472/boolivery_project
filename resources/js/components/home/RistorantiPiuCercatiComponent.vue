@@ -21,7 +21,13 @@
 
             <div class="box-info">
               <h6 class="name-restaurant">{{ restaurant.name }}</h6>
-              <p><span v-for="(category, index) in restaurant.categories" :key="index" >{{category.name}} </span></p>
+              <!-- <p><span v-for="(category, index) in restaurant.categories" :key="index" >{{category.name}} </span></p> -->
+              <div class="categories">
+                <div v-for="(category, index) in restaurant.categories" :key="index">
+                  <img class="" :src="category.img" alt="">
+                  <span>{{category.name}}</span>
+                </div>
+              </div>
               <p class="description">{{ restaurant.motto }}</p>
               <!-- <p class="tipology">Tipologia ristorante</p> -->
               <router-link class="btn btn-restaurant"
@@ -76,6 +82,7 @@ export default {
   .block {
     display: flex;
     justify-content: center;
+    align-items: center;
     border-bottom: 1px solid $primary-color;
     column-gap: 5px;
     margin-bottom: 20px;
@@ -107,7 +114,8 @@ export default {
     align-items: center;
     // padding-top: 50px;
     // padding-left: 1rem;
-    margin: 1rem auto;
+    padding: 30px 0;
+    // margin: 1rem auto;
     .btn-restaurant{
       color: $white-color;
       background: $primary-color;
@@ -132,6 +140,21 @@ export default {
     text-transform: uppercase;
     font-size: 1.2rem;
     color: $primary-color;
+  }
+  .categories{
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      img{
+        width: 4rem;
+        border-radius: 3px;
+      }
+    }
   }
   .description {
 
@@ -241,7 +264,7 @@ export default {
         flex-direction: column;
         width: 100%;
         height: auto;
-        padding: 0;
+        // padding: 0;
         text-align: center;
         justify-content: start;
         padding-top: 20px;
