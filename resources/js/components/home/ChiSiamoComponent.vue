@@ -8,14 +8,24 @@
         <h1>BOOLIVERY</h1>
         <h2>CHI SIAMO</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
           quidem eos. Consequatur, itaque assumenda aspernatur, ducimus
           asperiores doloribus et at consectetur error nulla nemo hic beatae
           dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet
           consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla
           culpa veritatis laboriosam quidem obcaecati nam quod porro commodi
-          recusandae ut quam voluptatum ad dicta officia assumenda eaque!
+          recusandae ut quam voluptatum ad dicta officia assumenda eaque! -->
+          Siamo 5 ragazzi che hanno voluto l'intuizione di creare una start-up di food delivery.
+          <!-- Per il momento abbiamo idea di imporci sul mercato nel comune di Milano. 
+          La nostra ambizione è di poterci espandere in tutta italia, oppure chissà, magari qualcosa
+          di più in futuro! Keep pushing :rocket -->
         </p>
+        <p>Per il momento abbiamo idea di imporci sul mercato nel comune di Milano.</p>
+        <p>
+          La nostra ambizione è di poterci espandere in tutta italia, oppure chissà, magari qualcosa
+          di più in futuro!
+        </p>
+        <p>Nel frattempo, Keep Pushing 🚀🚀</p>
       </div>
     </div>
   </div>
@@ -73,7 +83,8 @@ export default {
       p {
         color: $dark-color;
         font-size: 16px;
-        padding-top: 20px;
+        margin: 0;
+        // padding-top: 20px;
       }
     }
   }

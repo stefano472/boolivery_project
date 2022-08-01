@@ -2960,6 +2960,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ChiSiamoComponent"
 });
@@ -33339,7 +33349,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  gap: 3rem;\n  align-items: center;\n  justify-content: center;\n  margin: 0 10%;\n  transition-delay: 0.5s;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex-basis: 50%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  padding-top: 20px;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n    text-align: center;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    display: flex;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n    margin-inline: auto;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
+exports.push([module.i, ".container-section[data-v-ca955b62] {\n  background-color: #38a3a5;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  padding: 80px 0;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n  display: flex;\n  gap: 3rem;\n  align-items: center;\n  justify-content: center;\n  margin: 0 10%;\n  transition-delay: 0.5s;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n  width: 25rem;\n  border-radius: 10px;\n  padding-bottom: 20px;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n  flex-basis: 50%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n  color: white;\n  font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n  color: #57cc99;\n  font-size: 2rem;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n  color: #1e282f;\n  font-size: 16px;\n  margin: 0;\n}\n@media (max-width: 1900px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.5rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 2rem;\n}\n}\n@media (max-width: 1400px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2.2rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n}\n@media (max-width: 992px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 2rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.6rem;\n    text-align: center;\n}\n.container-section .container-chi-siamo .description-container p[data-v-ca955b62] {\n    text-align: center;\n}\n}\n@media (max-width: 768px) {\n.container-section[data-v-ca955b62] {\n    width: 100%;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .description-container h1[data-v-ca955b62] {\n    font-size: 1.8rem;\n}\n.container-section .container-chi-siamo .description-container h2[data-v-ca955b62] {\n    font-size: 1.4rem;\n}\n}\n@media (max-width: 576px) {\n.container-section[data-v-ca955b62] {\n    flex-direction: column;\n}\n.container-section .container-chi-siamo[data-v-ca955b62] {\n    display: flex;\n    flex-direction: column;\n}\n.container-section .container-chi-siamo .img-container[data-v-ca955b62] {\n    display: flex;\n}\n.container-section .container-chi-siamo .img-container img[data-v-ca955b62] {\n    width: 80%;\n    margin-inline: auto;\n}\n.container-section .container-chi-siamo .description-container[data-v-ca955b62] {\n    padding: 0px 10px;\n}\n}", ""]);
 
 // exports
 
@@ -67654,9 +67664,23 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "\n        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,\n        quidem eos. Consequatur, itaque assumenda aspernatur, ducimus\n        asperiores doloribus et at consectetur error nulla nemo hic beatae\n        dignissimos expedita exercitationem velit? Lorem, ipsum dolor sit amet\n        consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla\n        culpa veritatis laboriosam quidem obcaecati nam quod porro commodi\n        recusandae ut quam voluptatum ad dicta officia assumenda eaque!\n      "
+          "\n        Siamo 5 ragazzi che hanno voluto l'intuizione di creare una start-up di food delivery.\n        "
         ),
       ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Per il momento abbiamo idea di imporci sul mercato nel comune di Milano."
+        ),
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n        La nostra ambizione è di poterci espandere in tutta italia, oppure chissà, magari qualcosa\n        di più in futuro!\n      "
+        ),
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Nel frattempo, Keep Pushing 🚀🚀")]),
     ])
   },
 ]
@@ -67698,7 +67722,7 @@ var render = function () {
           _vm._v(" "),
           _c("p", [
             _vm._v(
-              "\n        Aumenta le tue vendite diventando partner del più grande servizio online\n        di ordini a domicilio d'Italia. Metti il tuo ristorante a disposizione\n        di migliaia di nuovi clienti entrando nel gruppo Boolivery. Appena\n        affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un\n        servizio clienti dedicato.\n      "
+              "\n        Aumenta le tue vendite diventando partner del più grande servizio online\n        di ordini a domicilio di Milano. Metti il tuo ristorante a disposizione\n        di migliaia di nuovi clienti entrando nel gruppo Boolivery. Appena\n        affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un\n        servizio clienti dedicato.\n      "
             ),
           ]),
           _vm._v(" "),

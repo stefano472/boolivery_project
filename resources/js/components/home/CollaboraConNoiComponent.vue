@@ -6,7 +6,7 @@
         <h2>COLLABORA CON NOI</h2>
         <p>
           Aumenta le tue vendite diventando partner del più grande servizio online
-          di ordini a domicilio d'Italia. Metti il tuo ristorante a disposizione
+          di ordini a domicilio di Milano. Metti il tuo ristorante a disposizione
           di migliaia di nuovi clienti entrando nel gruppo Boolivery. Appena
           affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un
           servizio clienti dedicato.
