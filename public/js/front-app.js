@@ -67664,7 +67664,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "\n        Siamo 5 ragazzi che hanno voluto l'intuizione di creare una start-up di food delivery.\n        "
+          "\n        Siamo 5 ragazzi che hanno avuto la caparbietà di creare una start-up di food delivery.\n        "
         ),
       ]),
       _vm._v(" "),

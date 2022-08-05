@@ -15,7 +15,7 @@
           consectetur adipisicing elit. Praesentium, quibusdam incidunt nulla
           culpa veritatis laboriosam quidem obcaecati nam quod porro commodi
           recusandae ut quam voluptatum ad dicta officia assumenda eaque! -->
-          Siamo 5 ragazzi che hanno voluto l'intuizione di creare una start-up di food delivery.
+          Siamo 5 ragazzi che hanno avuto la caparbietà di creare una start-up di food delivery.
           <!-- Per il momento abbiamo idea di imporci sul mercato nel comune di Milano. 
           La nostra ambizione è di poterci espandere in tutta italia, oppure chissà, magari qualcosa
           di più in futuro! Keep pushing :rocket -->
